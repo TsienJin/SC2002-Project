@@ -9,7 +9,8 @@ public class App{
 
         //// Testing methods for file reading
         FileIO reader = new FileIO();
-        reader.writeToFile("test.csv", "WritingTest");
-        ArrayList<String> res = reader.readFromFile("movie.csv");
+        // reader.writeToFile("test.csv", "WritingTest");
+        // ArrayList<String> res = reader.readFromFile("movie.csv");
+        System.out.println(reader.getFirstMatchFromFile("movie.csv", "14"));
     }
 }

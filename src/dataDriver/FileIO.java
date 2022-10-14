@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+// This object handles pure CRUD operations to CSV files
 public class FileIO {
 
     String relativeFileDir = new File("").getAbsolutePath()+"/src/dataDriver/data/";
@@ -28,7 +30,7 @@ public class FileIO {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
             // iterates over lines until null
-            String headers = reader.readLine();
+            reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
                 System.out.println(curLine);
@@ -42,6 +44,38 @@ public class FileIO {
 
         return content;
     }
+
+    // METHOD to read last line that matches first column, that should be ID
+    public String getFirstMatchFromFile(String fileName, String key) throws IllegalArgumentException {
+
+        String lineToReturn = "";
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null
+            reader.readLine(); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                String[] curLineSplit = curLine.split(",", 2);
+                if(key.equalsIgnoreCase(curLineSplit[0])){
+                    lineToReturn = curLine;
+                }
+
+                curLine = reader.readLine();
+                
+            }
+            reader.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        if (lineToReturn.length() == 0){
+            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", key));
+        } else {
+            return lineToReturn;
+        }
+    }
+
 
     // METHOD to write single line content to specified file name
     public void writeToFile(String fileName, String lineToWrite){
