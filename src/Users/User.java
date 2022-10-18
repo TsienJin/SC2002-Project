@@ -1,5 +1,8 @@
 public interface User{
 
-    public Enum getRole();
+    public String name;
+    public enum Role {STAFF, CUSTOMER};
+    public Role role;
+    public Role getRole();
 
 }
