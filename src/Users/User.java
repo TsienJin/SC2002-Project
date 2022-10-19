@@ -24,4 +24,13 @@ public class User{
                         "Role: \t%s\n"
                         , this.id, this.name, this.email, this.role);
     }
+
+    public void showMenu(Role role){
+        if(role == User.Role.CUSTOMER){
+            Menu.printCustomerMenu();
+        }
+        else{
+            Menu.printStaffMenu();
+        }
+    }
 }

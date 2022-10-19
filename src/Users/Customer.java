@@ -14,10 +14,5 @@ public class Customer extends User{
         System.out.printf("Mobile No.: \t%d\n" +
                             "Age: \t%d\n", this.mobileNumber, this.age);
     }
-    //private csvDriver
-
-    //public void createBooking(){
-        //passes to csvDriver
-    //}
 
 }

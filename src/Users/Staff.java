@@ -16,7 +16,7 @@ public class Staff extends User{
     }
 
     public String getCredentials(){
-        return this.username, this.password;
+        return this.username + this.password;
     }
     
     //private csvDriver
