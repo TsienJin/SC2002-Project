@@ -16,4 +16,12 @@ public class User{
     public Role getRole(){
         return this.role;
     }
+
+    public void printInfo(){
+        System.out.printf("ID: \t%d\n" +
+                        "Name: \t%s\n" +
+                        "Email: \t%s\n" +
+                        "Role: \t%s\n"
+                        , this.id, this.name, this.email, this.role);
+    }
 }

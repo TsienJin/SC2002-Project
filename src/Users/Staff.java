@@ -9,6 +9,12 @@ public class Staff extends User{
         this.password = password;
     }
 
+    public void printInfo(){
+        super.printInfo();
+        System.out.printf("Username: \t%s\n" +
+                            "Password: \t%s\n", this.username, this.password);
+    }
+
     public String getCredentials(){
         return this.username, this.password;
     }

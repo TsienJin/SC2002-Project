@@ -9,10 +9,15 @@ public class Customer extends User{
         this.age = age;
     }
 
+    public void printInfo(){
+        super.printInfo();
+        System.out.printf("Mobile No.: \t%d\n" +
+                            "Age: \t%d\n", this.mobileNumber, this.age);
+    }
     //private csvDriver
 
-    public void createBooking(){
+    //public void createBooking(){
         //passes to csvDriver
-    }
+    //}
 
 }
