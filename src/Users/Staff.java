@@ -1,24 +1,18 @@
-public class Staff implements User{
+public class Staff extends User{
     
-    private int id;
     private String username;
     private String password;
-    private String email;
 
-    public Staff(String name, int id, String username, String password, String email, Role role){
-        this.name = name;
-        this.id = id;
+    public Staff(int id, String name, String email, Role role, String username, String password){
+        super(id, name, email, role);
         this.username = username;
         this.password = password;
-        this.email = email;
-        this.role = role;
     }
 
-    public Role getRole(){
-        return this.role;
+    public String getCredentials(){
+        return this.username, this.password;
     }
-
-
+    
     //private csvDriver
 
     // public enum getRole(){

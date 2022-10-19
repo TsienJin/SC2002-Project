@@ -1,20 +1,12 @@
-public class Customer implements User{
+public class Customer extends User{
     
-    private String email;
     private int mobileNumber;
-    //private String name;
     private int age;
 
-    public Customer(String name, String email, int mobileNumber, int age, Role role){
-        this.name = name;
-        this.email = email;
+    public Customer(int id, String name, String email, Role role, int mobileNumber, int age){
+        super(id, name, email, role);
         this.mobileNumber = mobileNumber;
         this.age = age;
-        this.role = role;
-    }
-
-    public Role getRole(){
-        return this.role;
     }
 
     //private csvDriver
