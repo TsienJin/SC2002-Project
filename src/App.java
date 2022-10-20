@@ -14,5 +14,6 @@ public class App{
         // System.out.println(reader.findMatchFromFile("movie.csv", "1375666"));
         String toUpdate = "0111161,The Shawshank Redemption,1,Drama,Too twoo Three long,Bob";
         FileIOObj.updateInFile("movie.csv", toUpdate);
+        FileIOObj.deleteKeyInFile("movie.csv", "1375666");
     }
 }
