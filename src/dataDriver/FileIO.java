@@ -11,6 +11,11 @@ import java.util.HashMap;
 
 
 // This object handles pure CRUD operations to CSV files
+/** Driver that handles all file I/O operations on CSV files.
+ * This object can perform basic CRUD opertations,
+ * and remove duplicates in CSV files.
+ * @author Tsien Jin
+ */
 public class FileIO {
 
     String relativeFileDir = new File("").getAbsolutePath()+"/src/dataDriver/data/";
@@ -22,18 +27,36 @@ public class FileIO {
         this.relativeFileDir = relativeFileDir;
     }
 
+    
+    /**  Checks for matching IDs
+     * This method compares a specified id with an untruncated string directly from the CSV.
+     * @param csvLine
+     * @param id
+     * @return boolean
+     */
     // METHOD to check if ID is same as that in CSV
     public boolean isSameID(String csvLine, String id){
         String csvLineId = csvLine.split(",", 2)[0];
         return csvLineId.equalsIgnoreCase(id);
     }
 
+    
+    /** Gets the ID from a CSV string.
+     * ID is the first parameter according to our schema.
+     * @param csvLine
+     * @return String
+     */
     // METHOD to get string ID from CSV string
     public String stripID(String csvLine){
         return csvLine.split(",",2)[0];
     }
 
 
+    
+    /** Gets all values from the specified CSV file as an array.
+     * @param fileName
+     * @return ArrayList<String>
+     */
     // METHOD to read content line by line from specified file name
     public ArrayList<String> readFromFile(String fileName){
 
@@ -57,8 +80,15 @@ public class FileIO {
         return content;
     }
 
+    
+    /** Finds the latest entry that matches given id
+     * @param fileName
+     * @param id
+     * @return String
+     * @throws IllegalArgumentException
+     */
     // METHOD to update last line that matches ID with given string
-    public String findMatchFromFile(String fileName, String key) throws IllegalArgumentException {
+    public String findMatchFromFile(String fileName, String id) throws IllegalArgumentException {
         String lineToReturn = "";
 
         try{
@@ -67,7 +97,7 @@ public class FileIO {
             reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, id)){
                     lineToReturn = curLine;
                 }
 
@@ -87,6 +117,12 @@ public class FileIO {
     }
 
 
+    
+    /** Updates a key with specified string.
+     * @param fileName
+     * @param newString
+     * @return boolean
+     */
     // METHOD to update last line that matches ID with given string
     public boolean updateKeyInFile(String fileName, String newString){
         boolean isKeyFound = false;
@@ -120,6 +156,13 @@ public class FileIO {
     }
 
 
+    
+    /** Deletes line with specified key in file.
+     * Returns true if key is found.
+     * @param fileName
+     * @param key
+     * @return boolean
+     */
     public boolean deleteKeyInFile(String fileName, String key){
         boolean isKeyFound = false;
         // String key = stripID(newString);
@@ -152,6 +195,11 @@ public class FileIO {
     }
 
 
+    
+    /** Writes single line to specified CSV file
+     * @param fileName
+     * @param lineToWrite
+     */
     // METHOD to write single line content to specified file name
     public void writeToFile(String fileName, String lineToWrite){
         try{
@@ -163,6 +211,12 @@ public class FileIO {
         }
     }
 
+    
+    /** Overwrites the file with a ListArray.
+     * Note: This method does not preserve headers.
+     * @param fileName
+     * @param linesToWrite
+     */
     // METHOD to write an array of content to replace a specified file name
     public void overwriteToFile(String fileName, ArrayList<String> linesToWrite){
         try{
@@ -181,6 +235,11 @@ public class FileIO {
     }
 
 
+    
+    /**  Remove dupplicates in CSV file.
+     * Preserves only the latest entry
+     * @param fileName
+     */
     // METHOD to remove duplicate entries in database by IDs
     public void removeDuplicates(String fileName){
         HashMap<String, String> hMap = new HashMap<>();
