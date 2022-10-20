@@ -8,9 +8,11 @@ public class App{
 
 
         //// Testing methods for file reading
-        FileIO reader = new FileIO();
+        FileIO FileIOObj = new FileIO();
         // reader.writeToFile("test.csv", "WritingTest");
         // ArrayList<String> res = reader.readFromFile("movie.csv");
-        System.out.println(reader.getFirstMatchFromFile("movie.csv", "14"));
+        // System.out.println(reader.findMatchFromFile("movie.csv", "1375666"));
+        String toUpdate = "0111161,The Shawshank Redemption,1,Drama,Too twoo Three long,Bob";
+        FileIOObj.updateInFile("movie.csv", toUpdate);
     }
 }
