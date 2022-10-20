@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 // This object handles pure CRUD operations to CSV files
@@ -87,7 +88,7 @@ public class FileIO {
 
 
     // METHOD to update last line that matches ID with given string
-    public boolean updateInFile(String fileName, String newString){
+    public boolean updateKeyInFile(String fileName, String newString){
         boolean isKeyFound = false;
         String key = stripID(newString);
         ArrayList<String> valArr = new ArrayList<String>();
@@ -174,6 +175,35 @@ public class FileIO {
                 }
             });
             writer.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    // METHOD to remove duplicate entries in database by IDs
+    public void removeDuplicates(String fileName){
+        HashMap<String, String> hMap = new HashMap<>();
+        ArrayList<String> toWrite = new ArrayList<>();
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null to read
+            toWrite.add(reader.readLine()); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                hMap.put(stripID(curLine), curLine);
+                System.out.println(curLine);
+                curLine = reader.readLine();
+            }
+            reader.close();
+
+            // iterates over all the strings to append to toWrite
+            hMap.values().forEach(str -> toWrite.add(str));
+
+            // send string for writing
+            overwriteToFile(fileName, toWrite);
+
         } catch (IOException e){
             e.printStackTrace();
         }
