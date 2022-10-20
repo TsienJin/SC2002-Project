@@ -88,7 +88,7 @@ public class FileIO {
 
     // METHOD to update last line that matches ID with given string
     public boolean updateInFile(String fileName, String newString){
-        String lineToReturn = "";
+        boolean isKeyFound = false;
         String key = stripID(newString);
         ArrayList<String> valArr = new ArrayList<String>();
 
@@ -99,6 +99,7 @@ public class FileIO {
             String curLine = reader.readLine();
             while(curLine != null){
                 if(isSameID(curLine, key)){
+                    isKeyFound = true;
                     valArr.add(newString);
                 } else {
                     valArr.add(curLine);
@@ -114,13 +115,40 @@ public class FileIO {
             e.printStackTrace();
         }
 
-        if (lineToReturn.length() == 0){
-            return false;
-        } else {
-            return true;
-        }
+        return isKeyFound;
     }
 
+
+    public boolean deleteKeyInFile(String fileName, String key){
+        boolean isKeyFound = false;
+        // String key = stripID(newString);
+        ArrayList<String> valArr = new ArrayList<String>();
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null to read
+            valArr.add(reader.readLine()); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, key)){
+                    isKeyFound = true;
+                } else {
+                    valArr.add(curLine);
+                }
+                curLine = reader.readLine();
+            }
+            reader.close();
+
+            // send string for writing
+            overwriteToFile(fileName, valArr);
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return isKeyFound;
+
+    }
 
 
     // METHOD to write single line content to specified file name
