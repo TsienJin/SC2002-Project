@@ -21,6 +21,17 @@ public class FileIO {
         this.relativeFileDir = relativeFileDir;
     }
 
+    // METHOD to check if ID is same as that in CSV
+    public boolean isSameID(String csvLine, String id){
+        String csvLineId = csvLine.split(",", 2)[0];
+        return csvLineId.equalsIgnoreCase(id);
+    }
+
+    // METHOD to get string ID from CSV string
+    public String stripID(String csvLine){
+        return csvLine.split(",",2)[0];
+    }
+
 
     // METHOD to read content line by line from specified file name
     public ArrayList<String> readFromFile(String fileName){
@@ -33,7 +44,7 @@ public class FileIO {
             reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                System.out.println(curLine);
+                // System.out.println(curLine);
                 content.add(curLine);
                 curLine = reader.readLine();
             }
@@ -45,9 +56,8 @@ public class FileIO {
         return content;
     }
 
-    // METHOD to read last line that matches first column, that should be ID
-    public String getFirstMatchFromFile(String fileName, String key) throws IllegalArgumentException {
-
+    // METHOD to update last line that matches ID with given string
+    public String findMatchFromFile(String fileName, String key) throws IllegalArgumentException {
         String lineToReturn = "";
 
         try{
@@ -56,8 +66,7 @@ public class FileIO {
             reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                String[] curLineSplit = curLine.split(",", 2);
-                if(key.equalsIgnoreCase(curLineSplit[0])){
+                if(isSameID(curLine, key)){
                     lineToReturn = curLine;
                 }
 
@@ -77,11 +86,93 @@ public class FileIO {
     }
 
 
+    // METHOD to update last line that matches ID with given string
+    public boolean updateInFile(String fileName, String newString){
+        boolean isKeyFound = false;
+        String key = stripID(newString);
+        ArrayList<String> valArr = new ArrayList<String>();
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null to read
+            valArr.add(reader.readLine()); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, key)){
+                    isKeyFound = true;
+                    valArr.add(newString);
+                } else {
+                    valArr.add(curLine);
+                }
+                curLine = reader.readLine();
+            }
+            reader.close();
+
+            // send string for writing
+            overwriteToFile(fileName, valArr);
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return isKeyFound;
+    }
+
+
+    public boolean deleteKeyInFile(String fileName, String key){
+        boolean isKeyFound = false;
+        // String key = stripID(newString);
+        ArrayList<String> valArr = new ArrayList<String>();
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null to read
+            valArr.add(reader.readLine()); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, key)){
+                    isKeyFound = true;
+                } else {
+                    valArr.add(curLine);
+                }
+                curLine = reader.readLine();
+            }
+            reader.close();
+
+            // send string for writing
+            overwriteToFile(fileName, valArr);
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return isKeyFound;
+
+    }
+
+
     // METHOD to write single line content to specified file name
     public void writeToFile(String fileName, String lineToWrite){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(this.relativeFileDir+fileName, true));
-            writer.write("\n"+lineToWrite);
+            writer.write(lineToWrite+"\n");
+            writer.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    // METHOD to write an array of content to replace a specified file name
+    public void overwriteToFile(String fileName, ArrayList<String> linesToWrite){
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(this.relativeFileDir+fileName, false));
+            linesToWrite.forEach(line -> {
+                try {
+                    writer.write(line+"\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
             writer.close();
         } catch (IOException e){
             e.printStackTrace();
