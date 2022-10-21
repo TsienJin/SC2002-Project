@@ -43,9 +43,9 @@ class CSVDriver():
 
 
 class StaffCSVDriver(CSVDriver):
-    def createMovieListing() -> None:
+    def createMovieListing(newMovie:Movie) -> None:
         newMovie:movie
-        FileIO().writeToFile("fileName.csv", newMovie.toString())
+        FileIO().writeToFile("fileName.csv", newMovie.toCSVString())
 ```
 
 
@@ -57,8 +57,35 @@ class Usr():
 
 
 class StaffUsr(usr):
-    def run():
+    
+    def __init__(self):
+        self.menu = Menu()
+        self.getInut = UsrInput()
+        self.CSVDriver = StaffCSVDriver()
+
+    @override
+    def __auth() -> bool:
         pass
+
+    def __createMovie() -> None:
+        movieBuilder = MovieBuilder()
+        movieBuilder.setMovieName(self.getInput.usrString("Enter Movie Name:"))
+        movieBuilder.setMovieName(self.getInput.usrString("Enter Movie ID:"))\
+        ### .....
+        newMovie:Movie = movieBuilder.makeMovie()
+        self.CSVDriver.createMovieListing(newMovie)
+
+    def __runMain() -> None:
+        ### skip the menu
+        # intention is to create movie listing
+        self.createMovie()
+
+    def run() -> None:
+        while(not self.__auth()):
+            pass
+        self.runMain()
+
+    
 
 
 class CustomerUsr(usr):
@@ -71,7 +98,7 @@ class CustomerUsr(usr):
 ```python
 ### Main App Function
 class Main():
-    usrType:Str = "Customer" # usr
+    usrType:Str = "Staff" # usr, should be enum in java
 
     def Main() -> None:
         this.usrType = getUsrType()
@@ -84,7 +111,3 @@ class Main():
 
         usrApp.run() # think: inception dropping into a lower 'dream'
 ```
-
-
-
-
