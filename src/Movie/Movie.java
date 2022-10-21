@@ -3,16 +3,16 @@ package Movie;
 import java.util.ArrayList;
 
 public class Movie {
-    private final int imdbID;
-    private final String movieTitle;
-    private final showingStatus status;
-    private final movieType type;
-    private final String synopsis;
-    private final String director;
-    private final ArrayList<String> cast;
-    private final Double overallRating;
-    private final ArrayList<Review> pastReviews;
-    private final int totalTicketSales;
+    private int imdbID;
+    private String movieTitle;
+    private showingStatus status;
+    private movieType type;
+    private String synopsis;
+    private String director;
+    private ArrayList<String> cast;
+    private Double overallRating;
+    private ArrayList<Review> pastReviews;
+    private int totalTicketSales;
 
     public Movie(MovieBuilder builder)
     {
@@ -29,7 +29,17 @@ public class Movie {
         this.totalTicketSales = builder.totalTicketSales;
     }
 
-    // public Movie(String lineFromCSV){}
+    public Movie(String lineFromCSV){
+        
+    }
+
+    public String toString() {
+        return "string";
+    }
+
+    public String toCSVString() {
+        return "string";
+    }
 
     public int getImdbID(){
         return this.imdbID;
