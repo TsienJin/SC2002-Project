@@ -1,9 +1,3 @@
-
-
-
-
-
-
 ### Pseudo Code
 
 ```python
