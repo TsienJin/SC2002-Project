@@ -110,7 +110,7 @@ public class FileIO {
         }
 
         if (lineToReturn.length() == 0){
-            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", key));
+            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", id));
         } else {
             return lineToReturn;
         }
