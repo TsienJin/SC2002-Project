@@ -1,5 +1,5 @@
 public class Menu{
-    public void printCustomerMenu(){
+    public static void printCustomerMenu(){
         System.out.print("\nCustomer Menu:\n"
                         + "01) List Movies\n"
                         + "02) Search Movies\n"
@@ -9,7 +9,7 @@ public class Menu{
                         + "06) List Top 5 Rankings\n"
                         + "07) Quit\n");
     }
-    public void printStaffMenu(){
+    public static void printStaffMenu(){
         System.out.print("\nStaff Menu:\n"
                         + "01) Create Movie Listing\n"
                         + "02) Update Movie Listing\n"

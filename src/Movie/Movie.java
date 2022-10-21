@@ -31,6 +31,8 @@ public class Movie {
         this.totalTicketSales = totalTicketSales;
     }
 
+    public Movie(String lineFromCSV){}
+
     public int getImdbID(){
         return this.imdbID;
     }
