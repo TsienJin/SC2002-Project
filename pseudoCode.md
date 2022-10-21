@@ -38,7 +38,6 @@ class CSVDriver():
 
 class StaffCSVDriver(CSVDriver):
     def createMovieListing(newMovie:Movie) -> None:
-        newMovie:movie
         FileIO().writeToFile("fileName.csv", newMovie.toCSVString())
 ```
 
@@ -69,7 +68,7 @@ class StaffUsr(usr):
         newMovie:Movie = movieBuilder.makeMovie()
         self.CSVDriver.createMovieListing(newMovie)
 
-    def __runMain() -> None:
+    def __runMain() -> None:
         ### skip the menu
         # intention is to create movie listing
         self.createMovie()
