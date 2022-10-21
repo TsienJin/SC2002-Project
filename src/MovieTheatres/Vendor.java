@@ -28,9 +28,5 @@ public class Vendor {
         this.company = company;
     }
 
-    //CONFIGURE METHOD
-    public void configure(){
-
-    }
 
 }
