@@ -9,7 +9,7 @@ public class StaffMenu implements MenuInterface{
                         + "04) Create Cinema Showtime\n"
                         + "05) Update Cinema Showtime\n"
                         + "06) Delete Cinema Showtime\n"
-                        + "07) Configure System Settings\n" //idk what is this :/
+                        + "07) Configure System Settings\n"
                         + "08) Quit\n");
     }
 }

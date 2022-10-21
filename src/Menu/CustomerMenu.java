@@ -12,3 +12,4 @@ public class CustomerMenu implements MenuInterface{
                         + "07) Quit\n");
     }
 }
+
