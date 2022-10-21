@@ -90,17 +90,24 @@ class CustomerUsr(usr):
 
 ```python
 ### Main App Function
+
+class UsrFactory():
+    def createUsr(usrType):
+        if usrType === "Customer":
+            return CustomerUsr()
+        else:
+            return StaffUsr()
+
+
+
 class Main():
     usrType:Str = "Staff" # usr, should be enum in java
 
     def Main() -> None:
-        this.usrType = getUsrType()
+        self.usrType = getUsrType()
         
         # dependant on usrType
-        if usrType === "Customer":
-            usrApp = CustomerUsr()
-        else:
-            usrApp = StaffUsr()
+        usrApp = UsrFactory().createUsr(self.usrType)
 
         usrApp.run() # think: inception dropping into a lower 'dream'
 ```
