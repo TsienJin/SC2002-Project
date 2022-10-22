@@ -27,7 +27,7 @@ public class UsrInput{
      * @param promt
      * @return String
      */
-    public String getUsrInt(String promt){
+    public int getUsrInt(String promt){
         Scanner scan = new Scanner(System.in);
         System.out.println(promt);
         return scan.nextInt();
