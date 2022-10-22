@@ -66,8 +66,8 @@ public class MovieBuilder {
     //     this.pastReviews.add(newReview);
     // }
 
-    public constructfromCSVLine(String CSVLine){
-
+    public String constructfromCSVLine(String CSVLine){
+        return "String";
     }
 
     public Movie build() {
