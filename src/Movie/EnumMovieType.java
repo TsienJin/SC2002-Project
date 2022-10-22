@@ -1,6 +1,7 @@
 package Movie;
 
 public enum EnumMovieType implements InterfaceNiceEnumString {
+    Undefined("Undefined"),
     Blockbuster("Blockbuster"),
     ThreeD("3D"),
     Indie("Indie"),
