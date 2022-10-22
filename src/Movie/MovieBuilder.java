@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MovieBuilder {
-    String imdbID = "emptyID";
+    String id = "emptyID";
     String movieTitle = "emptyTitle";
     EnumShowingStatus status = EnumShowingStatus.Undefined;
     EnumMovieType type = EnumMovieType.Undefined;
@@ -14,12 +14,14 @@ public class MovieBuilder {
     ArrayList<Review> pastReviews = new ArrayList<>(Arrays.asList());
     int totalTicketSales = 0;
 
+
+    /////// What is the purpose of movie()? -- TJ
     public static MovieBuilder movie() {
         return new MovieBuilder();
     }
 
-    public MovieBuilder setImdbID(String imdbID){
-        this.imdbID = imdbID;
+    public MovieBuilder setImdbID(String id){
+        this.id = id;
         return this;
     }
     public MovieBuilder setMovieTitle(String movieTitle){
