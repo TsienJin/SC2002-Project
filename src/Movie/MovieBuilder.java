@@ -1,13 +1,11 @@
 package Movie;
 import java.util.ArrayList;
-enum showingStatus{Coming_Soon,Preview,Now_Showing};
-enum movieType{Blockbuster,ThreeD,Indie};
 
 public class MovieBuilder {
-    int imdbID;
+    String imdbID;
     String movieTitle;
-    showingStatus status;
-    movieType type;
+    EnumShowingStatus status;
+    EnumMovieType type;
     String synopsis;
     String director;
     ArrayList<String> cast;
@@ -19,7 +17,7 @@ public class MovieBuilder {
         return new MovieBuilder();
     }
 
-    public MovieBuilder setImdbID(int imdbID){
+    public MovieBuilder setImdbID(String imdbID){
         this.imdbID = imdbID;
         return this;
     }
@@ -27,11 +25,11 @@ public class MovieBuilder {
         this.movieTitle = movieTitle;
         return this;
     }
-    public MovieBuilder setStatus(showingStatus status) {
+    public MovieBuilder setStatus(EnumShowingStatus status) {
         this.status = status;
         return this;
     }
-    public MovieBuilder setMovieType(movieType type){
+    public MovieBuilder setMovieType(EnumMovieType type){
         this.type = type;
         return this;
     }
@@ -66,7 +64,7 @@ public class MovieBuilder {
     //     this.pastReviews.add(newReview);
     // }
 
-    public constructfromCSVLine(String CSVLine){
+    public void constructfromCSVLine(String CSVLine){ // should return CSV string 
 
     }
 

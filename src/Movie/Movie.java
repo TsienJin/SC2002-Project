@@ -3,10 +3,10 @@ package Movie;
 import java.util.ArrayList;
 
 public class Movie {
-    private int imdbID;
+    private String imdbID;
     private String movieTitle;
-    private showingStatus status;
-    private movieType type;
+    private EnumShowingStatus status;
+    private EnumMovieType type;
     private String synopsis;
     private String director;
     private ArrayList<String> cast;
@@ -28,10 +28,11 @@ public class Movie {
         this.pastReviews = builder.pastReviews;
         this.totalTicketSales = builder.totalTicketSales;
     }
-
-    public Movie(String lineFromCSV){
+    
+    //// Can depreciate
+    // public Movie(String lineFromCSV){
         
-    }
+    // }
 
     public String toString() {
         return "string";
@@ -41,16 +42,16 @@ public class Movie {
         return "string";
     }
 
-    public int getImdbID(){
+    public String getImdbID(){
         return this.imdbID;
     }
     public String getMovieTitle(){
         return this.movieTitle;
     }
-    public showingStatus getStatus(){
+    public EnumShowingStatus getStatus(){
         return this.status;
     }
-    public movieType getMovieType(){
+    public EnumMovieType getMovieType(){
         return this.type;
     }
     public String getSynopsis(){
