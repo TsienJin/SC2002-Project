@@ -1,17 +1,18 @@
 package Movie;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MovieBuilder {
-    String imdbID;
-    String movieTitle;
-    EnumShowingStatus status;
-    EnumMovieType type;
-    String synopsis;
-    String director;
-    ArrayList<String> cast;
-    Double overallRating;
-    ArrayList<Review> pastReviews;
-    int totalTicketSales;
+    String imdbID = "emptyID";
+    String movieTitle = "emptyTitle";
+    EnumShowingStatus status = EnumShowingStatus.Undefined;
+    EnumMovieType type = EnumMovieType.Undefined;
+    String synopsis = "emptySynopsis";
+    String director = "emptyDirectory";
+    ArrayList<String> cast = new ArrayList<>(Arrays.asList("emptyCast"));
+    Double overallRating = 0.0;
+    ArrayList<Review> pastReviews = new ArrayList<>(Arrays.asList());
+    int totalTicketSales = 0;
 
     public static MovieBuilder movie() {
         return new MovieBuilder();
