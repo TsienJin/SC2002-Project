@@ -2,7 +2,7 @@ package dataDriver;
 
 public class CSVDriver{
 
-    FileIO fileio = new FileIO();
+    private FileIO fileio = new FileIO();
 
     // Constructor Method
     public CSVDriver(){

@@ -5,7 +5,7 @@
 Stores all the movie records.
 
 ```
-imdbID: String
+id: String
 movieTitle: String
 showingStatus: enum
 movieType: enum

@@ -2,11 +2,13 @@ package Movie;
 
 import java.util.ArrayList;
 
-public class Movie {
-    private int imdbID;
+import dataDriver.InterfaceToCsvStringHelper;
+
+public class Movie implements InterfaceToCsvStringHelper{
+    private String id;
     private String movieTitle;
-    private showingStatus status;
-    private movieType type;
+    private EnumShowingStatus status;
+    private EnumMovieType type;
     private String synopsis;
     private String director;
     private ArrayList<String> cast;
@@ -17,7 +19,7 @@ public class Movie {
     public Movie(MovieBuilder builder)
     {
         // can also add checks for null beforehand
-        this.imdbID = builder.imdbID;
+        this.id = builder.id;
         this.movieTitle = builder.movieTitle;
         this.status = builder.status;
         this.type = builder.type;
@@ -28,29 +30,41 @@ public class Movie {
         this.pastReviews = builder.pastReviews;
         this.totalTicketSales = builder.totalTicketSales;
     }
-
-    public Movie(String lineFromCSV){
+    
+    //// Can depreciate
+    // public Movie(String lineFromCSV){
         
-    }
+    // }
 
     public String toString() {
         return "string";
     }
 
-    public String toCSVString() {
-        return "string";
+    public String toCsvString() {
+
+        ArrayList<String> arrCSV = new ArrayList<>();
+
+        arrCSV.add(this.id);
+        arrCSV.add(this.movieTitle);
+        arrCSV.add(this.status.name());
+        arrCSV.add(this.type.name());
+        arrCSV.add(this.synopsis);
+        arrCSV.add(this.director);
+        arrCSV.add(String.join(subDelimiter, this.cast));
+
+        return String.join(mainDelimiter, arrCSV);
     }
 
-    public int getImdbID(){
-        return this.imdbID;
+    public String getid(){
+        return this.id;
     }
     public String getMovieTitle(){
         return this.movieTitle;
     }
-    public showingStatus getStatus(){
+    public EnumShowingStatus getStatus(){
         return this.status;
     }
-    public movieType getMovieType(){
+    public EnumMovieType getMovieType(){
         return this.type;
     }
     public String getSynopsis(){

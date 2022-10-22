@@ -1,37 +1,38 @@
 package Movie;
 import java.util.ArrayList;
-enum showingStatus{Coming_Soon,Preview,Now_Showing};
-enum movieType{Blockbuster,ThreeD,Indie};
+import java.util.Arrays;
 
 public class MovieBuilder {
-    int imdbID;
-    String movieTitle;
-    showingStatus status;
-    movieType type;
-    String synopsis;
-    String director;
-    ArrayList<String> cast;
-    Double overallRating;
-    ArrayList<Review> pastReviews;
-    int totalTicketSales;
+    String id = "emptyID";
+    String movieTitle = "emptyTitle";
+    EnumShowingStatus status = EnumShowingStatus.Undefined;
+    EnumMovieType type = EnumMovieType.Undefined;
+    String synopsis = "emptySynopsis";
+    String director = "emptyDirectory";
+    ArrayList<String> cast = new ArrayList<>(Arrays.asList("emptyCast"));
+    Double overallRating = 0.0;
+    ArrayList<Review> pastReviews = new ArrayList<>(Arrays.asList());
+    int totalTicketSales = 0;
 
+
+    /////// What is the purpose of movie()? -- TJ
     public static MovieBuilder movie() {
         return new MovieBuilder();
     }
 
-    public MovieBuilder setImdbID(int imdbID){
-        this.imdbID = imdbID;
+    public MovieBuilder setImdbID(String id){
+        this.id = id;
         return this;
     }
     public MovieBuilder setMovieTitle(String movieTitle){
         this.movieTitle = movieTitle;
         return this;
     }
-    public MovieBuilder setStatus(showingStatus status) {
+    public MovieBuilder setStatus(EnumShowingStatus status) {
         this.status = status;
         return this;
     }
-    public MovieBuilder setMovieType(movieType type){
+    public MovieBuilder setMovieType(EnumMovieType type){
         this.type = type;
         return this;
     }
