@@ -6,6 +6,9 @@ import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
+import Movie.Review;
+import Movie.ReviewBuilder;
+import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 
 
@@ -38,21 +41,36 @@ public class App{
         // Movie movie = new MovieBuilder().setStatus(EnumShowingStatus.Now_Showing).build();
         // System.out.println(movie.toCsvString());
 
-        MovieBuilder builder = new MovieBuilder();
-        builder.setImdbID("2958305");
-        builder.setMovieTitle("Pulp Fiction");
-        builder.setStatus(EnumShowingStatus.Not_Showing);
-        builder.setMovieType(EnumMovieType.Indie);
-        builder.setSynopsis("Something Short");
-        builder.setDirector("James Johnson");
-        builder.setCast(new ArrayList<String>(Arrays.asList("Person 1", "Person 2")));
+        // MovieBuilder builder = new MovieBuilder();
+        // builder.setID("2958305");
+        // builder.setMovieTitle("Pulp Fiction");
+        // builder.setStatus(EnumShowingStatus.Not_Showing);
+        // builder.setMovieType(EnumMovieType.Indie);
+        // builder.setSynopsis("Something Short");
+        // builder.setDirector("James Johnson");
+        // builder.setCast(new ArrayList<String>(Arrays.asList("Person 1", "Person 2")));
 
-        Movie movie = builder.build();
-        System.out.println(movie.toCsvString());
+        // Movie movie = builder.build();
+        // System.out.println(movie.toCsvString());
 
         FileIO fileIoObj = new FileIO();
-        fileIoObj.writeToFile("movie.csv", movie.toCsvString());
+        // fileIoObj.writeToFile("movie.csv", movie.toCsvString());
         
- 
+
+        //// TESTING review builder
+        // ReviewBuilder rvBuilder = new ReviewBuilder();
+        // rvBuilder.setID("ID-25643");
+        // rvBuilder.setMovieId("2958305");
+        // rvBuilder.setUsername("Hungry Yellow");
+        // rvBuilder.setstrReview("Best movie I've watched my entire life!");
+        // rvBuilder.setuserRating(5);
+        // Review review = rvBuilder.build();
+
+        // fileIoObj.writeToFile(EnumDataFiles.Review, review.toCsvString());
+
+        String csvString = fileIoObj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305");
+        Movie movie = new MovieBuilder(csvString).build();
+        System.out.println(movie.getDirector());
+
     }
 }
