@@ -71,6 +71,7 @@ public class App{
         String csvString = fileIoObj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305");
         Movie movie = new MovieBuilder(csvString).build();
         System.out.println(movie.getDirector());
+        // movie.getCast().forEach(cast -> System.out.println(cast));
 
     }
 }
