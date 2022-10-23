@@ -11,14 +11,21 @@ import Movie.Movie;
 import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
+import UsrInput.UsrInput;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 
 
 public class App{
+
+    private UsrInput usrInput = new UsrInput();
     public static void main(String args[]){
-        App myApp = new App();
-        myApp.testing();
+        // App myApp = new App();
+        // myApp.testing();
+
+
+
+
     }
 
 
