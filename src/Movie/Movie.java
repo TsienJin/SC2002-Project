@@ -2,10 +2,11 @@ package Movie;
 
 import java.util.ArrayList;
 
+import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 
-public class Movie implements InterfaceToCsvStringHelper{
-    private String id;
+public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+    private String ID;
     private String movieTitle;
     private EnumShowingStatus status;
     private EnumMovieType type;
@@ -19,7 +20,7 @@ public class Movie implements InterfaceToCsvStringHelper{
     public Movie(MovieBuilder builder)
     {
         // can also add checks for null beforehand
-        this.id = builder.id;
+        this.ID = builder.ID;
         this.movieTitle = builder.movieTitle;
         this.status = builder.status;
         this.type = builder.type;
@@ -30,11 +31,6 @@ public class Movie implements InterfaceToCsvStringHelper{
         this.pastReviews = builder.pastReviews;
         this.totalTicketSales = builder.totalTicketSales;
     }
-    
-    //// Can depreciate
-    // public Movie(String lineFromCSV){
-        
-    // }
 
     public String toString() {
         return "string";
@@ -42,9 +38,11 @@ public class Movie implements InterfaceToCsvStringHelper{
 
     public String toCsvString() {
 
+        // Delimiters are from the toCsvStringHelper interface
+
         ArrayList<String> arrCSV = new ArrayList<>();
 
-        arrCSV.add(this.id);
+        arrCSV.add(this.ID);
         arrCSV.add(this.movieTitle);
         arrCSV.add(this.status.name());
         arrCSV.add(this.type.name());
@@ -55,8 +53,8 @@ public class Movie implements InterfaceToCsvStringHelper{
         return String.join(mainDelimiter, arrCSV);
     }
 
-    public String getid(){
-        return this.id;
+    public String getID(){
+        return this.ID;
     }
     public String getMovieTitle(){
         return this.movieTitle;
@@ -84,5 +82,9 @@ public class Movie implements InterfaceToCsvStringHelper{
     }
     public int getTotalTicketSales(){
         return this.totalTicketSales;
+    }
+
+    public void addReview(Review reviewToAdd){
+        this.pastReviews.add(reviewToAdd);
     }
 }
