@@ -1,33 +1,60 @@
 package Movie;
 
-public class Review {
-    private int reviewID;
+import java.util.ArrayList;
+
+import dataDriver.InterfaceCsvDelimiter;
+import dataDriver.InterfaceToCsvStringHelper;
+
+public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+    private String ID;
+    private String movieID;
+    private String username;
     private String strReview;
-    private int userRating;
+    private int usrRating;
 
-    public Review(int reviewID,String strReview,int userRating) {
-        this.reviewID = reviewID;
+    public Review(String ID,String strReview,int usrRating) {
+        this.ID = ID;
         this.strReview = strReview;
-        this.userRating = userRating;
+        this.usrRating = usrRating;
     }
 
-    public int getreviewID() {
-        return this.reviewID;
+    public Review(ReviewBuilder builder){
+        this.ID = builder.ID;
+        this.movieID = builder.movieID;
+        this.username = builder.username;
+        this.strReview = builder.strReview;
+        this.usrRating = builder.usrRating;
     }
+
+    public String getID() {
+        return this.ID;
+    }
+
+    public String getMovieID(){
+        return this.movieID;
+    }
+
     public String getstrReview() {
         return this.strReview;
     }
-    public int getuserRating() {
-        return this.userRating;
+
+    public String getUsername(){
+        return this.username;
     }
 
-    public void setreviewID(int reviewID) {
-        this.reviewID = reviewID;
+    public int getUsrRating() {
+        return this.usrRating;
     }
-    public void setstrReview(String strReview) {
-        this.strReview = strReview;
-    }
-    public void setuserRating(int userRating) {
-        this.userRating = userRating;
+
+    @Override
+    public String toCsvString() {
+        ArrayList<String> arrCSV = new ArrayList<>();
+        arrCSV.add(this.movieID);
+        arrCSV.add(this.ID);
+        arrCSV.add(this.username);
+        arrCSV.add(this.strReview);
+        arrCSV.add(String.valueOf(this.usrRating));
+
+        return String.join(mainDelimiter, arrCSV);
     }
 }
