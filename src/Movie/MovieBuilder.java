@@ -33,7 +33,7 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.type = EnumMovieType.valueOf(csvArr.get(3));
         this.synopsis = csvArr.get(4);
         this.director = csvArr.get(5);
-
+        this.cast = new ArrayList<>(Arrays.asList(csvArr.get(6).split(subDelimiter)));
     }
 
     public MovieBuilder setID(String ID){
