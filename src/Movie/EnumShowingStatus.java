@@ -17,6 +17,7 @@ public enum EnumShowingStatus implements InterfaceNiceEnumString{
         this.prettyName = name();
     }
 
+    @Override
     public String niceString(){
         return this.prettyName;
     }
