@@ -2,16 +2,18 @@ package Movie;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MovieBuilder {
-    String id = "emptyID";
-    String movieTitle = "emptyTitle";
+import dataDriver.InterfaceCsvDelimiter;
+
+public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimiter {
+    String ID;
+    String movieTitle;
     EnumShowingStatus status = EnumShowingStatus.Undefined;
     EnumMovieType type = EnumMovieType.Undefined;
-    String synopsis = "emptySynopsis";
-    String director = "emptyDirectory";
-    ArrayList<String> cast = new ArrayList<>(Arrays.asList("emptyCast"));
+    String synopsis;
+    String director;
+    ArrayList<String> cast;
     Double overallRating = 0.0;
-    ArrayList<Review> pastReviews = new ArrayList<>(Arrays.asList());
+    ArrayList<Review> pastReviews;
     int totalTicketSales = 0;
 
 
@@ -20,8 +22,22 @@ public class MovieBuilder {
         return new MovieBuilder();
     }
 
-    public MovieBuilder setImdbID(String id){
-        this.id = id;
+    public MovieBuilder(){}
+
+    public MovieBuilder(String csvString){
+        ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
+
+        this.ID = csvArr.get(0);
+        this.movieTitle = csvArr.get(1);
+        this.status = EnumShowingStatus.valueOf(csvArr.get(2));
+        this.type = EnumMovieType.valueOf(csvArr.get(3));
+        this.synopsis = csvArr.get(4);
+        this.director = csvArr.get(5);
+
+    }
+
+    public MovieBuilder setID(String ID){
+        this.ID = ID;
         return this;
     }
     public MovieBuilder setMovieTitle(String movieTitle){
@@ -60,18 +76,18 @@ public class MovieBuilder {
         this.pastReviews = pastReviews;
         return this;
     }
-    // public void addCast(String castMember){
-    //     this.cast.add(castMember);
-    // }
-    // public void addReview(String newReview){
-    //     this.pastReviews.add(newReview);
-    // }
 
-    public String constructfromCSVLine(String CSVLine){
-        return "String";
-    }
-
+    @Override
     public Movie build() {
         return new Movie(this);
     }
+
+    // @Override
+    // public Movie fromCsvString(String csvString) {
+
+
+
+
+    //     return null;
+    // }
 }
