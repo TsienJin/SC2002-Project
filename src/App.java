@@ -20,8 +20,8 @@ public class App{
 
     private UsrInput usrInput = new UsrInput();
     public static void main(String args[]){
-        // App myApp = new App();
-        // myApp.testing();
+        App myApp = new App();
+        myApp.testing();
 
 
 
