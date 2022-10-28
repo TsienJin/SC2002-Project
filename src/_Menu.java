@@ -1,4 +1,4 @@
-public class Menu{
+public class _Menu{
     public static void printCustomerMenu(){
         System.out.print("\nCustomer Menu:\n"
                         + "01) List Movies\n"
