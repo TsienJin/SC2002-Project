@@ -11,13 +11,15 @@ import java.util.Scanner;
  */
 public class UsrInput{
 
+    Scanner scan = new Scanner(System.in);
+
     
     /** Gets user String input
      * @param promt
      * @return String
      */
     public String getUsrString(String promt){
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
         System.out.println(promt);
         return scan.next();
     }
@@ -28,7 +30,7 @@ public class UsrInput{
      * @return String
      */
     public int getUsrInt(String promt){
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
         System.out.println(promt);
         return scan.nextInt();
     }
