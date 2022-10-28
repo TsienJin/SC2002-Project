@@ -1,9 +1,8 @@
 package Menu;
 
-import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 
-public class StaffMenu extends MainMenu{
+public class StaffMenu extends MainMenu {
 
     @Override
     public void printMainMenu(){

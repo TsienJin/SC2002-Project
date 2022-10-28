@@ -2,15 +2,7 @@ package Menu;
 
 import java.util.ArrayList;
 
-public class MainMenu implements MenuInterface {
-
-
-    public void menuPrinter(String menuHeader, ArrayList<String> menuOptions){
-        System.out.println(menuHeader);
-        for(int i=0; i<menuOptions.size(); i++){
-            System.out.println(String.format("%d) %s", i+1, menuOptions.get(i)));
-        }
-    }
+public class MainMenu extends Menu {
 
     @Override
     public void printMainMenu() {
