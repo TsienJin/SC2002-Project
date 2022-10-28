@@ -17,15 +17,42 @@ import dataDriver.FileIO;
 
 
 public class App{
+    UsrInput usrInput = new UsrInput();
 
-    private UsrInput usrInput = new UsrInput();
     public static void main(String args[]){
         App myApp = new App();
-        myApp.testing();
+
+        MainMenu menu = myApp.determineUsrMenu();
+        menu.printMainMenu();
 
 
 
 
+
+    }
+
+    public MainMenu determineUsrMenu(){
+        MainMenu thisMenu = new MainMenu();
+        thisMenu.printMainMenu();
+
+        int usrChoice = 0;
+        do {
+            usrChoice = usrInput.getUsrInt("User type: ");
+            switch(usrChoice){
+                case 1:
+                    thisMenu = new CustomerMenu();
+                    break;
+                case 2:
+                    thisMenu = new StaffMenu();
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+            }
+
+        } while (usrChoice == 0);
+
+        return thisMenu;
     }
 
 
