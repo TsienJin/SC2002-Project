@@ -2,6 +2,8 @@ package Movie;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import dataDriver.EnumDataFiles;
+import dataDriver.FileIO;
 import dataDriver.InterfaceCsvDelimiter;
 
 public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimiter {
@@ -16,6 +18,8 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
     ArrayList<Review> pastReviews;
     int totalTicketSales = 0;
 
+    private FileIO fileio = new FileIO();
+
 
     /////// What is the purpose of movie()? -- TJ
     public static MovieBuilder movie() {
@@ -25,6 +29,10 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
     public MovieBuilder(){}
 
     public MovieBuilder(String csvString){
+        this.updateFromCsvString(csvString);
+    }
+
+    private void updateFromCsvString(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
 
         this.ID = csvArr.get(0);
@@ -34,6 +42,12 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.synopsis = csvArr.get(4);
         this.director = csvArr.get(5);
         this.cast = new ArrayList<>(Arrays.asList(csvArr.get(6).split(subDelimiter)));
+    }
+
+    public MovieBuilder fromMovieID(String id){
+        String csvString = fileio.findMatchFromFile(EnumDataFiles.Movie.toString(), id);
+        this.updateFromCsvString(csvString);
+        return this;
     }
 
     public MovieBuilder setID(String ID){
