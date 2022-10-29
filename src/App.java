@@ -23,32 +23,30 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        // Menu menu = myApp.determineUsrMenu();
-        // menu.printMainMenu();
+        User usr = myApp.determineUsrType();
+        usr.run();
 
-
-        // User usr = myApp.determineUsrType()
-        // usr.run()
-
-        myApp.testing();
+        // myApp.testing();
 
 
 
     }
 
-    public Menu determineUsrMenu(){
+    public User determineUsrType(){
         Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
+
+        User usrObj = null;
 
         int usrChoice = 0;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
             switch(usrChoice){
-                case 2:
-                    thisMenu = new CustomerMenu();
-                    break;
                 case 1:
-                    thisMenu = new StaffMenu();
+                    usrObj = new Staff();
+                    break;
+                case 2:
+                    usrObj = new Customer();
                     break;
                 default:
                     System.out.println("Invalid input!");
@@ -57,7 +55,7 @@ public class App{
 
         } while (usrChoice == 0);
 
-        return thisMenu;
+        return usrObj;
     }
 
 
