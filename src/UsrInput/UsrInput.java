@@ -20,7 +20,7 @@ public class UsrInput{
      */
     public String getUsrString(String promt){
         // Scanner scan = new Scanner(System.in);
-        System.out.print(promt);
+        System.out.print(promt+"\t");
         return scan.next();
     }
 
@@ -31,7 +31,7 @@ public class UsrInput{
      */
     public int getUsrInt(String promt){
         // Scanner scan = new Scanner(System.in);
-        System.out.print(promt);
+        System.out.print(promt+"\t");
         return scan.nextInt();
     }
 }
