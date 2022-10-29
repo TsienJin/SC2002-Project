@@ -1,37 +1,29 @@
 package dataDriver;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
+import Movie.EnumMovieType;
+import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
+import UsrInput.UsrInput;
 
 public class StaffCSVDriver extends CSVDriver {
  
-    public static String inputMovieDetails(){
+    public static void inputMovieDetails(MovieBuilder inputMovie){
+        UsrInput usrInput = new UsrInput();
         Scanner sc = new Scanner(System.in);
-        String movieInput = "";
-        System.out.print("Enter Movie ID: ");
-        movieInput += sc.nextLine() + ",";
 
-        System.out.print("Enter Movie Title: ");
-        movieInput += sc.nextLine() + ",";
-
-        System.out.print("Enter Showing Status: ");
-        movieInput += sc.nextLine() + ",";
-
-        System.out.print("Enter Movie Type: ");
-        movieInput += sc.nextLine() + ",";
-
-        System.out.print("Enter Movie Synopsis: ");
-        movieInput += sc.nextLine() + ",";
-
-        System.out.print("Enter Movie Director: ");
-        movieInput += sc.nextLine() + ",";
-
-        System.out.print("Enter Movie Casts: ");
-        movieInput += sc.nextLine();
+        inputMovie.setID(usrInput.getUsrString("Enter Movie ID: "));
+        inputMovie.setMovieTitle(usrInput.getUsrString("Enter Movie Title: "));
+        inputMovie.setStatus(EnumShowingStatus.valueOf(usrInput.getUsrString("Enter Showing Status: ")));
+        inputMovie.setMovieType(EnumMovieType.valueOf(usrInput.getUsrString("Enter Movie Type: ")));
+        inputMovie.setSynopsis(usrInput.getUsrString("Enter Movie Synopsis: "));
+        inputMovie.setDirector(usrInput.getUsrString("Enter Movie Director: "));
+        inputMovie.setCast(new ArrayList<>(Arrays.asList((usrInput.getUsrString("Enter Movie Casts: ")))));
         
-        return movieInput;
     }
 
     public boolean authenticate(String usrName, String usrPwd) {
@@ -51,9 +43,9 @@ public class StaffCSVDriver extends CSVDriver {
     }
 
     public void createMovieListing() {
-        String newMovieString = StaffCSVDriver.inputMovieDetails();
+        MovieBuilder newMovieBuilder = new MovieBuilder();
 
-        MovieBuilder newMovieBuilder = new MovieBuilder(newMovieString);
+        StaffCSVDriver.inputMovieDetails(newMovieBuilder);
 
         Movie newMovie = new Movie(newMovieBuilder);
 
@@ -63,11 +55,11 @@ public class StaffCSVDriver extends CSVDriver {
     }
 
     public void updateMovieListing() {
-        String updateMovieString = StaffCSVDriver.inputMovieDetails();
+        MovieBuilder updateMovieBuilder = new MovieBuilder();
 
-        MovieBuilder udpateMovieBuilder = new MovieBuilder(updateMovieString);
+        StaffCSVDriver.inputMovieDetails(updateMovieBuilder);
 
-        Movie updateMovie = new Movie(udpateMovieBuilder);
+        Movie updateMovie = new Movie(updateMovieBuilder);
 
         super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), updateMovie.toCsvString());
         
@@ -80,8 +72,7 @@ public class StaffCSVDriver extends CSVDriver {
         System.out.print("Enter Movie ID: ");
         String deleteMovie = sc.nextLine();
 
-        super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), deleteMovie);
-        sc.close();
+        super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), deleteMovie);
         System.out.println("Movie deleted!");
     }
 
