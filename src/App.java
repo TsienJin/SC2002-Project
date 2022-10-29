@@ -51,6 +51,7 @@ public class App{
                 default:
                     System.out.println("Invalid input!");
                     usrChoice = 0;
+                    break;
             }
 
         } while (usrChoice == 0);
