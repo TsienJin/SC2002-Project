@@ -72,8 +72,6 @@ public class StaffCSVDriver extends CSVDriver {
         super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), updateMovie.toCsvString());
         
         System.out.println("Movie updated!");
-        
-        
 
     }
 
@@ -90,7 +88,9 @@ public class StaffCSVDriver extends CSVDriver {
     public void createCinemaShowtime() {
 
     }
+    public void updateCinemaShowtime() {
 
+    }
     public void deleteCinemaShowtime() {
 
     }
