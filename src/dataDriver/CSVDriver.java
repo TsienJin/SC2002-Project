@@ -1,6 +1,6 @@
 package dataDriver;
 
-public class CSVDriver{
+public abstract class CSVDriver{
 
     private FileIO fileio = new FileIO();
 
