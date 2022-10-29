@@ -4,11 +4,6 @@ public abstract class CSVDriver{
 
     protected FileIO fileio = new FileIO();
 
-    // Constructor Method
-    public CSVDriver(){
-
-    }
-
     // PRIVATE method to create array of movies from string
     // to be implemented
     
