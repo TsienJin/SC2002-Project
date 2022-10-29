@@ -46,9 +46,9 @@ public class showtime {
         //Get the current instance of time and date
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddkkmm");
-        String strDate = formatter.format(date);
+        String curDate = formatter.format(date);
 
-       if(strDate.compareTo(time_date) < 0){
+       if(curDate.compareTo(time_date) < 0){
            System.out.println("Print showtime"); //Current date is smaller
 
            //Print date
