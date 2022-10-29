@@ -4,11 +4,7 @@
     <list default="true" id="8390937e-c719-4a40-b90c-82c63bf1c169" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieTheatres/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieTheatres/Cinema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieTheatres/Cineplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieTheatres/Cineplex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieTheatres/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieTheatres/Vendor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StaffFunctions/Crud/CRUDShowtime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StaffFunctions/Crud/CRUDShowtime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/showtime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowTime/showtime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Movie/InterfaceBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movie/InterfaceBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +29,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Keen/Desktop/NTU/17. SC2002 Object-Oriented Programming/Project/convertformattime"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Keen/Desktop/NTU/17. SC2002 Object-Oriented Programming/Project/convertformattime&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
