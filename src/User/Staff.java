@@ -92,7 +92,7 @@ public class Staff extends User {
                     break;
             }
 
-        } while (usrChoice!=13);
+        } while (usrChoice!=12);
     }
 
 }
