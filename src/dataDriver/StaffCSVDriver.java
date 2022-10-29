@@ -7,16 +7,18 @@ public class StaffCSVDriver extends CSVDriver {
     public boolean authenticate(String usrName, String usrPwd) {
         FileIO fetchUserPass = new FileIO();
 
-        String userDetails = fetchUserPass.findMatchFromFile("staff.csv", usrName);
-        // String csvUsername = userDetails.
+        String staffDetails = fetchUserPass.findMatchFromFile("staffUser.csv", usrName);
+        System.out.println(staffDetails);
+        // String csvUsername = userDetails 
         // String csvPassword = 
         
-        if(1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
+        // if(1){
+        //     return true;
+        // }
+        // else{
+        //     return false;
+        // }
     }
 
     public void createMovieListing() {
