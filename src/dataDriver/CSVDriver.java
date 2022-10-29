@@ -2,7 +2,7 @@ package dataDriver;
 
 public abstract class CSVDriver{
 
-    private FileIO fileio = new FileIO();
+    protected FileIO fileio = new FileIO();
 
     // Constructor Method
     public CSVDriver(){
