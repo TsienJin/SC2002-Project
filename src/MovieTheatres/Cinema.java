@@ -1,26 +1,26 @@
 package MovieTheatres;
 
 public abstract class Cinema {
-    private int id;
+    private String id;
     private int hallNumber;
     private String cinemaCode;
 
 
     //Constructors
     public Cinema(){
-        id = 0;
+        id = "";
         hallNumber = 0;
         cinemaCode = " ";
     }
 
-    public Cinema(int id, int hallNumber,String cinemaCode){
+    public Cinema(String id, int hallNumber,String cinemaCode){
         this.id = id;
         this.hallNumber = hallNumber;
         this.cinemaCode = cinemaCode;
     }
 
     //Accessor Methods
-    public int getId(){
+    public String getId(){
         return this.id;
     }
     public int getHallNumber(){
@@ -31,7 +31,7 @@ public abstract class Cinema {
     }
 
     //Mutator Methods
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
     public void setHallNumber(int hallNumber){
