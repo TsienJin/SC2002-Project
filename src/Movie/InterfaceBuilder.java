@@ -3,5 +3,5 @@ package Movie;
 public interface InterfaceBuilder<SepcifyObject> {
 
     public SepcifyObject build();
-    // public SepcifyObject fromCsvString(String csvString);
+    // public SpecifyObject fromCsvString(String csvString);
 }
