@@ -27,7 +27,7 @@ public class UsrInput{
     
     /** Gets user Integer input
      * @param promt
-     * @return String
+     * @return Int
      */
     public int getUsrInt(String promt){
 
