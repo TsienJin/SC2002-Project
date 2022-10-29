@@ -2,7 +2,7 @@ package Menu;
 
 import java.util.ArrayList;
 
-public class StaffMenu extends MainMenu {
+public class StaffMenu extends Menu {
 
     @Override
     public void printMainMenu(){
