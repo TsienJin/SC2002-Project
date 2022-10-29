@@ -14,6 +14,7 @@ import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
+import ShowTime.showtime;
 
 
 public class App{
@@ -53,9 +54,6 @@ public class App{
 
 
     public void testing(){
-         MainMenu menu = new CustomerMenu();
-         menu.printMainMenu();
-         menu = new StaffMenu();
-         menu.printMainMenu();
+
     }
 }
