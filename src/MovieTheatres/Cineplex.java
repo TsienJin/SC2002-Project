@@ -2,18 +2,18 @@ package MovieTheatres;
 import java.util.ArrayList;
 
 public class Cineplex {
-    private int id;
+    private String id;
     private String location;
     private ArrayList<Cinema> cinemas;
 
     //Constructor
-    public Cineplex(int id, String location){
+    public Cineplex(String id, String location){
         this.id = id;
         this.location = location;
     }
 
     //Accessor Method
-    public int getId(){
+    public String getId(){
         return this.id;
     }
     public String getLocation(){
@@ -21,7 +21,7 @@ public class Cineplex {
     }
 
     //Mutator Method
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
     public void setLocation(String location){

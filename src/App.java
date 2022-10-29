@@ -25,10 +25,6 @@ public class App{
         MainMenu menu = myApp.determineUsrMenu();
         menu.printMainMenu();
 
-
-
-
-
     }
 
     public MainMenu determineUsrMenu(){
