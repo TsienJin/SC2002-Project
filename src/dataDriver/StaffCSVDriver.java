@@ -8,17 +8,17 @@ public class StaffCSVDriver extends CSVDriver {
         FileIO fetchUserPass = new FileIO();
 
         String staffDetails = fetchUserPass.findMatchFromFile("staffUser.csv", usrName);
-        System.out.println(staffDetails);
-        // String csvUsername = userDetails 
-        // String csvPassword = 
-        
-        return true;
-        // if(1){
-        //     return true;
-        // }
-        // else{
-        //     return false;
-        // }
+        //System.out.println(staffDetails);
+        String[] staffArray = staffDetails.split(","); //Need to find a better way to do this
+        String csvUsername = staffArray[0];
+        String csvPassword = staffArray[2];
+
+        if(usrName.equals(csvUsername) && usrPwd.equals(csvPassword)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void createMovieListing() {
@@ -57,5 +57,16 @@ public class StaffCSVDriver extends CSVDriver {
 
     public void deleteCinemaShowtime() {
 
+    }
+
+    public static void main(String[] args) {
+        StaffCSVDriver hallo = new StaffCSVDriver();
+        
+        if(hallo.authenticate("admin1", "password")){
+            System.out.println("Username and password matches");
+        }
+        else{
+            System.out.println("Not matched");
+        }
     }
 }
