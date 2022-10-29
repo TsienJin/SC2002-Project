@@ -9,23 +9,15 @@ public abstract class CSVDriver{
     
 
     
-    public static void listTopMoviesBySales(){
+    public void listTopMoviesBySales(){
 
     }
 
-    public static void listTopMoviesByRating(){
+    public void listTopMoviesByRating(){
 
     }
 
-    public static void listAllMovies(){
-
-    }
-
-    public static void listAllCurrentMovies(){
-
-    }
-
-    public static void listAllPrevMovies(){
+    public void listAllMovies(){
 
     }
 
