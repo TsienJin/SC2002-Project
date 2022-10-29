@@ -8,8 +8,10 @@ public class CustomerMenu extends Menu {
     public void printMainMenu(){
         String header = "Customer Menu:";
         ArrayList<String> options = new ArrayList<>();
-        options.add("List Movies");
-        options.add("List Top 5 Movies");
+        options.add("Print this menu");
+        options.add("List all Movies");
+        options.add("List Top 5 Movies by sales");
+        options.add("List Top 5 Movies by ratings");
         options.add("Search Movies");
         options.add("View Movie Details");
         options.add("Book Ticket");
