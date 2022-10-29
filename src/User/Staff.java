@@ -1,4 +1,5 @@
 import Menu.StaffMenu;
+import dataDriver.StaffCSVDriver;
 
 public class Staff extends User {
 
@@ -6,20 +7,27 @@ public class Staff extends User {
     
     public Staff(){
         super.menu = new StaffMenu();
+        super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
     }
 
 
     // Helper methods
 
     private void authStaff(){
-        System.out.println("\nLOGIN AS STAFF");
-        String usrName = super.input.getUsrString("Enter Username:");
-        String usrPwd = super.input.getUsrString("Enter Password:");
+        
         
         // some logic here
+        do{
+            System.out.println("\nLOGIN AS STAFF");
+            String usrName = super.input.getUsrString("Enter Username:");
+            String usrPwd = super.input.getUsrString("Enter Password:");
 
-        // testing purposes
-        this.isAuthenticated = true;
+            if(((StaffCSVDriver) dataDriver).authenticate(usrName, usrPwd)){ // long cast statement for intellisense
+                this.isAuthenticated = true;
+            } else {
+                System.out.println("Wrong login credentials! Please try again!\n");
+            }
+        } while (!this.isAuthenticated);
     }
 
 
@@ -58,27 +66,24 @@ public class Staff extends User {
                     // delete movie listing
                     break;
                 case 6:
-                    // delete movie listing
-                    break;
-                case 7:
                     // create showtime
                     break;
-                case 8:
+                case 7:
                     // show all showtimes;
                     break;
-                case 9:
+                case 8:
                     // show all upcoming showtimes;
                     break;
-                case 10:
+                case 9:
                     // update showtime
                     break;
-                case 11:
+                case 10:
                     // delete showtime
                     break;
-                case 12:
+                case 11:
                     // configure system settings
                     break;
-                case 13:
+                case 12:
                     // quit
                     System.out.println("Goodbye!");
                     break;
