@@ -1,9 +1,11 @@
 import Menu.CustomerMenu;
+import dataDriver.CustomerCSVDriver;
 
 public class Customer extends User {
     
     public Customer(){
         super.menu = new CustomerMenu();
+        super.dataDriver = new CustomerCSVDriver();
     }
 
     @Override
