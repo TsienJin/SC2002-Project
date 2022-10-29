@@ -1,8 +1,7 @@
 package dataDriver;
 
 public class StaffCSVDriver extends CSVDriver {
-
-    private 
+ 
     public boolean authenticate(String usrName, String usrPwd) {
 
     }

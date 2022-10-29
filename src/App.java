@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import Menu.CustomerMenu;
 import Menu.MainMenu;
+import Menu.Menu;
 import Menu.StaffMenu;
 import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
@@ -22,27 +23,31 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        MainMenu menu = myApp.determineUsrMenu();
-        menu.printMainMenu();
+        // Menu menu = myApp.determineUsrMenu();
+        // menu.printMainMenu();
 
 
+        // User usr = myApp.determineUsrType()
+        // usr.run()
+
+        myApp.testing();
 
 
 
     }
 
-    public MainMenu determineUsrMenu(){
-        MainMenu thisMenu = new MainMenu();
+    public Menu determineUsrMenu(){
+        Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
 
         int usrChoice = 0;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
             switch(usrChoice){
-                case 1:
+                case 2:
                     thisMenu = new CustomerMenu();
                     break;
-                case 2:
+                case 1:
                     thisMenu = new StaffMenu();
                     break;
                 default:
@@ -57,9 +62,11 @@ public class App{
 
 
     public void testing(){
-         MainMenu menu = new CustomerMenu();
-         menu.printMainMenu();
-         menu = new StaffMenu();
-         menu.printMainMenu();
+        FileIO fileobj = new FileIO();
+        System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        Movie mv = bldr.build();
+        System.out.println(mv.getDirector());
+
     }
 }
