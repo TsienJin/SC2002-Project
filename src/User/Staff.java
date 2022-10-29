@@ -1,34 +1,93 @@
-public class Staff extends User{
+import Menu.StaffMenu;
+
+public class Staff extends User {
+
+    private boolean isAuthenticated = false;
     
-    private String username;
-    private String password;
-
-    public Staff(int id, String name, String email, Role role, String username, String password){
-        super(id, name, email, role);
-        this.username = username;
-        this.password = password;
+    public Staff(){
+        super.menu = new StaffMenu();
     }
 
-    public void printInfo(){
-        super.printInfo();
-        System.out.printf("Username: \t%s\n" +
-                            "Password: \t%s\n", this.username, this.password);
+
+    // Helper methods
+
+    private void authStaff(){
+        System.out.println("\nLOGIN AS STAFF");
+        String usrName = super.input.getUsrString("Enter Username:");
+        String usrPwd = super.input.getUsrString("Enter Password:");
+        
+        // some logic here
+
+        // testing purposes
+        this.isAuthenticated = true;
     }
 
-    public String getCredentials(){
-        return this.username + this.password;
-    }
-    
-    //private csvDriver
 
-    // public enum getRole(){
-    //     return 1;
-    // }
+    @Override
+    public void run(){
 
-    public void login(){
-        //passes username and password to csvDriver
+        while(!isAuthenticated){
+            this.authStaff();
+        }
+
+        this._run();
     }
-    public void configure(){
-        //wait
+
+    // MAIN RUNNING LOOP
+    private void _run(){
+        int usrChoice = 0;
+        do{
+            this.menu.printMainMenu();
+            usrChoice = super.getUsrChoice();
+
+            switch(usrChoice){
+                case 1:
+                    // print this menu
+                    this.menu.printMainMenu();
+                    break;
+                case 2:
+                    // Create movie listing
+                    break;
+                case 3:
+                    // Show all movie listing
+                    break;
+                case 4:
+                    // update movie listing
+                    break;
+                case 5:
+                    // delete movie listing
+                    break;
+                case 6:
+                    // delete movie listing
+                    break;
+                case 7:
+                    // create showtime
+                    break;
+                case 8:
+                    // show all showtimes;
+                    break;
+                case 9:
+                    // show all upcoming showtimes;
+                    break;
+                case 10:
+                    // update showtime
+                    break;
+                case 11:
+                    // delete showtime
+                    break;
+                case 12:
+                    // configure system settings
+                    break;
+                case 13:
+                    // quit
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Select option 1 to print menu again.");
+                    break;
+            }
+
+        } while (usrChoice!=13);
     }
+
 }
