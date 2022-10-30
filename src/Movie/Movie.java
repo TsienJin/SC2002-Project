@@ -2,10 +2,12 @@ package Movie;
 
 import java.util.ArrayList;
 
+import OutputPrinter.InterfaceOutputPrinterFormatter;
+import OutputPrinter.OutputPrinterFormatter;
 import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 
-public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter, InterfaceOutputPrinterFormatter{
     private String ID;
     private String movieTitle;
     private EnumShowingStatus status;
@@ -16,6 +18,8 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
     private Double overallRating;
     private ArrayList<Review> pastReviews;
     private int totalTicketSales;
+
+    private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
     public Movie(MovieBuilder builder)
     {
@@ -33,7 +37,18 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
     }
 
     public String toString() {
-        return "string";
+        return(""+
+            formatter.Header(this.ID+tab+this.movieTitle) + nLine +
+            formatter.Subheader("Status: ") + this.status.niceString() + nLine +
+            formatter.Subheader("Movie Type: ") + this.type.niceString() + nLine +
+            formatter.Subheader("Director: ") + this.director + nLine +
+            formatter.Subheader("Cast: ") + formatter.ArrayToCSV(this.cast) + nLine + nLine +
+            formatter.SubheaderUnderline("Synopsis") + nLine +
+            formatter.Body(this.synopsis) + nLine + nLine +
+            formatter.SubheaderUnderline("Movie stats") + nLine +
+            formatter.Subheader("Rating: ") + String.format("%.2f", this.overallRating) + nLine +
+            formatter.Subheader("Ticket Sales: ") + String.format("%d", this.totalTicketSales) + nLine
+        );
     }
 
     public String toCsvString() {

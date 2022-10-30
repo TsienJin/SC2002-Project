@@ -13,9 +13,13 @@ import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
+import dataDriver.CSVDriver;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
-import ShowTime.showtime;
+import dataDriver.StaffCSVDriver;
+import User.User;
+import User.Customer;
+import User.Staff;
 
 
 public class App{
@@ -24,10 +28,10 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        User usr = myApp.determineUsrType();
-        usr.run();
+        // User usr = myApp.determineUsrType();
+        // usr.run();
 
-        // myApp.testing();
+        myApp.testing();
 
 
 
@@ -62,11 +66,14 @@ public class App{
 
 
     public void testing(){
-        FileIO fileobj = new FileIO();
-        System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
-        MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
-        Movie mv = bldr.build();
-        System.out.println(mv.getDirector());
+        // FileIO fileobj = new FileIO();
+        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // Movie mv = bldr.build();
+        // System.out.println(mv.getDirector());
+
+        CSVDriver obj = new StaffCSVDriver();
+        obj.listAllMovies();
 
     }
 }

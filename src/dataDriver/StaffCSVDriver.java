@@ -10,7 +10,7 @@ import Movie.Movie;
 import Movie.MovieBuilder;
 import UsrInput.UsrInput;
 
-public class StaffCSVDriver extends CSVDriver {
+public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
  
     public static void inputMovieDetails(MovieBuilder inputMovie){
         UsrInput usrInput = new UsrInput();
@@ -30,16 +30,18 @@ public class StaffCSVDriver extends CSVDriver {
 
         String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
         //System.out.println(staffDetails);
-        String[] staffArray = staffDetails.split(","); //Need to find a better way to do this
-        String csvUsername = staffArray[0];
-        String csvPassword = staffArray[2];
 
-        if(usrName.equals(csvUsername) && usrPwd.equals(csvPassword)){
-            return true;
-        }
-        else{
+        if(staffDetails.length()==0){
             return false;
+        } else {
+            String[] staffArray = staffDetails.split(mainDelimiter);
+            String csvUsername = staffArray[0];
+            String csvPassword = staffArray[2];
+
+            return (usrName.equals(csvUsername) && usrPwd.equals(csvPassword));
         }
+
+        
     }
 
     public void createMovieListing() {
