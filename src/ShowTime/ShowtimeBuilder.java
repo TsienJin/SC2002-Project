@@ -46,7 +46,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     }
 
     @Override
-    public Showtime build(){
+    public showtime build(){
         return new showtime(this);
     }
 
