@@ -8,6 +8,8 @@ import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
+import ShowTime.ShowtimeBuilder;
+import ShowTime.showtime;
 import UsrInput.UsrInput;
 
 public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
@@ -23,6 +25,16 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         inputMovie.setSynopsis(usrInput.getUsrString("Enter Movie Synopsis: "));
         inputMovie.setDirector(usrInput.getUsrString("Enter Movie Director: "));
         inputMovie.setCast(new ArrayList<>(Arrays.asList((usrInput.getUsrString("Enter Movie Casts: ")))));
+        
+    }
+
+    public static void inputShowtime(ShowtimeBuilder inputShowtime){
+        UsrInput usrInput = new UsrInput();
+        Scanner sc = new Scanner(System.in);
+
+        inputShowtime.setMovie(usrInput.getUsrString("Enter Movie ID: "));
+        inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema ID: "));
+        inputShowtime.setTimeDate(usrInput.getUsrString("Enter Time Date: "));
         
     }
 
@@ -79,7 +91,15 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void createCinemaShowtime() {
+        ShowtimeBuilder newCinemaShowtime = new ShowtimeBuilder();
 
+        StaffCSVDriver.inputShowtime(newCinemaShowtime);
+
+        showtime newShowtime = new showtime(newCinemaShowtime);
+
+        super.fileio.writeToFile(EnumDataFiles.Showtime.toString(), newShowtime.toCsvString());
+        
+        System.out.println("Movie created!");
     }
     public void updateCinemaShowtime() {
 
