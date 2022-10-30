@@ -5,8 +5,10 @@ import java.util.*;
 import Movie.Movie;
 import MovieTheatres.*;
 
+import dataDriver.InterfaceCsvDelimiter;
+import dataDriver.InterfaceToCsvStringHelper;
 
-public class showtime {
+public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
 
     //Attributes of showtime
     private Movie movie;
@@ -14,11 +16,19 @@ public class showtime {
     private String time_date; //In yyyyMMDDhhmm format
 
     //Constructor
-    public showtime(Movie movie,Cinema cinema, String time_date)
+    //Preceeded
+    // public showtime(Movie movie,Cinema cinema, String time_date)
+    // {
+    //     this.movie = movie;
+    //     this.cinema = cinema;
+    //     this.time_date = time_date;
+    // }
+
+    public showtime(ShowtimeBuilder builder)
     {
-        this.movie = movie;
-        this.cinema = cinema;
-        this.time_date = time_date;
+        this.movie = builder.movie;
+        this.cinema = builder.cinema;
+        this.time_date = builder.time_date;
     }
 
     public Movie getMovie(){
@@ -40,7 +50,18 @@ public class showtime {
         return day + "-" + month + "-" + year;
     }*/
 
+    public String toCsvString() {
 
+        // Delimiters are from the toCsvStringHelper interface
+
+        ArrayList<String> arrCSV = new ArrayList<>();
+
+        arrCSV.add(this.movie);
+        arrCSV.add(this.cinema);
+        arrCSV.add(this.time_date);
+
+        return String.join(mainDelimiter, arrCSV);
+    }
 
     public void printShowTime(){
         //Get the current instance of time and date
