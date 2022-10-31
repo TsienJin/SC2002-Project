@@ -23,7 +23,17 @@ public abstract class CSVDriver{
             System.out.println(new MovieBuilder(movie).build().toString());
         });
         
+    }
 
+    public void listMovieFromRegex(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(), rgx);
+        if(found.size()>0){
+            found.forEach(movie->{
+                System.out.println(new MovieBuilder(movie).build().toString());
+            });
+        } else {
+            System.out.println("No movies found!");
+        }
     }
 
 }

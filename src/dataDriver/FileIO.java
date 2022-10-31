@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 
 // This object handles pure CRUD operations to CSV files
@@ -78,6 +79,32 @@ public class FileIO {
         }
 
         return content;
+    }
+
+
+    /** Uses regex to match string in CSV line
+     * 
+     * @param fileName
+     * @param rgx
+     * @return ArrayList<String> of CSV lines.
+     */
+    public ArrayList<String> regexMatch(String fileName, String rgx){
+        ArrayList<String> rawRes = this.readFromFile(fileName);
+        ArrayList<String> toReturn = new ArrayList<>();
+
+        if(rawRes.size()==0){
+            return toReturn;
+        }
+
+
+        rawRes.forEach(line -> {
+
+            if(line.matches("(?i:.*"+rgx+".*)")){
+                toReturn.add(line);
+            }
+        });
+
+        return toReturn;
     }
 
 
