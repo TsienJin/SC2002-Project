@@ -1,36 +1,23 @@
-public class User{
+import Menu.Menu;
+import UsrInput.UsrInput;
+import dataDriver.CSVDriver;
 
-    public int id;
-    public String name;
-    public String email;
-    public enum Role {STAFF, CUSTOMER};
-    public Role role;
+public abstract class User {
 
-    public User(int id, String name, String email, Role role){
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.role = role;
+    // To be instanciated in subclasses with respective objects
+    protected Menu menu;
+    protected CSVDriver dataDriver;
+    
+    // Common to all
+    protected UsrInput input = new UsrInput();
+
+    // Common method to all
+    protected int getUsrChoice(){
+        return this.input.getUsrInt("Enter Option: ");
     }
 
-    public Role getRole(){
-        return this.role;
-    }
+    // Methods to be implemented
+    public abstract void run();
 
-    public void printInfo(){
-        System.out.printf("ID: \t%d\n" +
-                        "Name: \t%s\n" +
-                        "Email: \t%s\n" +
-                        "Role: \t%s\n"
-                        , this.id, this.name, this.email, this.role);
-    }
-
-    public void showMenu(Role role){
-        if(role == User.Role.CUSTOMER){
-            Menu.printCustomerMenu();
-        }
-        else{
-            Menu.printStaffMenu();
-        }
-    }
+    
 }

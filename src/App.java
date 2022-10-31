@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import Menu.CustomerMenu;
 import Menu.MainMenu;
+import Menu.Menu;
 import Menu.StaffMenu;
 import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
@@ -12,9 +13,13 @@ import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
+import dataDriver.CSVDriver;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
-import ShowTime.showtime;
+import dataDriver.StaffCSVDriver;
+import User.User;
+import User.Customer;
+import User.Staff;
 
 
 public class App{
@@ -23,37 +28,52 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        MainMenu menu = myApp.determineUsrMenu();
-        menu.printMainMenu();
+        // User usr = myApp.determineUsrType();
+        // usr.run();
+
+        myApp.testing();
+
+
 
     }
 
-    public MainMenu determineUsrMenu(){
-        MainMenu thisMenu = new MainMenu();
+    public User determineUsrType(){
+        Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
+
+        User usrObj = null;
 
         int usrChoice = 0;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
             switch(usrChoice){
                 case 1:
-                    thisMenu = new CustomerMenu();
+                    usrObj = new Staff();
                     break;
                 case 2:
-                    thisMenu = new StaffMenu();
+                    usrObj = new Customer();
                     break;
                 default:
                     System.out.println("Invalid input!");
                     usrChoice = 0;
+                    break;
             }
 
         } while (usrChoice == 0);
 
-        return thisMenu;
+        return usrObj;
     }
 
 
     public void testing(){
+        // FileIO fileobj = new FileIO();
+        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // Movie mv = bldr.build();
+        // System.out.println(mv.getDirector());
+
+        CSVDriver obj = new StaffCSVDriver();
+        obj.listAllMovies();
 
     }
 }

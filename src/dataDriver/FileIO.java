@@ -80,7 +80,36 @@ public class FileIO {
         return content;
     }
 
+
+
+    /** Gets the number of objects in the specified CSV file.
+     * @param fileName
+     * @return Int
+     */
+    // METHOD to ocunt number of lines from specified file name
+    public int countLines(String fileName){
+
+        int count = 0;
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null
+            reader.readLine(); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                count++;
+                curLine = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+
     
+
     /** Finds the latest entry that matches given id
      * @param fileName
      * @param id

@@ -1,36 +1,28 @@
 package dataDriver;
 
-public class CSVDriver{
+import java.util.ArrayList;
 
-    private FileIO fileio = new FileIO();
+import Movie.Movie;
+import Movie.MovieBuilder;
 
-    // Constructor Method
-    public CSVDriver(){
+public abstract class CSVDriver{
 
-    }
-
-    // PRIVATE method to create array of movies from string
-    // to be implemented
-    
+    protected FileIO fileio = new FileIO();
 
     
-    public static void listTopMoviesBySales(){
+    public void listTopMoviesBySales(){
+    }
+
+    public void listTopMoviesByRating(){
 
     }
 
-    public static void listTopMoviesByRating(){
+    public void listAllMovies(){
 
-    }
-
-    public static void listAllMovies(){
-
-    }
-
-    public static void listAllCurrentMovies(){
-
-    }
-
-    public static void listAllPrevMovies(){
+        this.fileio.readFromFile(EnumDataFiles.Movie.toString()).forEach(movie -> {
+            System.out.println(new MovieBuilder(movie).build().toString());
+        });
+        
 
     }
 
