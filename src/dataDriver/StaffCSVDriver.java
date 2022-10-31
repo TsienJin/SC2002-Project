@@ -25,7 +25,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         inputMovie.setMovieType(movieEnum.inputMovieType());
         inputMovie.setSynopsis(this.usrInput.getUsrString("Enter Movie Synopsis: "));
         inputMovie.setDirector(this.usrInput.getUsrString("Enter Movie Director: "));
-        inputMovie.setCast(new ArrayList<>(Arrays.asList((this.usrInput.getUsrString("Enter Movie Casts: ")))));
+        inputMovie.setCast(new ArrayList<>(Arrays.asList(this.usrInput.getUsrString("Enter Movie Casts (seperate with comma): ").split(","))));
         
     }
 
