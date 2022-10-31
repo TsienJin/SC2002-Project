@@ -36,4 +36,11 @@ public abstract class CSVDriver{
         }
     }
 
+
+    public void listAllShowtimes(){
+        this.fileio.readFromFile(EnumDataFiles.Showtime.toString()).forEach(line->{
+            System.out.println(line);
+        });
+    }
+
 }

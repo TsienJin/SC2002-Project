@@ -1,6 +1,6 @@
 package Movie;
 
-public enum EnumMovieType implements InterfaceNiceEnumString {
+public enum EnumMovieType implements InterfaceNiceEnumString<EnumMovieType> {
     Undefined("Undefined"),
     Blockbuster("Blockbuster"),
     ThreeD("3D"),

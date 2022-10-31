@@ -36,8 +36,8 @@ public class FileIO {
      * @return boolean
      */
     // METHOD to check if ID is same as that in CSV
-    public boolean isSameID(String csvLine, String id){
-        String csvLineId = csvLine.split(",", 2)[0];
+    public boolean isSameID(String csvLine, String id, int idIndex){
+        String csvLineId = csvLine.split(",")[idIndex];
         return csvLineId.equalsIgnoreCase(id);
     }
 
@@ -145,6 +145,17 @@ public class FileIO {
      */
     // METHOD to update last line that matches ID with given string
     public String findMatchFromFile(String fileName, String id) throws IllegalArgumentException {
+        return this.findMatchFromFile(fileName, id, 0);
+    }
+
+    /** Finds the latest entry that matches given id
+     * @param fileName
+     * @param id
+     * @return String
+     * @throws IllegalArgumentException
+     */
+    // METHOD to update last line that matches ID with given string
+    public String findMatchFromFile(String fileName, String id, int index) throws IllegalArgumentException {
         String lineToReturn = "";
 
         try{
@@ -153,7 +164,7 @@ public class FileIO {
             reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, id)){
+                if(isSameID(curLine, id, index)){
                     lineToReturn = curLine;
                 }
 

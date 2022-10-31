@@ -21,7 +21,7 @@ public class UsrInput{
      */
     public String getUsrString(String promt){
         System.out.print(promt+"\t");
-        return scan.next();
+        return scan.nextLine();
     }
 
     
