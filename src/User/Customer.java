@@ -20,6 +20,7 @@ public class Customer extends User {
                     break;
                 case 2:
                     // list all movies
+                    super.dataDriver.listAllMovies();
                     break;
                 case 3:
                     // list top 5 movies by sales
@@ -29,6 +30,8 @@ public class Customer extends User {
                     break;
                 case 5:
                     // search movie
+                    String rgx = input.getUsrString("Enter regex or string: ");
+                    super.dataDriver.listMovieFromRegex(rgx);
                     break;
                 case 6:
                     // view movie details
