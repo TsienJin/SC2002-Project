@@ -17,9 +17,6 @@ import dataDriver.CSVDriver;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 import dataDriver.StaffCSVDriver;
-import User.User;
-import User.Customer;
-import User.Staff;
 
 
 public class App{
@@ -73,7 +70,7 @@ public class App{
         // System.out.println(mv.getDirector());
 
         CSVDriver obj = new StaffCSVDriver();
-        obj.listAllMovies();
+        obj.listMovieFromRegex("pulp");
 
     }
 }
