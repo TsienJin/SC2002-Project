@@ -19,6 +19,7 @@ import dataDriver.FileIO;
 import dataDriver.StaffCSVDriver;
 
 
+
 public class App{
     UsrInput usrInput = new UsrInput();
 
@@ -29,7 +30,6 @@ public class App{
         // usr.run();
 
         myApp.testing();
-
 
 
     }
@@ -43,6 +43,7 @@ public class App{
         int usrChoice = 0;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
+
             switch(usrChoice){
                 case 1:
                     usrObj = new Staff();

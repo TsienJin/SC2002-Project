@@ -1,5 +1,6 @@
 import Menu.CustomerMenu;
 import dataDriver.CustomerCSVDriver;
+import Booking.BookingApp;
 
 public class Customer extends User {
     
@@ -10,6 +11,7 @@ public class Customer extends User {
 
     @Override
     public void run(){
+        
         super.menu.printMainMenu();
         int usrChoice = 0;
         do{
@@ -38,6 +40,8 @@ public class Customer extends User {
                     break;
                 case 7:
                     // book ticket
+                    BookingApp book = new BookingApp();
+                    book.bookingApp();
                     break;
                 case 8:
                     // view booking history
