@@ -112,17 +112,11 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         // REMOVE scanner
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
 
-<<<<<<< HEAD
-        //Search csv for ID, then delete line
-        super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), deleteMovie);
-        System.out.println("Movie deleted!");
-=======
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
             System.out.println(String.format("Movie with ID %S has been deleted!", movieID));
         } else {
             System.out.println(String.format("Movie with ID %s cannot be found!", movieID));
         }
->>>>>>> main
     }
 
     public void createCinemaShowtime() {
@@ -138,25 +132,33 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void updateCinemaShowtime() {
-        ShowtimeBuilder updateCinemaShowtime = new ShowtimeBuilder();
+        // ShowtimeBuilder updateCinemaShowtime = new ShowtimeBuilder();
 
-        this.inputShowtime(updateCinemaShowtime);
+        // this.inputShowtime(updateCinemaShowtime);
 
-        showtime updateShowtime = new showtime(updateCinemaShowtime);
+        // showtime updateShowtime = new showtime(updateCinemaShowtime);
 
-        super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.toCsvString());
+        // super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.toCsvString());
         
-        System.out.println("Showtime updated!");
+        // System.out.println("Showtime updated!");
+
+
+        String showtimeID = this.usrInput.getUsrString("Enter ID of Showtime to update: ");
+        // fetch showtime object
+        // print menu
+        // usr input to update which portion of 
+
     }
 
     public void deleteCinemaShowtime() {
         // REMOVE scanner
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Showtime ID: ");
-        String deleteShowtime = sc.nextLine();
+        String deleteShowtime = usrInput.getUsrString("Enter Showtime ID to delete: ");
 
         //Search csv for ID, then delete line
-        super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), deleteShowtime);
-        System.out.println("Showtime deleted!");
+        if(super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), deleteShowtime)){
+            System.out.println(String.format("Showtime with ID %S has been deleted!", deleteShowtime));
+        } else {
+            System.out.println(String.format("Showtime with ID %s cannot be found!", deleteShowtime));
+        }
     }
 }
