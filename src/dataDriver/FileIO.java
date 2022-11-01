@@ -41,6 +41,10 @@ public class FileIO {
         return csvLineId.equalsIgnoreCase(id);
     }
 
+    public boolean isSameID(String csvLine, String Id){
+        return this.isSameID(csvLine, Id, 0);
+    }
+
     
     /** Gets the ID from a CSV string.
      * ID is the first parameter according to our schema.
@@ -177,7 +181,7 @@ public class FileIO {
         }
 
         if (lineToReturn.length() == 0){
-            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", id));
+            throw new IllegalArgumentException(String.format("[%s] not found!", id));
         } else {
             return lineToReturn;
         }

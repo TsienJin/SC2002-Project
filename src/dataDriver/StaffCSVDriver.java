@@ -60,20 +60,21 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
     public boolean authenticate(String usrName, String usrPwd) {
 
-        String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
-        //System.out.println(staffDetails);
-
-        if(staffDetails.length()==0){
+        try {
+            String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
+            if(staffDetails.length()==0){
+                return false;
+            } else {
+                String[] staffArray = staffDetails.split(mainDelimiter);
+                String csvUsername = staffArray[0];
+                String csvPassword = staffArray[2];
+    
+                return (usrName.equals(csvUsername) && usrPwd.equals(csvPassword));
+            }
+        } catch (Exception e) {
+            System.out.println("Username not found!");
             return false;
-        } else {
-            String[] staffArray = staffDetails.split(mainDelimiter);
-            String csvUsername = staffArray[0];
-            String csvPassword = staffArray[2];
-
-            return (usrName.equals(csvUsername) && usrPwd.equals(csvPassword));
-        }
-
-        
+        }        
     }
 
     public void createMovieListing() {
@@ -109,13 +110,19 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void deleteMovieListing() {
 
         // REMOVE scanner
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Movie ID: ");
-        String deleteMovie = sc.nextLine();
+        String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
 
+<<<<<<< HEAD
         //Search csv for ID, then delete line
         super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), deleteMovie);
         System.out.println("Movie deleted!");
+=======
+        if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
+            System.out.println(String.format("Movie with ID %S has been deleted!", movieID));
+        } else {
+            System.out.println(String.format("Movie with ID %s cannot be found!", movieID));
+        }
+>>>>>>> main
     }
 
     public void createCinemaShowtime() {
