@@ -12,29 +12,27 @@ import Movie.Movie;
 import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
+import Movie.ReviewContainer;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
 import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 import dataDriver.StaffCSVDriver;
 
-
-public class App{
+public class App {
     UsrInput usrInput = new UsrInput();
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         App myApp = new App();
 
-        User usr = myApp.determineUsrType();
-        usr.run();
+        // User usr = myApp.determineUsrType();
+        // usr.run();
 
-        // myApp.testing();
-
-
+        myApp.testing();
 
     }
 
-    public User determineUsrType(){
+    public User determineUsrType() {
         Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
 
@@ -43,7 +41,7 @@ public class App{
         int usrChoice = 1;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
-            switch(usrChoice){
+            switch (usrChoice) {
                 case 1:
                     usrObj = new Staff();
                     break;
@@ -61,16 +59,24 @@ public class App{
         return usrObj;
     }
 
-
-    public void testing(){
-        // FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
-        // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+    public void testing() {
+        FileIO fileobj = new FileIO();
+        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(),
+        // "2958305"));
+        // MovieBuilder bldr = new
+        // MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(),
+        // "2958305"));
         // Movie mv = bldr.build();
         // System.out.println(mv.getDirector());
 
-        CSVDriver obj = new StaffCSVDriver();
-        obj.listMovieFromRegex("pulp");
+        ReviewBuilder bui = new ReviewBuilder(fileobj.findMatchFromFile(EnumDataFiles.Review.toString(), "2958305"));
+        Review rv = bui.build();
+        ReviewContainer rev = new ReviewContainer();
+        System.out.println(rev.getRating("2958305"));
+        rev.showReviews("2958305");
+
+        // CSVDriver obj = new StaffCSVDriver();
+        // obj.listMovieFromRegex("pulp");
 
     }
 }
