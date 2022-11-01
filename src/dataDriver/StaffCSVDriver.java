@@ -48,20 +48,21 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
     public boolean authenticate(String usrName, String usrPwd) {
 
-        String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
-        //System.out.println(staffDetails);
-
-        if(staffDetails.length()==0){
+        try {
+            String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
+            if(staffDetails.length()==0){
+                return false;
+            } else {
+                String[] staffArray = staffDetails.split(mainDelimiter);
+                String csvUsername = staffArray[0];
+                String csvPassword = staffArray[2];
+    
+                return (usrName.equals(csvUsername) && usrPwd.equals(csvPassword));
+            }
+        } catch (Exception e) {
+            System.out.println("Username not found!");
             return false;
-        } else {
-            String[] staffArray = staffDetails.split(mainDelimiter);
-            String csvUsername = staffArray[0];
-            String csvPassword = staffArray[2];
-
-            return (usrName.equals(csvUsername) && usrPwd.equals(csvPassword));
-        }
-
-        
+        }        
     }
 
     public void createMovieListing() {

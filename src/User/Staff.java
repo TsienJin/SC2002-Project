@@ -27,7 +27,7 @@ public class Staff extends User {
             } else {
                 System.out.println("Wrong login credentials! Please try again!\n");
             }
-        } while (!this.isAuthenticated);
+        } while (this.isAuthenticated == false);
     }
 
 
@@ -44,8 +44,8 @@ public class Staff extends User {
     // MAIN RUNNING LOOP
     private void _run(){
         int usrChoice = 0;
+        this.menu.printMainMenu();
         do{
-            this.menu.printMainMenu();
             usrChoice = super.getUsrChoice();
 
             switch(usrChoice){
@@ -66,6 +66,7 @@ public class Staff extends User {
                     break;
                 case 5:
                     // delete movie listing
+                    ((StaffCSVDriver) this.dataDriver).deleteMovieListing();
                     break;
                 case 6:
                     // create showtime
