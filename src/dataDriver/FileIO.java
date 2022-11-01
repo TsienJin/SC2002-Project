@@ -41,6 +41,10 @@ public class FileIO {
         return csvLineId.equalsIgnoreCase(id);
     }
 
+    public boolean isSameID(String csvLine, String Id){
+        return this.isSameID(csvLine, Id, 0);
+    }
+
     
     /** Gets the ID from a CSV string.
      * ID is the first parameter according to our schema.
