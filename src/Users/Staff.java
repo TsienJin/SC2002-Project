@@ -51,6 +51,10 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         ((StaffCSVDriver) this.dataDriver).updateStaffAccount(staffUsr);
     }
 
+    private void addCSV(Staff staffUsr){
+        ((StaffCSVDriver) this.dataDriver).createStaffAccount(staffUsr);
+    }
+
 
     @Override
     public String toCsvString(){
@@ -167,7 +171,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     String newUsrID = super.input.getUsrString("Enter ID for new user: ");
                     String newUsrName = super.input.getUsrString("Enter username for new user: ");
                     String newUsrPwd = super.input.getUsrString("Enter password for new user: ");
-                    this.updateCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
+                    this.addCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
                     break;
                 case 5:
                     // back, nothing here
