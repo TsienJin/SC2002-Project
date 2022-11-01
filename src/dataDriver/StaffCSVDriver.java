@@ -109,7 +109,6 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
     public void deleteMovieListing() {
 
-        // REMOVE scanner
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
         
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
@@ -144,13 +143,13 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void deleteCinemaShowtime() {
-        // REMOVE scanner
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Showtime ID: ");
-        String deleteShowtime = sc.nextLine();
 
-        //Search csv for ID, then delete line
-        super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), deleteShowtime);
-        System.out.println("Showtime deleted!");
+        String showtimeID = usrInput.getUsrString("Enter Showtime ID to delete: ");
+        
+        if(super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), showtimeID)){
+            System.out.println(String.format("Showtime with ID %S has been deleted!", showtimeID));
+        } else {
+            System.out.println(String.format("Showtime with ID %s cannot be found!", showtimeID));
+        }
     }
 }
