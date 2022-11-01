@@ -36,7 +36,7 @@ public class UsrInput{
         do {
             try{
                 System.out.print(promt+"\t");
-                usrInt = scan.nextInt();
+                usrInt = Integer.parseInt(scan.nextLine());
                 restart = false;
             } catch (InputMismatchException e) {
                 System.out.println("Error! Please input a value Integer.");
