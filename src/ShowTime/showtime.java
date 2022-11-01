@@ -11,6 +11,7 @@ import dataDriver.InterfaceToCsvStringHelper;
 public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
 
     //Attributes of showtime
+    private String showtimeID;
     private Movie movie;
     private Cinema cinema;
     private String time_date; //In yyyyMMDDhhmm format
@@ -26,9 +27,14 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
     public showtime(ShowtimeBuilder builder)
     {
+        this.showtimeID = builder.showtimeID;
         this.movie = builder.movie;
         this.cinema = builder.cinema;
         this.time_date = builder.time_date;
+    }
+
+    public String getShowtimeID(){
+        return showtimeID;
     }
 
     public Movie getMovie(){
@@ -56,8 +62,9 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
         ArrayList<String> arrCSV = new ArrayList<>();
 
-        arrCSV.add(this.movie);
-        arrCSV.add(this.cinema);
+        arrCSV.add(this.showtimeID);
+        arrCSV.add(this.movie.getID());
+        arrCSV.add(this.cinema.getId());
         arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);
