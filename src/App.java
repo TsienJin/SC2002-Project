@@ -25,10 +25,10 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        // User usr = myApp.determineUsrType();
-        // usr.run();
+        User usr = myApp.determineUsrType();
+        usr.run();
 
-        myApp.testing();
+        // myApp.testing();
 
 
 

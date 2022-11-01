@@ -1,6 +1,7 @@
 package Movie;
 
-public enum EnumShowingStatus implements InterfaceNiceEnumString{
+
+public enum EnumShowingStatus implements InterfaceNiceEnumString<EnumShowingStatus>{
     Undefined("Undefined"),
     Coming_Soon("Coming Soon"),
     Preview("Preview"),

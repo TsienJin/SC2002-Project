@@ -55,9 +55,11 @@ public class Staff extends User {
                     break;
                 case 2:
                     // Create movie listing
+                    ((StaffCSVDriver) this.dataDriver).createMovieListing(); // not sure why casting is required
                     break;
                 case 3:
                     // Show all movie listing
+                    this.dataDriver.listAllMovies();
                     break;
                 case 4:
                     // update movie listing
@@ -70,6 +72,7 @@ public class Staff extends User {
                     break;
                 case 7:
                     // show all showtimes;
+                    this.dataDriver.listAllShowtimes();
                     break;
                 case 8:
                     // show all upcoming showtimes;

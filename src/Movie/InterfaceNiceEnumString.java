@@ -1,5 +1,5 @@
 package Movie;
 
-public interface InterfaceNiceEnumString {
+public interface InterfaceNiceEnumString<EnumType> {
     public String niceString();
 }

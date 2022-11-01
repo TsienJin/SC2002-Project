@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import Movie.EnumMovieParser;
 import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
 import Movie.Movie;
@@ -13,24 +14,31 @@ import ShowTime.showtime;
 import UsrInput.UsrInput;
 
 public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
- 
-    public static void inputMovieDetails(MovieBuilder inputMovie){
-        UsrInput usrInput = new UsrInput();
-        Scanner sc = new Scanner(System.in);
+    private UsrInput usrInput = new UsrInput();
+    private EnumMovieParser movieEnum = new EnumMovieParser();
+
+    public void inputMovieDetails(MovieBuilder inputMovie){
 
         inputMovie.setID(usrInput.getUsrString("Enter Movie ID: "));
         inputMovie.setMovieTitle(usrInput.getUsrString("Enter Movie Title: "));
-        inputMovie.setStatus(EnumShowingStatus.valueOf(usrInput.getUsrString("Enter Showing Status: ")));
-        inputMovie.setMovieType(EnumMovieType.valueOf(usrInput.getUsrString("Enter Movie Type: ")));
+        inputMovie.setStatus(movieEnum.inputShowingStatus());
+        inputMovie.setMovieType(movieEnum.inputMovieType());
         inputMovie.setSynopsis(usrInput.getUsrString("Enter Movie Synopsis: "));
         inputMovie.setDirector(usrInput.getUsrString("Enter Movie Director: "));
-        inputMovie.setCast(new ArrayList<>(Arrays.asList((usrInput.getUsrString("Enter Movie Casts: ")))));
+        // inputMovie.setCast(new ArrayList<>(Arrays.asList(this.usrInput.getUsrString("Enter Movie Casts (seperate with comma): ").split(","))));
+
+        String castCsvString = usrInput.getUsrString("Enter Movie Casts (seperate with comma): ");
+        ArrayList<String> cast = new ArrayList<>();
+        for (String person : castCsvString.split(",")) {
+            cast.add(person.strip());
+        }
         
+
+        inputMovie.setCast(cast);
     }
 
-    public static void inputShowtime(ShowtimeBuilder inputShowtime){
+    public void inputShowtime(ShowtimeBuilder inputShowtime){
         UsrInput usrInput = new UsrInput();
-        Scanner sc = new Scanner(System.in);
 
         inputShowtime.setMovie(usrInput.getUsrString("Enter Movie ID: "));
         inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema ID: "));
@@ -59,9 +67,9 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void createMovieListing() {
         MovieBuilder newMovieBuilder = new MovieBuilder();
 
-        StaffCSVDriver.inputMovieDetails(newMovieBuilder);
+        this.inputMovieDetails(newMovieBuilder);
 
-        Movie newMovie = new Movie(newMovieBuilder);
+        Movie newMovie = newMovieBuilder.build();
 
         super.fileio.writeToFile(EnumDataFiles.Movie.toString(), newMovie.toCsvString());
         
@@ -71,7 +79,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void updateMovieListing() {
         MovieBuilder updateMovieBuilder = new MovieBuilder();
 
-        StaffCSVDriver.inputMovieDetails(updateMovieBuilder);
+        this.inputMovieDetails(updateMovieBuilder);
 
         Movie updateMovie = new Movie(updateMovieBuilder);
 
@@ -82,6 +90,8 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void deleteMovieListing() {
+
+        // REMOVE scanner
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Movie ID: ");
         String deleteMovie = sc.nextLine();
@@ -93,7 +103,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void createCinemaShowtime() {
         ShowtimeBuilder newCinemaShowtime = new ShowtimeBuilder();
 
-        StaffCSVDriver.inputShowtime(newCinemaShowtime);
+        this.inputShowtime(newCinemaShowtime);
 
         showtime newShowtime = new showtime(newCinemaShowtime);
 
