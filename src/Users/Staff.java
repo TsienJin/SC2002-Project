@@ -34,7 +34,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         do{
             System.out.println("\nLOGIN AS STAFF");
             String usrName = super.input.getUsrString("Enter Username:");
-            String usrPwd = super.input.getUsrString("Enter Password:");
+            String usrPwd = super.input.getUsrPwd("Enter Password:");
 
             if(((StaffCSVDriver) dataDriver).authenticate(usrName, usrPwd)){ // long cast statement for intellisense
                 this.isAuthenticated = true;
