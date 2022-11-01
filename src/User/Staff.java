@@ -63,6 +63,7 @@ public class Staff extends User {
                     break;
                 case 4:
                     // update movie listing
+                    ((StaffCSVDriver) this.dataDriver).updateMovieListing();
                     break;
                 case 5:
                     // delete movie listing
@@ -70,6 +71,7 @@ public class Staff extends User {
                     break;
                 case 6:
                     // create showtime
+                    ((StaffCSVDriver) this.dataDriver).createCinemaShowtime();
                     break;
                 case 7:
                     // show all showtimes;
@@ -80,9 +82,11 @@ public class Staff extends User {
                     break;
                 case 9:
                     // update showtime
+                    ((StaffCSVDriver) this.dataDriver).updateCinemaShowtime();
                     break;
                 case 10:
                     // delete showtime
+                    ((StaffCSVDriver) this.dataDriver).deleteCinemaShowtime();
                     break;
                 case 11:
                     // configure system settings
