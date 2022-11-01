@@ -111,25 +111,12 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         
         System.out.println("Movie created!");
     }
+    
     public void updateCinemaShowtime() {
 
     }
+
     public void deleteCinemaShowtime() {
 
-    }
-
-    public static void main(String[] args) {
-        StaffCSVDriver hallo = new StaffCSVDriver();
-        
-        if(hallo.authenticate("admin1", "password")){
-            System.out.println("Username and password matches");
-        }
-        else{
-            System.out.println("Not matched");
-        }
-
-        hallo.createMovieListing();
-        hallo.updateMovieListing();
-        hallo.deleteMovieListing();
     }
 }

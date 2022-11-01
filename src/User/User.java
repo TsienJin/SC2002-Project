@@ -10,6 +10,7 @@ public abstract class User {
     
     // Common to all
     protected UsrInput input = new UsrInput();
+    public Object run;
 
     // Common method to all
     protected int getUsrChoice(){

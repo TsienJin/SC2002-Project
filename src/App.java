@@ -12,9 +12,6 @@ import Movie.Movie;
 import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
-import User.Customer;
-import User.Staff;
-import User.User;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
 import dataDriver.EnumDataFiles;
@@ -43,7 +40,7 @@ public class App{
 
         User usrObj = null;
 
-        int usrChoice = 0;
+        int usrChoice = 1;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
             switch(usrChoice){
