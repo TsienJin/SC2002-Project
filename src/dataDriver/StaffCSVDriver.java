@@ -12,13 +12,15 @@ import Movie.MovieBuilder;
 import MovieTheatres.CinemaBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
+import Users.Staff;
+import Users.User;
 import UsrInput.UsrInput;
 
 public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     private UsrInput usrInput = new UsrInput();
     private EnumMovieParser movieEnum = new EnumMovieParser();
 
-    public void inputMovieDetails(MovieBuilder inputMovie){
+    public MovieBuilder inputMovieDetails(MovieBuilder inputMovie){
 
         inputMovie.setID(usrInput.getUsrString("Enter Movie ID: "));
         inputMovie.setMovieTitle(usrInput.getUsrString("Enter Movie Title: "));
@@ -34,8 +36,9 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
             cast.add(person.strip());
         }
         
-
         inputMovie.setCast(cast);
+
+        return inputMovie;
     }
 
     public void inputShowtime(ShowtimeBuilder inputShowtime){
@@ -77,13 +80,29 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }        
     }
 
+    public String getStaffIdFromUsrname(String usrName){
+        try {
+            String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
+            return staffDetails.split(mainDelimiter)[1];
+        } catch (Exception e) {
+            return new String("");
+        }
+    }
+
+    public boolean updateStaffAccount(Staff usr){
+        try {
+            this.fileio.updateKeyInFile(EnumDataFiles.StaffUser.toString(), usr.toCsvString());
+            System.out.println("Updated!");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error updating!");
+            return false;
+        }
+    }
+
     public void createMovieListing() {
-        //Create new MovieBuilder object
-        MovieBuilder newMovieBuilder = new MovieBuilder();
-
-        this.inputMovieDetails(newMovieBuilder);
-
-        Movie newMovie = newMovieBuilder.build();
+        //Create new movie object
+        Movie newMovie = this.inputMovieDetails(new MovieBuilder()).build();
 
         //Write input to csv file
         super.fileio.writeToFile(EnumDataFiles.Movie.toString(), newMovie.toCsvString());
@@ -109,7 +128,6 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
     public void deleteMovieListing() {
 
-        // REMOVE scanner
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
 
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
@@ -120,11 +138,11 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void createCinemaShowtime() {
-        ShowtimeBuilder newCinemaShowtime = new ShowtimeBuilder();
+        ShowtimeBuilder showtimeBuilder = new ShowtimeBuilder();
 
-        this.inputShowtime(newCinemaShowtime);
+        this.inputShowtime(showtimeBuilder);
 
-        showtime newShowtime = new showtime(newCinemaShowtime);
+        showtime newShowtime = showtimeBuilder.build();
 
         super.fileio.writeToFile(EnumDataFiles.Showtime.toString(), newShowtime.toCsvString());
         
