@@ -111,18 +111,12 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
         // REMOVE scanner
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
-
-<<<<<<< HEAD
-        //Search csv for ID, then delete line
-        super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), deleteMovie);
-        System.out.println("Movie deleted!");
-=======
+        
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
             System.out.println(String.format("Movie with ID %S has been deleted!", movieID));
         } else {
             System.out.println(String.format("Movie with ID %s cannot be found!", movieID));
         }
->>>>>>> main
     }
 
     public void createCinemaShowtime() {
