@@ -1,7 +1,6 @@
 package ShowTime;
 
 
-import Movie.InterfaceBuilder;
 import dataDriver.FileIO;
 import dataDriver.InterfaceCsvDelimiter;
 import Movie.*;
@@ -27,15 +26,9 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     public ShowtimeBuilder(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
 
-        // MovieBuilder showtimeMovie = new MovieBuilder();
-        // showtimeMovie.fromMovieID(csvArr.get(1));
-        
-        CinemaBuilder showtimeCinema = new CinemaBuilder();
-        showtimeCinema.fromCinemaID(csvArr.get(2));
-
+        this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
+        this.cinema = new CinemaBuilder().fromCinemaID(csvArr.get(2)).build();
         this.showtimeID = csvArr.get(0);
-        //this.movie = showtimeMovie.build();
-        this.cinema = showtimeCinema.build();
         this.time_date = csvArr.get(3);
 
     }
