@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="d16ce3c3-226e-4669-8cf6-c2bc2d3f67b1" name="Changes" comment="">
+=======
 <<<<<<< Updated upstream
     <list default="true" id="8390937e-c719-4a40-b90c-82c63bf1c169" name="Changes" comment="">
+>>>>>>> main
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Movie/InterfaceBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movie/InterfaceBuilder.java" afterDir="false" />
     </list>
 =======
     <list default="true" id="8390937e-c719-4a40-b90c-82c63bf1c169" name="Changes" comment="" />
