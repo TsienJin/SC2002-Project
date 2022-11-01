@@ -110,7 +110,6 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void deleteMovieListing() {
 
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
-        
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
             System.out.println(String.format("Movie with ID %S has been deleted!", movieID));
         } else {
@@ -131,15 +130,22 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void updateCinemaShowtime() {
-        ShowtimeBuilder updateCinemaShowtime = new ShowtimeBuilder();
+        // ShowtimeBuilder updateCinemaShowtime = new ShowtimeBuilder();
 
-        this.inputShowtime(updateCinemaShowtime);
+        // this.inputShowtime(updateCinemaShowtime);
 
-        showtime updateShowtime = new showtime(updateCinemaShowtime);
+        // showtime updateShowtime = new showtime(updateCinemaShowtime);
 
-        super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.toCsvString());
+        // super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.toCsvString());
         
-        System.out.println("Showtime updated!");
+        // System.out.println("Showtime updated!");
+
+
+        String showtimeID = this.usrInput.getUsrString("Enter ID of Showtime to update: ");
+        // fetch showtime object
+        // print menu
+        // usr input to update which portion of 
+
     }
 
     public void deleteCinemaShowtime() {

@@ -45,8 +45,12 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
     }
 
     public MovieBuilder fromMovieID(String id){
-        String csvString = fileio.findMatchFromFile(EnumDataFiles.Movie.toString(), id);
-        this.updateFromCsvString(csvString);
+        try{
+            String csvString = fileio.findMatchFromFile(EnumDataFiles.Movie.toString(), id);
+            this.updateFromCsvString(csvString);
+        } catch (Exception e) {
+            // pass
+        }
         return this;
     }
 
