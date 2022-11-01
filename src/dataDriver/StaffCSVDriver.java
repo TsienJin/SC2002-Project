@@ -92,10 +92,19 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public boolean updateStaffAccount(Staff usr){
         try {
             this.fileio.updateKeyInFile(EnumDataFiles.StaffUser.toString(), usr.toCsvString());
-            System.out.println("Updated!");
             return true;
         } catch (Exception e) {
             System.out.println("Error updating!");
+            return false;
+        }
+    }
+
+    public boolean createStaffAccount(Staff usr){
+        try {
+            this.fileio.writeToFile(EnumDataFiles.StaffUser.toString(), usr.toCsvString());
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error adding user!");
             return false;
         }
     }
