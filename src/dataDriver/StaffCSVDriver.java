@@ -19,14 +19,22 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
     public void inputMovieDetails(MovieBuilder inputMovie){
 
-        inputMovie.setID(this.usrInput.getUsrString("Enter Movie ID: "));
-        inputMovie.setMovieTitle(this.usrInput.getUsrString("Enter Movie Title: "));
+        inputMovie.setID(usrInput.getUsrString("Enter Movie ID: "));
+        inputMovie.setMovieTitle(usrInput.getUsrString("Enter Movie Title: "));
         inputMovie.setStatus(movieEnum.inputShowingStatus());
         inputMovie.setMovieType(movieEnum.inputMovieType());
-        inputMovie.setSynopsis(this.usrInput.getUsrString("Enter Movie Synopsis: "));
-        inputMovie.setDirector(this.usrInput.getUsrString("Enter Movie Director: "));
-        inputMovie.setCast(new ArrayList<>(Arrays.asList(this.usrInput.getUsrString("Enter Movie Casts (seperate with comma): ").split(","))));
+        inputMovie.setSynopsis(usrInput.getUsrString("Enter Movie Synopsis: "));
+        inputMovie.setDirector(usrInput.getUsrString("Enter Movie Director: "));
+        // inputMovie.setCast(new ArrayList<>(Arrays.asList(this.usrInput.getUsrString("Enter Movie Casts (seperate with comma): ").split(","))));
+
+        String castCsvString = usrInput.getUsrString("Enter Movie Casts (seperate with comma): ");
+        ArrayList<String> cast = new ArrayList<>();
+        for (String person : castCsvString.split(",")) {
+            cast.add(person.strip());
+        }
         
+
+        inputMovie.setCast(cast);
     }
 
     public void inputShowtime(ShowtimeBuilder inputShowtime){
