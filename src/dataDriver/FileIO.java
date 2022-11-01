@@ -206,7 +206,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                     valArr.add(newString);
                 } else {
@@ -245,7 +245,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                 } else {
                     valArr.add(curLine);
