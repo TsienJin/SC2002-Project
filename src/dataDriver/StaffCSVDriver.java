@@ -129,7 +129,6 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void deleteMovieListing() {
 
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
-
         if(super.fileio.deleteKeyInFile(EnumDataFiles.Movie.toString(), movieID)){
             System.out.println(String.format("Movie with ID %S has been deleted!", movieID));
         } else {
@@ -169,14 +168,13 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void deleteCinemaShowtime() {
-        // REMOVE scanner
-        String deleteShowtime = usrInput.getUsrString("Enter Showtime ID to delete: ");
 
-        //Search csv for ID, then delete line
-        if(super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), deleteShowtime)){
-            System.out.println(String.format("Showtime with ID %S has been deleted!", deleteShowtime));
+        String showtimeID = usrInput.getUsrString("Enter Showtime ID to delete: ");
+        
+        if(super.fileio.deleteKeyInFile(EnumDataFiles.Showtime.toString(), showtimeID)){
+            System.out.println(String.format("Showtime with ID %S has been deleted!", showtimeID));
         } else {
-            System.out.println(String.format("Showtime with ID %s cannot be found!", deleteShowtime));
+            System.out.println(String.format("Showtime with ID %s cannot be found!", showtimeID));
         }
     }
 }
