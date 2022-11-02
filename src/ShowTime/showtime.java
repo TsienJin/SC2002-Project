@@ -88,7 +88,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         arrCSV.add(this.showtimeID);
         arrCSV.add(this.movie.getID());
         // arrCSV.add(this.movieId);
-        arrCSV.add(this.cinema.getId());
+        arrCSV.add(this.cinema.getCinemaCode());
         // arrCSV.add(this.cinemaId);
         arrCSV.add(this.time_date);
 
@@ -112,6 +112,8 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
            //Print Cinema Type
            //Get the first character of the ID 
            char firstchar = this.movie.getID().charAt(0);
+           //System.out.println("Mov: " + this.cinema.getCinemaclass());
+           //System.out.println("Class of cinema: " + firstchar);
            if(Character.compare(firstchar,'R')==0){
                 System.out.println("Cinema Class: Regular");
            }

@@ -44,7 +44,7 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
 
     public CinemaBuilder fromCinemaID(String id){
         try {
-            String csvString = fileio.findMatchFromFile(EnumDataFiles.Cinema.toString(), id, 2);
+            String csvString = fileio.findMatchFromFile(EnumDataFiles.Cinema.toString(), id);
             this.updateFromCsvString(csvString);
         } catch (Exception e) {
             //pass

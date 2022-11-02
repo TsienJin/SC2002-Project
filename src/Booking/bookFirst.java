@@ -22,6 +22,8 @@ public class bookFirst {
 
     public void bookingFirst(){
         UsrInput sc = new UsrInput();
+        char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        String sClass = Character.toString(classOfCinema);
         
         System.out.println("How many tickets do you want to purchase?");
         int numOfTickets = sc.getUsrInt("Number of tickets: ");
@@ -68,7 +70,7 @@ public class bookFirst {
             String timing = newCinema.gettime().substring(4,8);
             
             
-            Booking firstBook = new Booking(timing,"G",day,age);
+            Booking firstBook = new Booking(timing,sClass,day,age);
             System.out.println("Price of each ticket: " + firstBook.calculatePayment());
             total = firstBook.calculatePayment() + total;
         }

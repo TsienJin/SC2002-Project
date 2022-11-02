@@ -10,9 +10,9 @@ import UsrInput.UsrInput;
 public class BookingApp {
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
-    private String movieTiming;
-    private String cinemaCode;
-    private String movieDay;
+    //private String movieTiming;
+    //private String cinemaCode;
+    //private String movieDay;
 
     /*public BookingApp(String movieTiming,String cinemaCode,String movieDay){
         this.movieTiming = movieTiming;
@@ -56,13 +56,16 @@ public class BookingApp {
 
         //4. User will then need to select the showtime they want
         System.out.println("To select showtime of movie for booking: Please type in the showtime ID");
-        String showTimeId = sc.getUsrString("Movie id: ");
+        String showTimeId = sc.getUsrString("Show time id: ");
 
         String csvline = driver.findCinema(showTimeId);
         CinemaBuilder buildcinema = new CinemaBuilder(csvline);
         Cinema newCinema = new Cinema(buildcinema);
+        //System.out.println("Cinema code" + newCinema.getCinemaCode());
 
         char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        //System.out.println("Class of cinema: " + classOfCinema);
+        System.out.println("Get booked seat: " + newCinema.getBookedSeat());
 
 
         if(Character.compare(classOfCinema,'R')==0){

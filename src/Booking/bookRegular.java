@@ -20,6 +20,8 @@ public class bookRegular {
 
     public void bookingRegular(){
         UsrInput sc = new UsrInput();
+        char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        String sClass = Character.toString(classOfCinema);
 
         System.out.println("How many tickets do you want to purchase?");
         int numOfTickets = sc.getUsrInt("Number of tickets: ");
@@ -66,7 +68,7 @@ public class bookRegular {
             String timing = newCinema.gettime().substring(4,8);
             
             
-            Booking regularBook = new Booking(timing,"G",day,age);
+            Booking regularBook = new Booking(timing,sClass,day,age);
             System.out.println("Price of each ticket: " + regularBook.calculatePayment());
             total = regularBook.calculatePayment() + total;
     }

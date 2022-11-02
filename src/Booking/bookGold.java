@@ -25,6 +25,8 @@ public class bookGold {
 
     public void bookingGold(){
         UsrInput sc = new UsrInput();
+        char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        String sClass = Character.toString(classOfCinema);
 
         System.out.println("How many tickets do you want to purchase?");
             int numOfTickets = sc.getUsrInt("Number of tickets: ");
@@ -71,7 +73,7 @@ public class bookGold {
                 String timing = newCinema.gettime().substring(4,8);
                 
                 
-                Booking goldBook = new Booking(timing,"G",day,age);
+                Booking goldBook = new Booking(timing,sClass,day,age);
                 System.out.println("Price of each ticket: " + goldBook.calculatePayment());
                 total = goldBook.calculatePayment() + total;
 

@@ -14,21 +14,6 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     private String movieDay;
 
 
-    //Constructors
-      /*public Cinema(){
-        id = "";
-        hallNumber = 0;
-        cinemaCode = " ";
-    }*/
-
-
-    //Preceeded
-    // public Cinema(String id, int hallNumber,String cinemaCode){
-    //     this.id = id;
-    //     this.hallNumber = hallNumber;
-    //     this.cinemaCode = cinemaCode;
-    // }
-
     public Cinema(CinemaBuilder builder){
         this.id = builder.id;
         this.hallNumber = builder.hallNumber;
@@ -77,6 +62,22 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     }
     public String getmovieDay(){
         return this.movieDay;
+    }
+    public String getCinemaclass(){
+        char firstchar = this.cinemaCode.charAt(0);
+        if(Character.compare(firstchar,'R')==0){
+            return "Regular";
+        }
+        else if(Character.compare(firstchar,'F')==0){
+            return "First";
+        }
+        else if(Character.compare(firstchar,'G')==0){
+            return "Gold";
+        }
+        else{
+            return "NULL";
+        }
+        
     }
 
     //Mutator Methods
