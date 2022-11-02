@@ -26,10 +26,10 @@ public class App{
     public static void main(String args[]){
         App myApp = new App();
 
-        // User usr = myApp.determineUsrType();
-        // usr.run();
+        User usr = myApp.determineUsrType();
+        usr.run();
 
-        myApp.testing();
+        //myApp.testing();
 
 
     }
@@ -65,7 +65,7 @@ public class App{
 
     public void testing(){
         // FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // System.out.println(fileobj.2findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
         // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
         // Movie mv = bldr.build();
         // System.out.println(mv.getDirector());

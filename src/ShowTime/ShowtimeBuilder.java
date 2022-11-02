@@ -11,17 +11,13 @@ import java.util.Arrays;
 
 public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsvDelimiter {
 
-<<<<<<< Updated upstream
-    Movie movie;
-    Cinema cinema;
-=======
     String showtimeID;
     //Movie movie;
     //Cinema cinema;
->>>>>>> Stashed changes
     String time_date;
     String movieId;
     String cinemaId;
+    
 
     public static ShowtimeBuilder showtime(){
         return new ShowtimeBuilder();
@@ -32,16 +28,17 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     public ShowtimeBuilder(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
 
-<<<<<<< Updated upstream
-        this.movie = csvArr.get(0);
-        this.cinema = csvArr.get(1);
-        this.time_date = csvArr.get(2);
+        //this.movie = csvArr.get(0);
+        //this.cinema = csvArr.get(1);
+        this.showtimeID = csvArr.get(0);
+        this.movieId = csvArr.get(1);
+        this.cinemaId = csvArr.get(2);
+        this.time_date = csvArr.get(3);
 
     }
 
-    public ShowtimeBuilder setMovie(Movie movie){
+    /*public ShowtimeBuilder setMovie(Movie movie){
         this.movie = movie;
-=======
         //this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
         //this.cinema = new CinemaBuilder().fromCinemaID(csvArr.get(2)).build();
         this.movieId = csvArr.get(1);
@@ -49,7 +46,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
         this.showtimeID = csvArr.get(0);
         this.time_date = csvArr.get(3);
 
-    }
+    }*/
 
     public ShowtimeBuilder setShowtimeID(String showtimeID){
         this.showtimeID = showtimeID;
@@ -58,7 +55,6 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     public ShowtimeBuilder setMovie(String movieId){
         this.movieId = movieId;
->>>>>>> Stashed changes
         return this;
     }
 

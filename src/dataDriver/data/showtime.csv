@@ -1,9 +1,6 @@
 showtimeID,movieID,cinemaID,time
-<<<<<<< Updated upstream
-=======
 ST1,0068646,R01,202211251010
 ST2,0068646,R01,202212251011
 ST3,2958305,F02,202210251012
 ST4,0068646,G02,202310251013
 
->>>>>>> Stashed changes

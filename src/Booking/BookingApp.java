@@ -3,6 +3,7 @@ package Booking;
 import java.util.Scanner;
 import Menu.CustomerMenu;
 import dataDriver.CustomerCSVDriver;
+import dataDriver.EnumDataFiles;
 import MovieTheatres.*;
 
 public class BookingApp {
@@ -95,10 +96,14 @@ public class BookingApp {
                     System.out.println("Please input the column number: ");
                     int col = sc.nextInt();
                     isitBook = goldCinema.BookSeat(row,col);
-                    /*if(isitBook == true){
+                    if(isitBook == true){
+                        System.out.println("Update bookseat");
+                        String Id = newCinema.getId();
                         int row_col = (row*10) + col;
-                        String
-                    }*/
+                        String new_seat = newCinema.getBookedSeat() + " " + row_col;
+                        newCinema.setBookedSeat(new_seat);
+                        driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
+                    }
                 }while(isitBook == false);
                 
 
@@ -115,14 +120,19 @@ public class BookingApp {
                 else if(ageChoice == 3){
                     age = "Students";
                 }
-
-                Booking goldBook = new Booking(newCinema.gettime(),newCinema.getCinemaCode(),newCinema.getmovieDay(),age);
+                System.out.println("Day: " + newCinema.getmovieDay());
+                String day = newCinema.getmovieDay();
+                System.out.println("Time: " + newCinema.gettime().substring(4,8));
+                String timing = newCinema.gettime().substring(4,8);
+                
+                
+                Booking goldBook = new Booking(timing,"G",day,age);
+                System.out.println("Price of each ticket: " + goldBook.calculatePayment());
                 total = goldBook.calculatePayment() + total;
-                System.out.println("Total Price: " + total);
-
-
 
             }
+            System.out.println("Total Payment: " + total);
+            System.out.println("Booking is confirmed.");
 
 
         }

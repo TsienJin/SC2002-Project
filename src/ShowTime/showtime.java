@@ -12,40 +12,18 @@ import dataDriver.InterfaceToCsvStringHelper;
 public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter, InterfaceOutputPrinterFormatter{
 
     //Attributes of showtime
-<<<<<<< Updated upstream
-    private Movie movie;
-    private Cinema cinema;
-=======
     private String showtimeID;
     //private Movie movie;
     //private Cinema cinema;
     private String movieId;
     private String cinemaId;
->>>>>>> Stashed changes
     private String time_date; //In yyyyMMDDhhmm format
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
-    //Constructor
-    //Preceeded
-    // public showtime(Movie movie,Cinema cinema, String time_date)
-    // {
-    //     this.movie = movie;
-    //     this.cinema = cinema;
-    //     this.time_date = time_date;
-    // }
 
     public showtime(ShowtimeBuilder builder)
     {
-<<<<<<< Updated upstream
-        this.movie = builder.movie;
-        this.cinema = builder.cinema;
-        this.time_date = builder.time_date;
-    }
-
-    public Movie getMovie(){
-        return movie;
-=======
         this.showtimeID = builder.showtimeID;
         this.movieId = builder.movieId;
         this.cinemaId = builder.cinemaId;
@@ -58,7 +36,6 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
     public String getMovie(){
         return movieId;
->>>>>>> Stashed changes
     }
 
     public String getCinema(){
@@ -82,16 +59,13 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
         ArrayList<String> arrCSV = new ArrayList<>();
 
-<<<<<<< Updated upstream
-        arrCSV.add(this.movie);
-        arrCSV.add(this.cinema);
-=======
+        //arrCSV.add(this.movie);
+        //arrCSV.add(this.cinema);
         arrCSV.add(this.showtimeID);
         //arrCSV.add(this.movie.getID());
         arrCSV.add(this.movieId);
         //arrCSV.add(this.cinema.getId());
         arrCSV.add(this.cinemaId);
->>>>>>> Stashed changes
         arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);

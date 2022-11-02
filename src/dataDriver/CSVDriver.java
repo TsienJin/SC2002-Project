@@ -38,8 +38,6 @@ public abstract class CSVDriver{
         }
     }
 
-<<<<<<< Updated upstream
-=======
 
     public void listAllShowtimes(){
         this.fileio.readFromFile(EnumDataFiles.Showtime.toString()).forEach(line->{
@@ -69,11 +67,9 @@ public abstract class CSVDriver{
         return line;
     }
 
-    public void updateBookedSeats(String rgx) {
-        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Cinema.toString(),rgx);
-        String line = found.get(0);
-
+    public void updateBookedSeats(String ID,String rgx) {
+        
+        this.fileio.updateKeyInFile(ID, rgx);
     }
 
->>>>>>> Stashed changes
 }

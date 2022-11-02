@@ -8,6 +8,7 @@ import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 import dataDriver.InterfaceCsvDelimiter;
 
+
 public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDelimiter {
     String id;
     int hallNumber;

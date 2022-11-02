@@ -34,19 +34,18 @@ public class Booking {
                     return price[1][0];
                 }
                 else{
-                    if(movieDay=="Monday" || movieDay == "Tuesday" || movieDay == "Wednesday" || movieDay == "Thursday"){
+                    if(movieDay.equals("Monday") || movieDay.equals("Tuesday") || movieDay.equals("Wednesday") || movieDay.equals("Thursday")){
                         if(movieTiming.compareTo("1800")<0){ //non-peak
-                            return price[2][0];
+                            return price[2][2];
                         }
                         if(movieTiming.compareTo("1800")>=0){
-                            return price[3][0];
+                            return price[3][2];
                         }
                     }
 
-                    if(movieDay=="Friday" || movieDay == "Saturday" || movieDay=="Sunday"){
-                        return price[4][0];
+                    if(movieDay.equals("Friday") || movieDay.equals("Saturday") || movieDay.equals("Sunday")) {
+                        return price[4][2];
                     }
-
                 }
 
                 break;
@@ -58,20 +57,19 @@ public class Booking {
                     return price[1][1];
                 }
                 else{
-                    if(movieDay=="Monday" || movieDay == "Tuesday" || movieDay == "Wednesday" || movieDay == "Thursday"){
+                    if(movieDay.equals("Monday") || movieDay.equals("Tuesday") || movieDay.equals("Wednesday") || movieDay.equals("Thursday")){
                         if(movieTiming.compareTo("1800")<0){ //non-peak
-                            return price[2][1];
+                            return price[2][2];
                         }
                         if(movieTiming.compareTo("1800")>=0){
-                            return price[3][1];
+                            return price[3][2];
                         }
                     }
 
-                    if(movieDay=="Friday" || movieDay == "Saturday" || movieDay=="Sunday"){
-                        return price[4][1];
+                    if(movieDay.equals("Friday") || movieDay.equals("Saturday") || movieDay.equals("Sunday")) {
+                        return price[4][2];
                     }
                 }
-
                 break;
             case "G":
                 if(age==type[0]){
@@ -81,7 +79,7 @@ public class Booking {
                     return price[1][2];
                 }
                 else{
-                    if(movieDay=="Monday" || movieDay == "Tuesday" || movieDay == "Wednesday" || movieDay == "Thursday"){
+                    if(movieDay.equals("Monday") || movieDay.equals("Tuesday") || movieDay.equals("Wednesday") || movieDay.equals("Thursday")){
                         if(movieTiming.compareTo("1800")<0){ //non-peak
                             return price[2][2];
                         }
@@ -90,7 +88,7 @@ public class Booking {
                         }
                     }
 
-                    if(movieDay=="Friday" || movieDay == "Saturday" || movieDay=="Sunday") {
+                    if(movieDay.equals("Friday") || movieDay.equals("Saturday") || movieDay.equals("Sunday")) {
                         return price[4][2];
                     }
                 }
