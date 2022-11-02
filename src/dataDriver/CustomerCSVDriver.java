@@ -6,12 +6,6 @@ import Movie.Review;
 import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
 
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.ArrayList;
-import UsrInput.UsrInput;
-import dataDriver.InterfaceCsvDelimiter;
-
 public class CustomerCSVDriver extends CSVDriver {
 
     // METHOD to get movie
@@ -36,16 +30,14 @@ public class CustomerCSVDriver extends CSVDriver {
 
     public void writeReview(){
         UsrInput usrInput = new UsrInput();
-        Scanner sc = new Scanner(System.in);
 
-        ReviewBuilder newReviewBuilder = new Movie.ReviewBuilder();
+        ReviewBuilder newReviewBuilder = new ReviewBuilder();
 
         newReviewBuilder.setID(usrInput.getUsrString("Enter your ID: "));
         newReviewBuilder.setMovieId(usrInput.getUsrString("Enter Movie ID: "));
         newReviewBuilder.setUsername(usrInput.getUsrString("Enter your username: "));
         newReviewBuilder.setstrReview(usrInput.getUsrString("Enter your review: "));
-        System.out.printf("Enter Rating, 0-5: ");
-        newReviewBuilder.setuserRating(sc.nextInt());
+        newReviewBuilder.setuserRating(usrInput.getUsrInt("Enter Rating, 0-5: "));
         
         Review newReview = new Review(newReviewBuilder);
 
