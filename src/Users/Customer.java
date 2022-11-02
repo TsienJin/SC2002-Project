@@ -58,6 +58,10 @@ public class Customer extends User {
                     // view booking history
                     break;
                 case 9:
+                    // write review
+                    ((CustomerCSVDriver) super.dataDriver).writeReview();
+                    break;
+                case 10:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -66,7 +70,7 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 9);
+        } while (usrChoice != 11);
 
     }
 
