@@ -1,5 +1,9 @@
+package Users;
+
 import Menu.CustomerMenu;
+import Movie.Movie;
 import dataDriver.CustomerCSVDriver;
+import Booking.BookingApp;
 
 public class Customer extends User {
     
@@ -10,6 +14,7 @@ public class Customer extends User {
 
     @Override
     public void run(){
+        
         super.menu.printMainMenu();
         int usrChoice = 0;
         do{
@@ -35,14 +40,28 @@ public class Customer extends User {
                     break;
                 case 6:
                     // view movie details
+                    String movieID = input.getUsrString("Enter movie ID: ");
+                    Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
+                    if(movie != null){
+                        System.out.println(movie.toString());
+                        // need to print all showtimes for this movie too
+                    } else {
+                        System.out.println("Movie not found!");
+                    }
                     break;
                 case 7:
                     // book ticket
+                    BookingApp book = new BookingApp();
+                    book.bookingApp();
                     break;
                 case 8:
                     // view booking history
                     break;
                 case 9:
+                    // write review
+                    ((CustomerCSVDriver) super.dataDriver).writeReview();
+                    break;
+                case 10:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -51,7 +70,7 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 9);
+        } while (usrChoice != 10);
 
     }
 

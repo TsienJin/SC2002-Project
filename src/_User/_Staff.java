@@ -1,11 +1,11 @@
 import Menu.StaffMenu;
 import dataDriver.StaffCSVDriver;
 
-public class Staff extends User {
+public class _Staff extends User {
 
     private boolean isAuthenticated = false;
     
-    public Staff(){
+    public _Staff(){
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
     }
@@ -27,7 +27,7 @@ public class Staff extends User {
             } else {
                 System.out.println("Wrong login credentials! Please try again!\n");
             }
-        } while (!this.isAuthenticated);
+        } while (this.isAuthenticated == false);
     }
 
 
@@ -44,8 +44,8 @@ public class Staff extends User {
     // MAIN RUNNING LOOP
     private void _run(){
         int usrChoice = 0;
+        this.menu.printMainMenu();
         do{
-            this.menu.printMainMenu();
             usrChoice = super.getUsrChoice();
 
             switch(usrChoice){
@@ -63,12 +63,15 @@ public class Staff extends User {
                     break;
                 case 4:
                     // update movie listing
+                    ((StaffCSVDriver) this.dataDriver).updateMovieListing();
                     break;
                 case 5:
                     // delete movie listing
+                    ((StaffCSVDriver) this.dataDriver).deleteMovieListing();
                     break;
                 case 6:
                     // create showtime
+                    ((StaffCSVDriver) this.dataDriver).createCinemaShowtime();
                     break;
                 case 7:
                     // show all showtimes;
@@ -79,9 +82,11 @@ public class Staff extends User {
                     break;
                 case 9:
                     // update showtime
+                    ((StaffCSVDriver) this.dataDriver).updateCinemaShowtime();
                     break;
                 case 10:
                     // delete showtime
+                    ((StaffCSVDriver) this.dataDriver).deleteCinemaShowtime();
                     break;
                 case 11:
                     // configure system settings

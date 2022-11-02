@@ -8,6 +8,7 @@ public enum EnumDataFiles implements InterfaceNiceEnumString{
     Test("test.csv"),
     StaffUser("staffUser.csv"),
     Showtime("showtime.csv"),
+    Cinema("cinema.csv");
     ;
     String prettyName;
 

@@ -7,7 +7,8 @@ import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
 import dataDriver.StaffCSVDriver;
 
-public class App {
+
+public class App{
     UsrInput usrInput = new UsrInput();
 
     public static void main(String args[]) {
@@ -16,7 +17,8 @@ public class App {
         User usr = myApp.determineUsrType();
         usr.run();
 
-        // myApp.testing();
+
+        //myApp.testing();
 
     }
 
@@ -30,7 +32,7 @@ public class App {
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
 
-            switch (usrChoice) {
+            switch(usrChoice){
                 case 1:
                     usrObj = new Staff();
                     break;
@@ -50,13 +52,7 @@ public class App {
 
     public void testing() {
         // FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.2findMatchFromFile(EnumDataFiles.Movie.toString(),
-        // "2958305"));
-        // MovieBuilder bldr = new
-        // MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(),
-        // "2958305"));
-        // Movie mv = bldr.build();
-        // System.out.println(mv.getDirector());
+
 
         CSVDriver obj = new StaffCSVDriver();
         obj.listMovieFromRegex("pulp");

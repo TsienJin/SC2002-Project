@@ -4,39 +4,42 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import Movie.Movie;
 import MovieTheatres.*;
-
+import OutputPrinter.InterfaceOutputPrinterFormatter;
+import OutputPrinter.OutputPrinterFormatter;
 import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 
-public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter, InterfaceOutputPrinterFormatter{
 
     //Attributes of showtime
-    private Movie movie;
-    private Cinema cinema;
+    private String showtimeID;
+    //private Movie movie;
+    //private Cinema cinema;
+    private String movieId;
+    private String cinemaId;
     private String time_date; //In yyyyMMDDhhmm format
 
-    //Constructor
-    //Preceeded
-    // public showtime(Movie movie,Cinema cinema, String time_date)
-    // {
-    //     this.movie = movie;
-    //     this.cinema = cinema;
-    //     this.time_date = time_date;
-    // }
+    private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
+
 
     public showtime(ShowtimeBuilder builder)
     {
-        this.movie = builder.movie;
-        this.cinema = builder.cinema;
+        this.showtimeID = builder.showtimeID;
+        this.movieId = builder.movieId;
+        this.cinemaId = builder.cinemaId;
         this.time_date = builder.time_date;
     }
 
-    public Movie getMovie(){
-        return movie;
+    public String getShowtimeID(){
+        return showtimeID;
     }
 
-    public Cinema getCinema(){
-        return cinema;
+    public String getMovie(){
+        return movieId;
+    }
+
+    public String getCinema(){
+        return cinemaId;
     }
 
     public String getTime_date(){
@@ -56,8 +59,13 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
         ArrayList<String> arrCSV = new ArrayList<>();
 
-        arrCSV.add(this.movie);
-        arrCSV.add(this.cinema);
+        //arrCSV.add(this.movie);
+        //arrCSV.add(this.cinema);
+        arrCSV.add(this.showtimeID);
+        //arrCSV.add(this.movie.getID());
+        arrCSV.add(this.movieId);
+        //arrCSV.add(this.cinema.getId());
+        arrCSV.add(this.cinemaId);
         arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);
@@ -70,7 +78,25 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         String curDate = formatter.format(date);
 
        if(curDate.compareTo(time_date) < 0){
-           System.out.println("Print showtime"); //Current date is smaller
+
+            //Print ShowTime ID
+            System.out.println("Show Time ID: " + this.showtimeID);
+           
+           //Print Movie ID
+           System.out.println("Movie ID: " + this.movieId); //Current date is smaller
+
+           //Print Cinema Type
+           //Get the first character of the ID 
+           char firstchar = this.cinemaId.charAt(0);
+           if(Character.compare(firstchar,'R')==0){
+                System.out.println("Cinema Class: Regular");
+           }
+           else if(Character.compare(firstchar,'F')==0){
+                System.out.println("Cinema Class : First");
+           }
+           else if(Character.compare(firstchar,'G')==0){
+                System.out.println("Cinema Class : Gold");
+           }
 
            //Print date
            String year = time_date.substring(0,4);
@@ -82,6 +108,8 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
            String hour = time_date.substring(8,10);
            String mins = time_date.substring(10);
            System.out.println("Time: " + hour + " : " + mins);
+           System.out.print("\n");
+
 
         }
 

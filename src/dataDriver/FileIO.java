@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 
 // This object handles pure CRUD operations to CSV files
@@ -39,6 +38,10 @@ public class FileIO {
     public boolean isSameID(String csvLine, String id, int idIndex){
         String csvLineId = csvLine.split(",")[idIndex];
         return csvLineId.equalsIgnoreCase(id);
+    }
+
+    public boolean isSameID(String csvLine, String Id){
+        return this.isSameID(csvLine, Id, 0);
     }
 
     
@@ -75,7 +78,7 @@ public class FileIO {
             }
             reader.close();
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return content;
@@ -173,11 +176,11 @@ public class FileIO {
             }
             reader.close();
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         if (lineToReturn.length() == 0){
-            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", id));
+            throw new IllegalArgumentException(String.format("[%s] not found!", id));
         } else {
             return lineToReturn;
         }
@@ -202,7 +205,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                     valArr.add(newString);
                 } else {
@@ -216,7 +219,7 @@ public class FileIO {
             overwriteToFile(fileName, valArr);
 
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return isKeyFound;
@@ -241,7 +244,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                 } else {
                     valArr.add(curLine);
