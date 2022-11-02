@@ -9,6 +9,7 @@ import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
+import Movie.updateMovieParser;
 import MovieTheatres.CinemaBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
@@ -21,6 +22,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     private UsrInput usrInput = new UsrInput();
     private EnumMovieParser movieEnum = new EnumMovieParser();
     private updateShowtimeParser updateShowtimeMenu = new updateShowtimeParser();
+    private updateMovieParser updateMovieMenu = new updateMovieParser();
 
     //For createMovieListing() function
     public MovieBuilder inputMovieDetails(MovieBuilder inputMovie){
@@ -122,7 +124,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         updateMovieMenu.inputUpdateType(updateMovie);
         // update in csv file
         super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateMovie.build().toCsvString());
-        System.out.println("Showtime updated!");
+        System.out.println("Movie updated!");
     }
 
     public void deleteMovieListing() {
@@ -157,7 +159,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         updateShowtimeMenu.inputUpdateType(updateShowtime);
         // update in csv file
         super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.build().toCsvString());
-        System.out.println("Movie updated!");
+        System.out.println("Showtime updated!");
     }
 
     public void deleteCinemaShowtime() {
