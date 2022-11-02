@@ -41,7 +41,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
         this.movieDay = csvArr.get(6);
     }
 
-/* 
     public CinemaBuilder fromCinemaID(String id){
         try {
             String csvString = fileio.findMatchFromFile(EnumDataFiles.Cinema.toString(), id);
@@ -51,8 +50,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
         }
         return this;
     }
-*/
-
 
     public CinemaBuilder fromCinemaCode(String cinemaCode){
         try {
@@ -63,7 +60,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
         }
         return this;
     }
-
 
     public CinemaBuilder setCinemaID(String id){
         this.id = id;
