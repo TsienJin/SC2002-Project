@@ -13,10 +13,7 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     String movieID;
     String MobileNum;
     String Email;
-    String numOfTickets;
-    String totalTicketPrice;
 
-    private FileIO fileio = new FileIO();
 
     public static bookingHistoryBuilder bookingHistory(){
         return new bookingHistoryBuilder();
@@ -35,8 +32,6 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
         this.movieID = csvArr.get(1);
         this.MobileNum = csvArr.get(2);
         this.Email = csvArr.get(3);
-        this.numOfTickets = csvArr.get(4);
-        this.totalTicketPrice = csvArr.get(5);
     }
 
     public bookingHistoryBuilder setTID(String TID){
@@ -59,15 +54,6 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
         return this;
     }
 
-    public bookingHistoryBuilder setnumOfTickets(String numOfTickets){
-        this.numOfTickets = numOfTickets;
-        return this;
-    }
-
-    public bookingHistoryBuilder settotalTicketPrice(String totalTicketPrice){
-        this.totalTicketPrice = totalTicketPrice;
-        return this;
-    }
 
     @Override
     public bookingHistory build(){

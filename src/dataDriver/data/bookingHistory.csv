@@ -1,1 +1,4 @@
-TID,movieID,......,
+TID,movieID,MobileNum,Email,numOfTickets,totalTicketPrice
+R01202211032426,0068646,96615489,canningng@gmail.com
+R01202211032427,0068646,87661029,kelim1221@gmail.com
+R01202211032429,0068646,91360248,jelim@gmail.com

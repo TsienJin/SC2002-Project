@@ -2,10 +2,13 @@ package dataDriver;
 
 import java.util.ArrayList;
 
+import Booking.bookingHistoryBuilder;
 import Movie.Movie;
 import Movie.MovieBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
+import Booking.bookingHistory;
+import Booking.bookingHistoryBuilder;
 
 public abstract class CSVDriver{
 
@@ -75,5 +78,39 @@ public abstract class CSVDriver{
         
         this.fileio.updateKeyInFile(ID, rgx);
     }
+
+
+    public void createBookingHistory(bookingHistoryBuilder historyBuilder){
+        //create a new bookingHistory object
+        bookingHistory newbook = new bookingHistory(historyBuilder);
+
+        //Write input to csv file
+        this.fileio.writeToFile(EnumDataFiles.bookingHistory.toString(),newbook.toCsvString());
+
+        System.out.println("Booking created!");
+
+    }
+
+
+    public void listHistory(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.bookingHistory.toString(), rgx);
+        if(found.size()>0){
+            found.forEach(history->{
+                System.out.println(new bookingHistoryBuilder(history).build().toString());
+            });
+        } else {
+            System.out.println("No booking history found!");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 }

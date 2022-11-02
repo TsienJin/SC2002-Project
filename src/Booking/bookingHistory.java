@@ -2,22 +2,29 @@ package Booking;
 import java.util.*;
 import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
+import OutputPrinter.InterfaceOutputPrinterFormatter;
+import OutputPrinter.OutputPrinterFormatter;
 
-public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
+public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper,InterfaceOutputPrinterFormatter{
     private String TID;
     private String movieID;
     private String MobileNum;
     private String Email;
-    private String numOfTickets;
-    private String totalTicketPrice;
+
+    private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
     public bookingHistory(bookingHistoryBuilder builder){
         this.TID = builder.TID;
         this.movieID = builder.movieID;
         this.MobileNum = builder.MobileNum;
         this.Email = builder.Email;
-        this.numOfTickets = builder.numOfTickets;
-        this.totalTicketPrice = builder.totalTicketPrice;
+    }
+
+    public String toString(){
+        return("" + formatter.Header(this.Email + tab + this.MobileNum) + nLine +
+                    formatter.Subheader("Transaction ID: ") + this.TID + nLine +
+                    formatter.Subheader("movieID: ") + this.movieID + nLine
+              );
     }
 
     public String toCsvString(){
@@ -27,8 +34,6 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
         arrCSV.add(this.movieID);
         arrCSV.add(this.MobileNum);
         arrCSV.add(this.Email);
-        arrCSV.add(this.numOfTickets);
-        arrCSV.add(this.totalTicketPrice);
 
         return String.join(mainDelimiter,arrCSV);
     }
@@ -45,13 +50,6 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     public String getEmail(){
         return this.Email;
     }
-    public String getnumOfTickets(){
-        return this.numOfTickets;
-    }
-    public String gettotalTicketPrice(){
-        return this.totalTicketPrice;
-    }
-
 
 
 

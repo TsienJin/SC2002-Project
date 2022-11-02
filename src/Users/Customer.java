@@ -4,6 +4,7 @@ import Menu.CustomerMenu;
 import Movie.Movie;
 import dataDriver.CustomerCSVDriver;
 import Booking.BookingApp;
+import Booking.historyApp;
 
 public class Customer extends User {
     
@@ -56,6 +57,8 @@ public class Customer extends User {
                     break;
                 case 8:
                     // view booking history
+                    historyApp history = new historyApp();
+                    history.viewHistory();
                     break;
                 case 9:
                     // write review
