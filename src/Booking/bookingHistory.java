@@ -21,9 +21,9 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     }
 
     public String toString(){
-        return("" + formatter.Header(this.Email + tab + this.MobileNum) + nLine +
-                    formatter.Subheader("Transaction ID: ") + this.TID + nLine +
-                    formatter.Subheader("movieID: ") + this.movieID + nLine
+        return("" + formatter.Header(this.MobileNum + tab + this.Email) + nLine +
+                    formatter.Subheader("        Transaction ID: ") + this.TID + nLine +
+                    formatter.Subheader("        Movie ID: ") + this.movieID + nLine
               );
     }
 
