@@ -3,14 +3,14 @@ package Movie;
 import dataDriver.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ReviewContainer {
+public class ReviewContainer implements InterfaceCsvDelimiter {
     FileIO fileio = new FileIO();
 
     public double getRating(String id) {
         AtomicInteger sum = new AtomicInteger(0);
         AtomicInteger count = new AtomicInteger(0);
         this.fileio.readFromFile(EnumDataFiles.Review.toString()).forEach(review -> {
-            String[] rev = review.split(",");
+            String[] rev = review.split(mainDelimiter);
             if (this.fileio.isSameID(review, id, 0)) {
                 int sal = Integer.parseInt(rev[4]);
                 sum.set(sum.get() + sal);
@@ -23,7 +23,7 @@ public class ReviewContainer {
 
     public void showReviews(String id) {
         this.fileio.readFromFile(EnumDataFiles.Review.toString()).forEach(review -> {
-            String[] rev = review.split(",");
+            String[] rev = review.split(mainDelimiter);
             if (this.fileio.isSameID(review, id, 0)) {
                 System.out.println(rev[3]);
             }
