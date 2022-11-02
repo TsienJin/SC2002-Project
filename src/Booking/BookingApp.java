@@ -95,11 +95,7 @@ public class BookingApp {
                     bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver);
                     regular.bookingRegular();
 
-                    TransactionID transact = new TransactionID(newCinema.getCinemaCode());
-                    String Tid = transact.TID();
-                    System.out.println("Transaction ID : " + Tid);
-
-            }
+                }
 
 
                 else if(Character.compare(classOfCinema,'F')==0){
@@ -110,10 +106,6 @@ public class BookingApp {
 
                     bookFirst first = new bookFirst(newCinema,firstCinema,book,driver);
                     first.bookingFirst();
-
-                    TransactionID transact = new TransactionID(newCinema.getCinemaCode());
-                    String Tid = transact.TID();
-                    System.out.println("Transaction ID : " + Tid);
 
                 }
 
@@ -127,11 +119,23 @@ public class BookingApp {
                     bookGold golden = new bookGold(newCinema,goldCinema,book,driver);
                     golden.bookingGold();
 
-                    TransactionID transact = new TransactionID(newCinema.getCinemaCode());
-                    String Tid = transact.TID();
-                    System.out.println("Transaction ID : " + Tid);
 
                 }
+
+                
+                TransactionID transact = new TransactionID(newCinema.getCinemaCode());
+                String Tid = transact.TID();
+                System.out.println("Transaction ID : " + Tid);
+
+                //After booking is made, need to write to booking history file
+                bookingHistoryBuilder historyBuilder = new bookingHistoryBuilder();
+                historyBuilder.setTID(Tid);
+                historyBuilder.setmovieID(movieId);
+                historyBuilder.setMobileNum(mobileNum);
+                historyBuilder.setEmail(email);
+
+                driver.createBookingHistory(historyBuilder);
+                
                 break;
 
             case 3:
