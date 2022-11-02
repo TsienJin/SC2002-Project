@@ -41,10 +41,22 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
         this.movieDay = csvArr.get(6);
     }
 
-
+/* 
     public CinemaBuilder fromCinemaID(String id){
         try {
             String csvString = fileio.findMatchFromFile(EnumDataFiles.Cinema.toString(), id);
+            this.updateFromCsvString(csvString);
+        } catch (Exception e) {
+            //pass
+        }
+        return this;
+    }
+*/
+
+
+    public CinemaBuilder fromCinemaCode(String cinemaCode){
+        try {
+            String csvString = fileio.findMatchFromFile(EnumDataFiles.Cinema.toString(), cinemaCode, 2);
             this.updateFromCsvString(csvString);
         } catch (Exception e) {
             //pass
