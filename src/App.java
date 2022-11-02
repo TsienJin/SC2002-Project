@@ -1,22 +1,10 @@
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import Menu.CustomerMenu;
 import Menu.MainMenu;
 import Menu.Menu;
-import Menu.StaffMenu;
-import Movie.EnumMovieType;
-import Movie.EnumShowingStatus;
-import Movie.Movie;
-import Movie.MovieBuilder;
-import Movie.Review;
-import Movie.ReviewBuilder;
-import Movie.ReviewContainer;
+import Users.Customer;
+import Users.Staff;
+import Users.User;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
-import dataDriver.EnumDataFiles;
-import dataDriver.FileIO;
 import dataDriver.StaffCSVDriver;
 
 public class App {
@@ -25,10 +13,10 @@ public class App {
     public static void main(String args[]) {
         App myApp = new App();
 
-        // User usr = myApp.determineUsrType();
-        // usr.run();
+        User usr = myApp.determineUsrType();
+        usr.run();
 
-        myApp.testing();
+        // myApp.testing();
 
     }
 
@@ -41,6 +29,7 @@ public class App {
         int usrChoice = 1;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
+
             switch (usrChoice) {
                 case 1:
                     usrObj = new Staff();
@@ -60,8 +49,8 @@ public class App {
     }
 
     public void testing() {
-        FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(),
+        // FileIO fileobj = new FileIO();
+        // System.out.println(fileobj.2findMatchFromFile(EnumDataFiles.Movie.toString(),
         // "2958305"));
         // MovieBuilder bldr = new
         // MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(),
@@ -69,8 +58,8 @@ public class App {
         // Movie mv = bldr.build();
         // System.out.println(mv.getDirector());
 
-        // CSVDriver obj = new StaffCSVDriver();
-        // obj.listMovieFromRegex("pulp");
+        CSVDriver obj = new StaffCSVDriver();
+        obj.listMovieFromRegex("pulp");
 
     }
 }
