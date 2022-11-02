@@ -54,7 +54,6 @@ public class bookGold {
                 }while(isitBook == false);
                 
 
-                System.out.println("Select ticket type:");
                 book.printMenu();
                 String age = null;
                 int ageChoice = sc.getUsrInt("Choose: ");

@@ -13,6 +13,8 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     String movieID;
     String MobileNum;
     String Email;
+    String movieName;
+
 
 
     public static bookingHistoryBuilder bookingHistory(){
@@ -32,6 +34,7 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
         this.movieID = csvArr.get(1);
         this.MobileNum = csvArr.get(2);
         this.Email = csvArr.get(3);
+        this.movieName = csvArr.get(4);
     }
 
     public bookingHistoryBuilder setTID(String TID){
@@ -51,6 +54,10 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
 
     public bookingHistoryBuilder setEmail(String Email){
         this.Email = Email;
+        return this;
+    }
+    public bookingHistoryBuilder setmovieName(String movieName){
+        this.movieName = movieName;
         return this;
     }
 

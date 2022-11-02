@@ -81,13 +81,14 @@ public class BookingApp {
                 String csvline = driver.findCinema(showTimeId);
                 CinemaBuilder buildcinema = new CinemaBuilder(csvline);
                 Cinema newCinema = new Cinema(buildcinema);
-                //System.out.println("Cinema code" + newCinema.getCinemaCode());
+                System.out.println("Cinema code" + newCinema.getCinemaCode());
 
                 char classOfCinema = newCinema.getCinemaCode().charAt(0);
                 //System.out.println("Class of cinema: " + classOfCinema);
 
 
                 if(Character.compare(classOfCinema,'R')==0){
+                    System.out.println("Type of Cinema: Regular");
                     Regular regularCinema = new Regular(newCinema.getBookedSeat());
                     regularCinema.initialLayout();
                     regularCinema.showLayout();
@@ -97,8 +98,8 @@ public class BookingApp {
 
                 }
 
-
                 else if(Character.compare(classOfCinema,'F')==0){
+                    System.out.println("Type of Cinema: First");
                     First firstCinema = new First(newCinema.getBookedSeat());
                     firstCinema.initialLayout();
                     firstCinema.showLayout();
@@ -108,9 +109,9 @@ public class BookingApp {
                     first.bookingFirst();
 
                 }
-
         
                 else if(Character.compare(classOfCinema,'G')==0){
+                    System.out.println("Type of Cinema: Gold");
                     Gold goldCinema = new Gold(newCinema.getBookedSeat());
                     goldCinema.initialLayout();
                     goldCinema.showLayout();
@@ -133,8 +134,10 @@ public class BookingApp {
                 historyBuilder.setmovieID(movieId);
                 historyBuilder.setMobileNum(mobileNum);
                 historyBuilder.setEmail(email);
+                historyBuilder.setmovieName(driver.findmovie(movieId));
 
                 driver.createBookingHistory(historyBuilder);
+
                 
                 break;
 
