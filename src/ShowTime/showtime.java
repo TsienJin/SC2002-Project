@@ -17,8 +17,6 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     private String showtimeID;
     private Movie movie;
     private Cinema cinema;
-    // private String movieId;
-    // private String cinemaId;
     private String time_date; //In yyyyMMDDhhmm format
 
     private OutputPrinterFormatter printer = new OutputPrinterFormatter();
@@ -27,8 +25,6 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     public showtime(ShowtimeBuilder builder)
     {
         this.showtimeID = builder.showtimeID;
-        // this.movieId = builder.movieId;
-        // this.cinemaId = builder.cinemaId;
         this.movie = builder.movie;
         this.cinema = builder.cinema;
         this.time_date = builder.time_date;
