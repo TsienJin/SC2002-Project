@@ -1,6 +1,7 @@
 package Users;
 
 import Menu.CustomerMenu;
+import Movie.Movie;
 import dataDriver.CustomerCSVDriver;
 
 public class Customer extends User {
@@ -37,6 +38,14 @@ public class Customer extends User {
                     break;
                 case 6:
                     // view movie details
+                    String movieID = input.getUsrString("Enter movie ID: ");
+                    Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
+                    if(movie != null){
+                        System.out.println(movie.toString());
+                        // need to print all showtimes for this movie too
+                    } else {
+                        System.out.println("Movie not found!");
+                    }
                     break;
                 case 7:
                     // book ticket

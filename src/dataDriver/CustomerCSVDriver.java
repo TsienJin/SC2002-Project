@@ -1,13 +1,23 @@
 package dataDriver;
 
+import Movie.Movie;
+import Movie.MovieBuilder;
+
 public class CustomerCSVDriver extends CSVDriver {
 
 
 
 
     // METHOD to get movie
-    public void getMovie(String id){
-
+    public Movie getMovie(String id){
+        String movieString = super.fileio.findMatchFromFile(EnumDataFiles.Movie.toString(), id);
+        // System.out.println(movieString);
+        if(movieString.length()>0){
+            return new MovieBuilder(movieString).build();
+        } else {
+            return null;
+        }
+       
     }
 
     public void getBookingHistory(){
