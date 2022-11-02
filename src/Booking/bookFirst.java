@@ -3,6 +3,7 @@ import MovieTheatres.*;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
 import java.util.*;
+import UsrInput.UsrInput;
 
 public class bookFirst {
 
@@ -20,10 +21,10 @@ public class bookFirst {
     }
 
     public void bookingFirst(){
-        Scanner sc = new Scanner(System.in);
+        UsrInput sc = new UsrInput();
         
         System.out.println("How many tickets do you want to purchase?");
-        int numOfTickets = sc.nextInt();
+        int numOfTickets = sc.getUsrInt("Number of tickets: ");
         
         boolean isitBook;
         //while less than numOfTickets, user can select the seat they want
@@ -33,9 +34,9 @@ public class bookFirst {
             System.out.println("Selecting Seat.....");
             do{
                 System.out.println("Please input the row number: ");
-                int row = sc.nextInt();
+                int row = sc.getUsrInt("Row number: ");
                 System.out.println("Please input the column number: ");
-                int col = sc.nextInt();
+                int col = sc.getUsrInt("Column number: ");
                 isitBook = firstCinema.BookSeat(row,col);
                 if(isitBook == true){
                     System.out.println("Updating bookseat...");
@@ -51,7 +52,7 @@ public class bookFirst {
             System.out.println("Select ticket type:");
             book.printMenu();
             String age = null;
-            int ageChoice = sc.nextInt();
+            int ageChoice = sc.getUsrInt("Choose: ");
             if(ageChoice == 1){
                 age = "Adult";
             }

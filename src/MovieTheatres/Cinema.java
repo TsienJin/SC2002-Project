@@ -38,7 +38,7 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
         this.time = builder.time;
         this.movieDay = builder.movieDay;
     }
-*/
+
 
     public String toCsvString() {
 

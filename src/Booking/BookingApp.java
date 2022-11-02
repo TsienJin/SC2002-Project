@@ -5,6 +5,7 @@ import Menu.CustomerMenu;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
 import MovieTheatres.*;
+import UsrInput.UsrInput;
 
 public class BookingApp {
 
@@ -27,8 +28,9 @@ public class BookingApp {
 
     public int bookingApp(){
         BookingMenu book = new BookingMenu();
+        UsrInput sc = new UsrInput();
         //Scanner item for input
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
 
 
         //1. List all the movies for customer to select
@@ -37,15 +39,15 @@ public class BookingApp {
 
         //2. To select a movie, ask the user to type in the movieID
         System.out.println("Select showtime of movie: Please type in the movieID");
-        String movieId = sc.next();
+        String movieId = sc.getUsrString("Movie id: ");
 
         //3. List all the showtime for that movie
         while(driver.listShowtimeFromRegex(movieId)==false){
             book.printShowtime();
-            int choose = sc.nextInt();
+            int choose = sc.getUsrInt("Choice");
             if(choose == 1){
                 System.out.println("Select showtime of movie: Please type in the movieID");
-                movieId = sc.next();
+                movieId = sc.getUsrString("Movie id: ");
             }
             else{
                 return 0;
@@ -54,7 +56,7 @@ public class BookingApp {
 
         //4. User will then need to select the showtime they want
         System.out.println("To select showtime of movie for booking: Please type in the showtime ID");
-        String showTimeId = sc.next();
+        String showTimeId = sc.getUsrString("Movie id: ");
 
         String csvline = driver.findCinema(showTimeId);
         CinemaBuilder buildcinema = new CinemaBuilder(csvline);
