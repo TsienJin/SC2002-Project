@@ -9,9 +9,11 @@ import Movie.EnumMovieType;
 import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
+import Movie.updateMovieParser;
 import MovieTheatres.CinemaBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
+import ShowTime.updateShowtimeParser;
 import Users.Staff;
 import Users.User;
 import UsrInput.UsrInput;
@@ -19,7 +21,10 @@ import UsrInput.UsrInput;
 public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     private UsrInput usrInput = new UsrInput();
     private EnumMovieParser movieEnum = new EnumMovieParser();
+    private updateShowtimeParser updateShowtimeMenu = new updateShowtimeParser();
+    private updateMovieParser updateMovieMenu = new updateMovieParser();
 
+    //For createMovieListing() function
     public MovieBuilder inputMovieDetails(MovieBuilder inputMovie){
 
         inputMovie.setID(usrInput.getUsrString("Enter Movie ID: "));
@@ -41,11 +46,12 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         return inputMovie;
     }
 
+    //For createCinemaShowtime() function
     public void inputShowtime(ShowtimeBuilder inputShowtime){
         UsrInput usrInput = new UsrInput();
         inputShowtime.setShowtimeID(usrInput.getUsrString("Enter Showtime ID: "));
         inputShowtime.setMovie(usrInput.getUsrString("Enter Movie ID: "));
-        inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema ID: "));
+        inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema Code: "));
         inputShowtime.setTimeDate(usrInput.getUsrString("Enter Time Date: "));
         
     }
@@ -109,19 +115,16 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void updateMovieListing() {
-        //Create new MovieBuilder object
-        MovieBuilder updateMovieBuilder = new MovieBuilder();
-
-        this.inputMovieDetails(updateMovieBuilder);
-
-        //Create Movie object based on input given
-        Movie updateMovie = new Movie(updateMovieBuilder);
-
-        //Search csv for ID, then update information
-        super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), updateMovie.toCsvString());
-        
+        String movieID = this.usrInput.getUsrString("Enter ID of Movie to update: ");
+        // fetch showtime object
+        MovieBuilder updateMovie = new MovieBuilder().fromMovieID(movieID);
+        // print menu
+        System.out.println(updateMovie.build().toString());
+        // usr input to update which portion of 
+        updateMovieMenu.inputUpdateType(updateMovie);
+        // update in csv file
+        super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), updateMovie.build().toCsvString());
         System.out.println("Movie updated!");
-
     }
 
     public void deleteMovieListing() {
@@ -147,22 +150,16 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     }
 
     public void updateCinemaShowtime() {
-        // ShowtimeBuilder updateCinemaShowtime = new ShowtimeBuilder();
-
-        // this.inputShowtime(updateCinemaShowtime);
-
-        // showtime updateShowtime = new showtime(updateCinemaShowtime);
-
-        // super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.toCsvString());
-        
-        // System.out.println("Showtime updated!");
-
-
         String showtimeID = this.usrInput.getUsrString("Enter ID of Showtime to update: ");
         // fetch showtime object
+        ShowtimeBuilder updateShowtime = new ShowtimeBuilder().fromShowtimeID(showtimeID);
         // print menu
+        System.out.println(updateShowtime.build().toString());
         // usr input to update which portion of 
-
+        updateShowtimeMenu.inputUpdateType(updateShowtime);
+        // update in csv file
+        super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateShowtime.build().toCsvString());
+        System.out.println("Showtime updated!");
     }
 
     public void deleteCinemaShowtime() {

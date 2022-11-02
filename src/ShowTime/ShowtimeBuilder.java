@@ -1,6 +1,7 @@
 package ShowTime;
 
 
+import dataDriver.EnumDataFiles;
 import dataDriver.FileIO;
 import dataDriver.InterfaceCsvDelimiter;
 import Movie.*;
@@ -17,6 +18,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     Cinema cinema;
     String time_date;
     
+    private FileIO fileio = new FileIO();
 
     public static ShowtimeBuilder showtime(){
         return new ShowtimeBuilder();
@@ -25,6 +27,10 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     public ShowtimeBuilder(){}
 
     public ShowtimeBuilder(String csvString){
+        this.updateFromCsvString(csvString);
+    }
+
+    private void updateFromCsvString(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
 
         this.showtimeID = csvArr.get(0);
@@ -45,6 +51,16 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     }*/
 
+    public ShowtimeBuilder fromShowtimeID(String showtimeID){
+        try {
+            String csvString = fileio.findMatchFromFile(EnumDataFiles.Showtime.toString(), showtimeID);
+            this.updateFromCsvString(csvString);
+        } catch (Exception e) {
+            //pass
+        }
+        return this;
+    }
+
     public ShowtimeBuilder setShowtimeID(String showtimeID){
         this.showtimeID = showtimeID;
         return this;
@@ -55,8 +71,8 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
         return this;
     }
 
-    public ShowtimeBuilder setCinema(String cinemaId){
-        this.cinema = new CinemaBuilder().fromCinemaID(cinemaId).build();
+    public ShowtimeBuilder setCinema(String cinemaCode){
+        this.cinema = new CinemaBuilder().fromCinemaCode(cinemaCode).build();
         return this;
     }
 
