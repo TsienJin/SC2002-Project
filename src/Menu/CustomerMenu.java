@@ -16,6 +16,7 @@ public class CustomerMenu extends Menu {
         options.add("View Movie Details");
         options.add("Book Ticket");
         options.add("View Booking History");
+        options.add("Write review");
         options.add("Quit");
 
         menuPrinter(header, options);
