@@ -1,6 +1,8 @@
 package ShowTime;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import Movie.Movie;
 import MovieTheatres.*;
@@ -36,8 +38,8 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     public String toString(){
         return(""+
             printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
-            printer.Subheader("Cinema Class: ") + this.cinema.getCinemaCode() + nLine +
-            printer.Subheader("Showtime: ") + this.time_date + nLine
+            printer.Subheader("Cinema: ") + this.cinema.getCinemaCode() + nLine +
+            printer.Subheader("Showtime: ") + this.getFormattedDate() + nLine
         );
     }
 
@@ -56,6 +58,16 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
     public String getTime_date(){
         return time_date;
+    }
+
+    public String getFormattedDate(){
+        // 0123456789
+        // yyyyMMDDhhmm format
+        // return dateTime;
+
+        return(this.time_date.substring(6, 8)+" "+this.time_date.substring(4, 6)+" "+this.time_date.substring(0, 4) + " " +
+            this.time_date.substring(8, 10)+":"+this.time_date.substring(10, 12)
+        );
     }
 
     /*public String format_date_time(){
