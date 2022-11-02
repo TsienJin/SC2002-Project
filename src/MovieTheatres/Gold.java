@@ -1,23 +1,35 @@
 package MovieTheatres;
 
-public class Gold extends Cinema{
+public class Gold{
     private static final int size = 6;
+    private String bookedSeat;
 
     private int Empty = size*size;
     private int[][] layout = new int[size][size];
 
     //Constructor for regular class
-    public Gold(){
+    public Gold(String bookedSeat){
         //Call the superclass's (Cinema) constructor
-        super();
         //Initialisation of regular cinema array
         //So if the integer is 0 means the spot is not being booked yet (available)
         //Else if integer increments to 1, means the spot is being booked (not available)
+        this.bookedSeat = bookedSeat;
+
         for(int i = 0; i<size ;i++){
             for(int j = 0; j<size ; j++){
                 layout[i][j] = 0;
             }
         }
+    }
+
+    public void initialLayout(){
+        int length = bookedSeat.length();
+        for(int i = 0; i < length; i=i+3){
+            int row = (bookedSeat.charAt(i))-'0';
+            int col = (bookedSeat.charAt(i+1))-'0';
+            layout[row][col] = 1;
+        }
+
     }
 
     public void printInitialLayout(){
@@ -35,8 +47,15 @@ public class Gold extends Cinema{
     //'O' means available
     //'X' means not available
     public void showLayout(){
+        System.out.println("Layout of Movie Theatre");
         for(int i = 0; i<size; i++){
+            if(i==0){
+                System.out.println("  0 1 2 3 4 5");
+            }
             for(int j = 0; j<size; j++){
+                if(j==0){
+                    System.out.print(i + " ");
+                }
                 if(layout[i][j]==0){
                     System.out.print("O "); //Seat is available
                 }
@@ -57,7 +76,7 @@ public class Gold extends Cinema{
             return true;
         }
         else{
-            System.out.println("Seat has already been booked");
+            System.out.println("Seat has already been booked, please try again");
             return false;
         }
     }

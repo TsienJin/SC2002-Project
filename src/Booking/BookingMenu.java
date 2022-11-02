@@ -10,6 +10,11 @@ public class BookingMenu {
             {16,18,20}
     };
 
+    public void printShowtime(){
+        System.out.println("1. Enter showtime again");
+        System.out.println("2. Exit");
+    }
+
     public void printMenu(){
         System.out.println("Select ticket type:");
         System.out.println("1. Adult");

@@ -8,6 +8,7 @@ import dataDriver.CSVDriver;
 import dataDriver.StaffCSVDriver;
 
 
+
 public class App{
     UsrInput usrInput = new UsrInput();
 
@@ -17,8 +18,8 @@ public class App{
         User usr = myApp.determineUsrType();
         usr.run();
 
-        // myApp.testing();
 
+        //myApp.testing();
 
 
     }
@@ -32,6 +33,7 @@ public class App{
         int usrChoice = 1;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
+
             switch(usrChoice){
                 case 1:
                     usrObj = new Staff();
@@ -53,7 +55,7 @@ public class App{
 
     public void testing(){
         // FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
+        // System.out.println(fileobj.2findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
         // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
         // Movie mv = bldr.build();
         // System.out.println(mv.getDirector());
