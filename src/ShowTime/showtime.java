@@ -37,7 +37,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return(""+
             printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
             printer.Subheader("Cinema Class: ") + this.cinema.getCinemaCode() + nLine +
-            printer.Subheader("Showtime: ") + this.time_date
+            printer.Subheader("Showtime: ") + this.time_date + nLine
         );
     }
 
