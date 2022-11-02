@@ -123,7 +123,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         // usr input to update which portion of 
         updateMovieMenu.inputUpdateType(updateMovie);
         // update in csv file
-        super.fileio.updateKeyInFile(EnumDataFiles.Showtime.toString(), updateMovie.build().toCsvString());
+        super.fileio.updateKeyInFile(EnumDataFiles.Movie.toString(), updateMovie.build().toCsvString());
         System.out.println("Movie updated!");
     }
 
