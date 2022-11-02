@@ -117,7 +117,7 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     public void updateMovieListing() {
         String movieID = this.usrInput.getUsrString("Enter ID of Movie to update: ");
         // fetch showtime object
-        ShowtimeBuilder updateMovie = new ShowtimeBuilder().fromShowtimeID(movieID);
+        MovieBuilder updateMovie = new MovieBuilder().fromMovieID(movieID);
         // print menu
         System.out.println(updateMovie.build().toString());
         // usr input to update which portion of 
