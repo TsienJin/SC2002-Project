@@ -158,7 +158,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
                 case 2:
                     // change password
-                    this.usrPwd = super.input.getUsrString("Enter NEW password: ");
+                    this.usrPwd = super.input.getUsrPwd("Enter NEW password: ");
                     this.updateCSV(this);
                     break;
                 case 3:
@@ -170,7 +170,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     // create new user
                     String newUsrID = super.input.getUsrString("Enter ID for new user: ");
                     String newUsrName = super.input.getUsrString("Enter username for new user: ");
-                    String newUsrPwd = super.input.getUsrString("Enter password for new user: ");
+                    String newUsrPwd = super.input.getUsrPwd("Enter password for new user: ");
                     this.addCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
                     break;
                 case 5:
