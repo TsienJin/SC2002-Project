@@ -1,5 +1,7 @@
 package dataDriver;
 
+import Movie.Movie;
+import Movie.MovieBuilder;
 import Movie.Review;
 import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
