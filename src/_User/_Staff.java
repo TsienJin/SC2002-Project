@@ -1,11 +1,11 @@
 import Menu.StaffMenu;
 import dataDriver.StaffCSVDriver;
 
-public class Staff extends User {
+public class _Staff extends User {
 
     private boolean isAuthenticated = false;
     
-    public Staff(){
+    public _Staff(){
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
     }

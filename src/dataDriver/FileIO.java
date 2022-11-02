@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 
 // This object handles pure CRUD operations to CSV files
@@ -79,7 +78,7 @@ public class FileIO {
             }
             reader.close();
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return content;
@@ -177,7 +176,7 @@ public class FileIO {
             }
             reader.close();
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         if (lineToReturn.length() == 0){
