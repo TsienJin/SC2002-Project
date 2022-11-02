@@ -1,5 +1,5 @@
 id,hallNumber,cinemaCode,BookedSeat,ShowtimeId,time,movieDay
-3000,3,R01,00,ST1,202211251010,Friday
+3000,3,R01,00 55 56,ST1,202211251010,Friday
 3201,4,R01,22,ST2,202211091011,Wednesday
 2945,2,G02,00 01 10 22,ST4,202211251010,Tuesday
 

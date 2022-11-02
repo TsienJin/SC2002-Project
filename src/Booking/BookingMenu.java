@@ -49,6 +49,7 @@ public class BookingMenu {
             }
             System.out.print("\n");
         }
+        System.out.print("\n");
 
     }
 
@@ -57,4 +58,14 @@ public class BookingMenu {
         System.out.println("1. Confirm");
         System.out.println("2. Exit");
     }
+
+    public void mainBookingPage(){
+        System.out.println("--Welcome to the Booking App--");
+        System.out.println("1. View Ticket Pricing");
+        System.out.println("2. Start Booking");
+        System.out.println("3. Exit");
+    }
+
+
+
 }
