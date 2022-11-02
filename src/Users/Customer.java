@@ -70,7 +70,7 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 11);
+        } while (usrChoice != 10);
 
     }
 
