@@ -13,11 +13,11 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     FileIO showtimeFileio = new FileIO();
 
     String showtimeID;
-    //Movie movie;
-    //Cinema cinema;
+    Movie movie;
+    Cinema cinema;
     String time_date;
-    String movieId;
-    String cinemaId;
+    // String movieId;
+    // String cinemaId;
     
 
     public static ShowtimeBuilder showtime(){
@@ -32,8 +32,10 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
         //this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
         //this.cinema = new CinemaBuilder().fromCinemaID(csvArr.get(2)).build();
         this.showtimeID = csvArr.get(0);
-        this.movieId = csvArr.get(1);
-        this.cinemaId = csvArr.get(2);
+        this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
+        this.cinema = new CinemaBuilder().fromCinemaID(csvArr.get(2)).build();
+        // this.movieId = csvArr.get(1);
+        // this.cinemaId = csvArr.get(2);
         this.time_date = csvArr.get(3);
 
     }
@@ -55,12 +57,14 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     }
 
     public ShowtimeBuilder setMovie(String movieId){
-        this.movieId = movieId;
+        // this.movieId = movieId;
+        this.movie = new MovieBuilder().fromMovieID(movieId).build();
         return this;
     }
 
     public ShowtimeBuilder setCinema(String cinemaId){
-        this.cinemaId = cinemaId;
+        // this.cinemaId = cinemaId;
+        this.cinema = new CinemaBuilder().fromCinemaID(cinemaId).build();
         return this;
     }
 

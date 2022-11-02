@@ -13,33 +13,45 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
     //Attributes of showtime
     private String showtimeID;
-    //private Movie movie;
-    //private Cinema cinema;
-    private String movieId;
-    private String cinemaId;
+    private Movie movie;
+    private Cinema cinema;
+    // private String movieId;
+    // private String cinemaId;
     private String time_date; //In yyyyMMDDhhmm format
 
-    private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
+    private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
 
     public showtime(ShowtimeBuilder builder)
     {
         this.showtimeID = builder.showtimeID;
-        this.movieId = builder.movieId;
-        this.cinemaId = builder.cinemaId;
+        // this.movieId = builder.movieId;
+        // this.cinemaId = builder.cinemaId;
+        this.movie = builder.movie;
+        this.cinema = builder.cinema;
         this.time_date = builder.time_date;
     }
 
+
+    public String toString(){
+        return(""+
+            printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
+            printer.Subheader("Cinema Class: ") + this.cinema.getCinemaCode() + nLine +
+            printer.Subheader("Showtime: ") + this.time_date
+        );
+    }
+
+
     public String getShowtimeID(){
-        return showtimeID;
+        return this.showtimeID;
     }
 
-    public String getMovie(){
-        return movieId;
+    public Movie getMovie(){
+        return this.movie;
     }
 
-    public String getCinema(){
-        return cinemaId;
+    public Cinema getCinema(){
+        return this.cinema;
     }
 
     public String getTime_date(){
@@ -62,10 +74,10 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         //arrCSV.add(this.movie);
         //arrCSV.add(this.cinema);
         arrCSV.add(this.showtimeID);
-        //arrCSV.add(this.movie.getID());
-        arrCSV.add(this.movieId);
-        //arrCSV.add(this.cinema.getId());
-        arrCSV.add(this.cinemaId);
+        arrCSV.add(this.movie.getID());
+        // arrCSV.add(this.movieId);
+        arrCSV.add(this.cinema.getId());
+        // arrCSV.add(this.cinemaId);
         arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);
@@ -83,11 +95,11 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
             System.out.println("Show Time ID: " + this.showtimeID);
            
            //Print Movie ID
-           System.out.println("Movie ID: " + this.movieId); //Current date is smaller
+           System.out.println("Movie ID: " + this.movie.getID()); //Current date is smaller
 
            //Print Cinema Type
            //Get the first character of the ID 
-           char firstchar = this.cinemaId.charAt(0);
+           char firstchar = this.movie.getID().charAt(0);
            if(Character.compare(firstchar,'R')==0){
                 System.out.println("Cinema Class: Regular");
            }
