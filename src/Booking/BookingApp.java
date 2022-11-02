@@ -61,19 +61,42 @@ public class BookingApp {
         Cinema newCinema = new Cinema(buildcinema);
 
         char classOfCinema = newCinema.getCinemaCode().charAt(0);
+
+
         if(Character.compare(classOfCinema,'R')==0){
             Regular regularCinema = new Regular(newCinema.getBookedSeat());
             regularCinema.initialLayout();
             regularCinema.showLayout();
 
+            book.printBookingPrice();
 
-        }
+            bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver);
+            regular.bookingRegular();
+
+            TransactionID transact = new TransactionID(newCinema.getCinemaCode());
+            String Tid = transact.TID();
+            System.out.println("Transaction ID : " + Tid);
+
+    }
+
+
         else if(Character.compare(classOfCinema,'F')==0){
             First firstCinema = new First(newCinema.getBookedSeat());
             firstCinema.initialLayout();
             firstCinema.showLayout();
 
+            book.printBookingPrice();
+
+            bookFirst first = new bookFirst(newCinema,firstCinema,book,driver);
+            first.bookingFirst();
+
+            TransactionID transact = new TransactionID(newCinema.getCinemaCode());
+            String Tid = transact.TID();
+            System.out.println("Transaction ID : " + Tid);
+
         }
+
+        
         else if(Character.compare(classOfCinema,'G')==0){
             Gold goldCinema = new Gold(newCinema.getBookedSeat());
             goldCinema.initialLayout();
@@ -81,115 +104,16 @@ public class BookingApp {
 
             book.printBookingPrice();
 
-            System.out.println("How many tickets do you want to purchase?");
-            int numOfTickets = sc.nextInt();
-            
-            boolean isitBook;
-            //while less than numOfTickets, user can select the seat they want
-            double total = 0;
-            for(int i = 0; i<numOfTickets; i++){
-                System.out.println("Ticket " + i+1);
-                System.out.println("Selecting Seat.....");
-                do{
-                    System.out.println("Please input the row number: ");
-                    int row = sc.nextInt();
-                    System.out.println("Please input the column number: ");
-                    int col = sc.nextInt();
-                    isitBook = goldCinema.BookSeat(row,col);
-                    if(isitBook == true){
-                        System.out.println("Update bookseat");
-                        String Id = newCinema.getId();
-                        int row_col = (row*10) + col;
-                        String new_seat = newCinema.getBookedSeat() + " " + row_col;
-                        newCinema.setBookedSeat(new_seat);
-                        driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
-                    }
-                }while(isitBook == false);
-                
+            bookGold golden = new bookGold(newCinema,goldCinema,book,driver);
+            golden.bookingGold();
 
-                System.out.println("Select ticket type:");
-                book.printMenu();
-                String age = null;
-                int ageChoice = sc.nextInt();
-                if(ageChoice == 1){
-                    age = "Adult";
-                }
-                else if(ageChoice == 2){
-                    age = "Senior Citizen";
-                }
-                else if(ageChoice == 3){
-                    age = "Students";
-                }
-                System.out.println("Day: " + newCinema.getmovieDay());
-                String day = newCinema.getmovieDay();
-                System.out.println("Time: " + newCinema.gettime().substring(4,8));
-                String timing = newCinema.gettime().substring(4,8);
-                
-                
-                Booking goldBook = new Booking(timing,"G",day,age);
-                System.out.println("Price of each ticket: " + goldBook.calculatePayment());
-                total = goldBook.calculatePayment() + total;
-
-            }
-            System.out.println("Total Payment: " + total);
-            System.out.println("Booking is confirmed.");
-
+            TransactionID transact = new TransactionID(newCinema.getCinemaCode());
+            String Tid = transact.TID();
+            System.out.println("Transaction ID : " + Tid);
 
         }
 
-        //User can select the quantity of tickets;
-        
-
-
-
-        
-
-
-        //Instantiate an object to print all the things in bookingMenu
-        /*
-
-
-        book.printBookingPrice();
-        System.out.print("\n");
-
-
-        book.printMenu();
-        int choice = sc.nextInt();
-        switch(choice){
-            case 1:
-                Booking newBooking = new Booking("1900","R","Wednesday","Adult");
-                System.out.println("Payment: " + newBooking.calculatePayment());
-                book.printConfirm();
-                int confirm = sc.nextInt();
-                if(confirm==1){
-                    TransactionID Id = new TransactionID("R");
-                    String id = Id.TID();
-                    System.out.println("Transaction ID: " + id);
-                }
-                break;
-            case 2:
-                newBooking = new Booking("1900","R","Wednesday","Senior Citizen");
-                System.out.println("Payment: " + newBooking.calculatePayment());
-                book.printConfirm();
-                confirm = sc.nextInt();
-                if(confirm==1){
-                    TransactionID Id = new TransactionID("R");
-                    String id = Id.TID();
-                    System.out.println("Transaction ID: " + id);
-                }
-                break;
-            case 3:
-                newBooking = new Booking("1900","R","Wednesday","Students");
-                System.out.println("Payment: " + newBooking.calculatePayment());
-                book.printConfirm();
-                confirm = sc.nextInt();
-                if(confirm==1){
-                    TransactionID Id = new TransactionID("R");
-                    String id = Id.TID();
-                    System.out.println("Transaction ID: " + id);
-                }
-                break;
-        }*/
+      
         return 0;
     }
 }
