@@ -1,21 +1,10 @@
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import Menu.CustomerMenu;
 import Menu.MainMenu;
 import Menu.Menu;
-import Menu.StaffMenu;
-import Movie.EnumMovieType;
-import Movie.EnumShowingStatus;
-import Movie.Movie;
-import Movie.MovieBuilder;
-import Movie.Review;
-import Movie.ReviewBuilder;
+import Users.Customer;
+import Users.Staff;
+import Users.User;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
-import dataDriver.EnumDataFiles;
-import dataDriver.FileIO;
 import dataDriver.StaffCSVDriver;
 
 
@@ -29,6 +18,7 @@ public class App{
         User usr = myApp.determineUsrType();
         usr.run();
 
+
         //myApp.testing();
 
 
@@ -40,7 +30,7 @@ public class App{
 
         User usrObj = null;
 
-        int usrChoice = 0;
+        int usrChoice = 1;
         do {
             usrChoice = usrInput.getUsrInt("User type: ");
 

@@ -6,7 +6,7 @@ public class StaffMenu extends Menu {
 
     @Override
     public void printMainMenu(){
-        String header = "Staff Menu:";
+        String header = "Staff Menu: ";
         ArrayList<String> options = new ArrayList<>();
         options.add("Print this menu");
         options.add("Create Movie Listing");
@@ -22,8 +22,20 @@ public class StaffMenu extends Menu {
         options.add("Quit");
 
         menuPrinter(header, options);
+    }
 
 
+
+    public void printConfigMenu(){
+        String header = "System Configuration: ";
+        ArrayList<String> options = new ArrayList<>();
+        options.add("Print this menu");
+        options.add("Change password");
+        options.add("Change username");
+        options.add("Create new user");
+        options.add("Back");
+
+        menuPrinter(header, options);
     }
 
         

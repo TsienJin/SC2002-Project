@@ -38,6 +38,7 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
         this.time = builder.time;
         this.movieDay = builder.movieDay;
     }
+*/
 
     public String toCsvString() {
 
@@ -91,7 +92,6 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     public void setBookedSeat(String bookedSeat){
         this.bookedSeat = bookedSeat;
     }
-
 
 
     //abstract methods - no method implementation

@@ -3,6 +3,7 @@ package UsrInput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import java.io.Console;
 
 
 
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class UsrInput{
 
     Scanner scan = new Scanner(System.in);
+    Console console = System.console();
 
     
     /** Gets user String input
@@ -21,7 +23,17 @@ public class UsrInput{
      */
     public String getUsrString(String promt){
         System.out.print(promt+"\t");
-        return scan.next();
+        return scan.nextLine();
+    }
+    
+    /** Gets user password input, mask output
+     * @param promt
+     * @return String
+     */
+    public String getUsrPwd(String promt){
+        console.printf(promt+"\t");
+        char[] passwordChars = console.readPassword();
+        return new String(passwordChars);
     }
 
     
@@ -36,7 +48,7 @@ public class UsrInput{
         do {
             try{
                 System.out.print(promt+"\t");
-                usrInt = scan.nextInt();
+                usrInt = Integer.parseInt(scan.nextLine());
                 restart = false;
             } catch (InputMismatchException e) {
                 System.out.println("Error! Please input a value Integer.");

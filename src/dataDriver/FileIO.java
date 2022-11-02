@@ -36,9 +36,13 @@ public class FileIO {
      * @return boolean
      */
     // METHOD to check if ID is same as that in CSV
-    public boolean isSameID(String csvLine, String id){
-        String csvLineId = csvLine.split(",", 2)[0];
+    public boolean isSameID(String csvLine, String id, int idIndex){
+        String csvLineId = csvLine.split(",")[idIndex];
         return csvLineId.equalsIgnoreCase(id);
+    }
+
+    public boolean isSameID(String csvLine, String Id){
+        return this.isSameID(csvLine, Id, 0);
     }
 
     
@@ -145,6 +149,17 @@ public class FileIO {
      */
     // METHOD to update last line that matches ID with given string
     public String findMatchFromFile(String fileName, String id) throws IllegalArgumentException {
+        return this.findMatchFromFile(fileName, id, 0);
+    }
+
+    /** Finds the latest entry that matches given id
+     * @param fileName
+     * @param id
+     * @return String
+     * @throws IllegalArgumentException
+     */
+    // METHOD to update last line that matches ID with given string
+    public String findMatchFromFile(String fileName, String id, int index) throws IllegalArgumentException {
         String lineToReturn = "";
 
         try{
@@ -153,7 +168,7 @@ public class FileIO {
             reader.readLine(); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, id)){
+                if(isSameID(curLine, id, index)){
                     lineToReturn = curLine;
                 }
 
@@ -166,7 +181,7 @@ public class FileIO {
         }
 
         if (lineToReturn.length() == 0){
-            throw new IllegalArgumentException(String.format("Moview with id [%s] not found!", id));
+            throw new IllegalArgumentException(String.format("[%s] not found!", id));
         } else {
             return lineToReturn;
         }
@@ -191,7 +206,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                     valArr.add(newString);
                 } else {
@@ -205,7 +220,7 @@ public class FileIO {
             overwriteToFile(fileName, valArr);
 
         } catch (IOException e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return isKeyFound;
@@ -230,7 +245,7 @@ public class FileIO {
             valArr.add(reader.readLine()); // gets rid of header line
             String curLine = reader.readLine();
             while(curLine != null){
-                if(isSameID(curLine, key)){
+                if(isSameID(curLine, key, 0)){
                     isKeyFound = true;
                 } else {
                     valArr.add(curLine);
