@@ -8,11 +8,10 @@ import dataDriver.CSVDriver;
 import dataDriver.StaffCSVDriver;
 
 
-
 public class App{
     UsrInput usrInput = new UsrInput();
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         App myApp = new App();
 
         User usr = myApp.determineUsrType();
@@ -21,10 +20,9 @@ public class App{
 
         //myApp.testing();
 
-
     }
 
-    public User determineUsrType(){
+    public User determineUsrType() {
         Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
 
@@ -52,13 +50,9 @@ public class App{
         return usrObj;
     }
 
-
-    public void testing(){
+    public void testing() {
         // FileIO fileobj = new FileIO();
-        // System.out.println(fileobj.2findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
-        // MovieBuilder bldr = new MovieBuilder(fileobj.findMatchFromFile(EnumDataFiles.Movie.toString(), "2958305"));
-        // Movie mv = bldr.build();
-        // System.out.println(mv.getDirector());
+
 
         CSVDriver obj = new StaffCSVDriver();
         obj.listMovieFromRegex("pulp");
