@@ -69,12 +69,6 @@ public class App {
         // Movie mv = bldr.build();
         // System.out.println(mv.getDirector());
 
-        ReviewBuilder bui = new ReviewBuilder(fileobj.findMatchFromFile(EnumDataFiles.Review.toString(), "2958305"));
-        Review rv = bui.build();
-        ReviewContainer rev = new ReviewContainer();
-        System.out.println(rev.getRating("2958305"));
-        rev.showReviews("2958305");
-
         // CSVDriver obj = new StaffCSVDriver();
         // obj.listMovieFromRegex("pulp");
 
