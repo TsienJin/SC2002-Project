@@ -15,9 +15,10 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
     private String synopsis;
     private String director;
     private ArrayList<String> cast;
-    private Double overallRating;
-    private ArrayList<Review> pastReviews;
+    // private Double overallRating;
+    // private ArrayList<Review> pastReviews;
     private int totalTicketSales;
+    private ReviewContainer reviews;
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
@@ -31,9 +32,10 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         this.synopsis = builder.synopsis;
         this.director = builder.director;
         this.cast = builder.cast;
-        this.overallRating = builder.overallRating;
-        this.pastReviews = builder.pastReviews;
+        // this.overallRating = builder.overallRating;
+        // this.pastReviews = builder.pastReviews;
         this.totalTicketSales = builder.totalTicketSales;
+        this.reviews = builder.reviews;
     }
 
     public String toString() {
@@ -44,9 +46,9 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
             formatter.Subheader("Director: ") + this.director + nLine +
             formatter.Subheader("Cast: ") + formatter.ArrayToCSV(this.cast) + nLine + nLine +
             formatter.SubheaderUnderline("Synopsis") + nLine +
-            formatter.Body(formatter.wrapString(this.synopsis, "\n\t\t", 30)) + nLine + nLine +
+            formatter.Body(formatter.wrapString(this.synopsis, nLine+tab, 30)) + nLine + nLine +
             formatter.SubheaderUnderline("Movie stats") + nLine +
-            formatter.Subheader("Rating: ") + String.format("%.2f / 5", this.overallRating) + nLine +
+            formatter.Subheader("Rating: ") + String.format("%.2f / 5", this.reviews.getRating()) + nLine +
             formatter.Subheader("Ticket Sales: ") + String.format("%d", this.totalTicketSales) + nLine
         );
     }
@@ -90,16 +92,16 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         return this.cast;
     }
     public Double getOverallRating(){
-        return this.overallRating;
+        return this.reviews.getRating();
     }
     public ArrayList<Review> getPastReviews(){
-        return this.pastReviews;
+        return this.reviews.getReviews();
     }
     public int getTotalTicketSales(){
         return this.totalTicketSales;
     }
 
-    public void addReview(Review reviewToAdd){
-        this.pastReviews.add(reviewToAdd);
-    }
+    // public void addReview(Review reviewToAdd){
+    //     this.pastReviews.add(reviewToAdd);
+    // }
 }

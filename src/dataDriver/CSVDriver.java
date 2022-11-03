@@ -135,9 +135,6 @@ public abstract class CSVDriver{
         }
     }
 
-
-
-
     public boolean isMovieSortByRating(){
         Properties props = this.fileio.getProps();
         Boolean val = Boolean.parseBoolean(props.getProperty("RANK_BY_RATING"));

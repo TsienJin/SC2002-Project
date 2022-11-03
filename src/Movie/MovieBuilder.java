@@ -14,19 +14,22 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
     String synopsis;
     String director;
     ArrayList<String> cast;
-    Double overallRating = 0.0;
-    ArrayList<Review> pastReviews;
+    // Double overallRating = 0.0;
+    // ArrayList<Review> pastReviews;
     int totalTicketSales = 0;
+    ReviewContainer reviews;
 
     private FileIO fileio = new FileIO();
 
 
     /////// What is the purpose of movie()? -- TJ
-    public static MovieBuilder movie() {
-        return new MovieBuilder();
-    }
+    // public static MovieBuilder movie() {
+    //     return new MovieBuilder();
+    // }
 
-    public MovieBuilder(){}
+    private void countTicketSales(){
+        this.totalTicketSales = this.fileio.countMatches(EnumDataFiles.Review.toString(), this.ID);
+    }
 
     public MovieBuilder(String csvString){
         this.updateFromCsvString(csvString);
@@ -42,6 +45,9 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.synopsis = csvArr.get(4);
         this.director = csvArr.get(5);
         this.cast = new ArrayList<>(Arrays.asList(csvArr.get(6).split(subDelimiter)));
+
+        this.reviews = new ReviewContainer(this.ID);
+        this.countTicketSales();
     }
 
     public MovieBuilder fromMovieID(String id){
@@ -56,6 +62,8 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
 
     public MovieBuilder setID(String ID){
         this.ID = ID;
+        this.countTicketSales();
+        this.reviews = new ReviewContainer(ID);
         return this;
     }
     public MovieBuilder setMovieTitle(String movieTitle){
@@ -78,10 +86,10 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.director = director;
         return this;
     }
-    public MovieBuilder setOverallRating(Double overallRating){
-        this.overallRating = overallRating;
-        return this;
-    }
+    // public MovieBuilder setOverallRating(Double overallRating){
+    //     this.overallRating = overallRating;
+    //     return this;
+    // }
     public MovieBuilder setTotalTicketSales(int totalTicketSales){
         this.totalTicketSales = totalTicketSales;
         return this;
@@ -90,22 +98,18 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.cast = cast;
         return this;
     }
-    public MovieBuilder setPastReviews(ArrayList<Review> pastReviews){
-        this.pastReviews = pastReviews;
+
+    public MovieBuilder setReviewContainer(ReviewContainer reviewContainer){
+        this.reviews = reviewContainer;
         return this;
     }
+    // public MovieBuilder setPastReviews(ArrayList<Review> pastReviews){
+    //     this.pastReviews = pastReviews;
+    //     return this;
+    // }
 
     @Override
     public Movie build() {
         return new Movie(this);
     }
-
-    // @Override
-    // public Movie fromCsvString(String csvString) {
-
-
-
-
-    //     return null;
-    // }
 }

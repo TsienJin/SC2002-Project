@@ -12,9 +12,6 @@ public class ReviewBuilder implements InterfaceBuilder<Review>, InterfaceCsvDeli
     String strReview;
     int usrRating;
 
-
-    public ReviewBuilder(){}
-
     public ReviewBuilder(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
         this.movieID = csvArr.get(0);
