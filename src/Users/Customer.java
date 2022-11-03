@@ -47,7 +47,10 @@ public class Customer extends User {
                     Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
                     if(movie != null){
                         System.out.println(movie.toString());
+                        System.out.println(super.formatter.Header("Reviews\n"));
                         movie.printReviews();
+                        System.out.println(formatter.Header("Upcoming Show Times\n"));
+                        this.dataDriver.listShowtimeFromMovieId(movie.getID());
                         // need to print all showtimes for this movie too
                     } else {
                         System.out.println("Movie not found!");

@@ -117,6 +117,18 @@ public abstract class CSVDriver{
         }
     }
 
+    public boolean listShowtimeFromMovieId(String ID){
+        try{
+            ArrayList<String> found = this.fileio.findAllMatchesFromFile(EnumDataFiles.Showtime.toString(), ID, 1);
+            for(String str : found){
+                System.out.println(new ShowtimeBuilder(str).build().toString());
+            }
+            return true;
+        } catch (Exception e){
+            return false; 
+        }
+    }
+
     public String findCinema(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Cinema.toString(),rgx);
         String line = found.get(0);

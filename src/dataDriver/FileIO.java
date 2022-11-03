@@ -225,7 +225,7 @@ public class FileIO {
 
 
 
-    public ArrayList<String> findAllMatchesFromFile(String fileName, String id) throws IllegalArgumentException {
+    public ArrayList<String> findAllMatchesFromFile(String fileName, String id){
         return this.findAllMatchesFromFile(fileName, id, 0);
     }
 

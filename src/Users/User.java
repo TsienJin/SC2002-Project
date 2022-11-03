@@ -1,6 +1,7 @@
 package Users;
 
 import Menu.Menu;
+import OutputPrinter.OutputPrinterFormatter;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
 
@@ -9,6 +10,7 @@ public abstract class User {
     // To be instanciated in subclasses with respective objects
     protected Menu menu;
     protected CSVDriver dataDriver;
+    protected OutputPrinterFormatter formatter = new OutputPrinterFormatter();
     
     // Common to all
     protected UsrInput input = new UsrInput();
