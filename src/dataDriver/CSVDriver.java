@@ -96,6 +96,16 @@ public abstract class CSVDriver{
         return buildmovie.getMovieTitle();
     }
 
+    public String findmovieType(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
+        String line = found.get(0);
+        MovieBuilder movieBuilding = new MovieBuilder(line);
+        Movie buildmovie = new Movie(movieBuilding);
+
+        return buildmovie.getMovieType().toString();
+
+    }
+
     public void updateBookedSeats(String ID,String rgx) {
         
         this.fileio.updateKeyInFile(ID, rgx);

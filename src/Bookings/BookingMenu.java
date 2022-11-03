@@ -10,6 +10,22 @@ public class BookingMenu {
             {16,18,20}
     };
 
+    private double[][] Bprice = {
+        {12,14,16},
+        {12,14,16},
+        {14,16,18},
+        {16,18,20},
+        {18,20,22}
+    };
+
+    private double[][] Sprice = {
+        {14,16,18},
+        {14,16,18},
+        {16,18,20},
+        {18,20,22},
+        {20,22,24}
+    };
+
     public void printShowtime(){
         System.out.println("1. Enter showtime again");
         System.out.println("2. Exit");
@@ -24,7 +40,7 @@ public class BookingMenu {
     }
 
     public void printBookingPrice(){
-        System.out.println("Ticket Price");
+        System.out.println("Regular Movie Ticket Price");
         System.out.println("----------------------------------------------");
         System.out.println("                    Regular   First     Gold");
         for(int i = 0;i<5;i++){
@@ -46,6 +62,66 @@ public class BookingMenu {
 
             for(int j = 0; j<3; j++){
                 System.out.print(price[i][j] + "      ");
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
+
+    }
+
+    public void printBookingBPrice(){
+        System.out.println("BlockBuster Movie Ticket Price");
+        System.out.println("----------------------------------------------");
+        System.out.println("                    Regular   First     Gold");
+        for(int i = 0;i<5;i++){
+            if(i==0){
+                System.out.print(type[i]+"     |");
+            }
+            if(i==1){
+                System.out.print(type[i]+"           |");
+            }
+            if(i==2){
+                System.out.print(type[i] + " |");
+            }
+            if(i==3){
+                System.out.print(type[i]+"     |");
+            }
+            if(i==4){
+                System.out.print(type[i]+"            |");
+            }
+
+            for(int j = 0; j<3; j++){
+                System.out.print(Bprice[i][j] + "      ");
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
+
+    }
+
+    public void printBookingSPrice(){
+        System.out.println("3D & IMax Movie Ticket Price");
+        System.out.println("----------------------------------------------");
+        System.out.println("                    Regular   First     Gold");
+        for(int i = 0;i<5;i++){
+            if(i==0){
+                System.out.print(type[i]+"     |");
+            }
+            if(i==1){
+                System.out.print(type[i]+"           |");
+            }
+            if(i==2){
+                System.out.print(type[i] + " |");
+            }
+            if(i==3){
+                System.out.print(type[i]+"     |");
+            }
+            if(i==4){
+                System.out.print(type[i]+"            |");
+            }
+
+            for(int j = 0; j<3; j++){
+                System.out.print(Sprice[i][j] + "      ");
             }
             System.out.print("\n");
         }

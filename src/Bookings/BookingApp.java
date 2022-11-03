@@ -10,15 +10,7 @@ import UsrInput.UsrInput;
 public class BookingApp {
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
-    //private String movieTiming;
-    //private String cinemaCode;
-    //private String movieDay;
-
-    /*public BookingApp(String movieTiming,String cinemaCode,String movieDay){
-        this.movieTiming = movieTiming;
-        this.cinemaCode = cinemaCode;
-        this.movieDay = movieDay;
-    }*/
+   
 
     //Constructor for BookingApp
     public BookingApp(){
@@ -40,6 +32,8 @@ public class BookingApp {
         switch(choice){
             case 1:
                 book.printBookingPrice();
+                book.printBookingBPrice();
+                book.printBookingSPrice();
                 break;
             case 2: //Start Booking
                 //0. When start booking, customer will need to enter mobile phone and email
@@ -74,6 +68,8 @@ public class BookingApp {
                     }
                 }
 
+                String movieTitle = driver.findmovieType(movieId);
+
                 //4. User will then need to select the showtime they want
                 System.out.println("To select showtime of movie for booking: Please type in the showtime ID");
                 String showTimeId = sc.getUsrString("Show time id: ");
@@ -93,7 +89,7 @@ public class BookingApp {
                     regularCinema.initialLayout();
                     regularCinema.showLayout();
 
-                    bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver);
+                    bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver,movieTitle);
                     regular.bookingRegular();
 
                 }
@@ -105,7 +101,7 @@ public class BookingApp {
                     firstCinema.showLayout();
 
 
-                    bookFirst first = new bookFirst(newCinema,firstCinema,book,driver);
+                    bookFirst first = new bookFirst(newCinema,firstCinema,book,driver,movieTitle);
                     first.bookingFirst();
 
                 }
@@ -117,7 +113,7 @@ public class BookingApp {
                     goldCinema.showLayout();
 
 
-                    bookGold golden = new bookGold(newCinema,goldCinema,book,driver);
+                    bookGold golden = new bookGold(newCinema,goldCinema,book,driver,movieTitle);
                     golden.bookingGold();
 
 
