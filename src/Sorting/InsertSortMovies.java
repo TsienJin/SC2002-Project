@@ -34,8 +34,9 @@ public class InsertSortMovies {
         if(this.movies.size()>1){
             for(int i=1; i<movies.size(); i++){
                 int j = i-1;
-                while(j>=0 && movies.get(i).compareSalesTo(movies.get(j))<0){
+                while(j>=0 && movies.get(i).compareSalesTo(movies.get(j))>0){
                     Collections.swap(movies, i, j);
+                    j--;
                 }
             }
         }
