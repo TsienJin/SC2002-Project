@@ -2,15 +2,19 @@ package Movie;
 
 import java.util.ArrayList;
 
+import OutputPrinter.InterfaceOutputPrinterFormatter;
+import OutputPrinter.OutputPrinterFormatter;
 import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 
-public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter, InterfaceOutputPrinterFormatter{
     private String ID;
     private String movieID;
     private String username;
     private String strReview;
     private int usrRating;
+
+    private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
     // public Review(String ID,String strReview,int usrRating) {
     //     this.ID = ID;
@@ -24,6 +28,14 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
         this.username = builder.username;
         this.strReview = builder.strReview;
         this.usrRating = builder.usrRating;
+    }
+
+    public String toString(){
+        return(""+
+            printer.SubheaderUnderline(this.username) + nLine +
+            printer.Subheader("Rating: "+this.usrRating) + nLine +
+            printer.Body(this.strReview) + nLine
+        );
     }
 
     public String getID() {

@@ -56,4 +56,10 @@ public class ReviewContainer implements InterfaceCsvDelimiter {
     public ArrayList<Review> getReviews(){
         return this.reviewArr;
     }
+
+    public void printReviews() {
+        for(Review review : this.reviewArr){
+            System.out.println(review.toString());
+        }
+    }
 }

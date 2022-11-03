@@ -7,4 +7,5 @@ public interface InterfaceOutputPrinterFormatter {
     String clrFormat = "\033[0m";
     String tab = "\t\t";
     String nLine = "\n";
+    int textWrap = 30;
 }

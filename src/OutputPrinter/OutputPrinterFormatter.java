@@ -18,7 +18,7 @@ public class OutputPrinterFormatter implements InterfaceOutputPrinterFormatter {
     }
 
     public String Body(String bodyLine){
-        return(tab+bodyLine);
+        return(tab+wrapString(bodyLine, nLine+tab, textWrap));
     }
 
     public String ArrayToCSV(ArrayList<String> items){
