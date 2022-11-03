@@ -1,6 +1,5 @@
 package Users;
 
-import Bookings.BookingApp;
 import Menu.Menu;
 import UsrInput.UsrInput;
 import dataDriver.CSVDriver;
