@@ -38,16 +38,14 @@ public abstract class CSVDriver{
     public void listAllMovies(){
 
         InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
-        ArrayList<Movie> moviesArr = sorter.sortBySales();
+        ArrayList<Movie> moviesArr = new ArrayList<>();
 
 
-        // if(this.isMovieSortByRating() && sorter.size()>0){
-        //     System.out.println("Rating");
-        //     moviesArr = sorter.sortByRating();
-        // } else if (!this.isMovieSortByRating() && sorter.size()>0){
-        //     System.out.println("Sales");
-        //     moviesArr = sorter.sortBySales();
-        // }
+        if(this.isMovieSortByRating() && sorter.size()>0){
+            moviesArr = sorter.sortByRating();
+        } else if (!this.isMovieSortByRating() && sorter.size()>0){
+            moviesArr = sorter.sortBySales();
+        }
 
         for(Movie movie : moviesArr){
             System.out.println(movie.toString());
