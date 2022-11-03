@@ -10,7 +10,7 @@ public enum EnumDataFiles implements InterfaceNiceEnumString<EnumDataFiles> {
     Showtime("showtime.csv"),
     Cinema("cinema.csv"),
     bookingHistory("bookingHistory.csv"),
-    Sorting("sorting.csv"),
+    Config("config.properties"),
     ;
     String prettyName;
 
