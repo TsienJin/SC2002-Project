@@ -1,29 +1,32 @@
 import Menu.MainMenu;
 import Menu.Menu;
-import Menu.Banner;
 import Users.Customer;
 import Users.Staff;
 import Users.User;
 import UsrInput.UsrInput;
-import dataDriver.CSVDriver;
-import dataDriver.StaffCSVDriver;
 
 
+
+/** Main running app
+ * @author SS3 GROUP NUMBER HERE
+ */
 public class App{
     UsrInput usrInput = new UsrInput();
 
+    
+    /** 
+     * @param args[]
+     */
     public static void main(String args[]) {
         App myApp = new App();
-        // banner.printBanner();
-
         User usr = myApp.determineUsrType();
         usr.run();
-
-
-        //myApp.testing();
-
     }
 
+    
+    /** Method to determine user type
+     * @return User
+     */
     public User determineUsrType() {
         Menu thisMenu = new MainMenu();
         thisMenu.printMainMenu();
@@ -50,14 +53,5 @@ public class App{
         } while (usrChoice == 0);
 
         return usrObj;
-    }
-
-    public void testing() {
-        // FileIO fileobj = new FileIO();
-
-
-        CSVDriver obj = new StaffCSVDriver();
-        obj.listMovieFromRegex("pulp");
-
     }
 }
