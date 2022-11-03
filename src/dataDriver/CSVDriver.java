@@ -29,10 +29,23 @@ public abstract class CSVDriver{
 
     
     public void listTopMoviesBySales(){
+
+        InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
+        ArrayList<Movie> movieArr = sorter.sortBySales();
+
+        for(int i=0; i<Math.min(movieArr.size(), 5); i++){
+            System.out.println(movieArr.get(i).toString());
+        }
+
     }
 
     public void listTopMoviesByRating(){
+        InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
+        ArrayList<Movie> movieArr = sorter.sortByRating();
 
+        for(int i=0; i<Math.min(movieArr.size(), 5); i++){
+            System.out.println(movieArr.get(i).toString());
+        }
     }
 
     public void listAllMovies(){

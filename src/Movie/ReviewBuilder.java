@@ -22,6 +22,10 @@ public class ReviewBuilder implements InterfaceBuilder<Review>, InterfaceCsvDeli
     }
 
 
+    public ReviewBuilder() {
+    }
+
+
     public ReviewBuilder setID(String ID) {
         this.ID = ID;
         return this;

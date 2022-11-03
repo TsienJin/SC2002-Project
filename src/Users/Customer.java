@@ -30,9 +30,11 @@ public class Customer extends User {
                     break;
                 case 3:
                     // list top 5 movies by sales
+                    super.dataDriver.listTopMoviesBySales();
                     break;
                 case 4:
                     // list top 5 movies by ratings
+                    super.dataDriver.listTopMoviesByRating();
                     break;
                 case 5:
                     // search movie
