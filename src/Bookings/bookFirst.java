@@ -22,7 +22,7 @@ public class bookFirst {
 
     }
 
-    public void bookingFirst(){
+    public double bookingFirst(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newCinema.getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
@@ -78,6 +78,8 @@ public class bookFirst {
 
         System.out.println("Total Payment: " + total);
         System.out.println("Booking is confirmed.");
+
+        return total;
     }
     
 }

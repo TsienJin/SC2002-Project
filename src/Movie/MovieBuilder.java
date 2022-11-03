@@ -31,6 +31,8 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
         this.totalTicketSales = this.fileio.countMatches(EnumDataFiles.Review.toString(), this.ID);
     }
 
+    public MovieBuilder(){}
+
     public MovieBuilder(String csvString){
         this.updateFromCsvString(csvString);
     }

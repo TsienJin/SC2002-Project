@@ -25,7 +25,7 @@ public class bookGold {
 
 
 
-    public void bookingGold(){
+    public double bookingGold(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newCinema.getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
@@ -84,6 +84,8 @@ public class bookGold {
             System.out.println("Total Payment: " + total);
             
             System.out.println("Booking is confirmed.");
+
+            return total;
             
 
 

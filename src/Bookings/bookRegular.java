@@ -20,7 +20,7 @@ public class bookRegular {
         this.movieTitle = movieTitle;
     }
 
-    public void bookingRegular(){
+    public double bookingRegular(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newCinema.getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
@@ -75,6 +75,8 @@ public class bookRegular {
 
     System.out.println("Total ticket price: " + total);
     System.out.println("Booking is confirmed");
+
+    return total;
     }
     
 }

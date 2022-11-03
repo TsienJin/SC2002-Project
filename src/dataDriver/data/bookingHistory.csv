@@ -1,7 +1,2 @@
-TID,movieID,MobileNum,Email,movieName
-R01202211032426,0068646,96615489,canningng@gmail.com,The Godfather
-R01202211030153,0068646,87661029,keenlim12@gmail.com,The Godfather
-R01202211032350,0068646,123,234,The Godfather
-G02202211042438,0068646,87661029,keenlim12@gmail.com,The Godfather
-G02202211042441,0068646,123,123,The Godfather
-G02202211042445,0068646,87661029,keenlim12@gmail.com,The Godfather
+TID,movieID,MobileNum,Email,movieName,totalPrice
+G02202211040107,0068646,87661029,keenlim12@gmail.com,The Godfather,34.0

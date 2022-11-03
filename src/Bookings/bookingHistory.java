@@ -11,6 +11,7 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     private String MobileNum;
     private String Email;
     private String movieName;
+    private String totalPrice;
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
@@ -20,6 +21,7 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
         this.MobileNum = builder.MobileNum;
         this.Email = builder.Email;
         this.movieName = builder.movieName;
+        this.totalPrice = builder.totalPrice;
     }
 
     public String toString(){
@@ -27,6 +29,7 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
                     formatter.Subheader("        Transaction ID: ") + this.TID + nLine +
                     formatter.Subheader("        Movie ID: ") + this.movieID + nLine +
                     formatter.Subheader("        Movie Name: ") + this.movieName + nLine +
+                    formatter.Subheader("        Total Price: ") + this.totalPrice + nLine +
                     formatter.Subheader("        Transact Time: ") + this.getTransactTime() + nLine +
                     formatter.Subheader("        Transact Date: ") + this.getTransactDate());
               
@@ -40,6 +43,7 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
         arrCSV.add(this.MobileNum);
         arrCSV.add(this.Email);
         arrCSV.add(this.movieName);
+        arrCSV.add(this.totalPrice);
 
         return String.join(mainDelimiter,arrCSV);
     }
@@ -64,6 +68,9 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     }
     public String getTransactDate(){
         return this.TID.substring(9,11) + " - " + this.TID.substring(7,9) + " - " + this.TID.substring(3,8);
+    }
+    public String gettotalPrice(){
+        return this.totalPrice;
     }
 
 

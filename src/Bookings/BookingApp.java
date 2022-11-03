@@ -83,6 +83,7 @@ public class BookingApp {
                 //System.out.println("Class of cinema: " + classOfCinema);
 
 
+                double totalPrice = 0;
                 if(Character.compare(classOfCinema,'R')==0){
                     System.out.println("Type of Cinema: Regular");
                     Regular regularCinema = new Regular(newCinema.getBookedSeat());
@@ -90,7 +91,7 @@ public class BookingApp {
                     regularCinema.showLayout();
 
                     bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver,movieTitle);
-                    regular.bookingRegular();
+                    totalPrice = regular.bookingRegular();
 
                 }
 
@@ -102,7 +103,7 @@ public class BookingApp {
 
 
                     bookFirst first = new bookFirst(newCinema,firstCinema,book,driver,movieTitle);
-                    first.bookingFirst();
+                    totalPrice = first.bookingFirst();
 
                 }
         
@@ -114,7 +115,7 @@ public class BookingApp {
 
 
                     bookGold golden = new bookGold(newCinema,goldCinema,book,driver,movieTitle);
-                    golden.bookingGold();
+                    totalPrice = golden.bookingGold();
 
 
                 }
@@ -131,6 +132,7 @@ public class BookingApp {
                 historyBuilder.setMobileNum(mobileNum);
                 historyBuilder.setEmail(email);
                 historyBuilder.setmovieName(driver.findmovie(movieId));
+                historyBuilder.settotalPrice(Double.toString(totalPrice));
 
                 driver.createBookingHistory(historyBuilder);
 
