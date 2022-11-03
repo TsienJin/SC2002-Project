@@ -8,10 +8,23 @@ import Movie.Movie;
 import Movie.MovieBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
+import Sorting.InsertSortMovies;
 
 public abstract class CSVDriver{
 
     protected FileIO fileio = new FileIO();
+
+
+    private ArrayList<Movie> getMovies(){
+        ArrayList<Movie> allMovies = new ArrayList<>();
+        try {
+            this.fileio.readFromFile(EnumDataFiles.Movie.toString()).forEach(line->{
+                allMovies.add(new MovieBuilder(line).build());
+            });
+        } catch (Exception e) {}
+
+        return allMovies;
+    }
 
     
     public void listTopMoviesBySales(){
@@ -23,9 +36,21 @@ public abstract class CSVDriver{
 
     public void listAllMovies(){
 
-        this.fileio.readFromFile(EnumDataFiles.Movie.toString()).forEach(movie -> {
-            System.out.println(new MovieBuilder(movie).build().toString());
-        });
+        InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
+        ArrayList<Movie> moviesArr = sorter.sortBySales();
+
+
+        // if(this.isMovieSortByRating() && sorter.size()>0){
+        //     System.out.println("Rating");
+        //     moviesArr = sorter.sortByRating();
+        // } else if (!this.isMovieSortByRating() && sorter.size()>0){
+        //     System.out.println("Sales");
+        //     moviesArr = sorter.sortBySales();
+        // }
+
+        for(Movie movie : moviesArr){
+            System.out.println(movie.toString());
+        }
         
     }
 
