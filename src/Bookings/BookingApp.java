@@ -81,7 +81,7 @@ public class BookingApp {
                 String csvline = driver.findCinema(showTimeId);
                 CinemaBuilder buildcinema = new CinemaBuilder(csvline);
                 Cinema newCinema = new Cinema(buildcinema);
-                System.out.println("Cinema code" + newCinema.getCinemaCode());
+                System.out.println("Cinema code: " + newCinema.getCinemaCode());
 
                 char classOfCinema = newCinema.getCinemaCode().charAt(0);
                 //System.out.println("Class of cinema: " + classOfCinema);
