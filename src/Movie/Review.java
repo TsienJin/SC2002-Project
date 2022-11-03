@@ -12,11 +12,11 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
     private String strReview;
     private int usrRating;
 
-    public Review(String ID,String strReview,int usrRating) {
-        this.ID = ID;
-        this.strReview = strReview;
-        this.usrRating = usrRating;
-    }
+    // public Review(String ID,String strReview,int usrRating) {
+    //     this.ID = ID;
+    //     this.strReview = strReview;
+    //     this.usrRating = usrRating;
+    // }
 
     public Review(ReviewBuilder builder){
         this.ID = builder.ID;
