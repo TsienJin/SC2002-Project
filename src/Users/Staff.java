@@ -212,6 +212,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                 case 5:
                     // change ranking of menu for customer
                     this.configMovieSorting();
+                    ((StaffMenu) this.menu).printConfigMenu();
                     break;
                 case 6:
                     // back, nothing here
@@ -225,16 +226,21 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     public void configMovieSorting(){
         ((StaffMenu) this.menu).printMovieRankingMenu();
         int usrChoice = 0;
-        switch(usrChoice){
-            case 1:
-                // sort by sales
-                break;
-            case 2:
-                // sort by rating
-                break;
-            default:
-                System.out.println("Invalid input!");
-                usrChoice = 0;
+        do {
+            usrChoice = this.input.getUsrInt("Enter choice: ");
+            switch(usrChoice){
+                case 1:
+                    // sort by sales
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesBySales();
+                    break;
+                case 2:
+                    // sort by rating
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesByRating();
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+            };
         } while (usrChoice == 0);
     }
 
