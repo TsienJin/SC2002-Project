@@ -1,5 +1,6 @@
 import Menu.MainMenu;
 import Menu.Menu;
+import Menu.Banner;
 import Users.Customer;
 import Users.Staff;
 import Users.User;
@@ -13,6 +14,8 @@ public class App{
 
     public static void main(String args[]) {
         App myApp = new App();
+        Banner banner = new Banner();
+        // banner.printBanner();
 
         User usr = myApp.determineUsrType();
         usr.run();

@@ -1,4 +1,4 @@
-package Booking;
+package Bookings;
 
 public class Booking {
     private String movieTiming; //Will tell us if is non-peak or peak hour

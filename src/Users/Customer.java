@@ -1,10 +1,10 @@
 package Users;
 
+import Bookings.BookingApp;
+import Bookings.historyApp;
 import Menu.CustomerMenu;
 import Movie.Movie;
 import dataDriver.CustomerCSVDriver;
-import Booking.BookingApp;
-import Booking.historyApp;
 
 public class Customer extends User {
     

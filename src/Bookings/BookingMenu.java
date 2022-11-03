@@ -1,4 +1,4 @@
-package Booking;
+package Bookings;
 
 public class BookingMenu {
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};

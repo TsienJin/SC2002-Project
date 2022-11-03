@@ -1,4 +1,4 @@
-package Booking;
+package Bookings;
 import MovieTheatres.*;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
