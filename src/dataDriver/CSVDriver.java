@@ -1,6 +1,7 @@
 package dataDriver;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import Bookings.bookingHistory;
 import Bookings.bookingHistoryBuilder;
@@ -127,11 +128,10 @@ public abstract class CSVDriver{
 
 
 
-
-
-
-
-
-
+    public boolean isMovieSortByRating(){
+        Properties props = this.fileio.getProps();
+        Boolean val = Boolean.parseBoolean(props.getProperty("RANK_BY_RATING"));
+        return val.booleanValue();
+    }
 
 }
