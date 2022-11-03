@@ -33,7 +33,17 @@ public class StaffMenu extends Menu {
         options.add("Change password");
         options.add("Change username");
         options.add("Create new user");
+        options.add("Change ranking of movies");
         options.add("Back");
+
+        menuPrinter(header, options);
+    }
+
+    public void printMovieRankingMenu(){
+        String header = "Movie Ranking Sorting: ";
+        ArrayList<String> options = new ArrayList<>();
+        options.add("Sales");
+        options.add("Rating");
 
         menuPrinter(header, options);
     }
