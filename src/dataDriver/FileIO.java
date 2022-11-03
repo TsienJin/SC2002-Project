@@ -141,6 +141,38 @@ public class FileIO {
         return count;
     }
 
+
+
+    public int countMatches(String fileName, String ID){
+        return this.countMatches(fileName, ID, 0);
+    }
+
+
+
+    public int countMatches(String fileName, String ID, int index){
+        int count = 0;
+        
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null
+            reader.readLine(); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, ID, index)){
+                    count++;
+                }
+
+                curLine = reader.readLine();
+                
+            }
+            reader.close();
+        } catch (IOException e){
+            // e.printStackTrace();
+        }
+
+        return count;
+    }
+
     
 
     /** Finds the latest entry that matches given id
@@ -187,6 +219,44 @@ public class FileIO {
             // return new String("");
         } else {
             return lineToReturn;
+        }
+    }
+
+
+
+
+    public ArrayList<String> findAllMatchesFromFile(String fileName, String id) throws IllegalArgumentException {
+        return this.findAllMatchesFromFile(fileName, id, 0);
+    }
+
+
+
+    public ArrayList<String> findAllMatchesFromFile(String fileName, String id, int index) throws IllegalArgumentException{
+
+        ArrayList<String> arrToReturn = new ArrayList<>();
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null
+            reader.readLine(); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, id, index)){
+                    arrToReturn.add(curLine);
+                }
+
+                curLine = reader.readLine();
+                
+            }
+            reader.close();
+        } catch (IOException e){
+            // e.printStackTrace();
+        }
+
+        if (arrToReturn.size() == 0){
+            throw new IllegalArgumentException(String.format("[%s] not found!", id));
+            // return new String("");
+        } else {
+            return arrToReturn;
         }
     }
 
