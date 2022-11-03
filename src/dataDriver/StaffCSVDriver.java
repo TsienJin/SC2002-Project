@@ -2,6 +2,7 @@ package dataDriver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Properties;
 import java.util.Scanner;
 
 import Movie.EnumMovieParser;
@@ -10,12 +11,10 @@ import Movie.EnumShowingStatus;
 import Movie.Movie;
 import Movie.MovieBuilder;
 import Movie.updateMovieParser;
-import MovieTheatres.CinemaBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
 import ShowTime.updateShowtimeParser;
 import Users.Staff;
-import Users.User;
 import UsrInput.UsrInput;
 
 public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
@@ -171,5 +170,17 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         } else {
             System.out.println(String.format("Showtime with ID %s cannot be found!", showtimeID));
         }
+    }
+
+    public void sortMoviesByRating(){
+        Properties props = this.fileio.getProps();
+        props.setProperty("RANK_BY_RATING", "true");
+        this.fileio.setProps(props);
+    }
+
+    public void sortMoviesBySales(){
+        Properties props = this.fileio.getProps();
+        props.setProperty("RANK_BY_RATING", "false");
+        this.fileio.setProps(props);
     }
 }

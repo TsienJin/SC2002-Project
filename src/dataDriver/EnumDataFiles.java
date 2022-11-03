@@ -2,14 +2,15 @@ package dataDriver;
 
 import Movie.InterfaceNiceEnumString;
 
-public enum EnumDataFiles implements InterfaceNiceEnumString{
+public enum EnumDataFiles implements InterfaceNiceEnumString<EnumDataFiles> {
     Movie("movie.csv"),
     Review("review.csv"),
     Test("test.csv"),
     StaffUser("staffUser.csv"),
     Showtime("showtime.csv"),
     Cinema("cinema.csv"),
-    bookingHistory("bookingHistory.csv")
+    bookingHistory("bookingHistory.csv"),
+    Config("config.properties"),
     ;
     String prettyName;
 
@@ -26,4 +27,6 @@ public enum EnumDataFiles implements InterfaceNiceEnumString{
     public String toString(){
         return this.prettyName;
     }
+
+
 }

@@ -11,12 +11,14 @@ public class bookFirst {
     private First firstCinema;
     private BookingMenu book;
     private CustomerCSVDriver driver;
+    private String movieTitle;
 
-    public bookFirst(Cinema newCinema, First firstCinema, BookingMenu book, CustomerCSVDriver driver){
+    public bookFirst(Cinema newCinema, First firstCinema, BookingMenu book, CustomerCSVDriver driver,String movieTitle){
         this.newCinema = newCinema;
         this.firstCinema = firstCinema;
         this.book = book;
         this.driver = driver;
+        this.movieTitle = movieTitle;
 
     }
 
@@ -69,7 +71,7 @@ public class bookFirst {
             String timing = newCinema.gettime().substring(4,8);
             
             
-            Booking firstBook = new Booking(timing,sClass,day,age);
+            Booking firstBook = new Booking(timing,sClass,day,age,movieTitle);
             System.out.println("Price of each ticket: " + firstBook.calculatePayment());
             total = firstBook.calculatePayment() + total;
         }

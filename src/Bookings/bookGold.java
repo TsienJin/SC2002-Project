@@ -12,13 +12,15 @@ public class bookGold {
     private Gold goldCinema;
     private BookingMenu book;
     private CustomerCSVDriver driver;
+    private String movieTitle;
 
     //constructor for bookGold
-    public bookGold(Cinema newCinema,Gold goldCinema,BookingMenu book,CustomerCSVDriver driver){
+    public bookGold(Cinema newCinema,Gold goldCinema,BookingMenu book,CustomerCSVDriver driver,String movieTitle){
         this.newCinema = newCinema;
         this.goldCinema = goldCinema;
         this.book = book;
         this.driver = driver;
+        this.movieTitle = movieTitle;
     }
 
 
@@ -72,7 +74,8 @@ public class bookGold {
                 String timing = newCinema.gettime().substring(4,8);
                 
                 
-                Booking goldBook = new Booking(timing,sClass,day,age);
+                Booking goldBook = new Booking(timing,sClass,day,age,movieTitle);
+                System.out.println("Movie Title: " + movieTitle);
                 System.out.println("Price of each ticket: " + goldBook.calculatePayment());
                 total = goldBook.calculatePayment() + total;
 

@@ -7,6 +7,10 @@ import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 import dataDriver.StaffCSVDriver;
 
+
+/** Staff running 'shell'
+ * @Author Tsien Jin
+ */
 public class Staff extends User implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
 
     private boolean isAuthenticated = false;
@@ -14,11 +18,21 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     private String usrName;
     private String usrPwd;
     
+    /** Constructor
+     * 
+     */
     public Staff(){
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
     }
 
+    /** Protected constructor with user information
+     * 
+     * @param ID
+     * @param usrName
+     * @param usrPwd
+     * 
+     */
     protected Staff(String ID, String usrName, String usrPwd){
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
@@ -28,8 +42,10 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     }
 
 
+    /** Method to authenticate staff user and handle user logic
+     * Updates attribute this.isAuthenticated once password and login is correct
+     */
     // Helper methods
-
     private void authStaff(){
         do{
             System.out.println("\nLOGIN AS STAFF");
@@ -47,15 +63,27 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         } while (this.isAuthenticated == false);
     }
 
+    
+    /** Method to update CSV with changed information
+     * @param staffUsr
+     */
     private void updateCSV(Staff staffUsr){
         ((StaffCSVDriver) this.dataDriver).updateStaffAccount(staffUsr);
     }
 
+    
+    /** Method to add new user information to CSV
+     * @param staffUsr
+     */
     private void addCSV(Staff staffUsr){
         ((StaffCSVDriver) this.dataDriver).createStaffAccount(staffUsr);
     }
 
 
+    
+    /** Formats object information into CSV string
+     * @return String
+     */
     @Override
     public String toCsvString(){
         ArrayList<String> details = new ArrayList<>();
@@ -67,7 +95,9 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     }
 
     
-
+    /** Callable running loop
+     * 
+     */
     @Override
     public void run(){
 
@@ -78,6 +108,9 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         this._run();
     }
 
+    /** Main running loop
+     * Called from Staff.run()
+     */
     // MAIN RUNNING LOOP
     private void _run(){
         int usrChoice = 0;
@@ -145,6 +178,9 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     }
 
 
+    /** Menu for staff to configure settings
+     * 
+     */
     private void configSettings(){
         ((StaffMenu) this.menu).printConfigMenu();
         int usrChoice = 0;
@@ -174,11 +210,38 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     this.addCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
                     break;
                 case 5:
+                    // change ranking of menu for customer
+                    this.configMovieSorting();
+                    ((StaffMenu) this.menu).printConfigMenu();
+                    break;
+                case 6:
                     // back, nothing here
                     break;
             }
 
-        } while (usrChoice!=5);
+        } while (usrChoice!=6);
+    }
+
+
+    public void configMovieSorting(){
+        ((StaffMenu) this.menu).printMovieRankingMenu();
+        int usrChoice = 0;
+        do {
+            usrChoice = this.input.getUsrInt("Enter choice: ");
+            switch(usrChoice){
+                case 1:
+                    // sort by sales
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesBySales();
+                    break;
+                case 2:
+                    // sort by rating
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesByRating();
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+            };
+        } while (usrChoice == 0);
     }
 
 }

@@ -50,18 +50,30 @@ public class First  {
         System.out.println("Layout of Movie Theatre");
         for(int i = 0; i<size; i++){
             if(i==0){
-                System.out.println("  0 1 2 3 4 5 6 7");
+                System.out.println("     0 1 2 3   ||    4 5 6 7");
             }
             for(int j = 0; j<size; j++){
-                if(j==0){
-                    System.out.print(i + " ");
+                
+                if(j==3){
+                    if(layout[i][j]==0){
+                        System.out.print("O   ||    "); //Seat is available
+                    }
+                    else if(layout[i][j]==1) {
+                        System.out.print("X   ||    "); //Seat is not available
+                    }
                 }
-                if(layout[i][j]==0){
-                    System.out.print("O "); //Seat is available
+                else{
+                    if(j==0){
+                        System.out.print(i + "    ");
+                    }
+                    if(layout[i][j]==0){
+                        System.out.print("O "); //Seat is available
+                    }
+                    else if(layout[i][j]==1) {
+                        System.out.print("X "); //Seat is not available
+                    }
                 }
-                else if(layout[i][j]==1) {
-                    System.out.print("X "); //Seat is not available
-                }
+                
             }
             System.out.print("\n");
         }

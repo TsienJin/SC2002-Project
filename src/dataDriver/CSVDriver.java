@@ -1,6 +1,7 @@
 package dataDriver;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import Bookings.bookingHistory;
 import Bookings.bookingHistoryBuilder;
@@ -120,6 +121,16 @@ public abstract class CSVDriver{
         return buildmovie.getMovieTitle();
     }
 
+    public String findmovieType(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
+        String line = found.get(0);
+        MovieBuilder movieBuilding = new MovieBuilder(line);
+        Movie buildmovie = new Movie(movieBuilding);
+
+        return buildmovie.getMovieType().toString();
+
+    }
+
     public void updateBookedSeats(String ID,String rgx) {
         
         this.fileio.updateKeyInFile(ID, rgx);
@@ -149,14 +160,10 @@ public abstract class CSVDriver{
         }
     }
 
-
-
-
-
-
-
-
-
-
+    public boolean isMovieSortByRating(){
+        Properties props = this.fileio.getProps();
+        Boolean val = Boolean.parseBoolean(props.getProperty("RANK_BY_RATING"));
+        return val.booleanValue();
+    }
 
 }
