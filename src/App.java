@@ -14,7 +14,6 @@ public class App{
 
     public static void main(String args[]) {
         App myApp = new App();
-        Banner banner = new Banner();
         // banner.printBanner();
 
         User usr = myApp.determineUsrType();

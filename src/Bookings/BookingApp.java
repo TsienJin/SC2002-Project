@@ -1,4 +1,4 @@
-package Booking;
+package Bookings;
 
 import java.util.Scanner;
 import Menu.CustomerMenu;

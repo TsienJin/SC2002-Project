@@ -1,4 +1,4 @@
-package Booking;
+package Bookings;
 import UsrInput.UsrInput;
 import dataDriver.CustomerCSVDriver;
 
