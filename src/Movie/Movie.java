@@ -44,7 +44,7 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
             formatter.Subheader("Director: ") + this.director + nLine +
             formatter.Subheader("Cast: ") + formatter.ArrayToCSV(this.cast) + nLine + nLine +
             formatter.SubheaderUnderline("Synopsis") + nLine +
-            formatter.Body(this.synopsis) + nLine + nLine +
+            formatter.Body(formatter.wrapString(this.synopsis, "\n\t\t", 30)) + nLine + nLine +
             formatter.SubheaderUnderline("Movie stats") + nLine +
             formatter.Subheader("Rating: ") + String.format("%.2f / 5", this.overallRating) + nLine +
             formatter.Subheader("Ticket Sales: ") + String.format("%d", this.totalTicketSales) + nLine

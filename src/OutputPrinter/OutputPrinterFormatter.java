@@ -33,5 +33,20 @@ public class OutputPrinterFormatter implements InterfaceOutputPrinterFormatter {
         return strBuilder.toString();
 
     }
+
+    public String wrapString(String s, String deliminator, int length) {
+        String result = "";
+        int lastdelimPos = 0;
+        for (String token : s.split(" ", -1)) {
+            if (result.length() - lastdelimPos + token.length() > length) {
+                result = result + deliminator + token;
+                lastdelimPos = result.length() + 1;
+            }
+            else {
+                result += (result.isEmpty() ? "" : " ") + token;
+            }
+        }
+        return result;
+    }
     
 }
