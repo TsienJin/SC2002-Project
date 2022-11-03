@@ -23,6 +23,7 @@ public class InsertSortMovies {
                 int j = i-1;
                 while(j>=0 && movies.get(i).compareRatingTo(movies.get(j))>0){
                     Collections.swap(movies, i, j);
+                    j--;
                 }
             }
         }
