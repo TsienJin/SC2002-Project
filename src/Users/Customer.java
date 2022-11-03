@@ -51,20 +51,24 @@ public class Customer extends User {
                     }
                     break;
                 case 7:
+                    // show upcoming showtimes
+                    this.dataDriver.listAllUpcomingShowtimes();
+                    break;
+                case 8:
                     // book ticket
                     BookingApp book = new BookingApp();
                     book.bookingApp();
                     break;
-                case 8:
+                case 9:
                     // view booking history
                     historyApp history = new historyApp();
                     history.viewHistory();
                     break;
-                case 9:
+                case 10:
                     // write review
                     ((CustomerCSVDriver) super.dataDriver).writeReview();
                     break;
-                case 10:
+                case 11:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -73,7 +77,7 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 10);
+        } while (usrChoice != 11);
 
     }
 

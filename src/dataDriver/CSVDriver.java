@@ -51,6 +51,19 @@ public abstract class CSVDriver{
         });
     }
 
+    public void listAllUpcomingShowtimes(){
+        this.fileio.readFromFile(EnumDataFiles.Showtime.toString()).forEach(line->{
+            try {
+                showtime showtime = new ShowtimeBuilder(line).build();
+                if(showtime.isUpcoming()){
+                    System.out.println(showtime.toString());
+                }
+            } catch (Exception e) {
+                // pass
+            }
+        });
+    }
+
     public boolean listShowtimeFromRegex(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
         if(found.size()>0){

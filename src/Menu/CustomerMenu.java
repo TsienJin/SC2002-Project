@@ -14,6 +14,7 @@ public class CustomerMenu extends Menu {
         options.add("List Top 5 Movies by ratings");
         options.add("Search Movies");
         options.add("View Movie Details");
+        options.add("Show Upcoming Showtimes");
         options.add("Book Ticket");
         options.add("View Booking History");
         options.add("Write review");

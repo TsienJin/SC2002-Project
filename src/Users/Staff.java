@@ -116,7 +116,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
                 case 8:
                     // show all upcoming showtimes;
-                    this.dataDriver.listAllShowtimes();
+                    this.dataDriver.listAllUpcomingShowtimes();
                     break;
                 case 9:
                     // update showtime

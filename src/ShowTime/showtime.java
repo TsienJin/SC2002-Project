@@ -34,7 +34,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     public String toString(){
         return(""+
             printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
-            printer.Subheader("Cinema: ") + this.cinema.getCinemaCode() + nLine +
+            printer.Subheader("Cinema Type: ") + this.cinema.getCinemaCode() + nLine +
             printer.Subheader("Showtime: ") + this.getFormattedDate() + nLine
         );
     }
@@ -78,26 +78,25 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         // Delimiters are from the toCsvStringHelper interface
 
         ArrayList<String> arrCSV = new ArrayList<>();
-
-        //arrCSV.add(this.movie);
-        //arrCSV.add(this.cinema);
+        
         arrCSV.add(this.showtimeID);
         arrCSV.add(this.movie.getID());
-        // arrCSV.add(this.movieId);
         arrCSV.add(this.cinema.getCinemaCode());
-        // arrCSV.add(this.cinemaId);
         arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);
     }
 
-    public void printShowTime(){
-        //Get the current instance of time and date
+    public boolean isUpcoming(){
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddkkmm");
         String curDate = formatter.format(date);
 
-       if(curDate.compareTo(time_date) < 0){
+        return(curDate.compareTo(this.time_date) < 0);
+    }
+
+    public void printShowTime(){
+       if(this.isUpcoming()){
 
             //Print ShowTime ID
             System.out.println("Show Time ID: " + this.showtimeID);
