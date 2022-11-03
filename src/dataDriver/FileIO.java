@@ -3,11 +3,14 @@ package dataDriver;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 
 // This object handles pure CRUD operations to CSV files
@@ -336,6 +339,31 @@ public class FileIO {
 
         } catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+
+
+    public Properties getProps(){
+        Properties props = new Properties();
+        try {
+            FileInputStream in = new FileInputStream(this.relativeFileDir+EnumDataFiles.Config.toString());
+            props.load(in);
+            in.close();
+        } catch (Exception e) {
+            // pass
+        }
+        return props;
+    }
+
+
+    public void setProps(Properties props){
+        try {
+            FileOutputStream out = new FileOutputStream(this.relativeFileDir+EnumDataFiles.Config.toString());
+            props.store(out, null);
+            out.close();
+        } catch (Exception e) {
+            // pass
         }
     }
 
