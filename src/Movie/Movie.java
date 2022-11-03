@@ -70,6 +70,14 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         return String.join(mainDelimiter, arrCSV);
     }
 
+    public double compareRatingTo(Movie movie){
+        return this.reviews.getRating() - movie.getOverallRating();
+    }
+
+    public int compareSalesTo(Movie movie){
+        return this.totalTicketSales - movie.getTotalTicketSales();
+    }
+
     public String getID(){
         return this.ID;
     }
