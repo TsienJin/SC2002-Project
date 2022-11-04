@@ -77,8 +77,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
             return date;
         }
         catch (java.text.ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -144,8 +143,8 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         arrCSV.add(this.showtimeID);
         arrCSV.add(this.movie.getID());
         arrCSV.add(this.cinema.getCinemaCode());
-        arrCSV.add(this.time_date);
         arrCSV.add(this.bookedSeat);
+        arrCSV.add(this.time_date);
 
         return String.join(mainDelimiter, arrCSV);
     }
