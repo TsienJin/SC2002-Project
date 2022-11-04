@@ -11,7 +11,8 @@ public class StaffMenu extends Menu {
         options.add("Print this menu");
         options.add("Create Movie Listing");
         options.add("Show all Movie Listing");
-        options.add("Show top 5 Movie Listing");
+        options.add("Show top 5 Movie Listing by Rating");
+        options.add("Show top 5 Movie Listing by Sales");
         options.add("Update Movie Listing");
         options.add("Delete Movie Listing");
         options.add("Create Showtime");
@@ -45,6 +46,9 @@ public class StaffMenu extends Menu {
         ArrayList<String> options = new ArrayList<>();
         options.add("Tickets Sold");
         options.add("Rating");
+        options.add("Enable Customer Sorting Choice");
+        options.add("Disable Customer Sorting Choice");
+        options.add("Back");
 
         menuPrinter(header, options);
     }

@@ -13,6 +13,33 @@ public class Customer extends User {
         super.dataDriver = new CustomerCSVDriver();
     }
 
+
+
+
+    private void searchMovieRegex(){
+        String rgx = input.getUsrString("Enter regex or string: ");
+        super.dataDriver.listMovieFromRegex(rgx);
+    }
+
+
+    private void searchMovieID(){
+        String movieID = input.getUsrString("Enter movie ID: ");
+        Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
+        if(movie != null){
+            System.out.println(movie.toString());
+            System.out.println(super.formatter.Header("Reviews")+"\n");
+            movie.printReviews();
+            System.out.println(formatter.Header("Upcoming Show Times")+"\n");
+            this.dataDriver.listShowtimeFromMovieId(movie.getID());
+            // need to print all showtimes for this movie too
+        } else {
+            System.out.println("Movie not found!");
+        }
+    }
+
+
+
+
     @Override
     public void run(){
         
@@ -25,52 +52,27 @@ public class Customer extends User {
                     super.menu.printMainMenu();
                     break;
                 case 2:
-                    // list all movies
-                    super.dataDriver.listAllMovies();
+                    // movie menu
+                    this.movieViewer();
+                    super.menu.printMainMenu();
                     break;
                 case 3:
-                    // list top 5 movies
-                    super.dataDriver.listTop5Movies();
-                    break;
-                case 4:
-                    // search movie
-                    String rgx = input.getUsrString("Enter regex or string: ");
-                    super.dataDriver.listMovieFromRegex(rgx);
-                    break;
-                case 5:
-                    // view movie details
-                    String movieID = input.getUsrString("Enter movie ID: ");
-                    Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
-                    if(movie != null){
-                        System.out.println(movie.toString());
-                        System.out.println(super.formatter.Header("Reviews")+"\n");
-                        movie.printReviews();
-                        System.out.println(formatter.Header("Upcoming Show Times")+"\n");
-                        this.dataDriver.listShowtimeFromMovieId(movie.getID());
-                        // need to print all showtimes for this movie too
-                    } else {
-                        System.out.println("Movie not found!");
-                    }
-                    break;
-                case 6:
                     // show upcoming showtimes
                     this.dataDriver.listAllUpcomingShowtimes();
                     break;
-                case 7:
+                case 4:
                     // book ticket
-                    BookingApp book = new BookingApp();
-                    book.bookingApp();
+                    new BookingApp().bookingApp();
                     break;
-                case 8:
+                case 5:
                     // view booking history
-                    historyApp history = new historyApp();
-                    history.viewHistory();
+                    new historyApp().viewHistory();
                     break;
-                case 9:
+                case 6:
                     // write review
                     ((CustomerCSVDriver) super.dataDriver).writeReview();
                     break;
-                case 10:
+                case 7:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -79,8 +81,99 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 10);
+        } while (usrChoice != 7);
 
+    }
+
+
+    private void movieViewer(){
+        if(super.dataDriver.isCustomerRestricted()){
+            this.restrictedMovieViewer();
+        } else {
+            this.unrestrictedMovieViewer();
+        }
+    }
+
+
+    private void unrestrictedMovieViewer(){
+        ((CustomerMenu) super.menu).printUnrestrictedMovieMenu();
+        int usrChoice = 0;
+        do {
+            usrChoice = super.input.getUsrInt("Enter choice: ");
+            switch (usrChoice) {
+                case 1:
+                    // print menu
+                    ((CustomerMenu) super.menu).printUnrestrictedMovieMenu();
+                    break;
+                case 2:
+                    // top 5 by sales
+                    super.dataDriver.listTopMoviesBySales();
+                    break;
+                case 3:
+                    // top 5 by rating
+                    super.dataDriver.listTopMoviesByRating();
+                    break;
+                case 4:
+                    // all movies
+                    super.dataDriver.listAllMovies();
+                    break;
+                case 5:
+                    // search for movie
+                    this.searchMovieRegex();
+                    break;
+                case 6:
+                    // view movie details
+                    this.searchMovieID();
+                    break;
+                case 7:
+                    // back
+                    usrChoice = 7;
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+                    break;
+            }
+        } while (usrChoice !=7);
+    }
+
+
+    private void restrictedMovieViewer(){
+        ((CustomerMenu) super.menu).printRestrictedMovieMenu();
+        int usrChoice = 0;
+        do {
+            usrChoice = super.input.getUsrInt("Enter choice: ");
+            switch (usrChoice) {
+                case 1:
+                    // print menu
+                    ((CustomerMenu) super.menu).printUnrestrictedMovieMenu();
+                    break;
+                case 2:
+                    // top 5 movies by sys config
+                    super.dataDriver.listTop5Movies();
+                    break;
+                case 3:
+                    // all movies
+                    super.dataDriver.listAllMovies();
+                    break;
+                case 4:
+                    // search for movie
+                    this.searchMovieRegex();
+                    break;
+                case 5:
+                    // view movie details
+                    this.searchMovieID();
+                    break;
+                case 6:
+                    // back
+                    usrChoice = 7;
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+                    break;
+            }
+        } while (usrChoice !=6);
     }
 
 }

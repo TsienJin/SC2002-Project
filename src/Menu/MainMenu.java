@@ -11,6 +11,7 @@ public class MainMenu extends Menu {
         ArrayList<String> options = new ArrayList<>();
         options.add("Staff");
         options.add("Customer");
+        options.add("Exit");
 
         menuPrinter("Select user type:", options);
     }

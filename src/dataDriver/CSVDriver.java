@@ -76,7 +76,7 @@ public abstract class CSVDriver{
 
     public void listAllMovies(){
 
-        ArrayList<Movie> moviesArr = this.getSortedMovies();
+        ArrayList<Movie> moviesArr = this.getMovies();
 
         for(Movie movie : moviesArr){
             System.out.println(movie.toString());
@@ -210,6 +210,12 @@ public abstract class CSVDriver{
     public boolean isMovieSortByRating(){
         Properties props = this.fileio.getProps();
         Boolean val = Boolean.parseBoolean(props.getProperty("RANK_BY_RATING"));
+        return val.booleanValue();
+    }
+
+    public boolean isCustomerRestricted(){
+        Properties props = this.fileio.getProps();
+        Boolean val = Boolean.parseBoolean(props.getProperty("CUSTOMER_RESTRICTED_MV_SORT"));
         return val.booleanValue();
     }
 
