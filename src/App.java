@@ -19,8 +19,14 @@ public class App{
      */
     public static void main(String args[]) {
         App myApp = new App();
-        User usr = myApp.determineUsrType();
-        usr.run();
+
+        User usr;
+        do {
+            usr = myApp.determineUsrType();
+            if(usr!=null){
+                usr.run();
+            }
+        } while (usr != null);
     }
 
     
@@ -43,6 +49,11 @@ public class App{
                     break;
                 case 2:
                     usrObj = new Customer();
+                    break;
+                case 3:
+                    // quit
+                    System.out.println("Exiting Application");
+                    usrObj = null;
                     break;
                 default:
                     System.out.println("Invalid input!");
