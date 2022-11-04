@@ -132,44 +132,48 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     this.dataDriver.listAllMovies();
                     break;
                 case 4:
-                    // show top 5 movies
-                    this.dataDriver.listTop5Movies();
+                    // show top 5 movies rating
+                    this.dataDriver.listTopMoviesByRating();
                     break;
                 case 5:
+                    // show top 5 movies sales
+                    this.dataDriver.listTopMoviesBySales();
+                    break;
+                case 6:
                     // update movie listing
                     ((StaffCSVDriver) this.dataDriver).updateMovieListing();
                     break;
-                case 6:
+                case 7:
                     // delete movie listing
                     ((StaffCSVDriver) this.dataDriver).deleteMovieListing();
                     break;
-                case 7:
+                case 8:
                     // create showtime
                     ((StaffCSVDriver) this.dataDriver).createCinemaShowtime();
                     break;
-                case 8:
+                case 9:
                     // show all showtimes;
                     this.dataDriver.listAllShowtimes();
                     break;
-                case 9:
+                case 10:
                     // show all upcoming showtimes;
                     this.dataDriver.listAllUpcomingShowtimes();
                     break;
-                case 10:
+                case 11:
                     // update showtime
                     ((StaffCSVDriver) this.dataDriver).updateCinemaShowtime();
                     break;
-                case 11:
+                case 12:
                     // delete showtime
                     ((StaffCSVDriver) this.dataDriver).deleteCinemaShowtime();
                     break;
-                case 12:
+                case 13:
                     // configure system settings
                     this.configSettings();
                     System.out.println("here!!!");
                     this.menu.printMainMenu();
                     break;
-                case 13:
+                case 14:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -178,7 +182,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
             }
 
-        } while (usrChoice!=13);
+        } while (usrChoice!=14);
     }
 
 
@@ -240,6 +244,16 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                 case 2:
                     // sort by rating
                     ((StaffCSVDriver) this.dataDriver).sortMoviesByRating();
+                    break;
+                case 3:
+                    // unrestrict customer
+                    ((StaffCSVDriver) this.dataDriver).unrestrictCustomerMovieSort();
+                    break;
+                case 4:
+                    // restrict customer
+                    ((StaffCSVDriver) this.dataDriver).restrictCustomerMovieSort();
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Invalid input!");
