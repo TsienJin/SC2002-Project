@@ -132,40 +132,44 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     this.dataDriver.listAllMovies();
                     break;
                 case 4:
+                    // show top 5 movies
+                    this.dataDriver.listTop5Movies();
+                    break;
+                case 5:
                     // update movie listing
                     ((StaffCSVDriver) this.dataDriver).updateMovieListing();
                     break;
-                case 5:
+                case 6:
                     // delete movie listing
                     ((StaffCSVDriver) this.dataDriver).deleteMovieListing();
                     break;
-                case 6:
+                case 7:
                     // create showtime
                     ((StaffCSVDriver) this.dataDriver).createCinemaShowtime();
                     break;
-                case 7:
+                case 8:
                     // show all showtimes;
                     this.dataDriver.listAllShowtimes();
                     break;
-                case 8:
+                case 9:
                     // show all upcoming showtimes;
                     this.dataDriver.listAllUpcomingShowtimes();
                     break;
-                case 9:
+                case 10:
                     // update showtime
                     ((StaffCSVDriver) this.dataDriver).updateCinemaShowtime();
                     break;
-                case 10:
+                case 11:
                     // delete showtime
                     ((StaffCSVDriver) this.dataDriver).deleteCinemaShowtime();
                     break;
-                case 11:
+                case 12:
                     // configure system settings
                     this.configSettings();
                     System.out.println("here!!!");
                     this.menu.printMainMenu();
                     break;
-                case 12:
+                case 13:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -174,7 +178,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
             }
 
-        } while (usrChoice!=12);
+        } while (usrChoice!=13);
     }
 
 

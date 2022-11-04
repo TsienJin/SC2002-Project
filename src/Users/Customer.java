@@ -29,19 +29,15 @@ public class Customer extends User {
                     super.dataDriver.listAllMovies();
                     break;
                 case 3:
-                    // list top 5 movies by sales
-                    super.dataDriver.listTopMoviesBySales();
+                    // list top 5 movies
+                    super.dataDriver.listTop5Movies();
                     break;
                 case 4:
-                    // list top 5 movies by ratings
-                    super.dataDriver.listTopMoviesByRating();
-                    break;
-                case 5:
                     // search movie
                     String rgx = input.getUsrString("Enter regex or string: ");
                     super.dataDriver.listMovieFromRegex(rgx);
                     break;
-                case 6:
+                case 5:
                     // view movie details
                     String movieID = input.getUsrString("Enter movie ID: ");
                     Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
@@ -56,25 +52,25 @@ public class Customer extends User {
                         System.out.println("Movie not found!");
                     }
                     break;
-                case 7:
+                case 6:
                     // show upcoming showtimes
                     this.dataDriver.listAllUpcomingShowtimes();
                     break;
-                case 8:
+                case 7:
                     // book ticket
                     BookingApp book = new BookingApp();
                     book.bookingApp();
                     break;
-                case 9:
+                case 8:
                     // view booking history
                     historyApp history = new historyApp();
                     history.viewHistory();
                     break;
-                case 10:
+                case 9:
                     // write review
                     ((CustomerCSVDriver) super.dataDriver).writeReview();
                     break;
-                case 11:
+                case 10:
                     // quit
                     System.out.println("Goodbye!");
                     break;
@@ -83,7 +79,7 @@ public class Customer extends User {
                     System.out.println("Invalid input! Select option 1 to print menu again.");
                     break;
             }
-        } while (usrChoice != 11);
+        } while (usrChoice != 10);
 
     }
 
