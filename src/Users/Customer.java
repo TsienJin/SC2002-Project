@@ -127,7 +127,6 @@ public class Customer extends User {
                     break;
                 case 7:
                     // back
-                    usrChoice = 7;
                     break;
                 default:
                     System.out.println("Invalid input!");
@@ -166,7 +165,7 @@ public class Customer extends User {
                     break;
                 case 6:
                     // back
-                    usrChoice = 7;
+                    usrChoice = 6;
                     break;
                 default:
                     System.out.println("Invalid input!");
