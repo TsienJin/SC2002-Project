@@ -11,6 +11,7 @@ public class StaffMenu extends Menu {
         options.add("Print this menu");
         options.add("Create Movie Listing");
         options.add("Show all Movie Listing");
+        options.add("Show top 5 Movie Listing");
         options.add("Update Movie Listing");
         options.add("Delete Movie Listing");
         options.add("Create Showtime");
@@ -42,7 +43,7 @@ public class StaffMenu extends Menu {
     public void printMovieRankingMenu(){
         String header = "Movie Ranking Sorting: ";
         ArrayList<String> options = new ArrayList<>();
-        options.add("Sales");
+        options.add("Tickets Sold");
         options.add("Rating");
 
         menuPrinter(header, options);
