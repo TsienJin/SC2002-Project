@@ -16,12 +16,6 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
 
     private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
-    // public Review(String ID,String strReview,int usrRating) {
-    //     this.ID = ID;
-    //     this.strReview = strReview;
-    //     this.usrRating = usrRating;
-    // }
-
     public Review(ReviewBuilder builder){
         this.ID = builder.ID;
         this.movieID = builder.movieID;
@@ -30,6 +24,10 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
         this.usrRating = builder.usrRating;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String toString(){
         return(""+
             printer.SubheaderUnderline(this.username) + nLine +
@@ -38,26 +36,50 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
         );
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getID() {
         return this.ID;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getMovieID(){
         return this.movieID;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getstrReview() {
         return this.strReview;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getUsername(){
         return this.username;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getUsrRating() {
         return this.usrRating;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toCsvString() {
         ArrayList<String> arrCSV = new ArrayList<>();
