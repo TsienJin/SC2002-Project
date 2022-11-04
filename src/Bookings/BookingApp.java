@@ -10,6 +10,7 @@ import UsrInput.UsrInput;
 public class BookingApp {
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
+    private UsrInput input = new UsrInput();
    
 
     //Constructor for BookingApp
@@ -21,14 +22,13 @@ public class BookingApp {
     public int bookingApp(){
 
         BookingMenu book = new BookingMenu();
-        UsrInput sc = new UsrInput();
 
         book.mainBookingPage();
         int choice;
         
 
         do{
-        choice = sc.getUsrInt("Choice: ");
+        choice = this.input.getUsrInt("Choice: ");
         switch(choice){
             case 1:
                 book.printBookingPrice();
@@ -40,11 +40,11 @@ public class BookingApp {
 
                 //Get Mobile Number
                 System.out.println("Please enter your mobile number: ");
-                String mobileNum = sc.getUsrString("Mobile Number: ");
+                String mobileNum = this.input.getUsrString("Mobile Number: ");
 
                 //Get Email Address
                 System.out.println("Please enter your email");
-                String email = sc.getUsrString("Email: ");
+                String email = this.input.getUsrString("Email: ");
                 
 
                  //1. List all the movies for customer to select
@@ -53,15 +53,15 @@ public class BookingApp {
 
                 //2. To select a movie, ask the user to type in the movieID
                 System.out.println("Select showtime of movie: Please type in the movieID");
-                String movieId = sc.getUsrString("Movie id: ");
+                String movieId = this.input.getUsrString("Movie id: ");
 
                 //3. List all the showtime for that movie
                 while(driver.listShowtimeFromRegex(movieId)==false){
                     book.printShowtime();
-                    int choose = sc.getUsrInt("Choice");
+                    int choose = this.input.getUsrInt("Choice");
                     if(choose == 1){
                         System.out.println("Select showtime of movie: Please type in the movieID");
-                        movieId = sc.getUsrString("Movie id: ");
+                        movieId = this.input.getUsrString("Movie id: ");
                     }
                     else{
                         return 0;
@@ -71,8 +71,8 @@ public class BookingApp {
                 String movieTitle = driver.findmovieType(movieId);
 
                 //4. User will then need to select the showtime they want
-                System.out.println("To select showtime of movie for booking: Please type in the showtime ID");
-                String showTimeId = sc.getUsrString("Show time id: ");
+                System.out.println("To select showtime of movie for booking, please type in the showtime ID");
+                String showTimeId = this.input.getUsrString("Show time id: ");
 
                 String csvline = driver.findCinema(showTimeId);
                 CinemaBuilder buildcinema = new CinemaBuilder(csvline);
