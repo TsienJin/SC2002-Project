@@ -123,9 +123,7 @@ public abstract class CSVDriver{
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
         if(found.size()>0){
             found.forEach(line->{
-                ShowtimeBuilder showtiming = new ShowtimeBuilder(line);
-                showtime buildtime = new showtime(showtiming);
-                buildtime.printShowTime();
+                System.out.println(new ShowtimeBuilder(line).build().toString());
             });
             return true;
         }
