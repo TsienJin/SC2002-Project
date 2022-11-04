@@ -1,5 +1,7 @@
 package dataDriver;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import Movie.Movie;
 import Movie.MovieBuilder;
 import Movie.Review;
@@ -33,7 +35,7 @@ public class CustomerCSVDriver extends CSVDriver {
 
         ReviewBuilder newReviewBuilder = new ReviewBuilder();
 
-        newReviewBuilder.setID(usrInput.getUsrString("Enter your ID: "));
+        newReviewBuilder.setID(String.format("%d", ThreadLocalRandom.current().nextInt(1000, 9999 + 1)));
         newReviewBuilder.setMovieId(usrInput.getUsrString("Enter Movie ID: "));
         newReviewBuilder.setUsername(usrInput.getUsrString("Enter your username: "));
         newReviewBuilder.setstrReview(usrInput.getUsrString("Enter your review: "));
