@@ -1,3 +1,10 @@
 TID,movieID,MobileNum,Email,movieName,totalPrice
 G02202211040107,0068646,87661029,keenlim12@gmail.com,The Godfather,34.0
 R01202211040946,mov,94350236,kelim1221@gmail.com,Something over the rainbow,0.0
+R01202211041135,mov,1234,123,Something over the rainbow,0.0
+R01202211041135,mov,123,234,Something over the rainbow,0.0
+G02202211041137,0068646,123,234,The Godfather,18.0
+
+R01202211041157,mov,123,123,Something over the rainbow,0.0
+R01202211041158,mov,123,234,Something over the rainbow,0.0
+R01202211041158,MOV,123,234,Something over the rainbow,16.0

@@ -47,6 +47,7 @@ public class Booking {
 
         switch(cinemaCode){
             case "R":
+                
                 if(age==type[0]){
                     return Regprice[0][0];
                 }
