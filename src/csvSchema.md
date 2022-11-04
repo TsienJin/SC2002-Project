@@ -24,7 +24,7 @@ showtimeID: String
 movieID: String
 cinemaID: String
 time: String
-````
+```
 
 ## review.csv
 
