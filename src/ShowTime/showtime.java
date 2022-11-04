@@ -2,11 +2,11 @@ package ShowTime;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.io.DataOutput;
-import java.text.ParseException;
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+// import java.io.DataOutput;
+// import java.text.ParseException;
+// import java.time.DayOfWeek;
+// import java.time.LocalDateTime;
+// import java.time.format.DateTimeFormatter;
 import java.util.*;
 import Movie.Movie;
 import MovieTheatres.*;
@@ -41,7 +41,9 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return(""+
             printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
             printer.Subheader("Cinema Type: ") + this.cinema.getCinemaCode() + nLine +
-            printer.Subheader("Showtime: ") + this.getFormattedDate() + nLine
+            printer.Subheader("Date: ") + this.getmovieDate() + nLine +
+            printer.Subheader("Day: ") + this.getmovieDay() + nLine +
+            printer.Subheader("Time: ") + this.getmovieTime() + nLine
         );
     }
 
@@ -66,6 +68,36 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return this.bookedSeat;
     }
 
+    public String getmovieDate(){
+        String stringToDate=this.time_date;
+        try{
+            Date date1=new SimpleDateFormat("yyyyMMddHHmm").parse(stringToDate);  
+            SimpleDateFormat findDate = new SimpleDateFormat("dd/MM/yyyy");
+            String date = findDate.format(date1);
+            return date;
+        }
+        catch (java.text.ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getmovieTime(){
+        String stringToDate=this.time_date;
+        try{
+            Date date1=new SimpleDateFormat("yyyyMMddHHmm").parse(stringToDate);  
+            SimpleDateFormat findTime = new SimpleDateFormat("HH:mm");
+            String time = findTime.format(date1);
+            return time;
+        }
+        catch (java.text.ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public String getmovieDay(){
         String stringToDate=this.time_date;
         try{
@@ -85,7 +117,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         this.bookedSeat = bookedSeat;
     }
 
-
+/* 
     public String getFormattedDate(){
         // 0123456789
         // yyyyMMDDhhmm format
@@ -95,7 +127,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
             this.time_date.substring(8, 10)+":"+this.time_date.substring(10, 12)
         );
     }
-
+*/
     /*public String format_date_time(){
         String year = time_date.substring(0,4);
         String month = time_date.substring(4,6);
