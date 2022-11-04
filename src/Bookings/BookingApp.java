@@ -32,11 +32,14 @@ public class BookingApp {
         choice = this.input.getUsrInt("Choice: ");
         switch(choice){
             case 1:
+                book.mainBookingPage();
+                break;
+            case 2:
                 book.printBookingPrice();
                 book.printBookingBPrice();
                 book.printBookingSPrice();
                 break;
-            case 2: //Start Booking
+            case 3: //Start Booking
                 //0. When start booking, customer will need to enter mobile phone and email
 
                 //Get Mobile Number
@@ -71,6 +74,7 @@ public class BookingApp {
                 String showTimeId = this.input.getUsrString("Please Enter Showtime ID: ");
 
                 showtime newShowtime = new ShowtimeBuilder(driver.findShowtime(showTimeId)).build();
+                //System.out.println("Showtime ID: " + newShowtime.getCinema().getHallNumber());
                 System.out.println("Cinema code: " + newShowtime.getCinema().getCinemaCode());
 
                 char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
@@ -133,7 +137,7 @@ public class BookingApp {
                 
                 break;
 
-            case 3:
+            case 4:
                 System.out.println("Exiting......");
                 break;
                 

@@ -137,9 +137,10 @@ public class BookingMenu {
 
     public void mainBookingPage(){
         System.out.println("--Welcome to the Booking App--");
-        System.out.println("1. View Ticket Pricing");
-        System.out.println("2. Start Booking");
-        System.out.println("3. Exit");
+        System.out.println("1. Print this menu");
+        System.out.println("2. View Ticket Pricing");
+        System.out.println("3. Start Booking");
+        System.out.println("4. Exit");
     }
 
 
