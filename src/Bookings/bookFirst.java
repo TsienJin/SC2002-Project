@@ -46,11 +46,29 @@ public class bookFirst {
                     System.out.println("Updating bookseat...");
                     String Id = newCinema.getId();
                     int row_col = (row*10) + col;
-                    String new_seat = newCinema.getBookedSeat() + " " + row_col;
-                    newCinema.setBookedSeat(new_seat);
-                    driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
-                }
-            }while(isitBook == false);
+                    String new_seat;
+                    if(newCinema.getBookedSeat()==""){
+                        if(row==0){
+                            new_seat = newCinema.getBookedSeat() + "0" + row_col;
+                        }
+                        else{
+                            new_seat = newCinema.getBookedSeat() + row_col;
+                        }
+                    }
+                    else{
+                        if(row==0){
+                            new_seat = newCinema.getBookedSeat() + " " + "0" + row_col;
+                        }
+                        else{
+                            new_seat = newCinema.getBookedSeat() + " " + row_col;
+                        }
+                    }
+                newCinema.setBookedSeat(new_seat);
+                driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
+                    
+            }
+            
+        }while(isitBook == false);
             
 
             book.printMenu();
@@ -83,3 +101,4 @@ public class bookFirst {
     }
     
 }
+
