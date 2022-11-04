@@ -1,19 +1,21 @@
 package Bookings;
 import MovieTheatres.*;
+import ShowTime.showtime;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
 import java.util.*;
 import UsrInput.UsrInput;
 
 public class bookRegular {
-    private Cinema newCinema;
+    //private Cinema newCinema;
+    private showtime newShowtime;
     private Regular regularCinema;
     private BookingMenu book;
     private CustomerCSVDriver driver;
     private String movieTitle;
 
-    public bookRegular(Cinema newCinema, Regular regularCinema, BookingMenu book, CustomerCSVDriver driver,String movieTitle){
-        this.newCinema = newCinema;
+    public bookRegular(showtime newShowtime, Regular regularCinema, BookingMenu book, CustomerCSVDriver driver,String movieTitle){
+        this.newShowtime = newShowtime;
         this.regularCinema = regularCinema;
         this.book = book;
         this.driver = driver;
@@ -22,11 +24,10 @@ public class bookRegular {
 
     public double bookingRegular(){
         UsrInput sc = new UsrInput();
-        char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
 
-        System.out.println("How many tickets do you want to purchase?");
-        int numOfTickets = sc.getUsrInt("Number of tickets: ");
+        int numOfTickets = sc.getUsrInt("Number of tickets to purchase: ");
         
         boolean isitBook;
         //while less than numOfTickets, user can select the seat they want
@@ -35,35 +36,33 @@ public class bookRegular {
             System.out.println("Ticket " + i+1);
             System.out.println("Selecting Seat.....");
             do{
-                System.out.println("Please input the row number: ");
-                int row = sc.getUsrInt("Row Number: ");
-                System.out.println("Please input the column number: ");
-                int col = sc.getUsrInt("Column Number: ");
+                int row = sc.getUsrInt("Input Row Number: ");
+                int col = sc.getUsrInt("Input Column Number: ");
                 isitBook = regularCinema.BookSeat(row,col);
                 if(isitBook == true){
                     System.out.println("Updating bookseat...");
-                    String Id = newCinema.getId();
+                    String Id = newShowtime.getCinema().getId();
                     int row_col = (row*10) + col;
                     String new_seat;
-                    if(newCinema.getBookedSeat()==""){
+                    if(newShowtime.getBookedSeat()==""){
                         if(row==0){
-                            new_seat = newCinema.getBookedSeat() + "0" + row_col;
+                            new_seat = newShowtime.getBookedSeat() + "0" + row_col;
                         }
                         else{
-                            new_seat = newCinema.getBookedSeat() + row_col;
+                            new_seat = newShowtime.getBookedSeat() + row_col;
                         }
                     }
                     else{
                         if(row==0){
-                            new_seat = newCinema.getBookedSeat() + " " + "0" + row_col;
+                            new_seat = newShowtime.getBookedSeat() + " " + "0" + row_col;
                         }
                         else{
-                            new_seat = newCinema.getBookedSeat() + " " + row_col;
+                            new_seat = newShowtime.getBookedSeat() + " " + row_col;
                         }
                     }
                     
-                    newCinema.setBookedSeat(new_seat);
-                    driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
+                    newShowtime.setBookedSeat(new_seat);
+                    driver.updateBookedSeats(EnumDataFiles.Showtime.toString(),newShowtime.toCsvString() );
                 }
             }while(isitBook == false);
             
@@ -80,9 +79,9 @@ public class bookRegular {
                 age = "Students";
             }
             //System.out.println("Day: " + newCinema.getmovieDay());
-            String day = newCinema.getmovieDay();
+            String day = newShowtime.getmovieDay();
             //System.out.println("Time: " + newCinema.gettime().substring(4,8));
-            String timing = newCinema.gettime().substring(4,8);
+            String timing = newShowtime.getTime_date().substring(4,8);
             
             
             Booking regularBook = new Booking(timing,sClass,day,age,movieTitle);

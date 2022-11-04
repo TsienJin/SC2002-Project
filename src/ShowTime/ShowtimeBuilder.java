@@ -17,6 +17,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     Movie movie;
     Cinema cinema;
     String time_date;
+    String bookedSeat;
     
     private FileIO fileio = new FileIO();
 
@@ -37,6 +38,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
         this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
         this.cinema = new CinemaBuilder().fromCinemaCode(csvArr.get(2)).build();
         this.time_date = csvArr.get(3);
+        this.bookedSeat = csvArr.get(4);
 
     }
 

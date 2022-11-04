@@ -153,6 +153,12 @@ public abstract class CSVDriver{
         return line;
     }
 
+    public String findShowtime(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(),rgx);
+        String line = found.get(0);
+        return line;
+    }
+
     public String findmovie(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
         String line = found.get(0);

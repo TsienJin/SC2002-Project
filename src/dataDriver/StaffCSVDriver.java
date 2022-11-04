@@ -142,7 +142,8 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         this.inputShowtime(showtimeBuilder);
 
         showtime newShowtime = showtimeBuilder.build();
-
+        // newShowtime.getCinema().setShowtimeID(newShowtime.getCinema().getShowtimeID() + " " + newShowtime.getShowtimeID());
+        // super.fileio.updateKeyInFile(EnumDataFiles.Cinema.toString(), newShowtime.getCinema().toCsvString());
         super.fileio.writeToFile(EnumDataFiles.Showtime.toString(), newShowtime.toCsvString());
         
         System.out.println("Showtime created!");

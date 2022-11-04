@@ -1,5 +1,6 @@
 package Bookings;
 import MovieTheatres.*;
+import ShowTime.showtime;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
 import java.util.*;
@@ -8,15 +9,15 @@ import UsrInput.UsrInput;
 
 public class bookGold {
 
-    private Cinema newCinema;
+    private showtime newShowtime;
     private Gold goldCinema;
     private BookingMenu book;
     private CustomerCSVDriver driver;
     private String movieTitle;
 
     //constructor for bookGold
-    public bookGold(Cinema newCinema,Gold goldCinema,BookingMenu book,CustomerCSVDriver driver,String movieTitle){
-        this.newCinema = newCinema;
+    public bookGold(showtime newShowtime,Gold goldCinema,BookingMenu book,CustomerCSVDriver driver,String movieTitle){
+        this.newShowtime = newShowtime;
         this.goldCinema = goldCinema;
         this.book = book;
         this.driver = driver;
@@ -27,74 +28,71 @@ public class bookGold {
 
     public double bookingGold(){
         UsrInput sc = new UsrInput();
-        char classOfCinema = newCinema.getCinemaCode().charAt(0);
+        char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
 
-        System.out.println("How many tickets do you want to purchase?");
-            int numOfTickets = sc.getUsrInt("Number of tickets: ");
-            
-            boolean isitBook;
-            //while less than numOfTickets, user can select the seat they want
-            double total = 0;
-            for(int i = 0; i<numOfTickets; i++){
-                System.out.println("Ticket " + i+1);
-                System.out.println("Selecting Seat.....");
-                do{
-                    System.out.println("Please input the row number: ");
-                    int row = sc.getUsrInt("Row number: ");
-                    System.out.println("Please input the column number: ");
-                    int col = sc.getUsrInt("Column number: ");
-                    isitBook = goldCinema.BookSeat(row,col);
-                    if(isitBook == true){
-                        System.out.println("Updating bookseat...");
-                        String Id = newCinema.getId();
-                        int row_col = (row*10) + col;
-                        String new_seat;
-                        if(newCinema.getBookedSeat()==""){
-                            if(row==0){
-                                new_seat = newCinema.getBookedSeat() + "0" + row_col;
-                            }
-                            else{
-                                new_seat = newCinema.getBookedSeat() + row_col;
-                            }   
+        int numOfTickets = sc.getUsrInt("Number of tickets to purchase: ");
+
+        boolean isitBook;
+        //while less than numOfTickets, user can select the seat they want
+        double total = 0;
+        for(int i = 0; i<numOfTickets; i++){
+            System.out.println("Ticket " + i+1);
+            System.out.println("Selecting Seat.....");
+            do{
+                int row = sc.getUsrInt("Input Row Number: ");
+                int col = sc.getUsrInt("Input Column Number: ");
+                isitBook = goldCinema.BookSeat(row,col);
+                if(isitBook == true){
+                    System.out.println("Updating bookseat...");
+                    String Id = newShowtime.getCinema().getId();
+                    int row_col = (row*10) + col;
+                    String new_seat;
+                    if(newShowtime.getBookedSeat()==""){
+                        if(row==0){
+                            new_seat = newShowtime.getBookedSeat() + "0" + row_col;
                         }
                         else{
-                            if(row==0){
-                                new_seat = newCinema.getBookedSeat() + " " + "0" + row_col;
-                            }
-                            else{
-                                new_seat = newCinema.getBookedSeat() + " " + row_col;
-                            }
-                        }
-                        
-                        newCinema.setBookedSeat(new_seat);
-                        driver.updateBookedSeats(EnumDataFiles.Cinema.toString(),newCinema.toCsvString() );
+                            new_seat = newShowtime.getBookedSeat() + row_col;
+                        }   
                     }
-                }while(isitBook == false);
-                
+                    else{
+                        if(row==0){
+                            new_seat = newShowtime.getBookedSeat() + " " + "0" + row_col;
+                        }
+                        else{
+                            new_seat = newShowtime.getBookedSeat() + " " + row_col;
+                        }
+                    }
+                    
+                    newShowtime.setBookedSeat(new_seat);
+                    driver.updateBookedSeats(EnumDataFiles.Showtime.toString(),newShowtime.toCsvString() );
+                }
+            }while(isitBook == false);
+            
 
-                book.printMenu();
-                String age = null;
-                int ageChoice = sc.getUsrInt("Choose: ");
-                if(ageChoice == 1){
-                    age = "Adult";
-                }
-                else if(ageChoice == 2){
-                    age = "Senior Citizen";
-                }
-                else if(ageChoice == 3){
-                    age = "Students";
-                }
-                System.out.println("Day: " + newCinema.getmovieDay());
-                String day = newCinema.getmovieDay();
-                System.out.println("Time: " + newCinema.gettime().substring(4,8));
-                String timing = newCinema.gettime().substring(4,8);
-                
-                
-                Booking goldBook = new Booking(timing,sClass,day,age,movieTitle);
-                System.out.println("Movie Title: " + movieTitle);
-                System.out.println("Price of each ticket: " + goldBook.calculatePayment());
-                total = goldBook.calculatePayment() + total;
+            book.printMenu();
+            String age = null;
+            int ageChoice = sc.getUsrInt("Choose: ");
+            if(ageChoice == 1){
+                age = "Adult";
+            }
+            else if(ageChoice == 2){
+                age = "Senior Citizen";
+            }
+            else if(ageChoice == 3){
+                age = "Students";
+            }
+            System.out.println("Day: " + newShowtime.getmovieDay());
+            String day = newShowtime.getmovieDay();
+            System.out.println("Time: " + newShowtime.getTime_date().substring(4,8));
+            String timing = newShowtime.getTime_date().substring(4,8);
+            
+            
+            Booking goldBook = new Booking(timing,sClass,day,age,movieTitle);
+            System.out.println("Movie Title: " + movieTitle);
+            System.out.println("Price of each ticket: " + goldBook.calculatePayment());
+            total = goldBook.calculatePayment() + total;
 
             }
 
