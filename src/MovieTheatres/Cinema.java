@@ -93,7 +93,9 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     public void setBookedSeat(String bookedSeat){
         this.bookedSeat = bookedSeat;
     }
-
+    public void setShowtimeID(String showTimeId){
+        this.showTimeId = showTimeId;
+    }
 
     //abstract methods - no method implementation
     //Implementation of all the abstract class
