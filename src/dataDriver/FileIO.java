@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -173,6 +174,36 @@ public class FileIO {
         return count;
     }
 
+    public double countSales(String fileName, String ID){
+        return this.countSales(fileName, ID, 1);
+    }
+
+
+
+    public double countSales(String fileName, String ID, int index){
+        double totalSales = 0;
+        
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(this.relativeFileDir+fileName));
+            // iterates over lines until null
+            reader.readLine(); // gets rid of header line
+            String curLine = reader.readLine();
+            while(curLine != null){
+                if(isSameID(curLine, ID, index)){
+                    ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(curLine.split(",")));
+                    totalSales += Double.parseDouble(csvArr.get(5));
+                }
+
+                curLine = reader.readLine();
+                
+            }
+            reader.close();
+        } catch (IOException e){
+            // e.printStackTrace();
+        }
+
+        return totalSales;
+    }
     
 
     /** Finds the latest entry that matches given id

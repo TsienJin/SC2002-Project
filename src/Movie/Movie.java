@@ -18,6 +18,7 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
     // private Double overallRating;
     // private ArrayList<Review> pastReviews;
     private int totalTicketSales;
+    private double totalAmountSold;
     private ReviewContainer reviews;
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
@@ -35,6 +36,7 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         // this.overallRating = builder.overallRating;
         // this.pastReviews = builder.pastReviews;
         this.totalTicketSales = builder.totalTicketSales;
+        this.totalAmountSold = builder.totalAmountSold;
         this.reviews = builder.reviews;
     }
 
@@ -46,10 +48,11 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
             formatter.Subheader("Director: ") + this.director + nLine +
             formatter.Subheader("Cast: ") + formatter.ArrayToCSV(this.cast) + nLine + nLine +
             formatter.SubheaderUnderline("Synopsis") + nLine +
-            formatter.Body(this.synopsis) + nLine + nLine +
+            formatter.Body(this.synopsis.replace("&", ",")) + nLine + nLine +
             formatter.SubheaderUnderline("Movie stats") + nLine +
             formatter.Subheader("Rating: ") + String.format("%.2f / 5", this.reviews.getRating()) + nLine +
-            formatter.Subheader("Ticket Sales: ") + String.format("%d", this.totalTicketSales) + nLine
+            formatter.Subheader("Ticket Sales: ") + String.format("%d", this.totalTicketSales) + nLine +
+            formatter.Subheader("Total Amount Sold: $") + String.format("%.2f", this.totalAmountSold) + nLine
         );
     }
 
