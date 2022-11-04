@@ -1,6 +1,10 @@
 package ShowTime;
 
+import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.io.DataOutput;
+import java.text.ParseException;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -18,6 +22,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     private Movie movie;
     private Cinema cinema;
     private String time_date; //In yyyyMMDDhhmm format
+    private String bookedSeat;
 
     private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
@@ -28,6 +33,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         this.movie = builder.movie;
         this.cinema = builder.cinema;
         this.time_date = builder.time_date;
+        this.bookedSeat = builder.bookedSeat;
     }
 
 
@@ -53,8 +59,32 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     }
 
     public String getTime_date(){
-        return time_date;
+        return this.time_date;
     }
+
+    public String getBookedSeat(){
+        return this.bookedSeat;
+    }
+
+    public String getmovieDay(){
+        String stringToDate=this.time_date;
+        try{
+            Date date1=new SimpleDateFormat("yyyyMMddHHmm").parse(stringToDate);  
+            SimpleDateFormat findDayOfWeek = new SimpleDateFormat("EEEE");
+            String dayOfWeek = findDayOfWeek.format(date1);
+            return dayOfWeek;
+        }
+        catch (java.text.ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void setBookedSeat(String bookedSeat){
+        this.bookedSeat = bookedSeat;
+    }
+
 
     public String getFormattedDate(){
         // 0123456789
@@ -83,6 +113,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         arrCSV.add(this.movie.getID());
         arrCSV.add(this.cinema.getCinemaCode());
         arrCSV.add(this.time_date);
+        arrCSV.add(this.bookedSeat);
 
         return String.join(mainDelimiter, arrCSV);
     }

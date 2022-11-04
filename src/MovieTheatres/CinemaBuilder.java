@@ -12,10 +12,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
     String id;
     int hallNumber;
     String cinemaCode;
-    String bookedSeat;
-    String showTimeId;
-    String time;
-    String movieDay;
 
     private FileIO fileio = new FileIO();
 
@@ -35,10 +31,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
         this.id = csvArr.get(0);
         this.hallNumber = Integer.parseInt(csvArr.get(1));
         this.cinemaCode = csvArr.get(2);
-        this.bookedSeat = csvArr.get(3);
-        this.showTimeId = csvArr.get(4);
-        this.time = csvArr.get(5);
-        this.movieDay = csvArr.get(6);
     }
 
     public CinemaBuilder fromCinemaID(String id){
@@ -73,23 +65,6 @@ public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDeli
 
     public CinemaBuilder setCinemaCode(String cinemaCode){
         this.cinemaCode = cinemaCode;
-        return this;
-    }
-
-    public CinemaBuilder setBookedSeat(String bookedSeat){
-        this.bookedSeat = bookedSeat;
-        return this;
-    }
-    public CinemaBuilder setShowTimeId(String showTimeId){
-        this.showTimeId = showTimeId;
-        return this;
-    }
-    public CinemaBuilder setTime(String time){
-        this.time = time;
-        return this;
-    }
-    public CinemaBuilder setMovieDay(String movieDay){
-        this.movieDay = movieDay;
         return this;
     }
 

@@ -8,20 +8,11 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     private String id;
     private int hallNumber;
     private String cinemaCode;
-    private String bookedSeat;
-    private String showTimeId;
-    private String time;
-    private String movieDay;
-
 
     public Cinema(CinemaBuilder builder){
         this.id = builder.id;
         this.hallNumber = builder.hallNumber;
         this.cinemaCode = builder.cinemaCode;
-        this.bookedSeat = builder.bookedSeat;
-        this.showTimeId = builder.showTimeId;
-        this.time = builder.time;
-        this.movieDay = builder.movieDay;
     }
 
 
@@ -33,10 +24,6 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
         arrCSV.add(this.id);
         arrCSV.add(String.valueOf(this.hallNumber));
         arrCSV.add(this.cinemaCode);
-        arrCSV.add(this.bookedSeat);
-        arrCSV.add(this.showTimeId);
-        arrCSV.add(this.time);
-        arrCSV.add(this.movieDay);
 
         return String.join(mainDelimiter, arrCSV);
     }
@@ -50,18 +37,6 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     }
     public String getCinemaCode(){
         return this.cinemaCode;
-    }
-    public String getBookedSeat(){
-        return this.bookedSeat;
-    }
-    public String getShowtimeID(){
-        return this.showTimeId;
-    }
-    public String gettime(){
-        return this.time;
-    }
-    public String getmovieDay(){
-        return this.movieDay;
     }
     public String getCinemaclass(){
         char firstchar = this.cinemaCode.charAt(0);
@@ -89,12 +64,6 @@ public class Cinema implements InterfaceCsvDelimiter,InterfaceToCsvStringHelper{
     }
     public void setCinemaCode(String cinemaCode){
         this.cinemaCode = cinemaCode;
-    }
-    public void setBookedSeat(String bookedSeat){
-        this.bookedSeat = bookedSeat;
-    }
-    public void setShowtimeID(String showTimeId){
-        this.showTimeId = showTimeId;
     }
 
     //abstract methods - no method implementation

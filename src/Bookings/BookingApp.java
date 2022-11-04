@@ -1,10 +1,11 @@
 package Bookings;
 
-import java.util.Scanner;
 import Menu.CustomerMenu;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
 import MovieTheatres.*;
+import ShowTime.ShowtimeBuilder;
+import ShowTime.showtime;
 import UsrInput.UsrInput;
 
 public class BookingApp {
@@ -39,12 +40,10 @@ public class BookingApp {
                 //0. When start booking, customer will need to enter mobile phone and email
 
                 //Get Mobile Number
-                System.out.println("Please enter your mobile number: ");
-                String mobileNum = this.input.getUsrString("Mobile Number: ");
+                String mobileNum = this.input.getUsrString("Please enter your Mobile Number: ");
 
                 //Get Email Address
-                System.out.println("Please enter your email");
-                String email = this.input.getUsrString("Email: ");
+                String email = this.input.getUsrString("Please Enter your Email: ");
                 
 
                  //1. List all the movies for customer to select
@@ -52,16 +51,14 @@ public class BookingApp {
                 driver.listAllMovies();
 
                 //2. To select a movie, ask the user to type in the movieID
-                System.out.println("Select showtime of movie: Please type in the movieID");
-                String movieId = this.input.getUsrString("Movie id: ");
+                String movieId = this.input.getUsrString("Please Enter Movie ID: ");
 
                 //3. List all the showtime for that movie
                 while(driver.listShowtimeFromRegex(movieId)==false){
                     book.printShowtime();
                     int choose = this.input.getUsrInt("Choice");
                     if(choose == 1){
-                        System.out.println("Select showtime of movie: Please type in the movieID");
-                        movieId = this.input.getUsrString("Movie id: ");
+                        movieId = this.input.getUsrString("Please Enter Movie ID: ");
                     }
                     else{
                         return 0;
@@ -71,57 +68,54 @@ public class BookingApp {
                 String movieTitle = driver.findmovieType(movieId);
 
                 //4. User will then need to select the showtime they want
-                System.out.println("To select showtime of movie for booking, please type in the showtime ID");
-                String showTimeId = this.input.getUsrString("Show time id: ");
+                String showTimeId = this.input.getUsrString("Please Enter Showtime ID: ");
 
-                String csvline = driver.findCinema(showTimeId);
-                CinemaBuilder buildcinema = new CinemaBuilder(csvline);
-                Cinema newCinema = new Cinema(buildcinema);
-                System.out.println("Cinema code: " + newCinema.getCinemaCode());
+                showtime newShowtime = new ShowtimeBuilder(driver.findShowtime(showTimeId)).build();
+                System.out.println("Cinema code: " + newShowtime.getCinema().getCinemaCode());
 
-                char classOfCinema = newCinema.getCinemaCode().charAt(0);
+                char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
                 //System.out.println("Class of cinema: " + classOfCinema);
 
 
                 double totalPrice = 0;
                 if(Character.compare(classOfCinema,'R')==0){
                     System.out.println("Type of Cinema: Regular");
-                    Regular regularCinema = new Regular(newCinema.getBookedSeat());
+                    Regular regularCinema = new Regular(newShowtime.getBookedSeat());
                     regularCinema.initialLayout();
                     regularCinema.showLayout();
 
-                    bookRegular regular = new bookRegular(newCinema,regularCinema,book,driver,movieTitle);
+                    bookRegular regular = new bookRegular(newShowtime,regularCinema,book,driver,movieTitle);
                     totalPrice = regular.bookingRegular();
 
                 }
 
                 else if(Character.compare(classOfCinema,'F')==0){
                     System.out.println("Type of Cinema: First");
-                    First firstCinema = new First(newCinema.getBookedSeat());
+                    First firstCinema = new First(newShowtime.getBookedSeat());
                     firstCinema.initialLayout();
                     firstCinema.showLayout();
 
 
-                    bookFirst first = new bookFirst(newCinema,firstCinema,book,driver,movieTitle);
+                    bookFirst first = new bookFirst(newShowtime,firstCinema,book,driver,movieTitle);
                     totalPrice = first.bookingFirst();
 
                 }
         
                 else if(Character.compare(classOfCinema,'G')==0){
                     System.out.println("Type of Cinema: Gold");
-                    Gold goldCinema = new Gold(newCinema.getBookedSeat());
+                    Gold goldCinema = new Gold(newShowtime.getBookedSeat());
                     goldCinema.initialLayout();
                     goldCinema.showLayout();
 
 
-                    bookGold golden = new bookGold(newCinema,goldCinema,book,driver,movieTitle);
+                    bookGold golden = new bookGold(newShowtime,goldCinema,book,driver,movieTitle);
                     totalPrice = golden.bookingGold();
 
 
                 }
 
                 
-                TransactionID transact = new TransactionID(newCinema.getCinemaCode());
+                TransactionID transact = new TransactionID(newShowtime.getCinema().getCinemaCode());
                 String Tid = transact.TID();
                 System.out.println("Transaction ID : " + Tid);
 
