@@ -183,4 +183,16 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         props.setProperty("RANK_BY_RATING", "false");
         this.fileio.setProps(props);
     }
+
+    public void restrictCustomerMovieSort(){
+        Properties props = this.fileio.getProps();
+        props.setProperty("CUSTOMER_RESTRICTED_MV_SORT", "true");
+        this.fileio.setProps(props);
+    }
+
+    public void unrestrictCustomerMovieSort(){
+        Properties props = this.fileio.getProps();
+        props.setProperty("CUSTOMER_RESTRICTED_MV_SORT", "false");
+        this.fileio.setProps(props);
+    }
 }
