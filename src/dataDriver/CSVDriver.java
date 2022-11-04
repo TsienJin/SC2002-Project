@@ -26,6 +26,21 @@ public abstract class CSVDriver{
 
         return allMovies;
     }
+    
+    private ArrayList<Movie> getSortedMovies(){
+        InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
+        ArrayList<Movie> moviesArr = new ArrayList<>();
+
+
+        if(this.isMovieSortByRating() && sorter.size()>0){
+            moviesArr = sorter.sortByRating();
+        } else if (!this.isMovieSortByRating() && sorter.size()>0){
+            moviesArr = sorter.sortBySales();
+        }
+
+        return moviesArr;
+
+    }
 
     
     public void listTopMoviesBySales(){
@@ -48,17 +63,20 @@ public abstract class CSVDriver{
         }
     }
 
+
+    public void listTop5Movies(){
+        ArrayList<Movie> movieArr = this.getSortedMovies();
+
+        for(int i=0; i<Math.min(5, movieArr.size()); i++){
+            System.out.println(movieArr.get(i).toString());
+        }
+    }
+
+
+
     public void listAllMovies(){
 
-        InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
-        ArrayList<Movie> moviesArr = new ArrayList<>();
-
-
-        if(this.isMovieSortByRating() && sorter.size()>0){
-            moviesArr = sorter.sortByRating();
-        } else if (!this.isMovieSortByRating() && sorter.size()>0){
-            moviesArr = sorter.sortBySales();
-        }
+        ArrayList<Movie> moviesArr = this.getSortedMovies();
 
         for(Movie movie : moviesArr){
             System.out.println(movie.toString());
