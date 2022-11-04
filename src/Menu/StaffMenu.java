@@ -21,7 +21,7 @@ public class StaffMenu extends Menu {
         options.add("Update Showtime");
         options.add("Delete Showtime");
         options.add("Configure System Settings");
-        options.add("Quit");
+        options.add("Logout");
 
         menuPrinter(header, options);
     }
