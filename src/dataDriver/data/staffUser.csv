@@ -1,6 +1,4 @@
 id,name,password
 admin,Admin,password
 admin2,backupAdmin,password2
-username,idadmin,password
-adminExample,adminExample,adminExample
-zySecretPassword,zy,zySecretPassword
+CEOAccount,master1965,P@ssw0rd!
