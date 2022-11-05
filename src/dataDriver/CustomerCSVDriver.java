@@ -9,7 +9,17 @@ import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
 
 public class CustomerCSVDriver extends CSVDriver {
+    private UsrInput usrInput = new UsrInput();
 
+    public ReviewBuilder inputReviewDetails(ReviewBuilder inputReview) {
+        inputReview.setID(String.format("%d", ThreadLocalRandom.current().nextInt(1000, 9999 + 1)));
+        inputReview.setMovieId(usrInput.getUsrString("Enter Movie ID: "));
+        inputReview.setUsername(usrInput.getUsrString("Enter your username: "));
+        inputReview.setstrReview(usrInput.getUsrString("Enter your review: "));
+        inputReview.setuserRating(usrInput.getUsrInt("Enter Rating, 0-5: "));
+
+        return inputReview;
+    }
     // METHOD to get movie
     public Movie getMovie(String id){
         try{
@@ -26,30 +36,9 @@ public class CustomerCSVDriver extends CSVDriver {
        
     }
 
-    public void getBookingHistory(){
-
-    }
-
     public void writeReview(){
-        UsrInput usrInput = new UsrInput();
-
-        ReviewBuilder newReviewBuilder = new ReviewBuilder();
-
-        newReviewBuilder.setID(String.format("%d", ThreadLocalRandom.current().nextInt(1000, 9999 + 1)));
-        newReviewBuilder.setMovieId(usrInput.getUsrString("Enter Movie ID: "));
-        newReviewBuilder.setUsername(usrInput.getUsrString("Enter your username: "));
-        newReviewBuilder.setstrReview(usrInput.getUsrString("Enter your review: "));
-        newReviewBuilder.setuserRating(usrInput.getUsrInt("Enter Rating, 0-5: "));
-        
-        Review newReview = new Review(newReviewBuilder);
-
+        Review newReview = this.inputReviewDetails(new ReviewBuilder()).build();
         super.fileio.writeToFile(EnumDataFiles.Review.toString(), newReview.toCsvString());
-
         System.out.printf("Review added.\n");
-    }
-
-    public void bookSeat(){
-        
-    }
-  
+    }  
 }
