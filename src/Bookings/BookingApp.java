@@ -20,6 +20,11 @@ public class BookingApp {
     }
 
 
+    /**
+     *
+     * @return
+     */
+
     public int bookingApp(){
 
         BookingMenu book = new BookingMenu();

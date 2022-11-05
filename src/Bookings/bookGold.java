@@ -16,6 +16,15 @@ public class bookGold {
     private String movieTitle;
 
     //constructor for bookGold
+
+    /**
+     *
+     * @param newShowtime
+     * @param goldCinema
+     * @param book
+     * @param driver
+     * @param movieTitle
+     */
     public bookGold(showtime newShowtime,Gold goldCinema,BookingMenu book,CustomerCSVDriver driver,String movieTitle){
         this.newShowtime = newShowtime;
         this.goldCinema = goldCinema;
@@ -25,7 +34,10 @@ public class bookGold {
     }
 
 
-
+    /**
+     *
+     * @return
+     */
     public double bookingGold(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);

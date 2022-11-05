@@ -23,6 +23,11 @@ public class bookFirst {
 
     }
 
+    /**
+     *
+     * @return
+     */
+
     public double bookingFirst(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);

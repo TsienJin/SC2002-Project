@@ -15,6 +15,10 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
+    /**
+     *
+     * @param builder
+     */
     public bookingHistory(bookingHistoryBuilder builder){
         this.TID = builder.TID;
         this.movieID = builder.movieID;
@@ -24,6 +28,10 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
         this.totalPrice = builder.totalPrice;
     }
 
+    /**
+     *
+     * @return
+     */
     public String toString(){
         return("" + formatter.Header(this.MobileNum + tab + this.Email) + nLine +
                     formatter.Subheader("Transaction ID: ") + this.TID + nLine +
@@ -35,6 +43,10 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
               
     }
 
+    /**
+     *
+     * @return
+     */
     public String toCsvString(){
         ArrayList<String> arrCSV = new ArrayList<>();
 
@@ -48,27 +60,66 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
         return String.join(mainDelimiter,arrCSV);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTID(){
         return this.TID;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getmovieID(){
         return this.movieID;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getMobileNum(){
         return this.MobileNum;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getEmail(){
         return this.Email;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getMoiveName(){
         return this.movieName;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getTransactTime(){
         return this.TID.substring(11,13) + " : " + this.TID.substring(13);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getTransactDate(){
         return this.TID.substring(9,11) + " - " + this.TID.substring(7,9) + " - " + this.TID.substring(3,8);
     }
+
+    /**
+     *
+     * @return
+     */
     public String gettotalPrice(){
         return this.totalPrice;
     }

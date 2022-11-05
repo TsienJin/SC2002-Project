@@ -14,6 +14,14 @@ public class bookRegular {
     private CustomerCSVDriver driver;
     private String movieTitle;
 
+    /**
+     *
+     * @param newShowtime
+     * @param regularCinema
+     * @param book
+     * @param driver
+     * @param movieTitle
+     */
     public bookRegular(showtime newShowtime, Regular regularCinema, BookingMenu book, CustomerCSVDriver driver,String movieTitle){
         this.newShowtime = newShowtime;
         this.regularCinema = regularCinema;
@@ -22,6 +30,10 @@ public class bookRegular {
         this.movieTitle = movieTitle;
     }
 
+    /**
+     *
+     * @return
+     */
     public double bookingRegular(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);

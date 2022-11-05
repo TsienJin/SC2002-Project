@@ -32,7 +32,16 @@ public class Booking {
 
 
     //Booking constructor
-    public Booking(String movieTiming,String cinemaCode,String movieDay, String age,String movieType){
+
+    /**
+     *
+     * @param movieTiming
+     * @param cinemaCode
+     * @param movieDay
+     * @param age
+     * @param movieType
+     */
+      public Booking(String movieTiming,String cinemaCode,String movieDay, String age,String movieType){
         this.movieTiming = movieTiming;
         this.cinemaCode = cinemaCode;
         this.movieDay = movieDay;
@@ -41,7 +50,10 @@ public class Booking {
     }
 
 
-
+    /**
+     *
+     * @return
+     */
     public double calculatePayment(){
         if(movieType.equals("Indie") || movieType.equals("Undefined")){
 

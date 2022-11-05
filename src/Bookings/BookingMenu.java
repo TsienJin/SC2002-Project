@@ -26,11 +26,17 @@ public class BookingMenu {
         {20,22,24}
     };
 
+    /**
+     *
+     */
     public void printShowtime(){
         System.out.println("1. Enter showtime again");
         System.out.println("2. Exit");
     }
 
+    /**
+     *
+     */
     public void printMenu(){
         System.out.println("Select ticket type:");
         System.out.println("1. Adult");
@@ -39,6 +45,9 @@ public class BookingMenu {
         System.out.println("\n");
     }
 
+    /**
+     *
+     */
     public void printBookingPrice(){
         System.out.println("Regular Movie Ticket Price");
         System.out.println("----------------------------------------------");
@@ -69,6 +78,9 @@ public class BookingMenu {
 
     }
 
+    /**
+     *
+     */
     public void printBookingBPrice(){
         System.out.println("BlockBuster Movie Ticket Price");
         System.out.println("----------------------------------------------");
@@ -99,6 +111,9 @@ public class BookingMenu {
 
     }
 
+    /**
+     *
+     */
     public void printBookingSPrice(){
         System.out.println("3D & IMax Movie Ticket Price");
         System.out.println("----------------------------------------------");
@@ -129,12 +144,18 @@ public class BookingMenu {
 
     }
 
+    /**
+     *
+     */
     public void printConfirm(){
         System.out.println("Select to confirm:");
         System.out.println("1. Confirm");
         System.out.println("2. Exit");
     }
 
+    /**
+     *
+     */
     public void mainBookingPage(){
         System.out.println("--Welcome to the Booking App--");
         System.out.println("1. Print this menu");

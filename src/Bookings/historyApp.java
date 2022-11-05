@@ -4,6 +4,9 @@ import dataDriver.CustomerCSVDriver;
 
 public class historyApp {
 
+    /**
+     *
+     */
     public void viewHistory(){
         System.out.println("View Booking History: ");
         System.out.println("1. Search by Mobile Number");

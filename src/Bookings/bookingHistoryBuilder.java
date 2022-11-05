@@ -24,10 +24,18 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
 
     public bookingHistoryBuilder(){}
 
+    /**
+     *
+     * @param csvString
+     */
     public bookingHistoryBuilder(String csvString){
         this.updateFromCSVString(csvString);
     }
 
+    /**
+     *
+     * @param csvString
+     */
     private void updateFromCSVString(String csvString){
         ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(csvString.split(mainDelimiter)));
 
@@ -39,35 +47,71 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
         this.totalPrice = csvArr.get(5);
     }
 
+    /**
+     *
+     * @param TID
+     * @return
+     */
     public bookingHistoryBuilder setTID(String TID){
         this.TID = TID;
         return this;
     }
 
+    /**
+     *
+     * @param movieID
+     * @return
+     */
     public bookingHistoryBuilder setmovieID(String movieID){
         this.movieID = movieID;
         return this;
     }
 
+    /**
+     *
+     * @param MobileNum
+     * @return
+     */
     public bookingHistoryBuilder setMobileNum(String MobileNum){
         this.MobileNum = MobileNum;
         return this;
     }
 
+    /**
+     *
+     * @param Email
+     * @return
+     */
     public bookingHistoryBuilder setEmail(String Email){
         this.Email = Email;
         return this;
     }
+
+    /**
+     *
+     * @param movieName
+     * @return
+     */
     public bookingHistoryBuilder setmovieName(String movieName){
         this.movieName = movieName;
         return this;
     }
+
+    /**
+     *
+     * @param totalPrice
+     * @return
+     */
     public bookingHistoryBuilder settotalPrice(String totalPrice){
         this.totalPrice = totalPrice;
         return this;
     }
 
 
+    /**
+     *
+     * @return
+     */
     @Override
     public bookingHistory build(){
         return new bookingHistory(this);
