@@ -48,12 +48,30 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     //For createCinemaShowtime() function
     public void inputShowtime(ShowtimeBuilder inputShowtime){
         UsrInput usrInput = new UsrInput();
-        inputShowtime.setShowtimeID(usrInput.getUsrString("Enter Showtime ID: "));
+        String showTime = usrInput.getUsrString("Enter Showtime ID: ");
+        while(this.findShowtimefromregex(showTime) == true){
+            System.out.println("Showtime ID is already taken");
+            showTime = usrInput.getUsrString("Please enter Showtime ID again: ");
+        }
+        inputShowtime.setShowtimeID(showTime);
         inputShowtime.setMovie(usrInput.getUsrString("Enter Movie ID: "));
         inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema Code: "));
         inputShowtime.setTimeDate(usrInput.getUsrString("Enter Time Date: "));
         
     }
+
+    //Find if showtime is already avaiable
+    public boolean findShowtimefromregex(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
+        if(found.size()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    } 
+
+
 
     public boolean authenticate(String usrName, String usrPwd) {
 
