@@ -55,9 +55,9 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
         inputShowtime.setShowtimeID(showTime);
         inputShowtime.setMovie(usrInput.getUsrString("Enter Movie ID: "));
-        inputShowtime.setCinema(usrInput.getUsrString("Enter Cinema Code: "));
+        String cinemaCode = usrInput.getUsrString("Enter Cinema Code: ");
+        inputShowtime.setCinema(cinemaCode);
         inputShowtime.setTimeDate(usrInput.getUsrString("Enter Time Date: "));
-        
     }
 
     //Find if showtime is already avaiable

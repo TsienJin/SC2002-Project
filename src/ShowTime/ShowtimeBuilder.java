@@ -10,9 +10,10 @@ import MovieTheatres.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsvDelimiter {
     FileIO showtimeFileio = new FileIO();
-
+    
     String showtimeID;
     Movie movie;
     Cinema cinema;
@@ -43,17 +44,6 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     }
 
-    /*public ShowtimeBuilder setMovie(Movie movie){
-        this.movie = movie;
-        //this.movie = new MovieBuilder().fromMovieID(csvArr.get(1)).build();
-        //this.cinema = new CinemaBuilder().fromCinemaID(csvArr.get(2)).build();
-        this.movieId = csvArr.get(1);
-        this.cinemaId = csvArr.get(2);
-        this.showtimeID = csvArr.get(0);
-        this.time_date = csvArr.get(3);
-
-    }*/
-
     public ShowtimeBuilder fromShowtimeID(String showtimeID){
         try {
             String csvString = fileio.findMatchFromFile(EnumDataFiles.Showtime.toString(), showtimeID);
@@ -82,6 +72,19 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
     public ShowtimeBuilder setTimeDate(String time_date){
         this.time_date = time_date;
         return this;
+    }
+
+    public String getCinemaClass(String cinemaCode){
+        if(Character.compare(cinemaCode.charAt(0),'R')==0){
+            return "Regular";
+        }
+        else if(Character.compare(cinemaCode.charAt(0),'F')==0){
+            return "First";
+        }
+        else if(Character.compare(cinemaCode.charAt(0),'G')==0){
+            return "Gold";
+        }
+        return null;
     }
 
     @Override
