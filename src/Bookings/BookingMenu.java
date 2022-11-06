@@ -7,7 +7,10 @@ public class BookingMenu {
             {10,12,14},
             {12,14,16},
             {14,16,18},
-            {16,18,20}
+            {16,18,20},
+            {30,35,40},
+            {25,30,35},
+            {40,45,50}
     };
 
     private double[][] Bprice = {
@@ -15,7 +18,10 @@ public class BookingMenu {
         {12,14,16},
         {14,16,18},
         {16,18,20},
-        {18,20,22}
+        {18,20,22},
+        {30,35,40},
+        {25,30,35},
+        {40,45,50}
     };
 
     private double[][] Sprice = {
@@ -23,7 +29,10 @@ public class BookingMenu {
         {14,16,18},
         {16,18,20},
         {18,20,22},
-        {20,22,24}
+        {20,22,24},
+        {30,35,40},
+        {25,30,35},
+        {40,45,50}
     };
 
     /**
@@ -52,7 +61,7 @@ public class BookingMenu {
         System.out.println("Regular Movie Ticket Price");
         System.out.println("----------------------------------------------");
         System.out.println("                    Regular   First     Gold");
-        for(int i = 0;i<5;i++){
+        for(int i = 0;i<8;i++){
             if(i==0){
                 System.out.print(type[i]+"     |");
             }
@@ -67,6 +76,15 @@ public class BookingMenu {
             }
             if(i==4){
                 System.out.print(type[i]+"            |");
+            }
+            if(i==5){
+                System.out.print("Ultimate Seats     |");
+            }
+            if(i==6){
+                System.out.print("Elite Seats        |");
+            }
+            if(i==7){
+                System.out.print("Platinum Seats     |");
             }
 
             for(int j = 0; j<3; j++){
@@ -101,6 +119,15 @@ public class BookingMenu {
             if(i==4){
                 System.out.print(type[i]+"            |");
             }
+            if(i==5){
+                System.out.print("Ultimate Seats     |");
+            }
+            if(i==6){
+                System.out.print("Elite Seats        |");
+            }
+            if(i==7){
+                System.out.print("Platinum Seats     |");
+            }
 
             for(int j = 0; j<3; j++){
                 System.out.print(Bprice[i][j] + "      ");
@@ -133,6 +160,15 @@ public class BookingMenu {
             }
             if(i==4){
                 System.out.print(type[i]+"            |");
+            }
+            if(i==5){
+                System.out.print("Ultimate Seats     |");
+            }
+            if(i==6){
+                System.out.print("Elite Seats        |");
+            }
+            if(i==7){
+                System.out.print("Platinum Seats     |");
             }
 
             for(int j = 0; j<3; j++){

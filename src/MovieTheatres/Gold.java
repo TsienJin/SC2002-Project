@@ -7,14 +7,20 @@ public class Gold extends Theatre{
     private int Empty = size*size;
     private int[][] layout = new int[size][size];
 
+    
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED_BACKGROUND= "\u001B[41m";
+    private static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    private static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+
     //Constructor for regular class
     public Gold(String bookedSeat){
-        super(bookedSeat);
+        
         //Call the superclass's (Cinema) constructor
         //Initialisation of regular cinema array
         //So if the integer is 0 means the spot is not being booked yet (available)
         //Else if integer increments to 1, means the spot is being booked (not available)
-        //this.bookedSeat = bookedSeat;
+        this.bookedSeat = bookedSeat;
 
         for(int i = 0; i<size ;i++){
             for(int j = 0; j<size ; j++){
@@ -23,7 +29,7 @@ public class Gold extends Theatre{
         }
     }
 
-    /*public void initialLayout(){
+    public void initialLayout(){
         if(this.bookedSeat.equals("null")){
             for(int i = 0; i<size ;i++){
                 for(int j = 0; j<size ; j++){
@@ -51,7 +57,7 @@ public class Gold extends Theatre{
             }
             System.out.println("\n");
         }
-    }*/
+    }
 
     //Implementation of all the abstract class
 
@@ -65,26 +71,102 @@ public class Gold extends Theatre{
                 System.out.println("     0 1 2   ||    3 4 5");
             }
             for(int j = 0; j<size; j++){
-                
-                if(j==2){
-                    if(layout[i][j]==0){
-                        System.out.print("O   ||    "); //Seat is available
+
+                if(i==3){
+                    if(j==2){
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_PURPLE_BACKGROUND + "O   ||    " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_PURPLE_BACKGROUND + "X   ||    " + ANSI_RESET); //Seat is not available
+                        }
                     }
-                    else if(layout[i][j]==1) {
-                        System.out.print("X   ||    "); //Seat is not available
+                    else{
+                        if(j==0){
+                            System.out.print(ANSI_PURPLE_BACKGROUND + i + "    " + ANSI_RESET);
+                        }
+                        
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_PURPLE_BACKGROUND + "O " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_PURPLE_BACKGROUND + "X " + ANSI_RESET); //Seat is not available
+                        }
+                    }
+
+                } 
+
+                else if(i==4){
+                    if(j==2){
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_BLUE_BACKGROUND + "O   ||    " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_BLUE_BACKGROUND + "X   ||    " + ANSI_RESET); //Seat is not available
+                        }
+                    }
+                    else{
+                        if(j==0){
+                            System.out.print(ANSI_BLUE_BACKGROUND + i + "    " + ANSI_RESET);
+                        }
+                        
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_BLUE_BACKGROUND + "O " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_BLUE_BACKGROUND + "X " + ANSI_RESET); //Seat is not available
+                        }
                     }
                 }
+
+                else if(i==5){
+                    if(j==2){
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_RED_BACKGROUND + "O   ||    " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_RED_BACKGROUND + "X   ||    " + ANSI_RESET); //Seat is not available
+                        }
+                    }
+                    else{
+                        if(j==0){
+                            System.out.print(ANSI_RED_BACKGROUND + i + "    " + ANSI_RESET);
+                        }
+                        
+                        if(layout[i][j]==0){
+                            System.out.print(ANSI_RED_BACKGROUND + "O " + ANSI_RESET); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print(ANSI_RED_BACKGROUND + "X " + ANSI_RESET); //Seat is not available
+                        }
+                    }
+
+                }
+
                 else{
-                    if(j==0){
-                        System.out.print(i + "    ");
+                    if(j==2){
+                        if(layout[i][j]==0){
+                            System.out.print("O   ||    "); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print("X   ||    "); //Seat is not available
+                        }
                     }
-                    if(layout[i][j]==0){
-                        System.out.print("O "); //Seat is available
+                    else{
+                        if(j==0){
+                            System.out.print(i + "    ");
+                        }
+                        
+                        if(layout[i][j]==0){
+                            System.out.print("O "); //Seat is available
+                        }
+                        else if(layout[i][j]==1) {
+                            System.out.print("X "); //Seat is not available
+                        }
                     }
-                    else if(layout[i][j]==1) {
-                        System.out.print("X "); //Seat is not available
-                    }
+
                 }
+               
                 
             }
             System.out.print("\n");

@@ -6,13 +6,13 @@ public class Theatre {
     private int[][] layout = new int[size][size];
     private String bookedSeat;
 
-    public Theatre(String bookedSeat){
-        this.bookedSeat = bookedSeat;
+    public Theatre(){
+        
 
         
     }
 
-    public void initialLayout(){
+    /*public void initialLayout(){
         if(this.bookedSeat.equals("null")){
             for(int i = 0; i<size ;i++){
                 for(int j = 0; j<size ; j++){
@@ -38,7 +38,7 @@ public class Theatre {
             }
             System.out.println("\n");
         }
-    }
+    }*/
 
 
 
