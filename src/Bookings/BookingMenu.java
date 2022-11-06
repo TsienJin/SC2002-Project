@@ -4,8 +4,7 @@ public class BookingMenu {
 
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED_BACKGROUND= "\u001B[41m";
-    private static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
-    private static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
     private double[][] price = {
