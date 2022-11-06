@@ -113,7 +113,7 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
      * @return
      */
     public String getTransactDate(){
-        return this.TID.substring(9,11) + " - " + this.TID.substring(7,9) + " - " + this.TID.substring(3,8);
+        return this.TID.substring(9,11) + " - " + this.TID.substring(7,9) + " - " + this.TID.substring(3,7);
     }
 
     /**

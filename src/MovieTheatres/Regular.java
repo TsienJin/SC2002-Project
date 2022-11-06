@@ -1,7 +1,7 @@
 package MovieTheatres;
 
 
-public class Regular{
+public class Regular extends Theatre{
     private static final int size = 10;
     private int Empty = size*size;
 

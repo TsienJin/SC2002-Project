@@ -79,7 +79,9 @@ public abstract class CSVDriver{
         ArrayList<Movie> moviesArr = this.getMovies();
 
         for(Movie movie : moviesArr){
-            System.out.println(movie.toString());
+            if(!movie.getStatus().toString().equals("Not_Showing")){
+                System.out.println(movie.toString());
+            }
         }
         
     }
