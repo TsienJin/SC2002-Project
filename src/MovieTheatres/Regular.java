@@ -11,10 +11,11 @@ public class Regular extends Theatre{
     //Constructor for regular class
     public Regular(String bookedSeat){
         
+        super(bookedSeat);
         //Initialisation of regular cinema array
         //So if the integer is 0 means the spot is not being booked yet (available)
         //Else if integer increments to 1, means the spot is being booked (not available)
-        this.bookedSeat = bookedSeat;
+        //this.bookedSeat = bookedSeat;
         for(int i = 0; i<size ;i++){
             for(int j = 0; j<size ; j++){
                 layout[i][j] = 0;
@@ -22,7 +23,7 @@ public class Regular extends Theatre{
         }
     }
 
-    public void initialLayout(){
+    /*public void initialLayout(){
         if(this.bookedSeat.equals("null")){
             for(int i = 0; i<size ;i++){
                 for(int j = 0; j<size ; j++){
@@ -40,16 +41,16 @@ public class Regular extends Theatre{
 
         }  
 
-    }
+    }*/
 
-    public void printInitialLayout(){
+    /*public void printInitialLayout(){
         for(int i = 0; i<size; i++){
             for(int j = 0; j<size; j++){
                 System.out.print(layout[i][j]);
             }
             System.out.println("\n");
         }
-    }
+    }*/
 
     //Implementation of all the abstract class
 
