@@ -50,12 +50,12 @@ public class bookFirst {
                     String Id = newShowtime.getCinema().getId();
                     int row_col = (row*10) + col;
                     String new_seat;
-                    if(newShowtime.getBookedSeat()==""){
+                    if(newShowtime.getBookedSeat().equals("null")){
                         if(row==0){
-                            new_seat = newShowtime.getBookedSeat() + "0" + row_col;
+                            new_seat = "0" + row_col;
                         }
                         else{
-                            new_seat = newShowtime.getBookedSeat() + row_col;
+                            new_seat = Integer.toString(row_col);
                         }
                     }
                     else{

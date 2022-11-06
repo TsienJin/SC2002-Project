@@ -1,6 +1,6 @@
 package MovieTheatres;
 
-public class First  {
+public class First extends Theatre  {
     private static final int size = 8;
 
     private int Empty = size*size;
@@ -9,6 +9,7 @@ public class First  {
 
     //Constructor for regular class
     public First(String bookedSeat){
+
 
         //Initialisation of first cinema array
         //So if the integer is 0 means the spot is not being booked yet (available)
@@ -49,8 +50,6 @@ public class First  {
             System.out.println("\n");
         }
     }
-
-    //Implementation of all the abstract class
 
     //showLayout() function: It will show the seat availability for the customers
     //'O' means available
