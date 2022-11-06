@@ -1,6 +1,12 @@
 package Bookings;
 
 public class BookingMenu {
+
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED_BACKGROUND= "\u001B[41m";
+    private static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    private static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
     private double[][] price = {
             {10,12,14},
@@ -177,6 +183,13 @@ public class BookingMenu {
             System.out.print("\n");
         }
         System.out.print("\n");
+
+
+        System.out.println(ANSI_RED_BACKGROUND + "Terms and Condition" + ANSI_RESET);
+        System.out.println("* Senior citizens are aged above 55 and only applies to regular seats");
+        System.out.println("** Students need to show verfication card when entering and only applies to regular seats");
+        System.out.println("*** Ultimate, Elite and Platinum seats have fixed rates");
+        
 
     }
 
