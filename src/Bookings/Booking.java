@@ -7,29 +7,40 @@ public class Booking {
     private String age;  //tell us if is senior,students or adults.
     private String movieType; //Tell us the type of movie - different type, different price
 
+
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
-    private double[][] Regprice = { //Table of price for the different type of ticket prices
-            {10,12,14},
-            {10,12,14},
-            {12,14,16},
-            {14,16,18},
-            {16,18,20}
-    };
-    private double[][] Bprice = {
-            {12,14,16},
-            {12,14,16},
-            {14,16,18},
-            {16,18,20},
-            {18,20,22}
-    };
-    private double[][] Sprice = {
-        {14,16,18},
+    private double[][] Regprice = {
+        {10,12,14},
+        {10,12,14},
+        {12,14,16},
         {14,16,18},
         {16,18,20},
-        {18,20,22},
-        {20,22,24}
-    };
+        {30,35,40},
+        {25,30,35},
+        {40,45,50}
+};
 
+private double[][] Bprice = {
+    {12,14,16},
+    {12,14,16},
+    {14,16,18},
+    {16,18,20},
+    {18,20,22},
+    {30,35,40},
+    {25,30,35},
+    {40,45,50}
+};
+
+private double[][] Sprice = {
+    {14,16,18},
+    {14,16,18},
+    {16,18,20},
+    {18,20,22},
+    {20,22,24},
+    {30,35,40},
+    {25,30,35},
+    {40,45,50}
+};
 
     //Booking constructor
 
@@ -54,11 +65,15 @@ public class Booking {
      *
      * @return
      */
-    public double calculatePayment(){
+    public double calculatePayment(String seatType){
+
         if(movieType.equals("Indie") || movieType.equals("Undefined")){
 
         switch(cinemaCode){
             case "R":
+
+                if(seatType.equals("Normal")){
+
                 
                 if(age==type[0]){
                     return Regprice[0][0];
@@ -80,9 +95,24 @@ public class Booking {
                         return Regprice[4][0];
                     }
                 }
+            }
+
+            else if(seatType.equals("Ultimate")){
+                return Regprice[5][0];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Regprice[6][0];
+            }
+            else if(seatType.equals("Platinum")){
+                return Regprice[7][0];
+            }
 
                 break;
             case "F":
+                if(seatType.equals("Normal")){
+
+                
                 if(age==type[0]){
                     return Regprice[0][1];
                 }
@@ -103,8 +133,22 @@ public class Booking {
                         return Regprice[4][1];
                     }
                 }
+            }
+            else if(seatType.equals("Ultimate")){
+                return Regprice[5][1];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Regprice[6][1];
+            }
+            else if(seatType.equals("Platinum")){
+                return Regprice[7][1];
+            }
                 break;
             case "G":
+                if(seatType.equals("Normal")){
+
+                
                 if(age==type[0]){
                     return Regprice[0][2];
                 }
@@ -125,6 +169,17 @@ public class Booking {
                         return Regprice[4][2];
                     }
                 }
+            }
+            else if(seatType.equals("Ultimate")){
+                return Regprice[5][2];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Regprice[6][2];
+            }
+            else if(seatType.equals("Platinum")){
+                return Regprice[7][2];
+            }
 
                 break;
         }
@@ -135,6 +190,8 @@ public class Booking {
     else if(movieType.equals("Blockbuster")){
         switch(cinemaCode){
             case "R":
+                if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Bprice[0][0];
                 }
@@ -155,9 +212,22 @@ public class Booking {
                         return Bprice[4][0];
                     }
                 }
+            }
+            else if(seatType.equals("Ultimate")){
+                return Bprice[5][0];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Bprice[6][0];
+            }
+            else if(seatType.equals("Platinum")){
+                return Bprice[7][0];
+            }
 
                 break;
             case "F":
+                if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Bprice[0][1];
                 }
@@ -178,8 +248,23 @@ public class Booking {
                         return Bprice[4][1];
                     }
                 }
+            }
+
+            else if(seatType.equals("Ultimate")){
+                return Bprice[5][1];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Bprice[6][1];
+            }
+            else if(seatType.equals("Platinum")){
+                return Bprice[7][1];
+            }
+
                 break;
             case "G":
+                if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Bprice[0][2];
                 }
@@ -201,6 +286,19 @@ public class Booking {
                     }
                 }
 
+            }
+
+            else if(seatType.equals("Ultimate")){
+                return Bprice[5][2];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Bprice[6][2];
+            }
+            else if(seatType.equals("Platinum")){
+                return Bprice[7][2];
+            }
+
                 break;
         }
 
@@ -209,6 +307,8 @@ public class Booking {
     else if(movieType.equals("3D") || movieType.equals("IMax")){
         switch(cinemaCode){
             case "R":
+            if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Sprice[0][0];
                 }
@@ -230,8 +330,24 @@ public class Booking {
                     }
                 }
 
+            }
+
+            else if(seatType.equals("Ultimate")){
+                return Sprice[5][0];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Sprice[6][0];
+            }
+            else if(seatType.equals("Platinum")){
+                return Sprice[7][0];
+            }
+
                 break;
             case "F":
+
+                if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Sprice[0][1];
                 }
@@ -252,8 +368,22 @@ public class Booking {
                         return Sprice[4][1];
                     }
                 }
+            }
+            else if(seatType.equals("Ultimate")){
+                return Sprice[5][1];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Sprice[6][1];
+            }
+            else if(seatType.equals("Platinum")){
+                return Sprice[7][1];
+            }
                 break;
             case "G":
+
+                if(seatType.equals("Normal")){
+
                 if(age==type[0]){
                     return Sprice[0][2];
                 }
@@ -275,10 +405,24 @@ public class Booking {
                     }
                 }
 
+            }
+            else if(seatType.equals("Ultimate")){
+                return Sprice[5][2];
+            }
+
+            else if(seatType.equals("Elite")){
+                return Sprice[6][2];
+            }
+            else if(seatType.equals("Platinum")){
+                return Sprice[7][2];
+            }
+
                 break;
         }
 
     }
+
+
 
     return 0;
 

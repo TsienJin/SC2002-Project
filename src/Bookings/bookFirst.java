@@ -36,14 +36,17 @@ public class bookFirst {
         int numOfTickets = sc.getUsrInt("Number of tickets to purchase: ");
         
         boolean isitBook;
+        int row;
+        int col;
+        String seatType;
         //while less than numOfTickets, user can select the seat they want
         double total = 0;
         for(int i = 0; i<numOfTickets; i++){
             System.out.println("Ticket " + i+1);
             System.out.println("Selecting Seat.....");
             do{
-                int row = sc.getUsrInt("Input Row Number: ");
-                int col = sc.getUsrInt("Input Column Number: ");
+                row = sc.getUsrInt("Input Row Number: ");
+                col = sc.getUsrInt("Input Column Number: ");
                 isitBook = firstCinema.BookSeat(row,col);
                 if(isitBook == true){
                     System.out.println("Updating bookseat...");
@@ -91,10 +94,21 @@ public class bookFirst {
             System.out.println("Time: " + newShowtime.getTime_date().substring(4,8));
             String timing = newShowtime.getTime_date().substring(4,8);
             
+            seatType = "Normal";
+            if(row==5){
+                seatType = "Elite";
+            }
+            else if(row == 6){
+                seatType = "Platinum";
+            }
+            else if(row == 7){
+                seatType = "Ultimate";
+            }
+
             
             Booking firstBook = new Booking(timing,sClass,day,age,movieTitle);
-            System.out.println("Price of each ticket: " + firstBook.calculatePayment());
-            total = firstBook.calculatePayment() + total;
+            System.out.println("Price of each ticket: " + firstBook.calculatePayment(seatType));
+            total = firstBook.calculatePayment(seatType) + total;
         }
 
         System.out.println("Total Payment: " + total);

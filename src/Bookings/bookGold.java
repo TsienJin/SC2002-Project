@@ -44,7 +44,9 @@ public class bookGold {
         String sClass = Character.toString(classOfCinema);
 
         int numOfTickets = sc.getUsrInt("Number of tickets to purchase: ");
-
+        int row;
+        int col;
+        String seatType;
         boolean isitBook;
         //while less than numOfTickets, user can select the seat they want
         double total = 0;
@@ -52,8 +54,8 @@ public class bookGold {
             System.out.println("Ticket " + i+1);
             System.out.println("Selecting Seat.....");
             do{
-                int row = sc.getUsrInt("Input Row Number: ");
-                int col = sc.getUsrInt("Input Column Number: ");
+                row = sc.getUsrInt("Input Row Number: ");
+                col = sc.getUsrInt("Input Column Number: ");
                 isitBook = goldCinema.BookSeat(row,col);
                 if(isitBook == true){
                     System.out.println("Updating bookseat...");
@@ -100,11 +102,21 @@ public class bookGold {
             System.out.println("Time: " + newShowtime.getTime_date().substring(4,8));
             String timing = newShowtime.getTime_date().substring(4,8);
             
+            seatType = "Normal";
+            if(row==3){
+                seatType = "Elite";
+            }
+            else if(row == 4){
+                seatType = "Platinum";
+            }
+            else if(row == 5){
+                seatType = "Ultimate";
+            }
             
             Booking goldBook = new Booking(timing,sClass,day,age,movieTitle);
             System.out.println("Movie Title: " + movieTitle);
-            System.out.println("Price of each ticket: " + goldBook.calculatePayment());
-            total = goldBook.calculatePayment() + total;
+            System.out.println("Price of each ticket: " + goldBook.calculatePayment(seatType));
+            total = goldBook.calculatePayment(seatType) + total;
 
             }
 
