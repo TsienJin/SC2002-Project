@@ -11,6 +11,13 @@ public class updateMovieParser {
     private Menu updateMovieMenu = new updateMovieMenu();
     private EnumMovieParser movieEnum = new EnumMovieParser();
 
+    /** 
+     * Takes in MovieBuilder object
+     * Outputs a menu showing different attributes to update via `printMainMenu()`, and ask user for their choice
+     * From user's choice, ask for the updated attribute
+     * Updates MovieBuilder object based on user's input
+     * @param updateMovie MovieBuilder Object
+     */
     public void inputUpdateType(MovieBuilder updateMovie){
         updateMovieMenu.printMainMenu();
         int usrInput = 0;

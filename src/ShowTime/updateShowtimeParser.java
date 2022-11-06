@@ -8,6 +8,13 @@ public class updateShowtimeParser {
     private UsrInput input = new UsrInput();
     private Menu updateShowtimeMenu = new updateShowtimeMenu();
 
+    /** 
+     * Takes in ShowtimeBuilder object
+     * Outputs a menu showing different attributes to update via `printMainMenu()`, and ask user for their choice
+     * From user's choice, ask for the updated attribute
+     * Updates ShowtimeBuilder object based on user's input
+     * @param updateShowtime ShowtimeBuilder Object
+     */
     public void inputUpdateType(ShowtimeBuilder updateShowtime){
         updateShowtimeMenu.printMainMenu();
         int usrInput = 0;

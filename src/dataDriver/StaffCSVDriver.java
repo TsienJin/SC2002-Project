@@ -23,6 +23,14 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
     private updateShowtimeParser updateShowtimeMenu = new updateShowtimeParser();
     private updateMovieParser updateMovieMenu = new updateMovieParser();
 
+    
+    /** 
+     * Takes in a newly created MovieBuilder object and returns the object with its attributes set.
+     * User will be prompted to enter values.
+     * 
+     * @param inputMovie new MovieBuilder Object
+     * @return MovieBuilder Object with attributes set.
+     */
     //For createMovieListing() function
     public MovieBuilder inputMovieDetails(MovieBuilder inputMovie){
 
@@ -45,6 +53,14 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         return inputMovie;
     }
 
+    
+    /** 
+     * Takes in a newly created ShowtimeBuilder object and returns the object with its attributes set.
+     * User will be prompted to enter values.
+     * 
+     * @param inputShowtime new ShowtimeBuilder Object
+     * @return ShowtimeBuilder Object with attributes set.
+     */
     //For createCinemaShowtime() function
     public void inputShowtime(ShowtimeBuilder inputShowtime){
         UsrInput usrInput = new UsrInput();
@@ -60,6 +76,14 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         inputShowtime.setTimeDate(usrInput.getUsrString("Enter Time Date: "));
     }
 
+    
+    
+    /** 
+     * Takes in a string, searches Showtime to check whether the string taken in exist in the showtime.
+     * If string does not exist, it will return true, else it returns false
+     * @param rgx string to check if it exist in Showtime
+     * @return true or false
+     */
     //Find if showtime is already avaiable
     public boolean findShowtimefromregex(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
@@ -73,6 +97,14 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
 
 
 
+    
+    /** 
+     * Takes in Username and Password, uses Username to search for the specific staff, and compares the password taken in against StaffDetails.
+     * If input matches StaffDetails, return true, else return false.
+     * @param usrName Usermane entered by user
+     * @param usrPwd Password entered by user
+     * @return true or false
+     */
     public boolean authenticate(String usrName, String usrPwd) {
 
         try {
@@ -92,6 +124,13 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }        
     }
 
+    
+    /** 
+     * Takes in a username, searches StaffUser to check whether the username taken in exist in the StaffUser file.
+     * If name exist, returns the StaffID, else reutrn empty string
+     * @param usrName Username entered by user
+     * @return Returns StaffID or empty string
+     */
     public String getStaffIdFromUsrname(String usrName){
         try {
             String staffDetails = super.fileio.findMatchFromFile(EnumDataFiles.StaffUser.toString(), usrName);
@@ -101,6 +140,13 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
     }
 
+    
+    /** 
+     * Takes in a Staff object with updated attributes and updates the StaffDetails file with the attributes taken in.
+     * If file is updated, return true. Else, return false.
+     * @param usr Staff object with updated attributes
+     * @return true or false
+     */
     public boolean updateStaffAccount(Staff usr){
         try {
             this.fileio.updateKeyInFile(EnumDataFiles.StaffUser.toString(), usr.toCsvString());
@@ -111,6 +157,13 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
     }
 
+    
+    /** 
+     * Takes in a new Staff object with attributes filled in by user, and inserts the new Staff into StaffDetails file.
+     * If file is updated, return true. Else, return false.
+     * @param usr new Staff object with attributes filled in by user
+     * @return true or false
+     */
     public boolean createStaffAccount(Staff usr){
         try {
             this.fileio.writeToFile(EnumDataFiles.StaffUser.toString(), usr.toCsvString());
@@ -121,6 +174,10 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
     }
 
+    /** 
+     * Creates a new MovieBuilder object, pass it into `inputMovieDetails()` function, 
+     * builds into a Movie object via `build()`, and inserts the new Movie into Movie file.
+     */    
     public void createMovieListing() {
         //Create new movie object
         Movie newMovie = this.inputMovieDetails(new MovieBuilder()).build();
@@ -131,6 +188,12 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         System.out.println("Movie created!");
     }
 
+    /** 
+     * Ask for Movie ID from user, then creates a new MobieBuilder object.
+     * Dipslays Movie object built from MovieBuilder object.
+     * Calls `inputUpdateType() function which returns MovieBuilder object with updated attributes
+     * Takes in the MovieBuilder object with updated attributes and updates the Movie file with the updated attributes
+     */    
     public void updateMovieListing() {
         String movieID = this.usrInput.getUsrString("Enter ID of Movie to update: ");
         // fetch showtime object
@@ -144,6 +207,9 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         System.out.println("Movie updated!");
     }
 
+    /** 
+     * Ask for Movie ID from user, then checks whether Movie containing Movie ID is being deleted
+     */    
     public void deleteMovieListing() {
 
         String movieID = usrInput.getUsrString("Enter Movie ID to delete: ");
@@ -154,6 +220,10 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
     }
 
+    /** 
+     * Creates a new ShowtimeBuilder object, pass it into `inputShowtime()` function, 
+     * builds into a Showtime object via `build()`, and inserts the new Showtime into Showtime file.
+     */    
     public void createCinemaShowtime() {
         ShowtimeBuilder showtimeBuilder = new ShowtimeBuilder();
 
@@ -167,6 +237,12 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         System.out.println("Showtime created!");
     }
 
+    /** 
+     * Ask for Showtime ID from user, then creates a new ShowtimeBuilder object.
+     * Dipslays Showtime object built from ShowtimeBuilder object.
+     * Calls `inputUpdateType() function which returns ShowtimeBuilder object with updated attributes
+     * Takes in the ShowtimeBuilder object with updated attributes and updates the Showtime file with the updated attributes
+     */    
     public void updateCinemaShowtime() {
         String showtimeID = this.usrInput.getUsrString("Enter ID of Showtime to update: ");
         // fetch showtime object
@@ -180,6 +256,9 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         System.out.println("Showtime updated!");
     }
 
+    /** 
+     * Ask for Showtime ID from user, then checks whether Showtime containing Showtime ID is being deleted
+     */    
     public void deleteCinemaShowtime() {
 
         String showtimeID = usrInput.getUsrString("Enter Showtime ID to delete: ");
@@ -191,24 +270,44 @@ public class StaffCSVDriver extends CSVDriver implements InterfaceCsvDelimiter {
         }
     }
 
+    /** 
+     * Creates a new Properties object by fetching attributes from Configuration File
+     * Sets attribute `RANK_BY_RATING` to true
+     * Passes updated Properties object to `setProps()`
+     */
     public void sortMoviesByRating(){
         Properties props = this.fileio.getProps();
         props.setProperty("RANK_BY_RATING", "true");
         this.fileio.setProps(props);
     }
 
+    /** 
+     * Creates a new Properties object by fetching attributes from Configuration File
+     * Sets attribute `RANK_BY_RATING` to false
+     * Passes updated Properties object to `setProps()`
+     */
     public void sortMoviesBySales(){
         Properties props = this.fileio.getProps();
         props.setProperty("RANK_BY_RATING", "false");
         this.fileio.setProps(props);
     }
 
+    /** 
+     * Creates a new Properties object by fetching attributes from Configuration File
+     * Sets attribute `CUSTOMER_RESTRICTED_MV_SORT` to true
+     * Passes updated Properties object to `setProps()`
+     */
     public void restrictCustomerMovieSort(){
         Properties props = this.fileio.getProps();
         props.setProperty("CUSTOMER_RESTRICTED_MV_SORT", "true");
         this.fileio.setProps(props);
     }
 
+    /** 
+     * Creates a new Properties object by fetching attributes from Configuration File
+     * Sets attribute `CUSTOMER_RESTRICTED_MV_SORT` to false
+     * Passes updated Properties object to `setProps()`
+     */
     public void unrestrictCustomerMovieSort(){
         Properties props = this.fileio.getProps();
         props.setProperty("CUSTOMER_RESTRICTED_MV_SORT", "false");

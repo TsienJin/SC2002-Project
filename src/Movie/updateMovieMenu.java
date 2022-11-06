@@ -7,6 +7,11 @@ import Menu.Menu;
 public class updateMovieMenu extends Menu {
 
     @Override
+    
+    /** 
+     * Adds array of Movie Attributes name
+     * parse array into `menuPrinter()`
+     */
     public void printMainMenu() {
         ArrayList<String> options = new ArrayList<>();
 
