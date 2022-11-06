@@ -129,7 +129,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
                 case 3:
                     // Show all movie listing
-                    this.dataDriver.listAllMovies();
+                    this.dataDriver.listAllMoviesforStaff();
                     break;
                 case 4:
                     // show top 5 movies rating

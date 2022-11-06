@@ -72,7 +72,13 @@ public abstract class CSVDriver{
         }
     }
 
+    public void listAllMoviesforStaff(){
+        ArrayList<Movie> moviesArr = this.getMovies();
 
+        for(Movie movie : moviesArr){
+            System.out.println(movie.toString());
+        }
+    }
 
     public void listAllMovies(){
 
