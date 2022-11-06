@@ -23,6 +23,11 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
 
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
+    /** 
+     * Takes in MovieBuilder object
+     * Constructs the Movie object from MovieBuilder object
+     * @param builder MovieBuilder Object
+     */
     public Movie(MovieBuilder builder)
     {
         // can also add checks for null beforehand
@@ -40,6 +45,10 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         this.reviews = builder.reviews;
     }
 
+    /** 
+     * Returns a formatted string of attributes for Movie object
+     * @return Formatted string of attributes
+     */
     public String toString() {
         return(""+
             formatter.Header(this.ID+tab+this.movieTitle) + nLine +
@@ -56,6 +65,10 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         );
     }
 
+    /** 
+     * Returns a constructed string of attributes for Movie object in the form of csv line
+     * @return Constructed string of attributes
+     */
     public String toCsvString() {
 
         // Delimiters are from the toCsvStringHelper interface
@@ -73,45 +86,109 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
         return String.join(mainDelimiter, arrCSV);
     }
 
+    /** 
+     * Returns the difference of Rating attribute for 2 Movie objects
+     * To use for sorting purposes
+     * @param movie Movie object
+     * @return difference of rating between 2 Movie object
+     */
     public double compareRatingTo(Movie movie){
         return this.reviews.getRating() - movie.getOverallRating();
     }
 
+    /** 
+     * Returns the difference of totalTicketSales attribute for 2 Movie objects
+     * To use for sorting purposes
+     * @param movie Movie object
+     * @return difference of totalTicketSales between 2 Movie object
+     */
     public int compareSalesTo(Movie movie){
         return this.totalTicketSales - movie.getTotalTicketSales();
     }
 
+    /** 
+     * Returns attribute ID of Movie object
+     * @return ID attribute
+     */
     public String getID(){
         return this.ID;
     }
+
+    /** 
+     * Returns attribute movieTitle of Movie object
+     * @return movieTitle attribute
+     */
     public String getMovieTitle(){
         return this.movieTitle;
     }
+
+    /** 
+     * Returns attribute status of Movie object
+     * @return status attribute
+     */
     public EnumShowingStatus getStatus(){
         return this.status;
     }
+
+    /** 
+     * Returns attribute MovieType of Movie object
+     * @return MovieType attribute
+     */
     public EnumMovieType getMovieType(){
         return this.type;
     }
+    
+    /** 
+     * Returns attribute synopsis of Movie object
+     * @return synopsis attribute
+     */
     public String getSynopsis(){
         return this.synopsis;
     }
+
+    /** 
+     * Returns attribute director of Movie object
+     * @return director attribute
+     */
     public String getDirector(){
         return this.director;
     }
+
+    /** 
+     * Returns attribute cast of Movie object
+     * @return cast attribute
+     */
     public ArrayList<String> getCast(){
         return this.cast;
     }
+
+    /** 
+     * Returns attribute OverallRating of Movie object via `getRating()` function
+     * @return Rating of Movie
+     */
     public Double getOverallRating(){
         return this.reviews.getRating();
     }
+    
+    /** 
+     * Returns attribute PastReviews of Movie object via `getReviews()` function
+     * @return Past Reviews of Movie
+     */
     public ArrayList<Review> getPastReviews(){
         return this.reviews.getReviews();
     }
+
+    /** 
+     * Returns attribute totalTicketSales of Movie object
+     * @return totalTicketSales attribute
+     */
     public int getTotalTicketSales(){
         return this.totalTicketSales;
     }
 
+    /** 
+     * Display Movie Reviews via `printReviews` function
+     */
     public void printReviews() {
         this.reviews.printReviews();
     }
