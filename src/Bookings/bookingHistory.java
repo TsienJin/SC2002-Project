@@ -16,8 +16,9 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     private OutputPrinterFormatter formatter = new OutputPrinterFormatter();
 
     /**
-     *
-     * @param builder
+     * Take in bookingHistoryBuilder object
+     * Constructs the bookingHistory object from bookingHistoryBuilder object
+     * @param builder bookingHistoryBuilder object
      */
     public bookingHistory(bookingHistoryBuilder builder){
         this.TID = builder.TID;
@@ -29,8 +30,8 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     }
 
     /**
-     *
-     * @return
+     * Returns a formatted string of attributes for Showtime object
+     * @return Formatted string of attributes
      */
     public String toString(){
         return("" + formatter.Header(this.MobileNum + tab + this.Email) + nLine +
@@ -44,8 +45,8 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     }
 
     /**
-     *
-     * @return
+     * Returns a constructed string of attributes for bookingHistory in the form of csv line
+     * @return Constructed string of attributes
      */
     public String toCsvString(){
         ArrayList<String> arrCSV = new ArrayList<>();
@@ -61,64 +62,64 @@ public class bookingHistory implements InterfaceCsvDelimiter,InterfaceToCsvStrin
     }
 
     /**
-     *
-     * @return
+     * Return the transaction ID
+     * @return Transaction ID 
      */
     public String getTID(){
         return this.TID;
     }
 
     /**
-     *
-     * @return
+     * Returns attribute Movie object of bookingHistory object
+     * @return Movie object attribute
      */
     public String getmovieID(){
         return this.movieID;
     }
 
     /**
-     *
-     * @return
+     * Returns attribute of mobile number of bookingHistory object
+     * @return MobileNum attribute
      */
     public String getMobileNum(){
         return this.MobileNum;
     }
 
     /**
-     *
-     * @return
+     * Returns attribute of email of bookingHistory object
+     * @return Email attribute
      */
     public String getEmail(){
         return this.Email;
     }
 
     /**
-     *
-     * @return
+     * Returns attribute of movieName of bookingHistory object
+     * @return movieName attribute
      */
     public String getMoiveName(){
         return this.movieName;
     }
 
     /**
-     *
-     * @return
+     * Returns the transaction time in the form of "mm : hh"
+     * @return formatted transaction time
      */
     public String getTransactTime(){
         return this.TID.substring(11,13) + " : " + this.TID.substring(13);
     }
 
     /**
-     *
-     * @return
+     * Returns the transaction date in the form of "dd - mm - yyyy"
+     * @return formatted transaction date
      */
     public String getTransactDate(){
         return this.TID.substring(9,11) + " - " + this.TID.substring(7,9) + " - " + this.TID.substring(3,7);
     }
 
     /**
-     *
-     * @return
+     * Return attribute of totalPrice of bookingHistory object
+     * @return totalPrice attribute
      */
     public String gettotalPrice(){
         return this.totalPrice;

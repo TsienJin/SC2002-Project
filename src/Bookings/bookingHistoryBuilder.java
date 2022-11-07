@@ -17,15 +17,22 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     String totalPrice;
 
 
-
+    /**
+     * Constructs new bookingHistoryBuilder()
+     * @return bookingHistoryBuilder
+     */
     public static bookingHistoryBuilder bookingHistory(){
         return new bookingHistoryBuilder();
     }
 
+
+    /**
+     * Default constructor 
+     */
     public bookingHistoryBuilder(){}
 
     /**
-     *
+     * Updates bookingHistoryBuilder oject attributes from bookingHistory File via 'updateFromCSVString()'
      * @param csvString
      */
     public bookingHistoryBuilder(String csvString){
@@ -33,7 +40,7 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
+     * Updates bookingHistoryBuilder object attribute from bookingHistory File
      * @param csvString
      */
     private void updateFromCSVString(String csvString){
@@ -48,9 +55,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
+     * Sets TID (Transaction ID) attribute of bookingHistoryBuilder object
      * @param TID
-     * @return
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder setTID(String TID){
         this.TID = TID;
@@ -58,9 +65,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
-     * @param movieID
-     * @return
+     * Sets movieID attribute of bookingHistoryBuilder object
+     * @param movieID 
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder setmovieID(String movieID){
         this.movieID = movieID;
@@ -68,9 +75,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
+     * Sets MobileNum attribute of bookingHistoryBuilder object
      * @param MobileNum
-     * @return
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder setMobileNum(String MobileNum){
         this.MobileNum = MobileNum;
@@ -78,9 +85,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
+     * Sets Email attribute of bookingHistoryBuilder object
      * @param Email
-     * @return
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder setEmail(String Email){
         this.Email = Email;
@@ -88,9 +95,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
+     * Sets movieName attribute of bookingHistoryBuilder object
      * @param movieName
-     * @return
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder setmovieName(String movieName){
         this.movieName = movieName;
@@ -98,9 +105,9 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
     }
 
     /**
-     *
-     * @param totalPrice
-     * @return
+     * Sets totalPrice attribute of bookingHistoryBuilder object
+     * @param totalPrice 
+     * @return bookingHistoryBuilder
      */
     public bookingHistoryBuilder settotalPrice(String totalPrice){
         this.totalPrice = totalPrice;
@@ -109,8 +116,8 @@ public class bookingHistoryBuilder implements InterfaceBuilder<bookingHistory>, 
 
 
     /**
-     *
-     * @return
+     * Build method to construct movie object
+     * @return bookingHistory
      */
     @Override
     public bookingHistory build(){

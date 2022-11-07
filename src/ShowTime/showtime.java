@@ -114,7 +114,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
     }
 
     /** 
-     * Returns time_date attribue in the form of
+     * Returns time_date attribute in the form of
      * "dd/MM/yyyy" of Showtime object
      * @return time_date attribute in formatted form (Date)
      */

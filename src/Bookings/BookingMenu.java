@@ -1,9 +1,13 @@
 package Bookings;
-
+/**
+ * BookingMenu class contains all the Menu that is needed to print for the user
+ */
 public class BookingMenu {
 
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED_BACKGROUND= "\u001B[41m";
+    private static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    private static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
@@ -41,7 +45,7 @@ public class BookingMenu {
     };
 
     /**
-     *
+     * Menu to ask user to print showtime 
      */
     public void printShowtime(){
         System.out.println("1. Enter showtime again");
@@ -49,7 +53,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu for the different ticket type in terms of age group
      */
     public void printMenu(){
         System.out.println("Select ticket type:");
@@ -60,7 +64,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu to print out the different movie ticket pricing in Table format for regular movie
      */
     public void printBookingPrice(){
         System.out.println("Regular Movie Ticket Price");
@@ -83,13 +87,13 @@ public class BookingMenu {
                 System.out.print(type[i]+"            |");
             }
             if(i==5){
-                System.out.print("Ultimate Seats     |");
+                System.out.print(ANSI_RED_BACKGROUND + "Ultimate Seats     |" + ANSI_RESET);
             }
             if(i==6){
-                System.out.print("Elite Seats        |");
+                System.out.print(ANSI_PURPLE_BACKGROUND + "Elite Seats        |" + ANSI_RESET);
             }
             if(i==7){
-                System.out.print("Platinum Seats     |");
+                System.out.print(ANSI_BLUE_BACKGROUND + "Platinum Seats     |" + ANSI_RESET);
             }
 
             for(int j = 0; j<3; j++){
@@ -102,7 +106,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu to print out the different movie ticket pricing in Table format for BlockBuster movie
      */
     public void printBookingBPrice(){
         System.out.println("BlockBuster Movie Ticket Price");
@@ -125,13 +129,13 @@ public class BookingMenu {
                 System.out.print(type[i]+"            |");
             }
             if(i==5){
-                System.out.print("Ultimate Seats     |");
+                System.out.print(ANSI_RED_BACKGROUND + "Ultimate Seats     |" + ANSI_RESET);
             }
             if(i==6){
-                System.out.print("Elite Seats        |");
+                System.out.print(ANSI_PURPLE_BACKGROUND + "Elite Seats        |" + ANSI_RESET);
             }
             if(i==7){
-                System.out.print("Platinum Seats     |");
+                System.out.print(ANSI_BLUE_BACKGROUND + "Platinum Seats     |" + ANSI_RESET);
             }
 
             for(int j = 0; j<3; j++){
@@ -144,7 +148,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu to print out the different movie ticket pricing in Table format for 3D & IMax movie
      */
     public void printBookingSPrice(){
         System.out.println("3D & IMax Movie Ticket Price");
@@ -167,13 +171,13 @@ public class BookingMenu {
                 System.out.print(type[i]+"            |");
             }
             if(i==5){
-                System.out.print("Ultimate Seats     |");
+                System.out.print(ANSI_RED_BACKGROUND + "Ultimate Seats     |" + ANSI_RESET);
             }
             if(i==6){
-                System.out.print("Elite Seats        |");
+                System.out.print(ANSI_PURPLE_BACKGROUND + "Elite Seats        |" + ANSI_RESET);
             }
             if(i==7){
-                System.out.print("Platinum Seats     |");
+                System.out.print(ANSI_BLUE_BACKGROUND + "Platinum Seats     |" + ANSI_RESET);
             }
 
             for(int j = 0; j<3; j++){
@@ -193,7 +197,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu for confirmation of booking
      */
     public void printConfirm(){
         System.out.println("Select to confirm:");
@@ -202,7 +206,7 @@ public class BookingMenu {
     }
 
     /**
-     *
+     * Menu for the main booking page 
      */
     public void mainBookingPage(){
         System.out.println("--Welcome to the Booking App--");

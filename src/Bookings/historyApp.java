@@ -2,10 +2,14 @@ package Bookings;
 import UsrInput.UsrInput;
 import dataDriver.CustomerCSVDriver;
 
+/**
+ * An app page for user to view their booking history
+ */
+
 public class historyApp {
 
     /**
-     *
+     * App page that consists of the menu of it
      */
     public void viewHistory(){
         System.out.println("View Booking History: ");

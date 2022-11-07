@@ -1,5 +1,10 @@
 package Bookings;
 
+/**
+ * Booking Class that stores the different ticket price
+ * Calculates the price of each ticket under certain conditions
+ * @author keenlim
+ */
 public class Booking {
     private String movieTiming; //Will tell us if is non-peak or peak hour
     private String cinemaCode; //Will tell us the class of the cinema
@@ -45,7 +50,7 @@ private double[][] Sprice = {
     //Booking constructor
 
     /**
-     *
+     * 
      * @param movieTiming
      * @param cinemaCode
      * @param movieDay
@@ -62,8 +67,13 @@ private double[][] Sprice = {
 
 
     /**
-     *
-     * @return
+     * A function that returns the price of ticket
+     * It takes into consideration the movieType, different cinema class, movie Timing, movie Day,
+     * and age group as well as the different types of seats 
+     * There are different ticket prices for different conditions. 
+     * E.g. Prices for weekdays are different for prices for weekends. 
+     * E.g. Prices for adults, senior citizens and students are different 
+     * @return double price of that ticket
      */
     public double calculatePayment(String seatType){
 
