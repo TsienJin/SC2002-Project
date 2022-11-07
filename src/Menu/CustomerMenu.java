@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class CustomerMenu extends Menu {
 
+    /** Main running menu
+     * 
+     */
     @Override
     public void printMainMenu(){
         String header = "Customer Menu:";
@@ -19,7 +22,9 @@ public class CustomerMenu extends Menu {
         menuPrinter(header, options);
     }
 
-
+    /** Submenu for Unrestricted customer sorting
+     * 
+     */
     public void printUnrestrictedMovieMenu(){
         String header = "Movie Menu";
         ArrayList<String> options = new ArrayList<>();
@@ -34,6 +39,9 @@ public class CustomerMenu extends Menu {
         menuPrinter(header, options);
     }
 
+    /** Submenu for Restricted customer sorting
+     * 
+     */
     public void printRestrictedMovieMenu(){
         String header = "Movie Menu";
         ArrayList<String> options = new ArrayList<>();

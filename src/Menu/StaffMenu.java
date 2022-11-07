@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class StaffMenu extends Menu {
 
+    /** Prints main menu
+     * 
+     */
     @Override
     public void printMainMenu(){
         String header = "Staff Menu: ";
@@ -27,7 +30,9 @@ public class StaffMenu extends Menu {
     }
 
 
-
+    /** Prints menu to configure system settings
+     * 
+     */
     public void printConfigMenu(){
         String header = "System Configuration: ";
         ArrayList<String> options = new ArrayList<>();
@@ -41,6 +46,9 @@ public class StaffMenu extends Menu {
         menuPrinter(header, options);
     }
 
+    /** Submeu for system config
+     * 
+     */
     public void printMovieRankingMenu(){
         String header = "Movie Ranking Sorting: ";
         ArrayList<String> options = new ArrayList<>();

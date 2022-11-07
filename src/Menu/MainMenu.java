@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class MainMenu extends Menu {
 
+    /** Prints menu for user selection
+     * 
+     */
     @Override
     public void printMainMenu() {
         Banner banner = new Banner();

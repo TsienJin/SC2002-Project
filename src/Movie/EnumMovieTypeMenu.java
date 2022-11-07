@@ -5,8 +5,14 @@ import java.util.Arrays;
 
 import Menu.Menu;
 
+/** Menu object to print the different MovieTypes
+ * 
+ */
 public class EnumMovieTypeMenu extends Menu {
 
+    /** Method to print menu of movie types
+     * 
+     */
     @Override
     public void printMainMenu() {
         ArrayList<String> options = new ArrayList<>();
