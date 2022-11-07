@@ -1,11 +1,17 @@
 package MovieTheatres;
 
+/**
+ * Theatre class is a superclass to First, Gold and Regular
+ */
 public class Theatre {
 
     private int size;
     private int[][] layout = new int[size][size];
     private String bookedSeat;
 
+    /**
+     * Default constructor 
+     */
     public Theatre(){
         
 
