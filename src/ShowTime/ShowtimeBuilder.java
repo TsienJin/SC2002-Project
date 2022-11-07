@@ -142,7 +142,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
-     * Build method to construct movie object
+     * Build method to construct showtime object
      * @return showtime
      */
     @Override
