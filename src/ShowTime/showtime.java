@@ -146,7 +146,6 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
             return time;
         }
         catch (java.text.ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
@@ -166,7 +165,6 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
             return dayOfWeek;
         }
         catch (java.text.ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
