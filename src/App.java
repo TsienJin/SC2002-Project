@@ -15,6 +15,7 @@ public class App{
 
     
     /** 
+     * Runs main program
      * @param args[]
      */
     public static void main(String args[]) {

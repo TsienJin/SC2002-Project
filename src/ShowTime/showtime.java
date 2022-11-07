@@ -26,7 +26,11 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
 
     private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
-
+    /** 
+     * Takes in ShowtimeBuilder object
+     * Constructs the Showtime object from ShowtimeBuilder object
+     * @param builder ShowtimeBuilder Object
+     */
     public showtime(ShowtimeBuilder builder)
     {
         this.showtimeID = builder.showtimeID;
@@ -36,7 +40,10 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         this.bookedSeat = builder.bookedSeat;
     }
 
-
+    /** 
+     * Returns a formatted string of attributes for Showtime object
+     * @return Formatted string of attributes
+     */
     public String toString(){
         return(""+
             printer.Header(this.showtimeID+tab+this.movie.getMovieTitle()) + nLine +
@@ -47,27 +54,70 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         );
     }
 
+    /** 
+     * Returns a constructed string of attributes for Showtime object in the form of csv line
+     * @return Constructed string of attributes
+     */
+    public String toCsvString() {
 
+        // Delimiters are from the toCsvStringHelper interface
+
+        ArrayList<String> arrCSV = new ArrayList<>();
+        
+        arrCSV.add(this.showtimeID);
+        arrCSV.add(this.movie.getID());
+        arrCSV.add(this.cinema.getCinemaCode());
+        arrCSV.add(this.bookedSeat);
+        arrCSV.add(this.time_date);
+
+        return String.join(mainDelimiter, arrCSV);
+    }
+    
+    /** 
+     * Returns attribute ID of Showtime object
+     * @return ID attribute
+     */
     public String getShowtimeID(){
         return this.showtimeID;
     }
 
+    /** 
+     * Returns attribute Movie object of Showtime object
+     * @return Movie object attribute
+     */
     public Movie getMovie(){
         return this.movie;
     }
-
+    
+    /** 
+     * Returns attribute Cinema object of Showtime object
+     * @return Cinema object attribute
+     */
     public Cinema getCinema(){
         return this.cinema;
     }
 
+    /** 
+     * Returns attribute time_date of Showtime object
+     * @return time_date attribute
+     */
     public String getTime_date(){
         return this.time_date;
     }
 
+    /** 
+     * Returns attribute bookedSeat of Showtime object
+     * @return bookedSeat attribute
+     */
     public String getBookedSeat(){
         return this.bookedSeat;
     }
 
+    /** 
+     * Returns time_date attribue in the form of
+     * "dd/MM/yyyy" of Showtime object
+     * @return time_date attribute in formatted form (Date)
+     */
     public String getmovieDate(){
         String stringToDate=this.time_date;
         try{
@@ -82,6 +132,11 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return null;
     }
 
+    /** 
+     * Returns time_date attribue in the form of
+     * "HH:mm" of Showtime object
+     * @return time_date attribute in formatted form (Time)
+     */
     public String getmovieTime(){
         String stringToDate=this.time_date;
         try{
@@ -97,6 +152,11 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return null;
     }
 
+    /** 
+     * Returns time_date attribue in the form of
+     * "EEEE" of Showtime object
+     * @return time_date attribute in formatted form (Day)
+     */
     public String getmovieDay(){
         String stringToDate=this.time_date;
         try{
@@ -112,6 +172,10 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return null;
     }
 
+    /** 
+     * Sets bookedSeat attribute of Showtime object
+     * @param bookedSeat row and column of selected seat
+     */
     public void setBookedSeat(String bookedSeat){
         this.bookedSeat = bookedSeat;
     }
@@ -134,21 +198,12 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return day + "-" + month + "-" + year;
     }*/
 
-    public String toCsvString() {
-
-        // Delimiters are from the toCsvStringHelper interface
-
-        ArrayList<String> arrCSV = new ArrayList<>();
-        
-        arrCSV.add(this.showtimeID);
-        arrCSV.add(this.movie.getID());
-        arrCSV.add(this.cinema.getCinemaCode());
-        arrCSV.add(this.bookedSeat);
-        arrCSV.add(this.time_date);
-
-        return String.join(mainDelimiter, arrCSV);
-    }
-
+    /** 
+     * Checks time_date attribute of Showtime object
+     * compare with today's date to see whether Showtime is in the future
+     * Returns true if Showtime is in the future, false if showtime has passed
+     * @return true or false
+     */
     public boolean isUpcoming(){
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddkkmm");
@@ -157,6 +212,7 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
         return(curDate.compareTo(this.time_date) < 0);
     }
 
+/*
     public void printShowTime(){
        if(this.isUpcoming()){
 
@@ -194,9 +250,9 @@ public class showtime implements InterfaceToCsvStringHelper, InterfaceCsvDelimit
            System.out.print("\n");
 
 
-        }
+        } 
 
     }
-
+*/
 
 }
