@@ -1,5 +1,9 @@
 package MovieTheatres;
 
+/**
+ * Inherits from theatre class to show the booking layout and to book seats for First Class cinema
+ * @author keenlim
+ */
 public class First extends Theatre  {
     private static final int size = 8;
 
@@ -13,6 +17,11 @@ public class First extends Theatre  {
     private static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 
     //Constructor for regular class
+    /**
+     * Creates a new First object using the bookedSeat String from ShowTime csv file
+     * Also, initialise all seats of cinema array to be empty initially
+     * @param bookedSeat
+     */
     public First(String bookedSeat){
 
     
@@ -28,6 +37,11 @@ public class First extends Theatre  {
         }
     }
 
+    /**
+     * Function that will traverse the bookedSeat string to check which seat is already booked
+     * So in bookedSeat string: "00", means that seat at row 0, col 0 is already taken
+     * If seat is booked then set the array to 1 while seat is not booked, set to 0 
+     */
     public void initialLayout(){
         if(this.bookedSeat.equals("null")){
             for(int i = 0; i<size ;i++){
@@ -47,6 +61,9 @@ public class First extends Theatre  {
         }
     }
 
+    /**
+     * Print initial layout of the cinema in 1 and 0. 
+     */
     public void printInitialLayout(){
         for(int i = 0; i<size; i++){
             for(int j = 0; j<size; j++){
@@ -60,7 +77,16 @@ public class First extends Theatre  {
     //'O' means available
     //'X' means not available
 
-
+    /**
+     * showLayout() will show the seat avaiability to the customer in the following format: 
+     * 'O' means available
+     * 'X' means seat not available 
+     * Seats without background are regualr seats
+     * Purple background: Elite seats
+     * Blue background: Platinum seats
+     * Red background: Ultimate seats
+     * Traverse the 2D array of the layout of movie theatre and prints out accordingly 
+     */
     public void showLayout(){
         System.out.println("Layout of Movie Theatre");
         for(int i = 0; i<size; i++){
@@ -171,6 +197,14 @@ public class First extends Theatre  {
         System.out.println("\n");
     }
 
+    /**
+     * BookSeat function will help to book the seat. 
+     * If seat is already taken then will return false 
+     * If seat is not taken then set the array to 1 and return true
+     * @param row
+     * @param col
+     * @return true or false
+     */
     public boolean BookSeat(int row, int col){
         if(layout[row][col]==0){
             layout[row][col]=1;
@@ -184,14 +218,29 @@ public class First extends Theatre  {
         }
     }
 
+    /**
+     * Returns the total number of seats that is computed by size * size 
+     * Since is a square layout
+     * @return total seats
+     */
     public int getTotalSeats(){
         return size*size;
     }
 
+    /**
+     * Returns the attribute Empty to find the total number of empty seats
+     * @return Empty attribute
+     */
     public int getNumEmptySeats(){
         return Empty;
     }
 
+    /**
+     * Returns boolean function
+     * If all seats are already taken then return true
+     * Else return false
+     * @return true or false
+     */
     public boolean isFullyBooked() {
         if(Empty == 0){
             //System.out.println("Sorry, Is fully booked");
