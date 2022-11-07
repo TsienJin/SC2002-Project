@@ -3,10 +3,14 @@ import MovieTheatres.*;
 import ShowTime.showtime;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
-import java.util.*;
+//import java.util.*;
 import UsrInput.UsrInput;
 
-
+/**
+ * Class that settles booking for Gold Class movie theatres
+ * @author keenlim
+ * 
+ */
 public class bookGold {
 
     private showtime newShowtime;
@@ -18,7 +22,7 @@ public class bookGold {
     //constructor for bookGold
 
     /**
-     *
+     * Creates a new bookGold using object from showtime, Gold, BookingMenu and CustomerCSVDriver
      * @param newShowtime
      * @param goldCinema
      * @param book
@@ -35,8 +39,11 @@ public class bookGold {
 
 
     /**
-     *
-     * @return
+     * This is a simple booking method for Gold class movie theatre
+     * Ask the user the number of tickets they want and from there, allowing user to select the seats
+     * Then updates the seats that are being booked
+     * Calculate the price of total tickets according to the conditions of tickets
+     * @return double total price of tickets
      */
     public double bookingGold(){
         UsrInput sc = new UsrInput();

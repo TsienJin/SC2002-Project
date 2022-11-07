@@ -3,9 +3,13 @@ import MovieTheatres.*;
 import ShowTime.showtime;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
-import java.util.*;
+//import java.util.*;
 import UsrInput.UsrInput;
 
+/**
+ * Class that settles booking for Regular Class movie theatres
+ * @author keenlim
+ */
 public class bookRegular {
     //private Cinema newCinema;
     private showtime newShowtime;
@@ -15,7 +19,7 @@ public class bookRegular {
     private String movieTitle;
 
     /**
-     *
+     * Creates a new bookRegular using object from showtime, Gold, BookingMenu and CustomerCSVDriver
      * @param newShowtime
      * @param regularCinema
      * @param book
@@ -31,8 +35,11 @@ public class bookRegular {
     }
 
     /**
-     *
-     * @return
+     * This is a simple booking method for Regular class movie theatre
+     * Ask the user the number of tickets they want and from there, allowing user to select the seats
+     * Then updates the seats that are being booked
+     * Calculate the price of total tickets according to the conditions of tickets
+     * @return double total price of tickets
      */
     public double bookingRegular(){
         UsrInput sc = new UsrInput();
