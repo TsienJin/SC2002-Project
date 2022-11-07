@@ -3,17 +3,30 @@ import MovieTheatres.*;
 import ShowTime.showtime;
 import dataDriver.CustomerCSVDriver;
 import dataDriver.EnumDataFiles;
-import java.util.*;
+//import java.util.*;
 import UsrInput.UsrInput;
 
+/**
+ * Class that settles booking for First Class movie theatres
+ * @author keenlim
+ */
 public class bookFirst {
 
+    //Attributes of bookFirst
     private showtime newShowtime;
     private First firstCinema;
     private BookingMenu book;
     private CustomerCSVDriver driver;
     private String movieTitle;
 
+    /**
+     * Creates a new bookFirst using object from showtime,First,BookingMenu,CustomerCSVDriver
+     * @param newShowtime
+     * @param firstCinema
+     * @param book
+     * @param driver
+     * @param movieTitle
+     */
     public bookFirst(showtime newShowtime, First firstCinema, BookingMenu book, CustomerCSVDriver driver,String movieTitle){
         this.newShowtime = newShowtime;
         this.firstCinema = firstCinema;
@@ -24,8 +37,11 @@ public class bookFirst {
     }
 
     /**
-     *
-     * @return
+     * This is a simple booking method for First class movie theatre
+     * Ask the user the number of tickets they want and from there, allowing user to select the seats
+     * Then updates the seats that are being booked
+     * Calculate the price of total tickets according to the conditions of tickets
+     * @return double total price of ticket
      */
 
     public double bookingFirst(){
