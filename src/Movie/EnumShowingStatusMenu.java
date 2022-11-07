@@ -7,6 +7,9 @@ import Menu.Menu;
 
 public class EnumShowingStatusMenu extends Menu {
 
+    /** Method to print all Showing Status options
+     * 
+     */
     @Override
     public void printMainMenu() {
         ArrayList<String> options = new ArrayList<>();
