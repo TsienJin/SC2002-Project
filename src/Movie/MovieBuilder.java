@@ -178,7 +178,7 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
     }
 
     
-    /** Build method to construct movie object
+    /** Build method to construct MOvie object
      * @return Movie
      */
     @Override
