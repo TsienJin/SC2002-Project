@@ -8,9 +8,18 @@ import Movie.Review;
 import Movie.ReviewBuilder;
 import UsrInput.UsrInput;
 
+
+/** Class that interfaces between user object and FileIO
+ * 
+ */
 public class CustomerCSVDriver extends CSVDriver {
     private UsrInput usrInput = new UsrInput();
 
+    
+    /** Updates attributes in a ReviewBuilder object form user inputs
+     * @param inputReview
+     * @return ReviewBuilder
+     */
     public ReviewBuilder inputReviewDetails(ReviewBuilder inputReview) {
         inputReview.setID(String.format("%d", ThreadLocalRandom.current().nextInt(1000, 9999 + 1)));
         inputReview.setMovieId(usrInput.getUsrString("Enter Movie ID: "));
@@ -20,6 +29,11 @@ public class CustomerCSVDriver extends CSVDriver {
 
         return inputReview;
     }
+    
+    /** Get movie from specified ID
+     * @param id
+     * @return Movie
+     */
     // METHOD to get movie
     public Movie getMovie(String id){
         try{
@@ -36,6 +50,9 @@ public class CustomerCSVDriver extends CSVDriver {
        
     }
 
+    /** Create new user review for movie
+     * 
+     */
     public void writeReview(){
         Review newReview = this.inputReviewDetails(new ReviewBuilder()).build();
         super.fileio.writeToFile(EnumDataFiles.Review.toString(), newReview.toCsvString());

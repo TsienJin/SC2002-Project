@@ -32,7 +32,7 @@ public class FileIO {
     }
 
     
-    /**  Checks for matching IDs
+    /**  Checks for matching ID from specified index
      * This method compares a specified id with an untruncated string directly from the CSV.
      * @param csvLine
      * @param id
@@ -44,6 +44,12 @@ public class FileIO {
         return csvLineId.equalsIgnoreCase(id);
     }
 
+    
+    /** Checks for matching ID
+     * @param csvLine
+     * @param Id
+     * @return boolean
+     */
     public boolean isSameID(String csvLine, String Id){
         return this.isSameID(csvLine, Id, 0);
     }
@@ -144,12 +150,26 @@ public class FileIO {
 
 
 
+
+    
+    /** Count the number of matches with ID in a file
+     * @param fileName
+     * @param ID
+     * @return int
+     */
     public int countMatches(String fileName, String ID){
         return this.countMatches(fileName, ID, 0);
     }
 
 
 
+    
+    /** Count the number of matches with ID in a file with specified index
+     * @param fileName
+     * @param ID
+     * @param index
+     * @return int
+     */
     public int countMatches(String fileName, String ID, int index){
         int count = 0;
         
@@ -174,12 +194,22 @@ public class FileIO {
         return count;
     }
 
+    
+    /** Count sales value
+     * @param fileName
+     * @param ID
+     * @return double
+     */
     public double countSales(String fileName, String ID){
         return this.countSales(fileName, ID, 1);
     }
-
-
-
+    
+    /**  Count sales value from specified index
+     * @param fileName
+     * @param ID
+     * @param index
+     * @return double
+     */
     public double countSales(String fileName, String ID, int index){
         double totalSales = 0;
         
@@ -256,12 +286,24 @@ public class FileIO {
 
 
 
+    
+    /** Finds all matches with same ID
+     * @param fileName
+     * @param id
+     * @return ArrayList<String>
+     */
     public ArrayList<String> findAllMatchesFromFile(String fileName, String id){
         return this.findAllMatchesFromFile(fileName, id, 0);
     }
 
 
-
+    /** Finds all matches with same ID at specified index
+     * @param fileName
+     * @param id
+     * @param index
+     * @return ArrayList<String>
+     * @throws IllegalArgumentException
+     */
     public ArrayList<String> findAllMatchesFromFile(String fileName, String id, int index) throws IllegalArgumentException{
 
         ArrayList<String> arrToReturn = new ArrayList<>();
@@ -445,6 +487,10 @@ public class FileIO {
 
 
 
+    
+    /** Gets properties from config file
+     * @return Properties
+     */
     public Properties getProps(){
         Properties props = new Properties();
         try {
@@ -458,6 +504,10 @@ public class FileIO {
     }
 
 
+    
+    /** Sets properties from config file
+     * @param props
+     */
     public void setProps(Properties props){
         try {
             FileOutputStream out = new FileOutputStream(this.relativeFileDir+EnumDataFiles.Config.toString());
