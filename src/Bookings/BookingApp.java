@@ -97,7 +97,7 @@ public class BookingApp {
                     regularCinema.showLayout();
 
                     bookRegular regular = new bookRegular(newShowtime,regularCinema,book,driver,movieTitle);
-                    totalPrice = regular.bookingRegular();
+                    totalPrice = regular.booking();
 
                 }
 
@@ -109,7 +109,7 @@ public class BookingApp {
 
 
                     bookFirst first = new bookFirst(newShowtime,firstCinema,book,driver,movieTitle);
-                    totalPrice = first.bookingFirst();
+                    totalPrice = first.booking();
 
                 }
         
@@ -121,7 +121,7 @@ public class BookingApp {
 
 
                     bookGold golden = new bookGold(newShowtime,goldCinema,book,driver,movieTitle);
-                    totalPrice = golden.bookingGold();
+                    totalPrice = golden.booking();
 
 
                 }

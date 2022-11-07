@@ -10,7 +10,7 @@ import UsrInput.UsrInput;
  * Class that settles booking for First Class movie theatres
  * @author keenlim
  */
-public class bookFirst {
+public class bookFirst implements DifferentBooking {
 
     //Attributes of bookFirst
     private showtime newShowtime;
@@ -44,7 +44,7 @@ public class bookFirst {
      * @return double total price of ticket
      */
 
-    public double bookingFirst(){
+    public double booking(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);

@@ -11,7 +11,7 @@ import UsrInput.UsrInput;
  * @author keenlim
  * 
  */
-public class bookGold {
+public class bookGold implements DifferentBooking{
 
     private showtime newShowtime;
     private Gold goldCinema;
@@ -45,7 +45,7 @@ public class bookGold {
      * Calculate the price of total tickets according to the conditions of tickets
      * @return double total price of tickets
      */
-    public double bookingGold(){
+    public double booking(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);

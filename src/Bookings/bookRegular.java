@@ -10,7 +10,7 @@ import UsrInput.UsrInput;
  * Class that settles booking for Regular Class movie theatres
  * @author keenlim
  */
-public class bookRegular {
+public class bookRegular implements DifferentBooking{
     //private Cinema newCinema;
     private showtime newShowtime;
     private Regular regularCinema;
@@ -41,7 +41,7 @@ public class bookRegular {
      * Calculate the price of total tickets according to the conditions of tickets
      * @return double total price of tickets
      */
-    public double bookingRegular(){
+    public double booking(){
         UsrInput sc = new UsrInput();
         char classOfCinema = newShowtime.getCinema().getCinemaCode().charAt(0);
         String sClass = Character.toString(classOfCinema);
