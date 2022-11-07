@@ -16,11 +16,18 @@ public abstract class User {
     protected UsrInput input = new UsrInput();
     public Object run;
 
+    /** 
+     * Returns integer that is entered by the user via `getUsrInt()`
+     * @return integer from User input
+     */
     // Common method to all
     protected int getUsrChoice(){
         return this.input.getUsrInt("Enter Option: ");
     }
 
+    /** 
+     * run method for Customer and Staff
+     */
     // Methods to be implemented
     public abstract void run();
 
