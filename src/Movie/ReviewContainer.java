@@ -11,6 +11,11 @@ public class ReviewContainer implements InterfaceCsvDelimiter {
     private String movieID;
     private ArrayList<Review> reviewArr = new ArrayList<>();
 
+    /**
+     * Gets all reviews of the specified MovieID
+     * Adds into the Array reviewArr 
+     * @param movieID
+     */
     public ReviewContainer(String movieID){
         this.movieID = movieID;
         try {
@@ -18,12 +23,17 @@ public class ReviewContainer implements InterfaceCsvDelimiter {
                 try {
                     this.reviewArr.add(new ReviewBuilder(line).build());
                 } catch (Exception e) {
-                    // LMAO pass 
+                    // pass 
                 }
             });
         } catch (Exception e) {}
     }
 
+    
+    /** 
+     * Retrieves User Rating for each review in Array reviewArr
+     * @return double
+     */
     public double getRating() {
         AtomicInteger sum = new AtomicInteger(0);
         AtomicInteger count = new AtomicInteger(0);
@@ -43,20 +53,31 @@ public class ReviewContainer implements InterfaceCsvDelimiter {
 
     }
 
-    public void showReviews() {
-        try {
-            reviewArr.forEach(review->{
-                System.out.println(review.toString());
-            });
-        } catch (Exception e) {
-            // pass LMAO 
-        }
-    }
+    /**
+     * Displays all reviews in the Array reviewArr 
+     */
+    // public void showReviews() {
+    //     try {
+    //         reviewArr.forEach(review->{
+    //             System.out.println(review.toString());
+    //         });
+    //     } catch (Exception e) {
+    //         // pass
+    //     }
+    // }
 
+    
+    /** 
+     * Returns the Array reviewArr 
+     * @return ArrayList<Review>
+     */
     public ArrayList<Review> getReviews(){
         return this.reviewArr;
     }
 
+    /**
+     * Displays all reviews in the Array reviewArr 
+     */
     public void printReviews() {
         for(Review review : this.reviewArr){
             System.out.println(review.toString());

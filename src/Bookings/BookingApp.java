@@ -14,6 +14,9 @@ public class BookingApp {
     private UsrInput input = new UsrInput();
    
 
+    /**
+     * Default Constructor
+     */
     //Constructor for BookingApp
     public BookingApp(){
         
@@ -21,8 +24,8 @@ public class BookingApp {
 
 
     /**
-     *
-     * @return
+     * Main booking function for the main application
+     * @return int User Choice
      */
 
     public int bookingApp(){

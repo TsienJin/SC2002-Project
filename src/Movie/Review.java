@@ -16,6 +16,11 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
 
     private OutputPrinterFormatter printer = new OutputPrinterFormatter();
 
+    /** 
+     * Takes in ReviewBuilder object
+     * Constructs the Review object from ReviewBuilder object
+     * @param builder ReviewBuilder Object
+     */
     public Review(ReviewBuilder builder){
         this.ID = builder.ID;
         this.movieID = builder.movieID;
@@ -26,7 +31,8 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
 
     
     /** 
-     * @return String
+     * Returns a formatted string of attributes for Review object
+     * @return Formatted string of attributes
      */
     public String toString(){
         return(""+
@@ -36,49 +42,9 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
         );
     }
 
-    
     /** 
-     * @return String
-     */
-    public String getID() {
-        return this.ID;
-    }
-
-    
-    /** 
-     * @return String
-     */
-    public String getMovieID(){
-        return this.movieID;
-    }
-
-    
-    /** 
-     * @return String
-     */
-    public String getstrReview() {
-        return this.strReview;
-    }
-
-    
-    /** 
-     * @return String
-     */
-    public String getUsername(){
-        return this.username;
-    }
-
-    
-    /** 
-     * @return int
-     */
-    public int getUsrRating() {
-        return this.usrRating;
-    }
-
-    
-    /** 
-     * @return String
+     * Returns a constructed string of attributes for Review object in the form of csv line
+     * @return Constructed string of attributes
      */
     @Override
     public String toCsvString() {
@@ -91,4 +57,49 @@ public class Review implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter
 
         return String.join(mainDelimiter, arrCSV);
     }
+    
+    /** 
+     * Returns attribute ID of Review object
+     * @return ID attribute
+     */
+    public String getID() {
+        return this.ID;
+    }
+
+    
+    /** 
+     * Returns attribute MovieID of Review object
+     * @return MovieID attribute
+     */
+    public String getMovieID(){
+        return this.movieID;
+    }
+
+    
+    /** 
+     * Returns attribute strReview of Review object
+     * @return strReview attribute
+     */
+    public String getstrReview() {
+        return this.strReview;
+    }
+
+    
+    /** 
+     * Returns attribute Username of Review object
+     * @return Username attribute
+     */
+    public String getUsername(){
+        return this.username;
+    }
+
+
+    /** 
+     * Returns attribute usrRating of Review object
+     * @return usrRating attribute
+     */
+    public int getUsrRating() {
+        return this.usrRating;
+    }
+
 }

@@ -24,20 +24,29 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Constructs new ShowtimeBuilder()
      * @return ShowtimeBuilder
      */
     public static ShowtimeBuilder showtime(){
         return new ShowtimeBuilder();
     }
 
+    /**
+     * Default Constructor
+     */
     public ShowtimeBuilder(){}
 
+    /**
+     * Updates ShowtimeBuilder object attributes from Showtime File via `updateFromCsvString()`
+     * @param csvString
+     */
     public ShowtimeBuilder(String csvString){
         this.updateFromCsvString(csvString);
     }
 
     
     /** 
+     * Updates ShowtimeBuilder object attributes from Showtime File
      * @param csvString
      */
     private void updateFromCsvString(String csvString){
@@ -54,6 +63,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Finds Showtime object thorugh Showtime ID via `findMatchFromFile()`
      * @param showtimeID
      * @return ShowtimeBuilder
      */
@@ -69,6 +79,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Sets ShowtimeID attribute of ShowtimeBuilder object
      * @param showtimeID
      * @return ShowtimeBuilder
      */
@@ -79,6 +90,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Sets movieId attribute of ShowtimeBuilder object
      * @param movieId
      * @return ShowtimeBuilder
      */
@@ -89,6 +101,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Sets cinemaCode attribute of ShowtimeBuilder object
      * @param cinemaCode
      * @return ShowtimeBuilder
      */
@@ -99,6 +112,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Sets time_date attribute of ShowtimeBuilder object
      * @param time_date
      * @return ShowtimeBuilder
      */
@@ -109,8 +123,9 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Get class of Cinema with cinemaCode attribute.
      * @param cinemaCode
-     * @return String
+     * @return String cinema class
      */
     public String getCinemaClass(String cinemaCode){
         if(Character.compare(cinemaCode.charAt(0),'R')==0){
@@ -127,6 +142,7 @@ public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsv
 
     
     /** 
+     * Build method to construct movie object
      * @return showtime
      */
     @Override
