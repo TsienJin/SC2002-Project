@@ -231,6 +231,9 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
     }
 
 
+    /** Submenu to configure movie sorting
+     * 
+     */
     public void configMovieSorting(){
         ((StaffMenu) this.menu).printMovieRankingMenu();
         int usrChoice = 0;

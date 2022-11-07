@@ -8,20 +8,26 @@ import dataDriver.CustomerCSVDriver;
 
 public class Customer extends User {
     
+    /** Constructor
+     * 
+     */
     public Customer(){
         super.menu = new CustomerMenu();
         super.dataDriver = new CustomerCSVDriver();
     }
 
-
-
-
+    /** Private method to print movies from regex
+     * 
+     */
     private void searchMovieRegex(){
         String rgx = input.getUsrString("Enter regex or string: ");
         super.dataDriver.listMovieFromRegex(rgx);
     }
 
 
+    /** private method to print movies matched by ID
+     * 
+     */
     private void searchMovieID(){
         String movieID = input.getUsrString("Enter movie ID: ");
         Movie movie = ((CustomerCSVDriver) super.dataDriver).getMovie(movieID);
@@ -40,6 +46,9 @@ public class Customer extends User {
 
 
 
+    /** Main runtime for Customer Object
+     * 
+     */
     @Override
     public void run(){
         
@@ -86,6 +95,9 @@ public class Customer extends User {
     }
 
 
+    /** Method to determine suitable submenu for movieViewer
+     * 
+     */
     private void movieViewer(){
         if(super.dataDriver.isCustomerRestricted()){
             this.restrictedMovieViewer();
@@ -95,6 +107,9 @@ public class Customer extends User {
     }
 
 
+    /** Handles user choice for Unrestricted Movie Viewer
+     * 
+     */
     private void unrestrictedMovieViewer(){
         ((CustomerMenu) super.menu).printUnrestrictedMovieMenu();
         int usrChoice = 0;
@@ -137,6 +152,9 @@ public class Customer extends User {
     }
 
 
+    /** Handles user input for Restricted Movie Viewer
+     * 
+     */
     private void restrictedMovieViewer(){
         ((CustomerMenu) super.menu).printRestrictedMovieMenu();
         int usrChoice = 0;

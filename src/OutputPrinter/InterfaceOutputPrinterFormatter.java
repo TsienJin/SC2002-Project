@@ -1,5 +1,10 @@
 package OutputPrinter;
 
+
+/** Interface that specifies styling characters and formatting const
+ * 
+ * @author Tsien Jin
+ */
 public interface InterfaceOutputPrinterFormatter {
     String inTitle = "\033[0;1;42m";
     String inBold = "\033[0;1m";
