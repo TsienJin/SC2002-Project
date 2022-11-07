@@ -94,6 +94,86 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         return String.join(mainDelimiter, details);
     }
 
+
+    /** Menu for staff to configure settings
+     * 
+     */
+    private void configSettings(){
+        ((StaffMenu) this.menu).printConfigMenu();
+        int usrChoice = 0;
+        do{
+            usrChoice = super.input.getUsrInt("Enter choice: ");
+
+            switch(usrChoice){
+                case 1:
+                    // print menu
+                    ((StaffMenu) this.menu).printConfigMenu();
+                    break;
+                case 2:
+                    // change password
+                    this.usrPwd = super.input.getUsrPwd("Enter NEW password: ");
+                    this.updateCSV(this);
+                    break;
+                case 3:
+                    // change username
+                    this.usrName = super.input.getUsrString("Enter NEW username: ");
+                    this.updateCSV(this);
+                    break;
+                case 4:
+                    // create new user
+                    String newUsrID = super.input.getUsrString("Enter ID for new user: ");
+                    String newUsrName = super.input.getUsrString("Enter username for new user: ");
+                    String newUsrPwd = super.input.getUsrPwd("Enter password for new user: ");
+                    this.addCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
+                    break;
+                case 5:
+                    // change ranking of menu for customer
+                    this.configMovieSorting();
+                    ((StaffMenu) this.menu).printConfigMenu();
+                    break;
+                case 6:
+                    // back, nothing here
+                    break;
+            }
+
+        } while (usrChoice!=6);
+    }
+
+
+    /** Submenu to configure movie sorting
+     * 
+     */
+    public void configMovieSorting(){
+        ((StaffMenu) this.menu).printMovieRankingMenu();
+        int usrChoice = 0;
+        do {
+            usrChoice = this.input.getUsrInt("Enter choice: ");
+            switch(usrChoice){
+                case 1:
+                    // sort by sales
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesBySales();
+                    break;
+                case 2:
+                    // sort by rating
+                    ((StaffCSVDriver) this.dataDriver).sortMoviesByRating();
+                    break;
+                case 3:
+                    // unrestrict customer
+                    ((StaffCSVDriver) this.dataDriver).unrestrictCustomerMovieSort();
+                    break;
+                case 4:
+                    // restrict customer
+                    ((StaffCSVDriver) this.dataDriver).restrictCustomerMovieSort();
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Invalid input!");
+                    usrChoice = 0;
+            };
+        } while (usrChoice == 0);
+    }
+
     
     /** Callable running loop
      * 
@@ -183,86 +263,6 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
             }
 
         } while (usrChoice!=14);
-    }
-
-
-    /** Menu for staff to configure settings
-     * 
-     */
-    private void configSettings(){
-        ((StaffMenu) this.menu).printConfigMenu();
-        int usrChoice = 0;
-        do{
-            usrChoice = super.input.getUsrInt("Enter choice: ");
-
-            switch(usrChoice){
-                case 1:
-                    // print menu
-                    ((StaffMenu) this.menu).printConfigMenu();
-                    break;
-                case 2:
-                    // change password
-                    this.usrPwd = super.input.getUsrPwd("Enter NEW password: ");
-                    this.updateCSV(this);
-                    break;
-                case 3:
-                    // change username
-                    this.usrName = super.input.getUsrString("Enter NEW username: ");
-                    this.updateCSV(this);
-                    break;
-                case 4:
-                    // create new user
-                    String newUsrID = super.input.getUsrString("Enter ID for new user: ");
-                    String newUsrName = super.input.getUsrString("Enter username for new user: ");
-                    String newUsrPwd = super.input.getUsrPwd("Enter password for new user: ");
-                    this.addCSV(new Staff(newUsrID, newUsrName, newUsrPwd));
-                    break;
-                case 5:
-                    // change ranking of menu for customer
-                    this.configMovieSorting();
-                    ((StaffMenu) this.menu).printConfigMenu();
-                    break;
-                case 6:
-                    // back, nothing here
-                    break;
-            }
-
-        } while (usrChoice!=6);
-    }
-
-
-    /** Submenu to configure movie sorting
-     * 
-     */
-    public void configMovieSorting(){
-        ((StaffMenu) this.menu).printMovieRankingMenu();
-        int usrChoice = 0;
-        do {
-            usrChoice = this.input.getUsrInt("Enter choice: ");
-            switch(usrChoice){
-                case 1:
-                    // sort by sales
-                    ((StaffCSVDriver) this.dataDriver).sortMoviesBySales();
-                    break;
-                case 2:
-                    // sort by rating
-                    ((StaffCSVDriver) this.dataDriver).sortMoviesByRating();
-                    break;
-                case 3:
-                    // unrestrict customer
-                    ((StaffCSVDriver) this.dataDriver).unrestrictCustomerMovieSort();
-                    break;
-                case 4:
-                    // restrict customer
-                    ((StaffCSVDriver) this.dataDriver).restrictCustomerMovieSort();
-                    break;
-                case 5:
-                    break;
-                default:
-                    System.out.println("Invalid input!");
-                    usrChoice = 0;
-            };
-        } while (usrChoice == 0);
     }
 
 }

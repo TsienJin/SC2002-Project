@@ -154,7 +154,7 @@ public class MovieBuilder implements InterfaceBuilder<Movie>, InterfaceCsvDelimi
      * @return MovieBuilder
      */
     public MovieBuilder setTotalAmountSold(int totalAmountSold){
-        this.totalAmountSold = totalAmountSold;
+        this.totalAmountSold = (double)totalAmountSold;
         return this;
     }
     

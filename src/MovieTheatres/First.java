@@ -6,10 +6,9 @@ package MovieTheatres;
  */
 public class First extends Theatre  {
     private static final int size = 8;
-
     private int Empty = size*size;
-    private int[][] layout = new int[size][size];
     private String bookedSeat;
+    private int[][] layout = new int[size][size];
 
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED_BACKGROUND= "\u001B[41m";

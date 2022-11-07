@@ -6,9 +6,8 @@ package MovieTheatres;
  */
 public class Gold extends Theatre{
     private static final int size = 6;
-    private String bookedSeat;
-
     private int Empty = size*size;
+    private String bookedSeat;
     private int[][] layout = new int[size][size];
 
     

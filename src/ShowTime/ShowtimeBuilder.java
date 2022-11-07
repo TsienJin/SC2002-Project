@@ -12,15 +12,13 @@ import java.util.Arrays;
 
 
 public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsvDelimiter {
-    FileIO showtimeFileio = new FileIO();
-    
+
+    private FileIO fileio = new FileIO();
     String showtimeID;
     Movie movie;
     Cinema cinema;
     String time_date;
     String bookedSeat = null;
-    
-    private FileIO fileio = new FileIO();
 
     
     /** 

@@ -42,58 +42,7 @@ public class Customer extends User {
             System.out.println("Movie not found!");
         }
     }
-
-
-
-
-    /** Main runtime for Customer Object
-     * 
-     */
-    @Override
-    public void run(){
-        
-        super.menu.printMainMenu();
-        int usrChoice = 0;
-        do{
-            usrChoice = super.getUsrChoice();
-            switch(usrChoice){
-                case 1:
-                    super.menu.printMainMenu();
-                    break;
-                case 2:
-                    // movie menu
-                    this.movieViewer();
-                    super.menu.printMainMenu();
-                    break;
-                case 3:
-                    // show upcoming showtimes
-                    this.dataDriver.listAllUpcomingShowtimes();
-                    break;
-                case 4:
-                    // book ticket
-                    new BookingApp().bookingApp();
-                    break;
-                case 5:
-                    // view booking history
-                    new historyApp().viewHistory();
-                    break;
-                case 6:
-                    // write review
-                    ((CustomerCSVDriver) super.dataDriver).writeReview();
-                    break;
-                case 7:
-                    // quit
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    usrChoice = 0;
-                    System.out.println("Invalid input! Select option 1 to print menu again.");
-                    break;
-            }
-        } while (usrChoice != 7);
-
-    }
-
+    
 
     /** Method to determine suitable submenu for movieViewer
      * 
@@ -191,6 +140,55 @@ public class Customer extends User {
                     break;
             }
         } while (usrChoice !=6);
+    }
+    
+
+    /** Main runtime for Customer Object
+     * 
+     */
+    @Override
+    public void run(){
+        
+        super.menu.printMainMenu();
+        int usrChoice = 0;
+        do{
+            usrChoice = super.getUsrChoice();
+            switch(usrChoice){
+                case 1:
+                    super.menu.printMainMenu();
+                    break;
+                case 2:
+                    // movie menu
+                    this.movieViewer();
+                    super.menu.printMainMenu();
+                    break;
+                case 3:
+                    // show upcoming showtimes
+                    this.dataDriver.listAllUpcomingShowtimes();
+                    break;
+                case 4:
+                    // book ticket
+                    new BookingApp().bookingApp();
+                    break;
+                case 5:
+                    // view booking history
+                    new historyApp().viewHistory();
+                    break;
+                case 6:
+                    // write review
+                    ((CustomerCSVDriver) super.dataDriver).writeReview();
+                    break;
+                case 7:
+                    // quit
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    usrChoice = 0;
+                    System.out.println("Invalid input! Select option 1 to print menu again.");
+                    break;
+            }
+        } while (usrChoice != 7);
+
     }
 
 }

@@ -9,11 +9,10 @@ import dataDriver.FileIO;
 import dataDriver.InterfaceCsvDelimiter;
 
 public class CinemaBuilder implements InterfaceBuilder<Cinema>, InterfaceCsvDelimiter {
+    private FileIO fileio = new FileIO();
     String id;
     int hallNumber;
     String cinemaCode;
-
-    private FileIO fileio = new FileIO();
 
     
     /** 
