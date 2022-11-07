@@ -11,11 +11,19 @@ import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
 import Sorting.InsertSortMovies;
 
+
+/** Abstract class that eases interaction between user objects and CRUD operations
+ * 
+ */
 public abstract class CSVDriver{
 
     protected FileIO fileio = new FileIO();
 
 
+    
+    /** Get an array of all movies in the system
+     * @return ArrayList<Movie>
+     */
     private ArrayList<Movie> getMovies(){
         ArrayList<Movie> allMovies = new ArrayList<>();
         try {
@@ -27,6 +35,10 @@ public abstract class CSVDriver{
         return allMovies;
     }
     
+    
+    /** Get all movies in the system sorted according to the configuation
+     * @return ArrayList<Movie>
+     */
     private ArrayList<Movie> getSortedMovies(){
         InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
         ArrayList<Movie> moviesArr = new ArrayList<>();
@@ -42,7 +54,9 @@ public abstract class CSVDriver{
 
     }
 
-    
+    /** Prints out movies according to number of ticket sales
+     * 
+     */
     public void listTopMoviesBySales(){
 
         InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
@@ -54,6 +68,10 @@ public abstract class CSVDriver{
 
     }
 
+
+    /** Prints out movie according to rating
+     * 
+     */
     public void listTopMoviesByRating(){
         InsertSortMovies sorter = new InsertSortMovies(this.getMovies());
         ArrayList<Movie> movieArr = sorter.sortByRating();
@@ -64,6 +82,9 @@ public abstract class CSVDriver{
     }
 
 
+    /** Prints top 5 movies according to system config
+     * 
+     */
     public void listTop5Movies(){
         ArrayList<Movie> movieArr = this.getSortedMovies();
 
@@ -72,6 +93,9 @@ public abstract class CSVDriver{
         }
     }
 
+    /** Prints all movies
+     * 
+     */
     public void listAllMoviesforStaff(){
         ArrayList<Movie> moviesArr = this.getMovies();
 
@@ -80,6 +104,9 @@ public abstract class CSVDriver{
         }
     }
 
+    /** Prints all showing and upcoming movies
+     * 
+     */
     public void listAllMovies(){
 
         ArrayList<Movie> moviesArr = this.getMovies();
@@ -92,6 +119,10 @@ public abstract class CSVDriver{
         
     }
 
+    
+    /** Searches for movies using Regex and prints all patches
+     * @param rgx
+     */
     public void listMovieFromRegex(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(), rgx);
         if(found.size()>0){
@@ -104,6 +135,9 @@ public abstract class CSVDriver{
     }
 
 
+    /** Prints all showtimes
+     * 
+     */
     public void listAllShowtimes(){
         this.fileio.readFromFile(EnumDataFiles.Showtime.toString()).forEach(line->{
             try {
@@ -114,6 +148,9 @@ public abstract class CSVDriver{
         });
     }
 
+    /** Prints all upcoming showtimes
+     * 
+     */
     public void listAllUpcomingShowtimes(){
         this.fileio.readFromFile(EnumDataFiles.Showtime.toString()).forEach(line->{
             try {
@@ -127,6 +164,11 @@ public abstract class CSVDriver{
         });
     }
 
+    
+    /** Searches for Showtimes using regex and prints all matches
+     * @param rgx
+     * @return boolean
+     */
     public boolean listShowtimeFromRegex(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
         if(found.size()>0){
@@ -141,6 +183,11 @@ public abstract class CSVDriver{
         }
     }
 
+    
+    /** Prints all showtimes with a specified Movie ID
+     * @param ID
+     * @return boolean, if matches are found
+     */
     public boolean listShowtimeFromMovieId(String ID){
         try{
             ArrayList<String> found = this.fileio.findAllMatchesFromFile(EnumDataFiles.Showtime.toString(), ID, 1);
@@ -153,18 +200,33 @@ public abstract class CSVDriver{
         }
     }
 
+    
+    /** Find Cinema ID by regex
+     * @param rgx
+     * @return String
+     */
     public String findCinema(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Cinema.toString(),rgx);
         String line = found.get(0);
         return line;
     }
 
+    
+    /** Find Showtime ID by regex
+     * @param rgx
+     * @return String
+     */
     public String findShowtime(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(),rgx);
         String line = found.get(0);
         return line;
     }
 
+    
+    /** Find movie title from regex
+     * @param rgx
+     * @return String
+     */
     public String findmovie(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
         String line = found.get(0);
@@ -174,6 +236,11 @@ public abstract class CSVDriver{
         return buildmovie.getMovieTitle();
     }
 
+    
+    /** Find movie type from regex
+     * @param rgx
+     * @return String
+     */
     public String findmovieType(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
         String line = found.get(0);
@@ -184,12 +251,21 @@ public abstract class CSVDriver{
 
     }
 
+    
+    /** Update booked seat
+     * @param ID
+     * @param rgx
+     */
     public void updateBookedSeats(String ID,String rgx) {
         
         this.fileio.updateKeyInFile(ID, rgx);
     }
 
 
+    
+    /** Creates booking history in CSV file
+     * @param historyBuilder
+     */
     public void createBookingHistory(bookingHistoryBuilder historyBuilder){
         //create a new bookingHistory object
         bookingHistory newbook = new bookingHistory(historyBuilder);
@@ -202,6 +278,10 @@ public abstract class CSVDriver{
     }
 
 
+    
+    /** Prints all booking history according to regex
+     * @param rgx
+     */
     public void listHistory(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.bookingHistory.toString(), rgx);
         if(found.size()>0){
@@ -213,12 +293,20 @@ public abstract class CSVDriver{
         }
     }
 
+    
+    /** Get system config on sorting order
+     * @return boolean
+     */
     public boolean isMovieSortByRating(){
         Properties props = this.fileio.getProps();
         Boolean val = Boolean.parseBoolean(props.getProperty("RANK_BY_RATING"));
         return val.booleanValue();
     }
 
+    
+    /** Get system config on customer sorting order
+     * @return boolean
+     */
     public boolean isCustomerRestricted(){
         Properties props = this.fileio.getProps();
         Boolean val = Boolean.parseBoolean(props.getProperty("CUSTOMER_RESTRICTED_MV_SORT"));
