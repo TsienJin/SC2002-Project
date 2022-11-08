@@ -14,7 +14,6 @@ public abstract class User {
     
     // Common to all
     protected UsrInput input = new UsrInput();
-    public Object run;
 
     /** 
      * Returns integer that is entered by the user via `getUsrInt()`

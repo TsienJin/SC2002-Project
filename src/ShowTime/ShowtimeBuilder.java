@@ -12,7 +12,6 @@ import java.util.Arrays;
 
 
 public class ShowtimeBuilder implements InterfaceBuilder<showtime>, InterfaceCsvDelimiter {
-    FileIO showtimeFileio = new FileIO();
     
     String showtimeID;
     Movie movie;

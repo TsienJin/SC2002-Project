@@ -20,7 +20,7 @@ import java.util.Properties;
  * and remove duplicates in CSV files.
  * @author Tsien Jin
  */
-public class FileIO {
+public class FileIO implements InterfaceCsvDelimiter {
 
     String relativeFileDir = new File("").getAbsolutePath()+"/src/dataDriver/data/";
 
@@ -40,7 +40,7 @@ public class FileIO {
      */
     // METHOD to check if ID is same as that in CSV
     public boolean isSameID(String csvLine, String id, int idIndex){
-        String csvLineId = csvLine.split(",")[idIndex];
+        String csvLineId = csvLine.split(mainDelimiter)[idIndex];
         return csvLineId.equalsIgnoreCase(id);
     }
 
@@ -62,7 +62,7 @@ public class FileIO {
      */
     // METHOD to get string ID from CSV string
     public String stripID(String csvLine){
-        return csvLine.split(",",2)[0];
+        return csvLine.split(mainDelimiter,2)[0];
     }
 
 
@@ -220,7 +220,7 @@ public class FileIO {
             String curLine = reader.readLine();
             while(curLine != null){
                 if(isSameID(curLine, ID, index)){
-                    ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(curLine.split(",")));
+                    ArrayList<String> csvArr = new ArrayList<>(Arrays.asList(curLine.split(mainDelimiter)));
                     totalSales += Double.parseDouble(csvArr.get(5));
                 }
 

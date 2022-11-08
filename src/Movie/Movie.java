@@ -15,8 +15,6 @@ public class Movie implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter,
     private String synopsis;
     private String director;
     private ArrayList<String> cast;
-    // private Double overallRating;
-    // private ArrayList<Review> pastReviews;
     private int totalTicketSales;
     private double totalAmountSold;
     private ReviewContainer reviews;
