@@ -52,20 +52,6 @@ public class ReviewContainer implements InterfaceCsvDelimiter {
         
 
     }
-
-    /**
-     * Displays all reviews in the Array reviewArr 
-     */
-    // public void showReviews() {
-    //     try {
-    //         reviewArr.forEach(review->{
-    //             System.out.println(review.toString());
-    //         });
-    //     } catch (Exception e) {
-    //         // pass
-    //     }
-    // }
-
     
     /** 
      * Returns the Array reviewArr 
