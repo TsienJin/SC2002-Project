@@ -5,7 +5,7 @@ import java.io.*;
  * Inherits from theatre class to show the booking layout and to book seats for Regular Class cinema
  * @author keenlim
  */
-public class Regular extends Theatre{
+public class Regular implements Theatre{
     private static final int size = 10;
     private int Empty = size*size;
 

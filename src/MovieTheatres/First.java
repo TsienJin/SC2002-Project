@@ -4,7 +4,7 @@ package MovieTheatres;
  * Inherits from theatre class to show the booking layout and to book seats for First Class cinema
  * @author keenlim
  */
-public class First extends Theatre  {
+public class First implements Theatre  {
     private static final int size = 8;
 
     private int Empty = size*size;

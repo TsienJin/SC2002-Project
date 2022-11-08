@@ -4,7 +4,7 @@ package MovieTheatres;
  * Inherits from theatre class to show the booking layout and to book seats for Gold Class cinema
  * @author keenlim
  */
-public class Gold extends Theatre{
+public class Gold implements Theatre{
     private static final int size = 6;
     private String bookedSeat;
 
