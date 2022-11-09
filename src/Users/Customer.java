@@ -163,7 +163,7 @@ public class Customer extends User {
             switch (usrChoice) {
                 case 1:
                     // print menu
-                    ((CustomerMenu) super.menu).printUnrestrictedMovieMenu();
+                    ((CustomerMenu) super.menu).printRestrictedMovieMenu();
                     break;
                 case 2:
                     // top 5 movies by sys config
