@@ -1,6 +1,6 @@
 package Users;
 
-import Bookings.BookingApp;
+import Bookings.CineplexApp;
 import Bookings.historyApp;
 import Menu.CustomerMenu;
 import Movie.Movie;
@@ -71,7 +71,7 @@ public class Customer extends User {
                     break;
                 case 4:
                     // book ticket
-                    new BookingApp().bookingApp();
+                    new CineplexApp().Cineplex_app();
                     break;
                 case 5:
                     // view booking history
