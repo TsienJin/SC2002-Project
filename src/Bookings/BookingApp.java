@@ -59,10 +59,14 @@ public class BookingApp {
 
                  //1. List all the movies for customer to select
                 CustomerCSVDriver driver = new CustomerCSVDriver();
-                driver.listAllMovies();
+                driver.listAllMovieforBooking();
 
                 //2. To select a movie, ask the user to type in the movieID
                 String movieId = this.input.getUsrString("Please Enter Movie ID: ");
+                while(!driver.checkMovieStatus(movieId)){
+                    System.out.println("Movie not available for booking");
+                    movieId = this.input.getUsrString("Please Enter Movie ID: ");
+                }
 
                 //3. List all the showtime for that movie
                 while(driver.listShowtimeFromRegex(movieId)==false){

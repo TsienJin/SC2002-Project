@@ -119,6 +119,16 @@ public abstract class CSVDriver{
         
     }
 
+    public void listAllMovieforBooking(){
+        ArrayList<Movie> moviesArr = this.getMovies();
+
+        for(Movie movie : moviesArr){
+            if(movie.getStatus().toString().equals("Preview") || movie.getStatus().toString().equals("Now_Showing")){
+                System.out.println(movie.toString());
+            }
+        }
+    }
+
     
     /** Searches for movies using Regex and prints all patches
      * @param rgx
@@ -132,6 +142,17 @@ public abstract class CSVDriver{
         } else {
             System.out.println("No movies found!");
         }
+    }
+
+    public boolean checkMovieStatus(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Movie.toString(),rgx);
+        String line = found.get(0);
+        MovieBuilder buildmovie = new MovieBuilder(line);
+        Movie newMovie = new Movie(buildmovie);
+        if(newMovie.getStatus().toString().equals("Preview") || newMovie.getStatus().toString().equals("Now_Showing")){
+            return true;
+        }
+        return false;
     }
 
 
