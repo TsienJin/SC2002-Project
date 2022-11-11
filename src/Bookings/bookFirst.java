@@ -62,7 +62,15 @@ public class bookFirst implements DifferentBooking {
             System.out.println("Selecting Seat.....");
             do{
                 row = sc.getUsrInt("Input Row Number: ");
+                while(row>=8){
+                    System.out.println("Row does not exist.");
+                    row = sc.getUsrInt("Input Row Number: ");
+                }
                 col = sc.getUsrInt("Input Column Number: ");
+                while(col >= 8){
+                    System.out.println("Column does not exist.");
+                    col = sc.getUsrInt("Input Column Number: ");
+                }
                 isitBook = firstCinema.BookSeat(row,col);
                 if(isitBook == true){
                     System.out.println("Updating bookseat...");
