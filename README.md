@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/32679064/201461109-af579f87-abd5-47d3-bd6b-71c632580fe7.png)
+![output](https://user-images.githubusercontent.com/32679064/201462719-0a2e5253-bb02-41dc-9fb0-26370a2e89da.gif)
 
 # SC2002: MOvie Booking and LIsting Management Application (MOBLIMA)
 
