@@ -8,33 +8,36 @@ import dataDriver.InterfaceToCsvStringHelper;
 import dataDriver.StaffCSVDriver;
 import Holiday.*;
 
-
-/** Staff running 'shell'
+/**
+ * Staff running 'shell'
+ * 
  * @Author Tsien Jin
  */
-public class Staff extends User implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter{
+public class Staff extends User implements InterfaceToCsvStringHelper, InterfaceCsvDelimiter {
 
     private boolean isAuthenticated = false;
     private String ID;
     private String usrName;
     private String usrPwd;
-    
-    /** Constructor
+
+    /**
+     * Constructor
      * 
      */
-    public Staff(){
+    public Staff() {
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
     }
 
-    /** Protected constructor with user information
+    /**
+     * Protected constructor with user information
      * 
      * @param ID
      * @param usrName
      * @param usrPwd
      * 
      */
-    protected Staff(String ID, String usrName, String usrPwd){
+    protected Staff(String ID, String usrName, String usrPwd) {
         super.menu = new StaffMenu();
         super.dataDriver = (StaffCSVDriver) new StaffCSVDriver();
         this.ID = ID;
@@ -42,18 +45,18 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         this.usrPwd = usrPwd;
     }
 
-
-    /** Method to authenticate staff user and handle user logic
+    /**
+     * Method to authenticate staff user and handle user logic
      * Updates attribute this.isAuthenticated once password and login is correct
      */
     // Helper methods
-    private void authStaff(){
-        do{
+    private void authStaff() {
+        do {
             System.out.println("\nLOGIN AS STAFF");
             String usrName = super.input.getUsrString("Enter Username:");
             String usrPwd = super.input.getUsrPwd("Enter Password:");
 
-            if(((StaffCSVDriver) dataDriver).authenticate(usrName, usrPwd)){ // long cast statement for intellisense
+            if (((StaffCSVDriver) dataDriver).authenticate(usrName, usrPwd)) { // long cast statement for intellisense
                 this.isAuthenticated = true;
                 this.ID = ((StaffCSVDriver) super.dataDriver).getStaffIdFromUsrname(usrName);
                 this.usrName = usrName;
@@ -64,29 +67,31 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         } while (this.isAuthenticated == false);
     }
 
-    
-    /** Method to update CSV with changed information
+    /**
+     * Method to update CSV with changed information
+     * 
      * @param staffUsr
      */
-    private void updateCSV(Staff staffUsr){
+    private void updateCSV(Staff staffUsr) {
         ((StaffCSVDriver) this.dataDriver).updateStaffAccount(staffUsr);
     }
 
-    
-    /** Method to add new user information to CSV
+    /**
+     * Method to add new user information to CSV
+     * 
      * @param staffUsr
      */
-    private void addCSV(Staff staffUsr){
+    private void addCSV(Staff staffUsr) {
         ((StaffCSVDriver) this.dataDriver).createStaffAccount(staffUsr);
     }
 
-
-    
-    /** Formats object information into CSV string
+    /**
+     * Formats object information into CSV string
+     * 
      * @return String
      */
     @Override
-    public String toCsvString(){
+    public String toCsvString() {
         ArrayList<String> details = new ArrayList<>();
         details.add(this.usrName);
         details.add(this.ID);
@@ -95,31 +100,32 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
         return String.join(mainDelimiter, details);
     }
 
-    
-    /** Callable running loop
+    /**
+     * Callable running loop
      * 
      */
     @Override
-    public void run(){
+    public void run() {
 
-        while(!isAuthenticated){
+        while (!isAuthenticated) {
             this.authStaff();
         }
 
         this._run();
     }
 
-    /** Main running loop
+    /**
+     * Main running loop
      * Called from Staff.run()
      */
     // MAIN RUNNING LOOP
-    private void _run(){
+    private void _run() {
         int usrChoice = 0;
         this.menu.printMainMenu();
-        do{
+        do {
             usrChoice = super.getUsrChoice();
 
-            switch(usrChoice){
+            switch (usrChoice) {
                 case 1:
                     // print this menu
                     this.menu.printMainMenu();
@@ -182,20 +188,20 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
             }
 
-        } while (usrChoice!=14);
+        } while (usrChoice != 14);
     }
 
-
-    /** Menu for staff to configure settings
+    /**
+     * Menu for staff to configure settings
      * 
      */
-    private void configSettings(){
+    private void configSettings() {
         ((StaffMenu) this.menu).printConfigMenu();
         int usrChoice = 0;
-        do{
+        do {
             usrChoice = super.input.getUsrInt("Enter choice: ");
 
-            switch(usrChoice){
+            switch (usrChoice) {
                 case 1:
                     // print menu
                     ((StaffMenu) this.menu).printConfigMenu();
@@ -223,7 +229,7 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     ((StaffMenu) this.menu).printConfigMenu();
                     break;
                 case 6:
-                    //Configuring holiday dates
+                    // Configuring holiday dates
                     new holidayApp().holidayapp();
                     break;
                 case 7:
@@ -231,19 +237,19 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     break;
             }
 
-        } while (usrChoice!=6);
+        } while (usrChoice != 7);
     }
 
-
-    /** Submenu to configure movie sorting
+    /**
+     * Submenu to configure movie sorting
      * 
      */
-    public void configMovieSorting(){
+    public void configMovieSorting() {
         ((StaffMenu) this.menu).printMovieRankingMenu();
         int usrChoice = 0;
         do {
             usrChoice = this.input.getUsrInt("Enter choice: ");
-            switch(usrChoice){
+            switch (usrChoice) {
                 case 1:
                     // sort by sales
                     ((StaffCSVDriver) this.dataDriver).sortMoviesBySales();
@@ -265,7 +271,8 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                 default:
                     System.out.println("Invalid input!");
                     usrChoice = 0;
-            };
+            }
+            ;
         } while (usrChoice == 0);
     }
 
