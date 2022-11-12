@@ -69,8 +69,7 @@ public class BookingApp {
                 }
 
                 //3. List all the showtime for that movie
-                while(driver.listShowtimeFromRegex(movieId)==false){
-                    book.printShowtime();
+                while(driver.listUpcomingShowtimefromregex(movieId)==false){
                     int choose = this.input.getUsrInt("Choice");
                     if(choose == 1){
                         movieId = this.input.getUsrString("Please Enter Movie ID: ");

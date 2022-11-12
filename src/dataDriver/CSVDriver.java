@@ -13,13 +13,14 @@ import Sorting.InsertSortMovies;
 import Holiday.*;
 
 
+
 /** Abstract class that eases interaction between user objects and CRUD operations
  * 
  */
 public abstract class CSVDriver{
 
     protected FileIO fileio = new FileIO();
-
+    
 
     
     /** Get an array of all movies in the system
@@ -186,6 +187,35 @@ public abstract class CSVDriver{
         });
     }
 
+    public boolean listUpcomingShowtimefromregex(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.Showtime.toString(), rgx);
+        ArrayList<String> Upcomingfound = new ArrayList<>();
+        if(found.size()>0){
+            found.forEach(line->{
+                showtime newShowtime = new ShowtimeBuilder(line).build();
+                if(newShowtime.isUpcoming()){
+                    Upcomingfound.add(line);
+                    System.out.println(newShowtime.toString());
+                }                    
+            });
+
+            int size = Upcomingfound.size();
+
+            if(size==0){
+                System.out.println("No available showtime found");
+                return false;
+            }
+
+            return true;
+        }
+        
+        else{
+            System.out.println("No showtime found");
+            return false;
+        }
+
+    }
+
     
     /** Searches for Showtimes using regex and prints all matches
      * @param rgx
@@ -204,6 +234,8 @@ public abstract class CSVDriver{
             return false;
         }
     }
+
+
 
     
     /** Prints all showtimes with a specified Movie ID
