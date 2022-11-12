@@ -1,14 +1,52 @@
-![image](https://user-images.githubusercontent.com/32679064/200109506-6be31431-36e8-4ea5-9c1d-9541a2334c83.png)
+                        ████████████████████████████████████████████████████████████████████████████████    
+                      ██                                                                                ██  
+                    ██                                                                                    ██
+                    ██    ████████████████████████████████████████████████████████████████████████████    ██
+                    ██  ██      ██                                                            ██      ██  ██
+                    ██  ██  ██  ██ ███╗   ███╗ ██████╗ ██████╗ ██╗     ██╗███╗   ███╗ █████╗  ██  ██  ██  ██
+                    ██  ██      ██ ████╗ ████║██╔═══██╗██╔══██╗██║     ██║████╗ ████║██╔══██╗ ██      ██  ██
+                    ██  ██  ██  ██ ██╔████╔██║██║   ██║██████╔╝██║     ██║██╔████╔██║███████║ ██  ██  ██  ██
+                    ██  ██  ██  ██ ██║╚██╔╝██║██║   ██║██╔══██╗██║     ██║██║╚██╔╝██║██╔══██║ ██  ██  ██  ██
+                    ██  ██      ██ ██║ ╚═╝ ██║╚██████╔╝██████╔╝███████╗██║██║ ╚═╝ ██║██║  ██║ ██      ██  ██
+                    ██  ██  ██  ██ ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ██  ██  ██  ██
+                    ██  ██      ██                                                            ██      ██  ██
+                    ██    ████████████████████████████████████████████████████████████████████████████    ██
+                    ██                                                                                    ██
+                      ██                                                                                ██  
+                        ████████████████████████████████████████████████████████████████████████████████    
 
 # SC2002: MOvie Booking and LIsting Management Application (MOBLIMA)
 
 ## About
 MOBLIMA is an application to computerize the processes of making online booking and purchase of movie tickets, listing of movies and sale reporting. It will be used by the movie goers and cinema staff.
 
-## Functions
+## Installation
 
-### Admin Functionalities
----
+Ensure that you have the required Java SDKs. I'm using `OpenJDK 11.0.17`  
+
+	java --version
+
+![image](https://user-images.githubusercontent.com/32679064/201460580-44711f7e-ccc5-491f-b0b7-864414830e9d.png)
+
+Download the source code via `git`
+
+	git clone https://github.com/TsienJin/SC2002-Project
+
+
+Head to `src/` folder and compile ByteCode
+	
+	cd SC2002-Project/src
+	javac App.java
+
+
+Move up 1 directory (outside of `src/` folder) and execute `App.class`
+	
+	cd ..
+	java -cp src/ App 
+
+
+## Examples
+
 #### Login
 Administrators are able to login to the application using a Predefined Username and Password.
 
@@ -79,17 +117,9 @@ Input:
 
 ![example03](https://user-images.githubusercontent.com/32679064/200113703-5052f794-e5b7-4b82-ae45-522572199c85.gif)
 
-#### Configure System Settings
-
-
-### User Functionalities
----
-#### List Movies
-
-#### Search and View Movie Details
-
-#### Booking
-
-#### View Booking Hostory
-
-#### List Top 5 ranking by ticket sales/overall reviewers' ratings
+## Contributions
+- TsienJin
+- keenlim
+- Baby-McBabyFace
+- rphoen
+- Roseus9
