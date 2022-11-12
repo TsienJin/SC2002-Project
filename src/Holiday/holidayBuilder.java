@@ -37,7 +37,7 @@ public class holidayBuilder implements InterfaceBuilder<holiday>,InterfaceCsvDel
         return this;
     }
 
-    public holidayBuilder settickePrice(String ticketPrice){
+    public holidayBuilder setticketPrice(String ticketPrice){
         this.ticketPrice = ticketPrice;
         return this;
     }

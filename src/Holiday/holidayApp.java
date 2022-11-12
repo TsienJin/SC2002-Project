@@ -19,7 +19,7 @@ public class holidayApp {
     holidayBuilder holidayBuild = new holidayBuilder();
     holidayBuild.setholidayName(nameOfhol);
     holidayBuild.setholidayDate(dateOfhol);
-    holidayBuild.settickePrice(ticketPrice);
+    holidayBuild.setticketPrice(ticketPrice);
     driver.createHoliday(holidayBuild);
 
 
