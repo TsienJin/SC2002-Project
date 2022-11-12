@@ -11,6 +11,7 @@ public enum EnumDataFiles implements InterfaceNiceEnumString<EnumDataFiles> {
     Cinema("cinema.csv"),
     bookingHistory("bookingHistory.csv"),
     Config("config.properties"),
+    holiday("holidayDate.csv")
     ;
     String prettyName;
 

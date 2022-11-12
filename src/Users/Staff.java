@@ -6,6 +6,7 @@ import Menu.StaffMenu;
 import dataDriver.InterfaceCsvDelimiter;
 import dataDriver.InterfaceToCsvStringHelper;
 import dataDriver.StaffCSVDriver;
+import Holiday.*;
 
 
 /** Staff running 'shell'
@@ -170,7 +171,6 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                 case 13:
                     // configure system settings
                     this.configSettings();
-                    System.out.println("here!!!");
                     this.menu.printMainMenu();
                     break;
                 case 14:
@@ -223,6 +223,10 @@ public class Staff extends User implements InterfaceToCsvStringHelper, Interface
                     ((StaffMenu) this.menu).printConfigMenu();
                     break;
                 case 6:
+                    //Configuring holiday dates
+                    new holidayApp().holidayapp();
+                    break;
+                case 7:
                     // back, nothing here
                     break;
             }

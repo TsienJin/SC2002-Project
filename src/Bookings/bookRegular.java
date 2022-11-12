@@ -123,11 +123,21 @@ public class bookRegular implements DifferentBooking{
             else if(row == 9){
                 seatType = "Ultimate";
             }
+
+            String date = newShowtime.getTime_date().substring(0,8);
             
-            Booking regularBook = new Booking(timing,sClass,day,age,movieTitle);
+            Booking regularBook = new Booking(timing,sClass,day,age,movieTitle,date);
             System.out.println("Movie Title: " + movieTitle);
-            System.out.println("Price of each ticket: " + regularBook.calculatePayment(seatType));
-            total = regularBook.calculatePayment(seatType) + total;
+            double holidayPrice = driver.findHoliday(date);
+            if(holidayPrice > 0){
+                System.out.println("Price of each ticket: " + holidayPrice);
+                total = total + holidayPrice;
+            }
+            else{
+                System.out.println("Price of each ticket: " + regularBook.calculatePayment(seatType));
+                total = regularBook.calculatePayment(seatType) + total;
+            }
+           
     }
 
     System.out.println("Total ticket price: " + total);

@@ -11,6 +11,7 @@ public class Booking {
     private String movieDay;  //Will tell us if is weekend or weekday
     private String age;  //tell us if is senior,students or adults.
     private String movieType; //Tell us the type of movie - different type, different price
+    private String date;
 
 
     private String[] type = {"Senior Citizen","Students","Non-Peak : Weekday","Peak : Weekday","Weekend"};
@@ -57,12 +58,13 @@ private double[][] Sprice = {
      * @param age
      * @param movieType
      */
-      public Booking(String movieTiming,String cinemaCode,String movieDay, String age,String movieType){
+      public Booking(String movieTiming,String cinemaCode,String movieDay, String age,String movieType,String date){
         this.movieTiming = movieTiming;
         this.cinemaCode = cinemaCode;
         this.movieDay = movieDay;
         this.age = age;
         this.movieType = movieType;
+        this.date = date;
     }
 
 

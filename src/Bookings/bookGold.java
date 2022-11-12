@@ -128,11 +128,22 @@ public class bookGold implements DifferentBooking{
                 seatType = "Ultimate";
             }
             
-            Booking goldBook = new Booking(timing,sClass,day,age,movieTitle);
+            String date = newShowtime.getTime_date().substring(0,8);
+            
+            Booking goldBook = new Booking(timing,sClass,day,age,movieTitle,date);
             System.out.println("Movie Title: " + movieTitle);
-            System.out.println("Price of each ticket: " + goldBook.calculatePayment(seatType));
-            total = goldBook.calculatePayment(seatType) + total;
+            double holidayPrice = driver.findHoliday(date);
+            if(holidayPrice > 0){
+                System.out.println("Price of each ticket: " + holidayPrice);
+                total = total + holidayPrice;
+            }
+            else{
+                System.out.println("Price of each ticket: " + goldBook.calculatePayment(seatType));
+                total = goldBook.calculatePayment(seatType) + total;
+    
 
+            }
+           
             }
 
             System.out.println("Total Payment: " + total);

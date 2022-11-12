@@ -129,10 +129,21 @@ public class bookFirst implements DifferentBooking {
                 seatType = "Ultimate";
             }
 
+            String date = newShowtime.getTime_date().substring(0,8);
+
             
-            Booking firstBook = new Booking(timing,sClass,day,age,movieTitle);
-            System.out.println("Price of each ticket: " + firstBook.calculatePayment(seatType));
-            total = firstBook.calculatePayment(seatType) + total;
+            Booking firstBook = new Booking(timing,sClass,day,age,movieTitle,date);
+            System.out.println("Movie Title: " + movieTitle);
+            double holidayPrice = driver.findHoliday(date);
+            if(holidayPrice > 0){
+                System.out.println("Price of each ticket: " + holidayPrice);
+                total = total + holidayPrice;
+            }
+            else{
+                System.out.println("Price of each ticket: " + firstBook.calculatePayment(seatType));
+                total = firstBook.calculatePayment(seatType) + total;
+            }
+            
         }
 
         System.out.println("Total Payment: " + total);

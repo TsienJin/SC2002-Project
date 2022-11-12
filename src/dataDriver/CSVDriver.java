@@ -10,6 +10,7 @@ import Movie.MovieBuilder;
 import ShowTime.ShowtimeBuilder;
 import ShowTime.showtime;
 import Sorting.InsertSortMovies;
+import Holiday.*;
 
 
 /** Abstract class that eases interaction between user objects and CRUD operations
@@ -311,6 +312,30 @@ public abstract class CSVDriver{
             });
         } else {
             System.out.println("No booking history found!");
+        }
+    }
+
+    public void createHoliday(holidayBuilder holidaybuild){
+
+        //create a new holiday object
+        holiday newholiday = new holiday(holidaybuild);
+
+        //write input to csv file
+        this.fileio.writeToFile(EnumDataFiles.holiday.toString(),newholiday.toCsvString());
+
+        System.out.println("Holiday created!");
+
+    }
+
+    public double findHoliday(String rgx){
+        ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.holiday.toString(),rgx);
+        if(found.size()>0){
+            String line = found.get(0);
+            holiday newHoliday = new holidayBuilder(line).build();
+            return Double.parseDouble(newHoliday.getticketPrice());
+        }
+        else{
+            return 0;
         }
     }
 

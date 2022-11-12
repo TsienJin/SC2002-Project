@@ -41,6 +41,7 @@ public class StaffMenu extends Menu {
         options.add("Change username");
         options.add("Create new user");
         options.add("Change ranking of movies");
+        options.add("Configuring holiday dates");
         options.add("Back");
 
         menuPrinter(header, options);
