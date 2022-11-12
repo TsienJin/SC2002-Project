@@ -347,6 +347,9 @@ public abstract class CSVDriver{
         }
     }
 
+    /** Creates holiday in CSV file
+     * @param holidaybuild
+     */
     public void createHoliday(holidayBuilder holidaybuild){
 
         //create a new holiday object
@@ -359,6 +362,10 @@ public abstract class CSVDriver{
 
     }
 
+    /** Find holiday from csv file via regex
+     * @param rgx
+     * @return ticketPrice or 0
+     */
     public double findHoliday(String rgx){
         ArrayList<String> found = this.fileio.regexMatch(EnumDataFiles.holiday.toString(),rgx);
         if(found.size()>0){

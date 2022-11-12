@@ -4,7 +4,9 @@ import dataDriver.StaffCSVDriver;
 
 public class holidayApp {
 
-
+    /**
+     * Ask for user input and create a holiday object
+     */
     public void holidayapp(){
         StaffCSVDriver driver = new StaffCSVDriver();
 
